@@ -1,8 +1,10 @@
-# API method transport
+API method transport
+====================
 
-Documentation coming soon!
+## Sending a message using one of the Slack API methods
 
-
-# Want more?
-
-Send in PRs or create an issue if you feel like it! I'm happy to make adjustments where needed.
+```php
+$apiTransport = new ApiMethodTransport('https://yourteam.slack.com/api/yourApiTokenHere');
+$chatPostMessage = new ChatPostMessageApiMethod($options);
+$response = $apiTransport->send($chatPostMessage);
+```

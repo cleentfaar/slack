@@ -1,14 +1,13 @@
 CLSlack
 =======
 
-This libray provides the fundamentals for interacting with the Slack API and webhooks.
-
-API calls can be done by using the method factory and passing it the necessary options. either a ``Controller`` (responding to outgoing webhooks), specific console commands (direct API method access),
-and of course the API methods themselves, which can be sent from any point in your code, returning the response from Slack directly.
+This libray provides the fundamentals for interacting with the [Slack API and webhooks](https://api.slack.com/).
 
 [![Build Status](https://secure.travis-ci.org/cleentfaar/CLSlack.png)](http://travis-ci.org/cleentfaar/CLSlack)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/?branch=master)
+
+A few of the API methods have already been integrated, such as ``chat.postMessage`` and ``search.files``. My aim is to complete the collection very soon.
 
 **NOTE:** If your project uses the Symfony Framework, you may be better off getting the related bundle [here](https://github.com/cleentfaar/CLSlackBundle).
 
