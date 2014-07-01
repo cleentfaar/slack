@@ -1,5 +1,5 @@
-CLSlack
-=======
+PHP library for Slack
+=====================
 
 This libray provides the fundamentals for interacting with the [Slack API and webhooks](https://api.slack.com/).
 
