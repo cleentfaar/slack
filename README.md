@@ -3,9 +3,9 @@ CLSlack
 
 This libray provides the fundamentals for interacting with the [Slack API and webhooks](https://api.slack.com/).
 
-[![Build Status](https://secure.travis-ci.org/cleentfaar/CLSlack.png)](http://travis-ci.org/cleentfaar/CLSlack)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/CLSlack/?branch=master)
+[![Build Status](https://secure.travis-ci.org/cleentfaar/slack.png)](http://travis-ci.org/cleentfaar/slack)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
 
 A few of the API methods have already been integrated, such as ``chat.postMessage`` and ``search.files``. My aim is to complete the collection very soon.
 
