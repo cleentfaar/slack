@@ -1,0 +1,24 @@
+inherit: true
+
+before_commands:
+  - 'sudo composer self-update'
+  - 'composer install --no-interaction --no-scripts'
+
+tools:
+  php_code_sniffer:
+    config:
+      standard: PSR2
+  php_cpd: true
+  php_cs_fixer:
+    config:
+      level: all
+  php_hhvm: true
+  php_loc: true
+  php_mess_detector: true
+  php_pdepend: true
+  php_analyzer:
+    filter:
+      excluded_paths:
+        - 'Tests/*'
+  sensiolabs_security_checker: true
+  external_code_coverage: true
