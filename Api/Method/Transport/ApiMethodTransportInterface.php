@@ -49,10 +49,10 @@ interface ApiMethodTransportInterface
     public function getHttpClient();
 
     /**
-     * @param ApiMethodInterface $method
-     * @param RequestInterface   $request
+     * @param ApiMethodInterface    $method
+     * @param RequestInterface|null $request
      *
      * @return ApiMethodResponseInterface
      */
-    public function send(ApiMethodInterface $method, RequestInterface $request);
+    public function send(ApiMethodInterface $method, RequestInterface $request = null);
 }
