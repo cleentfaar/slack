@@ -11,20 +11,29 @@
 
 namespace CL\Slack\Api\Method;
 
-use CL\Slack\Api\Method\Response\SearchAllApiMethodResponse;
-use Guzzle\Http\Message\Response;
+use CL\Slack\Api\Method\Response\AuthTestResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class SearchAllApiMethod extends AbstractSearchApiMethod
+class AuthTestMethod extends AbstractMethod
 {
     /**
      * {@inheritdoc}
+     *
+     * @return AuthTestResponse
      */
-    public function createResponse(Response $response)
+    public function createResponse(array $data)
     {
-        return new SearchAllApiMethodResponse($response);
+        return new AuthTestResponse($data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getAlias()
+    {
+        return MethodFactory::METHOD_AUTH_TEST;
     }
 
     /**
@@ -32,6 +41,6 @@ class SearchAllApiMethod extends AbstractSearchApiMethod
      */
     public static function getSlug()
     {
-        return 'search.all';
+        return 'auth.test';
     }
 }

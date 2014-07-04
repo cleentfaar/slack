@@ -11,20 +11,28 @@
 
 namespace CL\Slack\Api\Method;
 
-use CL\Slack\Api\Method\Response\SearchFilesApiMethodResponse;
-use Guzzle\Http\Message\Response;
+use CL\Slack\Api\Method\Response\UsersListResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class SearchFilesApiMethod extends AbstractSearchApiMethod
+class UsersListMethod extends AbstractMethod
 {
     /**
      * {@inheritdoc}
      */
-    public function createResponse(Response $response)
+    public function createResponse(array $data)
     {
-        return new SearchFilesApiMethodResponse($response);
+        return new UsersListResponse($data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getAlias()
+    {
+        return MethodFactory::METHOD_USERS_LIST;
     }
 
     /**
@@ -32,6 +40,6 @@ class SearchFilesApiMethod extends AbstractSearchApiMethod
      */
     public static function getSlug()
     {
-        return 'search.files';
+        return 'users.list';
     }
 }

@@ -9,18 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Api\Method\Response;
+namespace CL\Slack\Api\Method\Exception;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class SearchMessagesApiMethodResponse extends AbstractSearchApiMethodResponse
+class InactiveAccountException extends \Exception
 {
-    /**
-     * @return array
-     */
-    public function getMessages()
-    {
-        return $this->data['messages'] ? $this->data['messages']['matches'] : [];
-    }
+
 }

@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractSearchApiMethod extends AbstractApiMethod
+abstract class AbstractSearchMethod extends AbstractMethod
 {
     const SORT_SCORE     = 'score';
     const SORT_TIMESTAMP = 'timestamp';
@@ -27,8 +27,9 @@ abstract class AbstractSearchApiMethod extends AbstractApiMethod
     /**
      * {@inheritdoc}
      */
-    public function buildOptions(OptionsResolverInterface &$resolver)
+    protected function configureResolver(OptionsResolverInterface $resolver)
     {
+        parent::configureResolver($resolver);
         $resolver->setRequired(['query']);
         $resolver->setOptional([
             'sort',

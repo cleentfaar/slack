@@ -11,22 +11,19 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use Guzzle\Http\Message\Response;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Output\OutputInterface;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-interface ApiMethodResponseInterface
+interface ResponseInterface
 {
     const ERROR_CHANNEL_NOT_FOUND = 'channel_not_found';
-    const ERROR_INVALID_TOKEN = 'invalid_token';
+    const ERROR_INVALID_TOKEN     = 'invalid_auth';
+    const ERROR_ACCOUNT_INACTIVE  = 'account_inactive';
 
     /**
-     * @param Response $response
+     * @param array $data The data returned by Slack, converted from JSON
      */
-    public function __construct(Response $response);
+    public function __construct(array $data);
 
     /**
      * @return bool
@@ -42,10 +39,4 @@ interface ApiMethodResponseInterface
      * @return string|null
      */
     public function getError();
-
-    /**
-     * @param OutputInterface $output
-     * @param Command         $command
-     */
-    public function toOutput(OutputInterface $output, Command $command);
 }

@@ -11,20 +11,27 @@
 
 namespace CL\Slack\Api\Method;
 
-use CL\Slack\Api\Method\Response\SearchMessagesApiMethodResponse;
-use Guzzle\Http\Message\Response;
+use CL\Slack\Api\Method\Response\SearchAllResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class SearchMessagesApiMethod extends AbstractSearchApiMethod
+class SearchAllMethod extends AbstractSearchMethod
 {
     /**
      * {@inheritdoc}
      */
-    public function createResponse(Response $response)
+    public function createResponse(array $data)
     {
-        return new SearchMessagesApiMethodResponse($response);
+        return new SearchAllResponse($data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getAlias()
+    {
+        return MethodFactory::METHOD_SEARCH_ALL;
     }
 
     /**
@@ -32,6 +39,6 @@ class SearchMessagesApiMethod extends AbstractSearchApiMethod
      */
     public static function getSlug()
     {
-        return 'search.messages';
+        return 'search.all';
     }
 }

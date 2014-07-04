@@ -13,11 +13,12 @@ namespace CL\Slack\Api\Method\Response;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class AuthTestApiMethodResponse extends ApiMethodResponse
+class AuthTestResponse extends Response
 {
     /**
      * @return string
@@ -62,20 +63,17 @@ class AuthTestApiMethodResponse extends ApiMethodResponse
     /**
      * {@inheritdoc}
      */
-    public function toOutput(OutputInterface $output, Command $command)
+    protected function configureResolver(OptionsResolverInterface $resolver)
     {
-        $tableHelper = $command->getHelper('table');
-        $tableHelper->setHeaders([
-            'Key',
-            'Value',
+        parent::configureResolver($resolver);
+        $resolver->setRequired([
+            'team',
+            'team_id',
+            'user',
+            'user_id',
+            'url',
         ]);
-        $tableHelper->setRows([
-            ['User', $this->getUser()],
-            ['User ID', $this->getUserId()],
-            ['Team', $this->getTeam()],
-            ['Team ID', $this->getTeamId()],
-            ['URL', $this->getUrl()],
-        ]);
-        $tableHelper->render($output);
+
+        return $resolver;
     }
 }

@@ -11,6 +11,7 @@
 
 namespace CL\Slack\Api\Method;
 
+use CL\Slack\Resolvable;
 use Guzzle\Http\Message\Request;
 use Guzzle\Http\Message\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,8 +20,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractApiMethod implements ApiMethodInterface
+abstract class AbstractMethod implements MethodInterface
 {
+    use Resolvable;
+
     /**
      * @var array
      */
@@ -29,18 +32,9 @@ abstract class AbstractApiMethod implements ApiMethodInterface
     /**
      * @param array $options
      */
-    public function __construct(array $options)
+    final public function __construct(array $options)
     {
-        $resolver = new OptionsResolver();
-        $resolver->setRequired([
-            'token'
-        ]);
-        $resolver->setAllowedTypes([
-            'token' => 'string'
-        ]);
-        $this->buildOptions($resolver);
-        $this->validateOptions($options, $resolver);
-        $this->options = $options;
+        $this->options = $this->resolve($options);
     }
 
     /**
@@ -51,8 +45,6 @@ abstract class AbstractApiMethod implements ApiMethodInterface
         if ($request->getMethod() !== Request::GET) {
             throw new \InvalidArgumentException("API methods only support GET-requests");
         }
-
-        $request->setUrl(sprintf($request->getUrl(), $this->getSlug()));
 
         $request->getQuery()->merge($this->getOptions());
 
@@ -68,26 +60,15 @@ abstract class AbstractApiMethod implements ApiMethodInterface
     }
 
     /**
-     * @param array                    $options
      * @param OptionsResolverInterface $resolver
      */
-    protected function validateOptions(array $options, OptionsResolverInterface $resolver)
+    protected function configureResolver(OptionsResolverInterface $resolver)
     {
-        $resolver->resolve($options);
+        $resolver->setRequired([
+            'token'
+        ]);
+        $resolver->setAllowedTypes([
+            'token' => 'string'
+        ]);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function getAlias()
-    {
-        return static::getSlug();
-    }
-
-    /**
-     * @param OptionsResolverInterface $resolver
-     *
-     * @return OptionsResolverInterface
-     */
-    abstract protected function buildOptions(OptionsResolverInterface &$resolver);
 }

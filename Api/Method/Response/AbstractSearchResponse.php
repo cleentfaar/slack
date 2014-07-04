@@ -11,10 +11,12 @@
 
 namespace CL\Slack\Api\Method\Response;
 
+use CL\Slack\Resolvable;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractSearchApiMethodResponse extends ApiMethodResponse
+abstract class AbstractSearchResponse extends Response
 {
     /**
      * @return string|null

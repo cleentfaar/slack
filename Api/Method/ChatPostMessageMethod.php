@@ -11,20 +11,45 @@
 
 namespace CL\Slack\Api\Method;
 
-use CL\Slack\Api\Method\Response\ApiMethodResponse;
-use Guzzle\Http\Message\Response;
+use CL\Slack\Api\Method\Response\ChatPostMessageResponse;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChatPostMessageApiMethod extends AbstractApiMethod
+class ChatPostMessageMethod extends AbstractMethod
 {
     /**
      * {@inheritdoc}
      */
-    public function buildOptions(OptionsResolverInterface &$resolver)
+    public function createResponse(array $data)
     {
+        return new ChatPostMessageResponse($data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getAlias()
+    {
+        return MethodFactory::METHOD_CHAT_POSTMESSAGE;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSlug()
+    {
+        return 'chat.postMessage';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureResolver(OptionsResolverInterface $resolver)
+    {
+        parent::configureResolver($resolver);
         $resolver->setRequired([
             'channel',
             'text',
@@ -45,21 +70,10 @@ class ChatPostMessageApiMethod extends AbstractApiMethod
             'icon_url'   => ['string'],
             'icon_emoji' => ['string'],
         ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createResponse(Response $response)
-    {
-        return new ApiMethodResponse($response);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function getSlug()
-    {
-        return 'chat.postMessage';
+        $resolver->setNormalizers([
+            'channel' => function (Options $options, $value) {
+                    return '#' . ltrim($value, '#');
+                },
+        ]);
     }
 }
