@@ -13,13 +13,18 @@ namespace CL\Slack\Api\Method\Transport;
 
 use CL\Slack\Api\Method\MethodInterface;
 use CL\Slack\Api\Method\Response\ResponseInterface;
-use Guzzle\Http\ClientInterface;
+use GuzzleHttp\ClientInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 interface TransportInterface
 {
+    /**
+     * The (base) URL used for all communication with the Slack API.
+     */
+    const API_BASEURL = 'https://slack.com/api';
+
     /**
      * @param ClientInterface $client
      */

@@ -12,16 +12,13 @@
 namespace CL\Slack\Api\Method\Transport;
 
 use CL\Slack\Api\Method\MethodInterface;
-use Guzzle\Http\ClientInterface;
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\ClientInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class Transport implements TransportInterface
 {
-    const API_BASEURL = 'https://slack.com/api';
-
     /**
      * @var ClientInterface
      */
@@ -42,8 +39,7 @@ class Transport implements TransportInterface
      */
     public function send(MethodInterface $method)
     {
-        $request = $this->httpClient->get('get');
-        $request->setUrl(self::API_BASEURL . '/' . $method->getSlug());
+        $request = $this->httpClient->createRequest('get', self::API_BASEURL . '/' . $method->getSlug());
         $request->getQuery()->replace($method->getOptions());
         $response = $this->httpClient->send($request);
         $data     = json_decode($response->getBody(true), true);
