@@ -11,20 +11,23 @@
 
 namespace CL\Slack\Api\Method\Response;
 
+use CL\Slack\Api\Method\Response\Representation\Channel;
+use CL\Slack\Api\Method\Response\Representation\Message;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChatPostMessageResponse extends AbstractSearchResponse
+class ChannelsInfoResponse extends AbstractSearchResponse
 {
     /**
-     * @return int The Slack timestamp on which your message has been posted.
+     * @return Channel
      */
-    public function getTimestamp()
+    public function getChannel()
     {
-        return $this->data['timestamp'];
+        return $this->data['channel'];
     }
 
     /**
@@ -33,16 +36,16 @@ class ChatPostMessageResponse extends AbstractSearchResponse
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
-        $resolver->setRequired([
-            'timestamp',
-        ]);
-        $resolver->setNormalizers([
-            'timestamp' => function (Options $options, $timestamp) {
-                return intval($timestamp);
-            }
+        $resolver->setOptional([
+            'channel',
         ]);
         $resolver->setAllowedTypes([
-            'timestamp' => ['int'],
+            'channel' => ['array'],
+        ]);
+        $resolver->setNormalizers([
+            'channel' => function (Options $options, array $channel) {
+                return new Channel($channel);
+            },
         ]);
     }
 }

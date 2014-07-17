@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -73,7 +71,5 @@ class AuthTestResponse extends Response
             'user_id',
             'url',
         ]);
-
-        return $resolver;
     }
 }

@@ -11,18 +11,58 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Output\OutputInterface;
+use CL\Slack\Api\Method\Response\Representation\Member;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class UsersListResponse extends AbstractSearchResponse
+class UsersListResponse extends Response
 {
     /**
-     * @return array
+     * @return string
+     */
+    public function getTeam()
+    {
+        return $this->data['team'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getTeamId()
+    {
+        return $this->data['team_id'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->data['user'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->data['user_id'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->data['url'];
+    }
+
+    /**
+     * @return Member[] Contains 1 or more members of the team, in no particular order. For deactivated users,
+     *                  deleted will be true. The color field is used in some clients to display a colored username.
      */
     public function getMembers()
     {
@@ -36,11 +76,14 @@ class UsersListResponse extends AbstractSearchResponse
     {
         parent::configureResolver($resolver);
         $resolver->setRequired([
-            'team',
-            'team_id',
-            'user',
-            'user_id',
-            'url',
+            'members',
+        ]);
+        $resolver->setNormalizers([
+            'members' => function (Options $options, array $members) {
+                return array_map(function ($memberData) {
+                    return new Member($memberData);
+                }, $members);
+            },
         ]);
 
         return $resolver;

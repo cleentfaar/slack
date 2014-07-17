@@ -72,7 +72,5 @@ class ChannelsHistoryResponse extends AbstractSearchResponse
                 }, $messages);
             },
         ]);
-
-        return $resolver;
     }
 }
