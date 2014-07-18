@@ -62,7 +62,5 @@ class SearchMessagesResponse extends AbstractSearchResponse
                 return $messages;
             },
         ]);
-
-        return $resolver;
     }
 }

@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsInfoResponse extends AbstractSearchResponse
+class ChannelsInfoResponse extends Response
 {
     /**
      * @return Channel

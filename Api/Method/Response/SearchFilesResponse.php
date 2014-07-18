@@ -63,7 +63,5 @@ class SearchFilesResponse extends AbstractSearchResponse
                 return $files;
             },
         ]);
-
-        return $resolver;
     }
 }

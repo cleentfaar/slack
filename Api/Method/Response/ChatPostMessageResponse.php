@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChatPostMessageResponse extends AbstractSearchResponse
+class ChatPostMessageResponse extends Response
 {
     /**
      * @return int The Slack timestamp on which your message has been posted.

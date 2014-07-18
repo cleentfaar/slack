@@ -85,7 +85,5 @@ class UsersListResponse extends Response
                 }, $members);
             },
         ]);
-
-        return $resolver;
     }
 }

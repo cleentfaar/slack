@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsHistoryResponse extends AbstractSearchResponse
+class ChannelsHistoryResponse extends Response
 {
     /**
      * @return int The (Slack) timestamp on which the latest action was performed on the channel.

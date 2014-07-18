@@ -12,6 +12,7 @@
 namespace CL\Slack\Api\Method\Response;
 
 use CL\Slack\Resolvable;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -24,5 +25,22 @@ abstract class AbstractSearchResponse extends Response
     public function getQuery()
     {
         return $this->data['query'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureResolver(OptionsResolverInterface $resolver)
+    {
+        parent::configureResolver($resolver);
+        $resolver->setOptional([
+            'query',
+        ]);
+        $resolver->setDefaults([
+            'query'   => '',
+        ]);
+        $resolver->setAllowedTypes([
+            'query'    => ['string'],
+        ]);
     }
 }
