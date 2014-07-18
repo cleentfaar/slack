@@ -1,9 +1,9 @@
-PHP library for Slack
-=====================
+PHP library for the Slack API
+=============================
 
 This libray provides the fundamentals for interacting with the [Slack API and webhooks](https://api.slack.com/).
 
-[![Build Status](https://secure.travis-ci.org/cleentfaar/slack.png)](http://travis-ci.org/cleentfaar/slack)
+[![Build Status](https://secure.travis-ci.org/cleentfaar/slack.svg)](http://travis-ci.org/cleentfaar/slack)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
 
