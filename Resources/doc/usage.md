@@ -8,7 +8,7 @@ and passing it the necessary options.
 
 With the ``MethodFactory`` class:
 ```php
-$apiTransport = new ApiMethodTransport('https://yourteam.slack.com/api/yourApiTokenHere');
+$apiTransport = new Transport('https://yourteam.slack.com/api/yourApiTokenHere');
 $options = array(
     'channel' => '#general',
     'text'    => 'This is my message'
@@ -21,12 +21,12 @@ $response->getTimestamp(); // the Slack timestamp on which the message was poste
 
 Without the ``MethodFactory`` class:
 ```php
-$apiTransport = new ApiMethodTransport('https://yourteam.slack.com/api/yourApiTokenHere');
+$apiTransport = new Transport('https://yourteam.slack.com/api/yourApiTokenHere');
 $options = array(
     'channel' => '#general',
     'text'    => 'This is my message'
 )
-$chatPostMessage = new ChatPostMessageApiMethod($options);
+$chatPostMessage = new ChatPostMessageMethod($options);
 
 $response = $apiTransport->send($chatPostMessage);
 $response->getTimestamp(); // the Slack timestamp on which the message was posted
