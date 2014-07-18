@@ -12,7 +12,6 @@
 namespace CL\Slack\Api\Method;
 
 use CL\Slack\Api\Method\Response\UsersListResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>

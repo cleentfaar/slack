@@ -18,6 +18,7 @@ class MethodFactory
 {
     const METHOD_AUTH_TEST        = 'AUTH_TEST';
     const METHOD_CHANNELS_HISTORY = 'CHANNELS_HISTORY';
+    const METHOD_CHANNELS_INFO    = 'CHANNELS_INFO';
     const METHOD_CHAT_POSTMESSAGE = 'CHAT_POSTMESSAGE';
     const METHOD_SEARCH_ALL       = 'SEARCH_ALL';
     const METHOD_SEARCH_FILES     = 'SEARCH_FILES';
@@ -42,6 +43,9 @@ class MethodFactory
                 break;
             case self::METHOD_CHANNELS_HISTORY:
                 $method = new ChannelsHistoryMethod($options);
+                break;
+            case self::METHOD_CHANNELS_INFO:
+                $method = new ChannelsInfoMethod($options);
                 break;
             case self::METHOD_CHAT_POSTMESSAGE:
                 $method = new ChatPostMessageMethod($options);

@@ -12,9 +12,6 @@
 namespace CL\Slack\Api\Method;
 
 use CL\Slack\Resolvable;
-use Guzzle\Http\Message\Request;
-use Guzzle\Http\Message\RequestInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -35,20 +32,6 @@ abstract class AbstractMethod implements MethodInterface
     final public function __construct(array $options)
     {
         $this->options = $this->resolve($options);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createRequest(RequestInterface $request)
-    {
-        if ($request->getMethod() !== Request::GET) {
-            throw new \InvalidArgumentException("API methods only support GET-requests");
-        }
-
-        $request->getQuery()->merge($this->getOptions());
-
-        return $request;
     }
 
     /**

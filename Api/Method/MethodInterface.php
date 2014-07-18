@@ -14,8 +14,6 @@ namespace CL\Slack\Api\Method;
 use CL\Slack\Api\Method\Response\ResponseInterface;
 use Guzzle\Http\Message\RequestInterface;
 use Guzzle\Http\Message\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -36,13 +34,6 @@ interface MethodInterface
      * @return array
      */
     public function getOptions();
-
-    /**
-     * @param RequestInterface $request
-     *
-     * @return RequestInterface
-     */
-    public function createRequest(RequestInterface $request);
 
     /**
      * @param array $data

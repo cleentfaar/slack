@@ -11,7 +11,7 @@
 
 namespace CL\Slack\Api\Method;
 
-use CL\Slack\Api\Method\Response\ChannelsHistoryResponse;
+use CL\Slack\Api\Method\Response\ChannelsInfoResponse;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 

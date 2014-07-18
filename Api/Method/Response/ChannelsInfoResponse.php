@@ -12,9 +12,7 @@
 namespace CL\Slack\Api\Method\Response;
 
 use CL\Slack\Api\Method\Response\Representation\Channel;
-use CL\Slack\Api\Method\Response\Representation\Message;
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
