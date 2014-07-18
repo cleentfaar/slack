@@ -1,8 +1,11 @@
 # Outgoing webhooks (creating your own responses)
 
+**NOTE**: If you all you want to do is create a bot that responds to certain trigger words from Slack,
+check out the example documentation for it here: [Creating a bot](creating-a-bot.md). The documentation below is more
+to explain how the request is handled and how you could make your own implementations.
+
 To respond to an outgoing wehook, you must first create one in the Slack Administration pages of your team.
 Slack will assign a webhook-token to it which you must then add to your project's configuration.
-Instructions for this are found in the previous chapter (mentioning 'outgoing_webhook_tokens').
 
 An example webhook response would look like this:
 

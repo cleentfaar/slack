@@ -35,7 +35,7 @@ class MethodFactory
      *
      * @throws \InvalidArgumentException
      */
-    public function create($alias, array $options = array())
+    public static function create($alias, array $options = array())
     {
         switch ($alias) {
             case self::METHOD_AUTH_TEST:
