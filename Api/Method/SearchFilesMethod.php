@@ -14,6 +14,8 @@ namespace CL\Slack\Api\Method;
 use CL\Slack\Api\Method\Response\SearchFilesResponse;
 
 /**
+ * @see https://api.slack.com/methods/search.files
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class SearchFilesMethod extends AbstractSearchMethod

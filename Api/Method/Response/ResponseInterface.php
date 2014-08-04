@@ -19,6 +19,7 @@ interface ResponseInterface
     const ERROR_CHANNEL_NOT_FOUND = 'channel_not_found';
     const ERROR_INVALID_TOKEN     = 'invalid_auth';
     const ERROR_ACCOUNT_INACTIVE  = 'account_inactive';
+    const ERROR_MISSING_TOKEN     = 'not_authed';
 
     /**
      * @param array $data The data returned by Slack, converted from JSON

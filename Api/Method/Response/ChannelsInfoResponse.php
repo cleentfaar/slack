@@ -11,7 +11,7 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use CL\Slack\Api\Method\Response\Representation\Channel;
+use CL\Slack\Api\Method\Model\Channel;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -21,7 +21,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ChannelsInfoResponse extends Response
 {
     /**
-     * @return Channel
+     * @return Channel|null
      */
     public function getChannel()
     {
@@ -34,11 +34,12 @@ class ChannelsInfoResponse extends Response
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setOptional([
             'channel',
         ]);
         $resolver->setAllowedTypes([
-            'channel' => ['array'],
+            'channel' => ['\CL\Slack\Api\Method\Model\Channel'],
         ]);
         $resolver->setNormalizers([
             'channel' => function (Options $options, array $channel) {

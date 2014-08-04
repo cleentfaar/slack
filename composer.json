@@ -12,6 +12,7 @@
     }
   ],
   "require": {
+    "php": ">=5.4",
     "symfony/options-resolver": "~2.4",
     "guzzlehttp/guzzle": "~4.1",
     "guzzlehttp/log-subscriber": "1.*"

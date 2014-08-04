@@ -51,7 +51,7 @@ abstract class AbstractMethod implements MethodInterface
             'token'
         ]);
         $resolver->setAllowedTypes([
-            'token' => 'string'
+            'token' => ['string'],
         ]);
     }
 }

@@ -14,6 +14,8 @@ namespace CL\Slack\Api\Method;
 use CL\Slack\Api\Method\Response\AuthTestResponse;
 
 /**
+ * @see https://api.slack.com/methods/auth.test
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class AuthTestMethod extends AbstractMethod

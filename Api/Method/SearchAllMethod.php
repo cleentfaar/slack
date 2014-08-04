@@ -14,6 +14,8 @@ namespace CL\Slack\Api\Method;
 use CL\Slack\Api\Method\Response\SearchAllResponse;
 
 /**
+ * @see https://api.slack.com/methods/search.all
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class SearchAllMethod extends AbstractSearchMethod

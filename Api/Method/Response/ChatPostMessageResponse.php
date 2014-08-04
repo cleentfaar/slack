@@ -56,7 +56,7 @@ class ChatPostMessageResponse extends Response
             },
         ]);
         $resolver->setAllowedTypes([
-            'ts'      => ['double', 'integer'],
+            'ts'      => ['float', 'null'],
             'channel' => ['string'],
         ]);
     }

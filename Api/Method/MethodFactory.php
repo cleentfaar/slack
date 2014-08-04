@@ -11,6 +11,8 @@
 
 namespace CL\Slack\Api\Method;
 
+use CL\Slack\Exception\SlackException;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -33,49 +35,53 @@ class MethodFactory
      *
      * @return MethodInterface
      *
-     * @throws \InvalidArgumentException
+     * @throws SlackException
      */
     public static function create($alias, array $options = array())
     {
-        switch ($alias) {
-            case self::METHOD_AUTH_TEST:
-                $method = new AuthTestMethod($options);
-                break;
-            case self::METHOD_CHANNELS_HISTORY:
-                $method = new ChannelsHistoryMethod($options);
-                break;
-            case self::METHOD_CHANNELS_INFO:
-                $method = new ChannelsInfoMethod($options);
-                break;
-            case self::METHOD_CHAT_POSTMESSAGE:
-                $method = new ChatPostMessageMethod($options);
-                break;
-            case self::METHOD_SEARCH_ALL:
-                $method = new SearchAllMethod($options);
-                break;
-            case self::METHOD_SEARCH_FILES:
-                $method = new SearchFilesMethod($options);
-                break;
-            case self::METHOD_SEARCH_MESSAGES:
-                $method = new SearchMessagesMethod($options);
-                break;
-            case self::METHOD_USERS_LIST:
-                $method = new UsersListMethod($options);
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf(
-                    'Unknown alias to create a method with: "%s". Currently supported methods: "%s"',
-                    $alias,
-                    implode('","', [
-                        self::METHOD_AUTH_TEST,
-                        self::METHOD_CHAT_POSTMESSAGE,
-                        self::METHOD_CHANNELS_HISTORY,
-                        self::METHOD_SEARCH_ALL,
-                        self::METHOD_SEARCH_FILES,
-                        self::METHOD_SEARCH_MESSAGES,
-                        self::METHOD_USERS_LIST,
-                    ])
-                ));
+        try {
+            switch ($alias) {
+                case self::METHOD_AUTH_TEST:
+                    $method = new AuthTestMethod($options);
+                    break;
+                case self::METHOD_CHANNELS_HISTORY:
+                    $method = new ChannelsHistoryMethod($options);
+                    break;
+                case self::METHOD_CHANNELS_INFO:
+                    $method = new ChannelsInfoMethod($options);
+                    break;
+                case self::METHOD_CHAT_POSTMESSAGE:
+                    $method = new ChatPostMessageMethod($options);
+                    break;
+                case self::METHOD_SEARCH_ALL:
+                    $method = new SearchAllMethod($options);
+                    break;
+                case self::METHOD_SEARCH_FILES:
+                    $method = new SearchFilesMethod($options);
+                    break;
+                case self::METHOD_SEARCH_MESSAGES:
+                    $method = new SearchMessagesMethod($options);
+                    break;
+                case self::METHOD_USERS_LIST:
+                    $method = new UsersListMethod($options);
+                    break;
+                default:
+                    throw new \InvalidArgumentException(sprintf(
+                        'Unknown alias to create a method with: "%s". Currently supported methods: "%s"',
+                        $alias,
+                        implode('","', [
+                            self::METHOD_AUTH_TEST,
+                            self::METHOD_CHAT_POSTMESSAGE,
+                            self::METHOD_CHANNELS_HISTORY,
+                            self::METHOD_SEARCH_ALL,
+                            self::METHOD_SEARCH_FILES,
+                            self::METHOD_SEARCH_MESSAGES,
+                            self::METHOD_USERS_LIST,
+                        ])
+                    ));
+            }
+        } catch (\Exception $e) {
+            throw new SlackException(sprintf('Failed to create method with alias "%s"', $alias), null, $e);
         }
 
         return $method;

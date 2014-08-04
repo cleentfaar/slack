@@ -11,7 +11,8 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use CL\Slack\Api\Method\Response\Representation\Message;
+use CL\Slack\Api\Method\Model\Message;
+use CL\Slack\Api\Method\Model\SimpleMessage;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -50,6 +51,7 @@ class ChannelsHistoryResponse extends Response
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setOptional([
             'latest',
             'messages',
@@ -68,7 +70,7 @@ class ChannelsHistoryResponse extends Response
         $resolver->setNormalizers([
             'messages' => function (Options $options, $messages) {
                 return array_map(function ($messageData) {
-                    return new Message($messageData);
+                    return new SimpleMessage($messageData);
                 }, $messages);
             },
         ]);

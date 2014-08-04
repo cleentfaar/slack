@@ -16,6 +16,8 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * @see https://api.slack.com/methods/channels.history
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class ChannelsHistoryMethod extends AbstractMethod
@@ -68,7 +70,8 @@ class ChannelsHistoryMethod extends AbstractMethod
             'channel' => function (Options $options, $value) {
                 if (substr($value, 0 ,1) === '#') {
                     throw new \Exception(sprintf(
-                        'Since channels can change names, I can only show you history if you supply the actual ID of the channel like C12345, and not the name (%s)',
+                        'Since channels can change names, Slack can only show you history if you supply the actual ID' .
+                        'of the channel like "C12345", and not the name like "%s"',
                         $value
                     ));
                 }

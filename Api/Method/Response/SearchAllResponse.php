@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use CL\Slack\Api\Method\Response\Representation\File;
-use CL\Slack\Api\Method\Response\Representation\Message;
+use CL\Slack\Api\Method\Model\File;
+use CL\Slack\Api\Method\Model\Message;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -22,35 +22,19 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class SearchAllResponse extends AbstractSearchResponse
 {
     /**
-     * @return array
+     * @return Message[]
      */
     public function getMessages()
     {
-        return $this->data['messages'] ? $this->data['messages']['matches'] : [];
+        return $this->data['messages'];
     }
 
     /**
-     * @return array
+     * @return File[]
      */
     public function getFiles()
     {
-        return $this->data['files'] ? $this->data['files']['matches'] : [];
-    }
-
-    /**
-     * @return int
-     */
-    public function getNumberOfFiles()
-    {
-        return $this->data['files'] ? $this->data['files']['total'] : 0;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNumberOfMessages()
-    {
-        return $this->data['messages'] ? $this->data['messages']['total'] : 0;
+        return $this->data['files'];
     }
 
     /**
@@ -59,13 +43,14 @@ class SearchAllResponse extends AbstractSearchResponse
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setOptional([
             'messages',
             'files',
         ]);
         $resolver->setDefaults([
-            'message' => [],
-            'files'   => [],
+            'messages' => [],
+            'files'    => [],
         ]);
         $resolver->setAllowedTypes([
             'messages' => ['array'],
@@ -73,18 +58,14 @@ class SearchAllResponse extends AbstractSearchResponse
         ]);
         $resolver->setNormalizers([
             'messages' => function (Options $options, $messages) {
-                $messages['matches'] = array_map(function ($messageData) {
+                return array_map(function ($messageData) {
                     return new Message($messageData);
                 }, $messages['matches']);
-
-                return $messages;
             },
-            'files' => function (Options $options, $files) {
-                $files['matches'] =  array_map(function ($data) {
+            'files'    => function (Options $options, $files) {
+                return array_map(function ($data) {
                     return new File($data);
                 }, $files['matches']);
-
-                return $files;
             },
         ]);
     }

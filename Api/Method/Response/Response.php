@@ -75,17 +75,15 @@ class Response implements ResponseInterface
         ]);
         $resolver->setAllowedTypes([
             'ok'    => ['bool'],
-            'error' => ['null', 'string'],
+            'error' => ['string'],
         ]);
         $resolver->setAllowedValues([
             'error' => [
-                null,
                 ResponseInterface::ERROR_ACCOUNT_INACTIVE,
                 ResponseInterface::ERROR_CHANNEL_NOT_FOUND,
                 ResponseInterface::ERROR_INVALID_TOKEN,
+                ResponseInterface::ERROR_MISSING_TOKEN,
             ]
         ]);
-
-        return $resolver;
     }
 }

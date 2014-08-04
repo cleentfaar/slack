@@ -30,6 +30,7 @@ abstract class AbstractSearchMethod extends AbstractMethod
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setRequired(['query']);
         $resolver->setOptional([
             'sort',

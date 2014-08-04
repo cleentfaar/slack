@@ -14,6 +14,8 @@ namespace CL\Slack\Api\Method;
 use CL\Slack\Api\Method\Response\SearchMessagesResponse;
 
 /**
+ * @see https://api.slack.com/methods/search.messages
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class SearchMessagesMethod extends AbstractSearchMethod

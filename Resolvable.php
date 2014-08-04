@@ -2,9 +2,7 @@
 
 namespace CL\Slack;
 
-use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
-use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
-use Symfony\Component\OptionsResolver\Exception\OptionDefinitionException;
+use CL\Slack\Exception\SlackException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -18,26 +16,21 @@ trait Resolvable
      *
      * @return array The resolved options.
      *
-     * @throws OptionDefinitionException If configuration of the OptionsResolver failed before the options can be resolved.
-     * @throws MissingOptionsException   If the response from Slack is missing one or more key/value pairs.
-     * @throws InvalidOptionsException   If the response from Slack contained one or more unexpected key/values.
+     * @throws SlackException When the (initial configuring or) resolving of the OptionsResolver fails.
      */
     public function resolve(array $options)
     {
-        if ($this->resolver === null) {
-            $resolver = new OptionsResolver();
-            $this->configureResolver($resolver);
-            $this->resolver = $resolver;
-        }
-
         try {
+            if ($this->resolver === null) {
+                $resolver = new OptionsResolver();
+                $this->configureResolver($resolver);
+                $this->resolver = $resolver;
+            }
+
+            var_dump($options);
             return $this->resolver->resolve($options);
-        } catch (MissingOptionsException $e) {
-            throw $e;
-        } catch (InvalidOptionsException $e) {
-            throw $e;
-        } catch (OptionDefinitionException $e) {
-            throw $e;
+        } catch (\Exception $e) {
+            throw new SlackException(sprintf('Failed to resolve options for %s', get_class($this)), null, $e);
         }
     }
 

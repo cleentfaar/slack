@@ -16,6 +16,8 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * @see https://api.slack.com/methods/chat.postMessage
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class ChatPostMessageMethod extends AbstractMethod
@@ -50,6 +52,7 @@ class ChatPostMessageMethod extends AbstractMethod
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setRequired([
             'channel',
             'text',

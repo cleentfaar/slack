@@ -20,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 abstract class AbstractSearchResponse extends Response
 {
     /**
-     * @return string|null
+     * @return string The query that was used to search
      */
     public function getQuery()
     {

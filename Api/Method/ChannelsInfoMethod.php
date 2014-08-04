@@ -16,6 +16,8 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * @see https://api.slack.com/methods/channels.info
+ *
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class ChannelsInfoMethod extends AbstractMethod

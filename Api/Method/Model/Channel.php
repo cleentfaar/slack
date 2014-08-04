@@ -9,32 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Api\Method\Response\Representation;
+namespace CL\Slack\Api\Method\Model;
 
-use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class Channel
+class Channel extends AbstractModel
 {
-    use Resolvable;
-
-    /**
-     * @var array
-     */
-    protected $data;
-
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data)
-    {
-        $this->data = $this->resolve($data);
-    }
-
     /**
      * @return string The ID of this channel.
      */
@@ -101,6 +85,14 @@ class Channel
     }
 
     /**
+     * @return bool Will be true if the calling member is part of the channel.
+     */
+    public function isMember()
+    {
+        return $this->data['is_member'];
+    }
+
+    /**
      * @return array A list of user ids for all users in this channel.
      *               This includes any disabled accounts that were in this channel when they were disabled.
      */
@@ -110,7 +102,7 @@ class Channel
     }
 
     /**
-     * @return array Information about the channel's topic.
+     * @return Customizable Information about the channel's topic.
      */
     public function getTopic()
     {
@@ -118,7 +110,7 @@ class Channel
     }
 
     /**
-     * @return array Information about the channel's purpose.
+     * @return Customizable Information about the channel's purpose.
      */
     public function getPurpose()
     {
@@ -155,28 +147,18 @@ class Channel
             'members'      => ['array'],
             'is_member'    => ['bool'],
             'last_read'    => ['string'],
-            'latest'       => ['\CL\Slack\Api\Method\Response\Representation\Message'],
+            'latest'       => ['\CL\Slack\Api\Method\Model\SimpleMessage'],
             'unread_count' => ['int'],
-            'topic'        => ['array'],
-            'purpose'      => ['array'],
+            'topic'        => ['\CL\Slack\Api\Method\Model\Customizable'],
+            'purpose'      => ['\CL\Slack\Api\Method\Model\Customizable'],
         ]);
         $resolver->setNormalizers([
             'created' => function (Options $options, $created) {
-                return new \DateTime($created);
-            },
-            'latest' => function (Options $options, array $latestMessage) {
-                return new Message($latestMessage);
+                    return new \DateTime($created);
+                },
+            'latest'  => function (Options $options, array $latestMessage) {
+                return new SimpleMessage($latestMessage);
             },
         ]);
-
-        return $resolver;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        return $this->data;
     }
 }

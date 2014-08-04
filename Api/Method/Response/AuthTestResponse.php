@@ -21,7 +21,7 @@ class AuthTestResponse extends Response
     /**
      * @return string
      */
-    public function getUser()
+    public function getUsername()
     {
         return $this->data['user'];
     }
@@ -64,12 +64,20 @@ class AuthTestResponse extends Response
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setRequired([
-            'team',
-            'team_id',
             'user',
             'user_id',
+            'team',
+            'team_id',
             'url',
+        ]);
+        $resolver->setAllowedTypes([
+            'user'    => ['string'],
+            'user_id' => ['string'],
+            'team'    => ['string'],
+            'team_id' => ['string'],
+            'url'     => ['string'],
         ]);
     }
 }

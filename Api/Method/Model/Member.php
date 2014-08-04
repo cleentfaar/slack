@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Api\Method\Response\Representation;
+namespace CL\Slack\Api\Method\Model;
 
 use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -17,23 +17,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class Member
+class Member extends AbstractModel
 {
-    use Resolvable;
-
-    /**
-     * @var array
-     */
-    protected $data;
-
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data)
-    {
-        $this->data = $this->resolve($data);
-    }
-
     /**
      * @return string The ID of this member.
      */
@@ -59,21 +44,7 @@ class Member
     }
 
     /**
-     * @return array contains as much profile information as the user has supplied -
-     *               only the image_* fields are guaranteed to have a value.
-     *
-     * Example data:
-     * - first_name": "Bobby",
-     * - last_name": "Tables",
-     * - real_name": "Bobby Tables",
-     * - email": "bobby@slack.com",
-     * - skype": "my-skype-name",
-     * - phone": "+1 (123) 456 7890",
-     * - image_24": "https:\/\/...",
-     * - image_32": "https:\/\/...",
-     * - image_48": "https:\/\/...",
-     * - image_72": "https:\/\/...",
-     * - image_192": "https:\/\/..."
+     * @return MemberProfile The profile object for this member
      */
     public function getProfile()
     {
@@ -128,15 +99,5 @@ class Member
             'is_owner'  => ['bool'],
             'has_files' => ['bool'],
         ]);
-
-        return $resolver;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        return $this->data;
     }
 }
