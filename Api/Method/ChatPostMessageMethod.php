@@ -72,8 +72,8 @@ class ChatPostMessageMethod extends AbstractMethod
         ]);
         $resolver->setNormalizers([
             'channel' => function (Options $options, $value) {
-                    return '#' . ltrim($value, '#');
-                },
+                return '#' . ltrim($value, '#');
+            },
         ]);
     }
 }

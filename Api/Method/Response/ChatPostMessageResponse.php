@@ -20,11 +20,19 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ChatPostMessageResponse extends Response
 {
     /**
-     * @return int The Slack timestamp on which your message has been posted.
+     * @return float|null The Slack timestamp on which your message has been posted, or null if the call failed
      */
     public function getTimestamp()
     {
-        return $this->data['timestamp'];
+        return $this->data['ts'];
+    }
+
+    /**
+     * @return string|null The Slack channel on which your message has been posted, or null if the call failed
+     */
+    public function getChannel()
+    {
+        return $this->data['channel'];
     }
 
     /**
@@ -33,16 +41,23 @@ class ChatPostMessageResponse extends Response
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
-        $resolver->setRequired([
-            'timestamp',
+
+        $resolver->setOptional([
+            'ts',
+            'channel',
         ]);
         $resolver->setNormalizers([
-            'timestamp' => function (Options $options, $timestamp) {
-                return intval($timestamp);
-            }
+            'ts' => function (Options $options, $ts) {
+                if (!$ts) {
+                    return null;
+                }
+
+                return (float) $ts;
+            },
         ]);
         $resolver->setAllowedTypes([
-            'timestamp' => ['int'],
+            'ts'      => ['double', 'integer'],
+            'channel' => ['string'],
         ]);
     }
 }
