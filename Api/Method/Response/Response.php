@@ -75,7 +75,7 @@ class Response implements ResponseInterface
         ]);
         $resolver->setAllowedTypes([
             'ok'    => ['bool'],
-            'error' => ['string'],
+            'error' => ['string', 'null'],
         ]);
         $resolver->setAllowedValues([
             'error' => [

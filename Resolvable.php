@@ -27,7 +27,6 @@ trait Resolvable
                 $this->resolver = $resolver;
             }
 
-            var_dump($options);
             return $this->resolver->resolve($options);
         } catch (\Exception $e) {
             throw new SlackException(sprintf('Failed to resolve options for %s', get_class($this)), null, $e);

@@ -1,7 +1,4 @@
-PHP library for the Slack API
-=============================
-
-This libray provides the fundamentals for interacting with the [Slack API and webhooks](https://api.slack.com/).
+# PHP library for the Slack API [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
 [![Build Status](https://secure.travis-ci.org/cleentfaar/slack.svg)](http://travis-ci.org/cleentfaar/slack)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
@@ -9,14 +6,17 @@ This libray provides the fundamentals for interacting with the [Slack API and we
 [![Latest Stable Version](https://poser.pugx.org/cleentfaar/slack/v/stable.svg)](https://packagist.org/packages/cleentfaar/slack)
 [![Total Downloads](https://poser.pugx.org/cleentfaar/slack/downloads.svg)](https://packagist.org/packages/cleentfaar/slack)
 [![Latest Unstable Version](https://poser.pugx.org/cleentfaar/slack/v/unstable.svg)](https://packagist.org/packages/cleentfaar/slack)
-[![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
-A few of the API methods have already been integrated, such as ``chat.postMessage`` and ``search.files``. My aim is to complete the collection very soon.
+This libray provides the fundamentals for interacting with the [Slack API and webhooks](https://api.slack.com/).
 
 **NOTE:** If your project uses the Symfony Framework, you may be better off getting the related bundle [here](https://github.com/cleentfaar/CLSlackBundle).
 
+A few of the API methods have already been integrated, such as ``chat.postMessage`` and ``search.files``. I aim to complete the collection very soon.
+Since Slack's API has not reached a stable state, the same goes for this library. Once Slack releases a v1 of their API,
+I will make sure to keep the versioning tags the same as the official API.
 
-### What now?
+
+### Now what?
 
 Since this is only a library, the way you use it is up to you.
 To get you started however, I've created some usage examples:
