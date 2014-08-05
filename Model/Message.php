@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Api\Method\Model;
+namespace CL\Slack\Model;
 
 use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\Options;
@@ -86,10 +86,10 @@ class Message extends SimpleMessage
         $resolver->setAllowedTypes([
             'channel'    => ['string'],
             'permalink'  => ['string'],
-            'previous'   => ['CL\Slack\Api\Method\Model\SimpleMessage', 'null'],
-            'previous_2' => ['CL\Slack\Api\Method\Model\SimpleMessage', 'null'],
-            'next'       => ['CL\Slack\Api\Method\Model\SimpleMessage', 'null'],
-            'next2'      => ['CL\Slack\Api\Method\Model\SimpleMessage', 'null'],
+            'previous'   => ['CL\Slack\Model\SimpleMessage', 'null'],
+            'previous_2' => ['CL\Slack\Model\SimpleMessage', 'null'],
+            'next'       => ['CL\Slack\Model\SimpleMessage', 'null'],
+            'next2'      => ['CL\Slack\Model\SimpleMessage', 'null'],
         ]);
         $simpleMessageNormalizer = function (Options $options, $messageData) {
             if (is_array($messageData)) {

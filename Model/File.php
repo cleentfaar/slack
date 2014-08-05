@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Api\Method\Model;
+namespace CL\Slack\Model;
 
 use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\Options;

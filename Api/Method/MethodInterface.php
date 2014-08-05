@@ -12,8 +12,6 @@
 namespace CL\Slack\Api\Method;
 
 use CL\Slack\Api\Method\Response\ResponseInterface;
-use Guzzle\Http\Message\RequestInterface;
-use Guzzle\Http\Message\Response;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>

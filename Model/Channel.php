@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Api\Method\Model;
+namespace CL\Slack\Model;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -147,10 +147,10 @@ class Channel extends AbstractModel
             'members'      => ['array'],
             'is_member'    => ['bool'],
             'last_read'    => ['string'],
-            'latest'       => ['\CL\Slack\Api\Method\Model\SimpleMessage'],
+            'latest'       => ['\CL\Slack\Model\SimpleMessage'],
             'unread_count' => ['int'],
-            'topic'        => ['\CL\Slack\Api\Method\Model\Customizable'],
-            'purpose'      => ['\CL\Slack\Api\Method\Model\Customizable'],
+            'topic'        => ['\CL\Slack\Model\Customizable'],
+            'purpose'      => ['\CL\Slack\Model\Customizable'],
         ]);
         $resolver->setNormalizers([
             'created' => function (Options $options, $created) {

@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Api\Method\Response;
 
-use CL\Slack\Api\Method\Model\Message;
-use CL\Slack\Api\Method\Model\SimpleMessage;
+use CL\Slack\Model\Message;
+use CL\Slack\Model\SimpleMessage;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
