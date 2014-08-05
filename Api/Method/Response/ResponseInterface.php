@@ -40,4 +40,9 @@ interface ResponseInterface
      * @return string|null
      */
     public function getError();
+
+    /**
+     * @return bool Whether the response returned by this API method is relevant enough for display purposes.
+     */
+    public function hasRelevantResponse();
 }

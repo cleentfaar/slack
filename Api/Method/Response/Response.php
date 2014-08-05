@@ -61,6 +61,14 @@ class Response implements ResponseInterface
     /**
      * {@inheritdoc}
      */
+    public function hasRelevantResponse()
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         $resolver->setRequired([

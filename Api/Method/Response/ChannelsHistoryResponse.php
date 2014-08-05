@@ -54,16 +54,17 @@ class ChannelsHistoryResponse extends Response
 
         $resolver->setOptional([
             'latest',
+            'oldest',
             'messages',
             'has_more',
         ]);
         $resolver->setDefaults([
-            'latest'   => null,
             'messages' => [],
             'has_more' => false,
         ]);
         $resolver->setAllowedTypes([
-            'latest'   => ['double', 'float', 'null'],
+            'latest'   => ['float', 'null'],
+            'oldest'   => ['float', 'null'],
             'messages' => ['array'],
             'has_more' => ['bool'],
         ]);

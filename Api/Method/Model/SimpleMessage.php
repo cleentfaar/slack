@@ -11,7 +11,6 @@
 
 namespace CL\Slack\Api\Method\Model;
 
-use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -37,7 +36,8 @@ class SimpleMessage extends AbstractModel
     }
 
     /**
-     * @return string The ID of the user that posted the message
+     * @return string|null The ID of the user that posted the message,
+     *                     can be null if the message was made by Slack itself.
      */
     public function getUserId()
     {
@@ -45,7 +45,8 @@ class SimpleMessage extends AbstractModel
     }
 
     /**
-     * @return string The username belonging to the user that posted the message
+     * @return string|null The username belonging to the user that posted the message,
+     *                     can be null if the message was made by Slack itself.
      */
     public function getUsername()
     {
@@ -53,7 +54,7 @@ class SimpleMessage extends AbstractModel
     }
 
     /**
-     * @return string The actual text of the message
+     * @return string The actual text of the message.
      */
     public function getText()
     {
@@ -69,11 +70,11 @@ class SimpleMessage extends AbstractModel
             'ts',
             'type',
             'subtype',
-            'username',
             'text',
         ]);
         $resolver->setOptional([
             'user',
+            'username',
         ]);
         $resolver->setAllowedTypes([
             'ts'       => ['float', 'null'],

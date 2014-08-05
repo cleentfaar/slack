@@ -38,6 +38,14 @@ class ChatPostMessageResponse extends Response
     /**
      * {@inheritdoc}
      */
+    public function hasRelevantResponse()
+    {
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
