@@ -1,6 +1,6 @@
 # Creating a bot
 
-**THIS DOCUMENT IS STILL UNDER DEVELOPMENT**
+**THIS DOCUMENT IS STILL UNDER DEVELOPMENT!**
 
 So you think it would be cool to have a bot respond to certain messages from your Slack team. You may even had a look at
 [configuring static responses for your Slack team](https://slack.com/customize/slackbot) but decided you wanted something

@@ -1,8 +1,13 @@
 # Outgoing webhooks (creating your own responses)
 
-**NOTE**: If you all you want to do is create a bot that responds to certain trigger words from Slack,
+## Creating a bot
+
+If all you want to do is create a bot that responds to certain trigger words from Slack,
 check out the example documentation for it here: [Creating a bot](creating-a-bot.md). The documentation below is more
 to explain how the request is handled and how you could make your own implementations.
+
+
+## Responding to an outgoing webhook
 
 To respond to an outgoing wehook, you must first create one in the Slack Administration pages of your team.
 Slack will assign a webhook-token to it which you must then add to your project's configuration.
@@ -12,14 +17,14 @@ An example webhook response would look like this:
 ```php
 <?php
 
-namespace My\App\Controller;
+namespace Acme\App\Controller;
 
+use Acme\MVC\Controller;
+use Acme\Http\JsonResponse;
+use Acme\Http\Request;
 use CL\Slack\OutgoingWebhook\Request\OutgoingWebhookRequest;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 
-class OutgoingWebhookDemoController
+class OutgoingWebhookDemoController extends Controller
 {
     public function webhookAction(Request $request)
     {
@@ -62,15 +67,7 @@ message starting with ``ask``, followed by a question like "What is the answer t
 Slack would then send a request to the webhookAction, which we can then answer back to the user's channel in Slack.
 
 
-## Security concerns
-
-As long as you use the OutgoingWebhookRequestFactory as indicated below to convert the incoming request
-into a OutgoingWebhookRequest instance, you should be fine as far as safety is concerned since,
-during the process of making that instance, the token from the original request is verified against the one
-you have configured in your app/config. An InvalidTokenException is thrown otherwise.
-
-
-## Exception handling
+### Exception handling
 
 As long as you make sure to respond with a status code other than 200, Slack will know that something went wrong and
 will behave accordingly.
