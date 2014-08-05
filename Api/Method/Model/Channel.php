@@ -154,10 +154,16 @@ class Channel extends AbstractModel
         ]);
         $resolver->setNormalizers([
             'created' => function (Options $options, $created) {
-                    return new \DateTime($created);
-                },
+                return new \DateTime($created);
+            },
             'latest'  => function (Options $options, array $latestMessage) {
                 return new SimpleMessage($latestMessage);
+            },
+            'topic'  => function (Options $options, array $topicData) {
+                return new Customizable($topicData);
+            },
+            'purpose'  => function (Options $options, array $purposeData) {
+                return new Customizable($purposeData);
             },
         ]);
     }

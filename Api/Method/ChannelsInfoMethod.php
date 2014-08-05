@@ -52,6 +52,7 @@ class ChannelsInfoMethod extends AbstractMethod
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setRequired([
             'channel',
         ]);
@@ -62,7 +63,7 @@ class ChannelsInfoMethod extends AbstractMethod
             'channel' => function (Options $options, $value) {
                 if (substr($value, 0 ,1) === '#') {
                     throw new \Exception(sprintf(
-                        'Since channels can change names, I can only give you historic data if supply the actual ID of the channel like C12345, not the name (%s given)',
+                        'Value for "channel" must be a channel ID, not a name (starting with hashsign)',
                         $value
                     ));
                 }

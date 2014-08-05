@@ -68,13 +68,17 @@ class SimpleMessage extends AbstractModel
         $resolver->setRequired([
             'ts',
             'type',
-            'user',
+            'subtype',
             'username',
             'text',
+        ]);
+        $resolver->setOptional([
+            'user',
         ]);
         $resolver->setAllowedTypes([
             'ts'       => ['float', 'null'],
             'type'     => ['string'],
+            'subtype'  => ['string'],
             'user'     => ['string'],
             'username' => ['string'],
             'text'     => ['string'],

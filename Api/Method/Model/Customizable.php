@@ -59,13 +59,15 @@ class Customizable extends AbstractModel
         $resolver->setAllowedTypes([
             'value'    => ['string'],
             'creator'  => ['string'],
-            'last_set' => ['\DateTime'],
+            'last_set' => ['\DateTime', 'null'],
         ]);
         $resolver->setNormalizers([
             'last_set' => function (Options $options, $lastSet) {
                 if ($lastSet) {
                     return new \DateTime($lastSet);
                 }
+
+                return null;
             },
         ]);
     }

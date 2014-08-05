@@ -39,11 +39,15 @@ class ChannelsInfoResponse extends Response
             'channel',
         ]);
         $resolver->setAllowedTypes([
-            'channel' => ['\CL\Slack\Api\Method\Model\Channel'],
+            'channel' => ['\CL\Slack\Api\Method\Model\Channel', 'null'],
         ]);
         $resolver->setNormalizers([
-            'channel' => function (Options $options, array $channel) {
-                return new Channel($channel);
+            'channel' => function (Options $options, $channel) {
+                if (is_array($channel)) {
+                    return new Channel($channel);
+                }
+
+                return null;
             },
         ]);
     }

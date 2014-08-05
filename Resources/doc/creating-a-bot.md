@@ -1,13 +1,15 @@
 # Creating a bot
 
+**THIS DOCUMENT IS STILL UNDER DEVELOPMENT**
+
 So you think it would be cool to have a bot respond to certain messages from your Slack team. You may even had a look at
 [configuring static responses for your Slack team](https://slack.com/customize/slackbot) but decided you wanted something
-more interactive and perhaps even have it work with an existing database.
+more interactive and be able talk to your own services?
 
 Well... you've come to the right place!
 
 In this example I will show you how you can use the Slack library to interact with Slack's OutgoingWebhooks in order to
-create your own bot-service.
+create your own 'bot'-like service.
 
 This example will be about creating a simple quiz that users can join in through one of your Slack channels or by typing
 a specific trigger-word. The bot will ask the user to answer a question and after answering it will tell them if they
@@ -27,8 +29,8 @@ so Slack can send it's triggers to it. So when you want to test the bot, you wil
 ``BotController`` or ``bot.php`` is accessible through this URL.
 
 Of course you probably don't want any outsiders to trigger your bot. Fortunately Slack will send the token along with
-every triggered request, so you can verify if the token matches with the one you generated earlier
-(and if no token was passed along, it wasn't Slack!).
+every triggered request, so you can verify if the token matches with the one you generated earlier (the logic being, if
+no token was passed along, or one that doesn't match, it wasn't Slack!).
 
 All of this is explained in the code below, happy coding!
 

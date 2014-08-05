@@ -52,6 +52,7 @@ class ChannelsHistoryMethod extends AbstractMethod
     protected function configureResolver(OptionsResolverInterface $resolver)
     {
         parent::configureResolver($resolver);
+
         $resolver->setRequired([
             'channel',
         ]);
