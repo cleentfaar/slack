@@ -46,7 +46,7 @@ class TransportTest extends AbstractTestCase
      */
     public function testSend($methodAlias, $expectedResponseClass)
     {
-        $method   = $this->methodFactory->create($methodAlias);
+        $method   = $this->methodFactory->create($methodAlias, ['channel' => 'mychannel', 'text' => 'mytext', 'token' => 'mytoken']);
         $response = $this->transport->send($method);
 
         $this->assertInstanceOf($expectedResponseClass, $response);
@@ -58,7 +58,7 @@ class TransportTest extends AbstractTestCase
     public function getMethodResponses()
     {
         return [
-            [MethodFactory::METHOD_CHAT_POSTMESSAGE, 'ChatPostMessageResponse'],
+            [MethodFactory::METHOD_CHAT_POSTMESSAGE, 'CL\Slack\Api\Method\Response\ChatPostMessageResponse'],
         ];
     }
 }
