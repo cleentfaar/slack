@@ -1,2 +1,4 @@
 composer.lock
+bin/*
 vendor/*
+phpunit_live.xml.dist

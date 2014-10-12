@@ -125,18 +125,23 @@ class Channel extends AbstractModel
         $resolver->setRequired([
             'id',
             'name',
-            'created',
-            'creator',
-            'is_archived',
-            'is_general',
-            'members',
-            'is_member',
-            'last_read',
-            'latest',
-            'unread_count',
-            'topic',
-            'purpose',
         ]);
+        
+        $resolver->setOptional([
+            'created', 
+            'creator',
+            'is_archived', 
+            'is_general',
+            'is_member', 
+            'is_channel', 
+            'last_read', 
+            'latest', 
+            'members', 
+            'purpose', 
+            'topic', 
+            'unread_count',
+        ]);
+        
         $resolver->setAllowedTypes([
             'id'           => ['string'],
             'name'         => ['string'],
@@ -144,6 +149,7 @@ class Channel extends AbstractModel
             'creator'      => ['string'],
             'is_archived'  => ['bool'],
             'is_general'   => ['bool'],
+            'is_channel'   => ['bool'],
             'members'      => ['array'],
             'is_member'    => ['bool'],
             'last_read'    => ['string'],
@@ -152,6 +158,7 @@ class Channel extends AbstractModel
             'topic'        => ['\CL\Slack\Model\Customizable'],
             'purpose'      => ['\CL\Slack\Model\Customizable'],
         ]);
+        
         $resolver->setNormalizers([
             'created' => function (Options $options, $created) {
                 return new \DateTime($created);

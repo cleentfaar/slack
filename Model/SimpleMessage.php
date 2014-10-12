@@ -32,7 +32,15 @@ class SimpleMessage extends AbstractModel
      */
     public function getType()
     {
-        return $this->data['mimetype'];
+        return $this->data['type'];
+    }
+
+    /**
+     * @return string|null The subtype of message
+     */
+    public function getSubType()
+    {
+        return $this->data['subtype'];
     }
 
     /**
@@ -69,13 +77,20 @@ class SimpleMessage extends AbstractModel
         $resolver->setRequired([
             'ts',
             'type',
-            'subtype',
             'text',
         ]);
+
         $resolver->setOptional([
+            'subtype',
             'user',
             'username',
+            'icons',
+            'bot_id',
+            'upload',
+            'comment',
+            'members',
         ]);
+
         $resolver->setAllowedTypes([
             'ts'       => ['float', 'null'],
             'type'     => ['string'],
@@ -83,10 +98,17 @@ class SimpleMessage extends AbstractModel
             'user'     => ['string'],
             'username' => ['string'],
             'text'     => ['string'],
+            'icons'    => ['array'],
+            'bot_id'   => ['string'],
+            'upload'   => ['boolean'],
+            'comment'  => ['string'],
+            'members'  => ['array'],
         ]);
+
         $resolver->setAllowedValues([
             'type' => ['message', 'im', 'general'],
         ]);
+
         $resolver->setNormalizers([
             'ts' => function (Options $options, $ts) {
                 if (!$ts) {

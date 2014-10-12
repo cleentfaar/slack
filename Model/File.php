@@ -11,7 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -20,6 +19,38 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class File extends AbstractModel
 {
+    /**
+     * @return string The ID of the file
+     */
+    public function getId()
+    {
+        return $this->data['id'];
+    }
+
+    /**
+     * @return float The (Slack) timestamp on which the file was posted
+     */
+    public function getTimestamp()
+    {
+        return $this->data['timestamp'];
+    }
+
+    /**
+     * @return string The name of the file.
+     */
+    public function getName()
+    {
+        return $this->data['name'];
+    }
+
+    /**
+     * @return string|null The title that was given to the file.
+     */
+    public function getTitle()
+    {
+        return $this->data['title'];
+    }
+
     /**
      * @return string The ID of the user that posted the file
      */
@@ -48,7 +79,6 @@ class File extends AbstractModel
             'timestamp',
             'mode',
             'editable',
-            'is_external',
             'external_type',
             'size',
             'url',
@@ -68,20 +98,27 @@ class File extends AbstractModel
             'lines',
             'lines_more',
             'is_public',
+            'is_external',
+            'is_starred',
             'public_url_shared',
             'channels',
             'groups',
             'initial_comment',
             'num_stars',
-            'is_starred',
         ]);
+
         $resolver->setAllowedTypes([
-            'user'      => ['string'],
-            'type'      => ['string'],
-            'subtype'   => ['string'],
-            'text'      => ['string'],
-            'timestamp' => ['float', 'null'],
+            'user'        => ['string'],
+            'type'        => ['string'],
+            'subtype'     => ['string'],
+            'text'        => ['string'],
+            'num_stars'   => ['integer'],
+            'is_external' => ['boolean'],
+            'is_starred'  => ['boolean'],
+            'is_public'   => ['boolean'],
+            'timestamp'   => ['float', 'null'],
         ]);
+
         $resolver->setNormalizers([
             'timestamp' => function (Options $options, $ts) {
                 if (!$ts) {
@@ -91,6 +128,7 @@ class File extends AbstractModel
                 return (float) $ts;
             },
         ]);
+
         $resolver->setAllowedValues([
             'type' => ['message'],
         ]);

@@ -11,7 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use CL\Slack\Resolvable;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -52,27 +51,19 @@ class MemberProfile extends AbstractModel
     }
 
     /**
+     * @return string|null The normalized real name of the user, or null if there isn't one set
+     */
+    public function getRealNameNormalized()
+    {
+        return $this->data['real_name_normalized'];
+    }
+
+    /**
      * @return string|null The email of the user, or null if there isn't one set
      */
     public function getEmail()
     {
         return $this->data['email'];
-    }
-
-    /**
-     * @return string|null The skype name of the user, or null if there isn't one set
-     */
-    public function getSkype()
-    {
-        return $this->data['skype'];
-    }
-
-    /**
-     * @return string|null The phone number of the user, or null if there isn't one set
-     */
-    public function getPhone()
-    {
-        return $this->data['phone'];
     }
 
     /**
@@ -128,25 +119,25 @@ class MemberProfile extends AbstractModel
             'image_192',
         ]);
         $resolver->setOptional([
+            'title',
             'first_name',
             'last_name',
             'real_name',
+            'real_name_normalized',
             'email',
-            'skype',
-            'phone',
         ]);
         $resolver->setAllowedTypes([
-            'image_24'   => ['string'],
-            'image_32'   => ['string'],
-            'image_48'   => ['string'],
-            'image_72'   => ['string'],
-            'image_192'  => ['string'],
-            'first_name' => ['string'],
-            'last_name'  => ['string'],
-            'real_name'  => ['string'],
-            'email'      => ['string'],
-            'skype'      => ['string'],
-            'phone'      => ['string'],
+            'image_24'             => ['string'],
+            'image_32'             => ['string'],
+            'image_48'             => ['string'],
+            'image_72'             => ['string'],
+            'image_192'            => ['string'],
+            'title'                => ['string'],
+            'first_name'           => ['string'],
+            'last_name'            => ['string'],
+            'real_name'            => ['string'],
+            'real_name_normalized' => ['string'],
+            'email'                => ['string'],
         ]);
     }
 }
