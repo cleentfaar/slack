@@ -64,7 +64,12 @@ abstract class AbstractLivePayloadTest extends AbstractTestCase
         $response = $this->apiClient->send($this->payload);
 
         $this->assertInstanceOf('\CL\Slack\Transport\Payload\Response\PayloadResponseInterface', $response);
-        $this->assertResponse($response);
+        
+        if ($response->isOk()) {
+            $this->assertResponse($response);
+        } else {
+            $this->markTestIncomplete(sprintf('The response from Slack does not seem to be OK: "%s"', $response->getError()));
+        }
     }
 
     /**
