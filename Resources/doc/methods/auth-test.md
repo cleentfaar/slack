@@ -2,8 +2,10 @@
 
 This method checks authentication and tells you who you are.
 
+Link to official documentation: https://api.slack.com/methods/auth.test
 
-## Usage
+
+### Usage
 
 ```php
 $payload   = new AuthTestPayload();
