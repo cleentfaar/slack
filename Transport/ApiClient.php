@@ -93,7 +93,7 @@ class ApiClient
             $error = $data['error'];
             unset($data['error']);
         }
-
+        
         $responseClass = $payload->getResponseClass();
 
         if (!class_exists($responseClass)) {
