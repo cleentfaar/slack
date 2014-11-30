@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,19 +19,40 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class Customizable extends AbstractModel
 {
     /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $value;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $type;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @Serializer\Type("DateTime<'U'>")
+     */
+    private $lastSet;
+
+    /**
      * @return string The value of this customizable
      */
     public function getValue()
     {
-        return $this->data['value'];
+        return $this->value;
     }
 
     /**
-     * @return string The user ID of the member that created this customizable.
+     * @return string|null
      */
-    public function getCreator()
+    public function getType()
     {
-        return $this->data['type'];
+        return $this->type;
     }
 
     /**
@@ -41,34 +61,14 @@ class Customizable extends AbstractModel
      */
     public function getLastSet()
     {
-        return $this->data['last_set'];
+        return $this->lastSet;
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
-    protected function configureResolver(OptionsResolverInterface $resolver)
+    public function __toString()
     {
-        $resolver->setRequired([
-            'value',
-            'creator',
-        ]);
-        $resolver->setOptional([
-            'last_set',
-        ]);
-        $resolver->setAllowedTypes([
-            'value'    => ['string'],
-            'creator'  => ['string'],
-            'last_set' => ['\DateTime', 'null'],
-        ]);
-        $resolver->setNormalizers([
-            'last_set' => function (Options $options, $lastSet) {
-                if ($lastSet) {
-                    return new \DateTime($lastSet);
-                }
-
-                return null;
-            },
-        ]);
+        return (string) $this->value;
     }
 }

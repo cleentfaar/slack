@@ -158,7 +158,7 @@ class Member extends AbstractModel
     /**
      * {@inheritdoc}
      */
-    protected function configureResolver(OptionsResolverInterface $resolver)
+    protected function configure(OptionsResolverInterface $resolver)
     {
         $resolver->setRequired([
             'id',

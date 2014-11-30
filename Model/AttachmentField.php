@@ -11,19 +11,38 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class AttachmentField extends AbstractModel
 {
     /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    private $value;
+
+    /**
+     * @var bool
+     *
+     * @Serializer\Type("boolean")
+     */
+    private $short;
+
+    /**
      * @param string $title The title may not contain markup and will be escaped for you
      */
     public function setTitle($title)
     {
-        $this->data['title'] = $title;
+        $this->title = $title;
     }
 
     /**
@@ -31,7 +50,7 @@ class AttachmentField extends AbstractModel
      */
     public function getTitle()
     {
-        return $this->data['title'];
+        return $this->title;
     }
 
     /**
@@ -40,7 +59,7 @@ class AttachmentField extends AbstractModel
      */
     public function setValue($value)
     {
-        $this->data['value'] = $value;
+        $this->value = $value;
     }
 
     /**
@@ -49,7 +68,7 @@ class AttachmentField extends AbstractModel
      */
     public function getValue()
     {
-        return $this->data['value'];
+        return $this->value;
     }
 
     /**
@@ -58,7 +77,7 @@ class AttachmentField extends AbstractModel
      */
     public function setShort($short)
     {
-        $this->data['short'] = $short;
+        $this->short = $short;
     }
 
     /**
@@ -67,27 +86,6 @@ class AttachmentField extends AbstractModel
      */
     public function getShort()
     {
-        return $this->data['short'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureResolver(OptionsResolverInterface $resolver)
-    {
-        $resolver->setRequired([
-            'title',
-            'value',
-        ]);
-
-        $resolver->setDefaults([
-            'short' => false,
-        ]);
-
-        $resolver->setAllowedTypes([
-            'title' => ['string'],
-            'value' => ['string'],
-            'short' => ['boolean'],
-        ]);
+        return $this->short;
     }
 }

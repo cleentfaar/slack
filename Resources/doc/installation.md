@@ -11,7 +11,7 @@ Add the following to your ``composer.json`` (see http://getcomposer.org/), and j
 
 ```json
 "require" :  {
-    "cleentfaar/slack": "~0.9"
+    "cleentfaar/slack": "~0.10"
 }
 ```
 
@@ -23,12 +23,21 @@ Run the following commands to bring in the needed libraries as submodules.
 git submodule add https://github.com/cleentfaar/slack.git vendor/bundles/CL/Slack
 ```
 
-### Step 2) Register the namespace (non-Composer approach)
 
-If you installed the library by composer, use the created autoload.php (jump to step 3).
-Otherwise, make sure to map the following namespace and directory in your autoloader:
+## Step 2) Register the namespaces
 
-Namespace `CL\Slack` mapped to directory `vendor/cleentfaar/slack`
+If you installed the bundle by composer, use the created autoload.php  (jump to step 3).
+Add the following two namespace entries to the `registerNamespaces` call in your autoloader:
+
+``` php
+<?php
+// app/autoload.php
+$loader->registerNamespaces(array(
+    // ...
+    'CL\Slack' => __DIR__.'/../vendor/bundles/cleentfaar/slack',
+    // ...
+));
+```
 
 
 ### Step 3) Start slacking!

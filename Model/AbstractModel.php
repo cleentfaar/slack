@@ -11,50 +11,10 @@
 
 namespace CL\Slack\Model;
 
-use CL\Slack\Exception\SlackException;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractModel implements \JsonSerializable
+abstract class AbstractModel
 {
-    /**
-     * @var array
-     */
-    protected $data;
 
-    /**
-     * @param array $data
-     *
-     * @throws SlackException If the provided data could not be resolved
-     */
-    public function __construct(array $data)
-    {
-        $resolver = new OptionsResolver();
-        $this->configureResolver($resolver);
-        
-        try {
-            $this->data = $resolver->resolve($data);
-        } catch (\Exception $e) {
-            throw new SlackException(sprintf(
-                'Failed to resolve data for model "%s"', 
-                get_class($this)
-            ), null, $e);
-        }
-    }
-
-    /**
-     * @return array
-     */
-    public function jsonSerialize()
-    {
-        return $this->data;
-    }
-
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    abstract protected function configureResolver(OptionsResolverInterface $resolver);
 }

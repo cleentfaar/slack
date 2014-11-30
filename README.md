@@ -1,5 +1,10 @@
 # Slack API access for PHP [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
+This package provides easy access to the Slack API using PHP [Slack API and webhooks](https://api.slack.com/).
+
+**NOTE:** If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
+Additionally, CLI commands for all the Slack API methods can be used by installing the [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle).
+
 [![Build Status](https://secure.travis-ci.org/cleentfaar/slack.svg)](http://travis-ci.org/cleentfaar/slack)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)<br/>
@@ -7,16 +12,13 @@
 [![Total Downloads](https://poser.pugx.org/cleentfaar/slack/downloads.svg)](https://packagist.org/packages/cleentfaar/slack)
 [![Latest Unstable Version](https://poser.pugx.org/cleentfaar/slack/v/unstable.svg)](https://packagist.org/packages/cleentfaar/slack)
 
-This package provides easy access to the Slack API using PHP [Slack API and webhooks](https://api.slack.com/).
-If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
-It has some nice services and commands available that should make usage a breeze.
-
 
 ### Features
-- All API methods are supported through easy to use payload classes
-- All these payloads have their own tests
-- Besides running against emulated results, most payloads can be tested against the live API by merely switching to a
-different PHPUnit configuration file (see [contributing](Resources/doc/contributing.md) for more information).
+- Allows you to access all the Slack API methods through easy-to-use payload classes (see [usage documentation](Resources/doc/usage.md))
+- `Payload` and `PayloadResponse` follow the same definition as described in the official documentation
+- `Payload` and `PayloadResponse` classes are serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
+allowing for complex data to be passed while maintaining an OO-approach.
+- Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) and [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle))
 
 
 ### Documentation

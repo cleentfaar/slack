@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,12 +19,47 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class Attachment extends AbstractModel
 {
     /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    private $fallback;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    private $preText;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    private $text;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    private $color;
+
+    /**
+     * @var AttachmentField[]
+     *
+     * @Serializer\Type("array<CL\Slack\Model\AttachmentField>")
+     */
+    private $fields = [];
+
+    /**
      * @param string $fallback Required text summary of the attachment that is shown by clients that understand attachments
      *                         but choose not to show them.
      */
     public function setFallback($fallback)
     {
-        $this->data['fallback'] = $fallback;
+        $this->fallback = $fallback;
     }
 
     /**
@@ -34,15 +68,15 @@ class Attachment extends AbstractModel
      */
     public function getFallback()
     {
-        return $this->data['fallback'];
+        return $this->fallback;
     }
-    
+
     /**
      * @param string|null $preText Optional text that should appear above the formatted data.
      */
     public function setPreText($preText = null)
     {
-        $this->data['pre_text'] = $preText;
+        $this->preText = $preText;
     }
 
     /**
@@ -50,15 +84,15 @@ class Attachment extends AbstractModel
      */
     public function getPreText()
     {
-        return isset($this->data['pre_text']) ? $this->data['pre_text'] : null;
+        return $this->preText;
     }
-    
+
     /**
      * @param string|null $text Optional text that should appear within the attachment.
      */
     public function setText($text = null)
     {
-        $this->data['text'] = $text;
+        $this->text = $text;
     }
 
     /**
@@ -66,15 +100,15 @@ class Attachment extends AbstractModel
      */
     public function getText()
     {
-        return isset($this->data['text']) ? $this->data['text'] : null;
+        return $this->text;
     }
-    
+
     /**
      * @param string|null $color Can either be one of 'good', 'warning', 'danger', or any hex color code
      */
     public function setColor($color = null)
     {
-        $this->data['color'] = $color;
+        $this->color = $color;
     }
 
     /**
@@ -82,44 +116,22 @@ class Attachment extends AbstractModel
      */
     public function getColor()
     {
-        return isset($this->data['color']) ? $this->data['color'] : null;
+        return $this->color;
     }
 
     /**
-     * {@inheritdoc}
+     * @param AttachmentField[] $fields
      */
-    protected function configureResolver(OptionsResolverInterface $resolver)
+    public function setFields(array $fields)
     {
-        $resolver->setRequired([
-            'fallback',
-        ]);
+        $this->fields = $fields;
+    }
 
-        $resolver->setOptional([
-            'text',
-            'pretext',
-            'color',
-            'fields',
-        ]);
-
-        $resolver->setAllowedTypes([
-            'fallback' => ['string'],
-            'text'     => ['string'],
-            'pretext'  => ['string'],
-            'color'    => ['string'],
-            'fields'   => ['array<\CL\Slack\Model\AttachmentField>'],
-        ]);
-        
-        $resolver->setNormalizers([
-            'color' => function (Options $options, $value) {
-                if ($value !== null) {
-                    $value = mb_strtolower($value);
-                    if (!in_array($value, ['good', 'warning', 'danger'])) {
-                        $value = '#' . ltrim($value, '#');
-                    }
-                }
-                
-                return $value;
-            },
-        ]);
+    /**
+     * @return AttachmentField[]
+     */
+    public function getFields()
+    {
+        return $this->fields;
     }
 }

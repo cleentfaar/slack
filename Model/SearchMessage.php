@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,32 +19,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class SearchMessage extends Message
 {
     /**
-     * @return SimpleChannel The channel object on which the message was posted
+     * @var SimpleChannel|null
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleChannel")
+     */
+    private $channel;
+
+    /**
+     * @return SimpleChannel|null The channel object on which the message was posted
      */
     public function getChannel()
     {
-        return $this->data['channel'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureResolver(OptionsResolverInterface $resolver)
-    {
-        parent::configureResolver($resolver);
-
-        $resolver->setAllowedTypes([
-            'channel' => ['\CL\Slack\Model\SimpleChannel'],
-        ]);
-
-        $resolver->setNormalizers([
-            'channel' => function (Options $options, $value) {
-                if (is_array($value)) {
-                    $value = new SimpleChannel($value);
-                }
-
-                return $value;
-            },
-        ]);
+        return $this->channel;
     }
 }

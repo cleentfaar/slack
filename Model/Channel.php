@@ -11,20 +11,61 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class Channel extends AbstractModel
+class Channel extends SimpleChannel
 {
+    /**
+     * @var SimpleMessage
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
+     */
+    private $latest;
+
+    /**
+     * @var float
+     *
+     * @Serializer\Type("float")
+     */
+    private $lastRead;
+
+    /**
+     * @var bool
+     *
+     * @Serializer\Type("boolean")
+     */
+    private $isMember;
+
+    /**
+     * @var array<string>
+     *
+     * @Serializer\Type("array<string>")
+     */
+    private $members = [];
+
+    /**
+     * @var Customizable
+     *
+     * @Serializer\Type("CL\Slack\Model\Customizable")
+     */
+    private $topic;
+
+    /**
+     * @var Customizable
+     *
+     * @Serializer\Type("CL\Slack\Model\Customizable")
+     */
+    private $purpose;
+
     /**
      * @return string The ID of this channel.
      */
     public function getId()
     {
-        return $this->data['id'];
+        return $this->id;
     }
 
     /**
@@ -32,7 +73,7 @@ class Channel extends AbstractModel
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->name;
     }
 
     /**
@@ -40,15 +81,15 @@ class Channel extends AbstractModel
      */
     public function getLatestMessage()
     {
-        return $this->data['latest'];
+        return $this->latest;
     }
 
     /**
-     * @return string The Slack timestamp for the last message the calling user has read in this channel.
+     * @return float The Slack timestamp for the last message the calling user has read in this channel.
      */
     public function getLastRead()
     {
-        return $this->data['last_read'];
+        return $this->lastRead;
     }
 
     /**
@@ -56,7 +97,7 @@ class Channel extends AbstractModel
      */
     public function getCreated()
     {
-        return $this->data['created'];
+        return $this->created;
     }
 
     /**
@@ -64,7 +105,7 @@ class Channel extends AbstractModel
      */
     public function getCreator()
     {
-        return $this->data['creator'];
+        return $this->creator;
     }
 
     /**
@@ -72,7 +113,7 @@ class Channel extends AbstractModel
      */
     public function isArchived()
     {
-        return $this->data['is_archived'];
+        return $this->isArchived;
     }
 
     /**
@@ -81,7 +122,7 @@ class Channel extends AbstractModel
      */
     public function isGeneral()
     {
-        return $this->data['is_general'];
+        return $this->isGeneral;
     }
 
     /**
@@ -89,7 +130,7 @@ class Channel extends AbstractModel
      */
     public function isMember()
     {
-        return $this->data['is_member'];
+        return $this->isMember;
     }
 
     /**
@@ -98,7 +139,7 @@ class Channel extends AbstractModel
      */
     public function getMembers()
     {
-        return $this->data['members'];
+        return $this->members;
     }
 
     /**
@@ -106,7 +147,7 @@ class Channel extends AbstractModel
      */
     public function getTopic()
     {
-        return $this->data['topic'];
+        return $this->topic;
     }
 
     /**
@@ -114,64 +155,6 @@ class Channel extends AbstractModel
      */
     public function getPurpose()
     {
-        return $this->data['purpose'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureResolver(OptionsResolverInterface $resolver)
-    {
-        $resolver->setRequired([
-            'id',
-            'name',
-        ]);
-        
-        $resolver->setOptional([
-            'created', 
-            'creator',
-            'is_archived', 
-            'is_general',
-            'is_member', 
-            'is_channel', 
-            'last_read', 
-            'latest', 
-            'members', 
-            'purpose', 
-            'topic', 
-            'unread_count',
-        ]);
-        
-        $resolver->setAllowedTypes([
-            'id'           => ['string'],
-            'name'         => ['string'],
-            'created'      => ['\DateTime'],
-            'creator'      => ['string'],
-            'is_archived'  => ['bool'],
-            'is_general'   => ['bool'],
-            'is_channel'   => ['bool'],
-            'members'      => ['array'],
-            'is_member'    => ['bool'],
-            'last_read'    => ['string'],
-            'latest'       => ['\CL\Slack\Model\SimpleMessage'],
-            'unread_count' => ['int'],
-            'topic'        => ['\CL\Slack\Model\Customizable'],
-            'purpose'      => ['\CL\Slack\Model\Customizable'],
-        ]);
-        
-        $resolver->setNormalizers([
-            'created' => function (Options $options, $created) {
-                return new \DateTime($created);
-            },
-            'latest'  => function (Options $options, array $latestMessage) {
-                return new SimpleMessage($latestMessage);
-            },
-            'topic'  => function (Options $options, array $topicData) {
-                return new Customizable($topicData);
-            },
-            'purpose'  => function (Options $options, array $purposeData) {
-                return new Customizable($purposeData);
-            },
-        ]);
+        return $this->purpose;
     }
 }

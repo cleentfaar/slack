@@ -109,7 +109,7 @@ class MemberProfile extends AbstractModel
     /**
      * {@inheritdoc}
      */
-    protected function configureResolver(OptionsResolverInterface $resolver)
+    protected function configure(OptionsResolverInterface $resolver)
     {
         $resolver->setRequired([
             'image_24',

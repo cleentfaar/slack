@@ -30,9 +30,9 @@ class SearchFile extends File
     /**
      * {@inheritdoc}
      */
-    protected function configureResolver(OptionsResolverInterface $resolver)
+    protected function configure(OptionsResolverInterface $resolver)
     {
-        parent::configureResolver($resolver);
+        parent::configure($resolver);
 
         $resolver->setAllowedTypes([
             'channel'    => ['\CL\Slack\Model\SimpleChannel'],

@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,11 +19,39 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class Paging extends AbstractModel
 {
     /**
+     * @var int
+     *
+     * @Serializer\Type("integer")
+     */
+    private $count;
+
+    /**
+     * @var int
+     *
+     * @Serializer\Type("integer")
+     */
+    private $total;
+
+    /**
+     * @var int
+     *
+     * @Serializer\Type("integer")
+     */
+    private $page;
+
+    /**
+     * @var int
+     *
+     * @Serializer\Type("integer")
+     */
+    private $pages;
+
+    /**
      * @return int
      */
     public function getCount()
     {
-        return $this->data['count'];
+        return $this->count;
     }
 
     /**
@@ -32,7 +59,7 @@ class Paging extends AbstractModel
      */
     public function getTotal()
     {
-        return $this->data['total'];
+        return $this->total;
     }
 
     /**
@@ -40,7 +67,7 @@ class Paging extends AbstractModel
      */
     public function getPage()
     {
-        return $this->data['page'];
+        return $this->page;
     }
 
     /**
@@ -48,48 +75,6 @@ class Paging extends AbstractModel
      */
     public function getPages()
     {
-        return $this->data['pages'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureResolver(OptionsResolverInterface $resolver)
-    {
-        $resolver->setRequired([
-            'page',
-        ]);
-        
-        $resolver->setOptional([
-            'count',
-            'total',
-            'pages',
-            'first',
-            'last',
-            'page_count',
-            'per_page',
-            'total_count',
-        ]);
-
-        $resolver->setAllowedTypes([
-            'count'       => ['integer'],
-            'total'       => ['integer'],
-            'page'        => ['integer'],
-            'pages'       => ['integer'],
-            'first'       => ['bool'],
-            'last'        => ['bool'],
-            'page_count'  => ['integer'],
-            'per_page'    => ['integer'],
-            'total_count' => ['integer'],
-        ]);
-        
-        $resolver->setNormalizers([
-            'first' => function (Options $options, $value) {
-                return (bool) $value;
-            },
-            'last' => function (Options $options, $value) {
-                return (bool) $value;
-            },
-        ]);
+        return $this->pages;
     }
 }

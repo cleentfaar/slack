@@ -30,9 +30,9 @@ class FileSearchResult extends AbstractSearchResultModel
     /**
      * {@inheritdoc}
      */
-    protected function configureResolver(OptionsResolverInterface $resolver)
+    protected function configure(OptionsResolverInterface $resolver)
     {
-        parent::configureResolver($resolver);
+        parent::configure($resolver);
         
         $resolver->setAllowedTypes([
             'matches' => ['array<\CL\Slack\Model\SearchFile>'],
