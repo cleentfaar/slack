@@ -1,6 +1,6 @@
-# Slack API access for PHP [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
+# Slack [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
-This package provides easy access to the Slack API using PHP [Slack API and webhooks](https://api.slack.com/).
+Slack API client for PHP.
 
 **NOTE:** If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
 Additionally, CLI commands for all the Slack API methods can be used by installing the [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle).
@@ -13,6 +13,12 @@ Additionally, CLI commands for all the Slack API methods can be used by installi
 [![Latest Unstable Version](https://poser.pugx.org/cleentfaar/slack/v/unstable.svg)](https://packagist.org/packages/cleentfaar/slack)
 
 
+### Documentation
+
+[Getting started](Resources/doc/getting-started.md) - Information on installing this library, and using it through some basic examples.
+[Method reference](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library.
+
+
 ### Features
 - Allows you to access all the Slack API methods through easy-to-use payload classes (see [usage documentation](Resources/doc/usage.md))
 - `Payload` and `PayloadResponse` follow the same definition as described in the official documentation
@@ -21,13 +27,7 @@ allowing for complex data to be passed while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) and [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle))
 
 
-### Documentation
-
-[Getting started](Resources/doc/getting-started.md) - Information on installing this library, and using it through some basic examples.
-[Method reference](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library.
-
-
-#### Further reading
+### Further reading
 
 I've done my best to include links to the official documentation in the code where I thought it would clarify things.
 Still, you should really check out the [API documentation](https://api.slack.com/) of Slack yourself to get a better
