@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,11 +19,53 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class SimpleMessage extends AbstractModel
 {
     /**
+     * @var float
+     *
+     * @Serializer\Type("float")
+     */
+    protected $ts;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    protected $type;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    protected $subType;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    protected $user;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
+    protected $text;
+
+    /**
      * @return float|null The Slack timestamp on which the message was posted
      */
     public function getTimestamp()
     {
-        return $this->data['ts'];
+        return $this->ts;
     }
 
     /**
@@ -32,7 +73,15 @@ class SimpleMessage extends AbstractModel
      */
     public function getType()
     {
-        return $this->data['mimetype'];
+        return $this->type;
+    }
+
+    /**
+     * @return string|null The subtype of message
+     */
+    public function getSubType()
+    {
+        return $this->subType;
     }
 
     /**
@@ -41,7 +90,7 @@ class SimpleMessage extends AbstractModel
      */
     public function getUserId()
     {
-        return $this->data['user'];
+        return $this->user;
     }
 
     /**
@@ -50,7 +99,7 @@ class SimpleMessage extends AbstractModel
      */
     public function getUsername()
     {
-        return $this->data['username'];
+        return $this->username;
     }
 
     /**
@@ -58,43 +107,6 @@ class SimpleMessage extends AbstractModel
      */
     public function getText()
     {
-        return $this->data['text'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureResolver(OptionsResolverInterface $resolver)
-    {
-        $resolver->setRequired([
-            'ts',
-            'type',
-            'subtype',
-            'text',
-        ]);
-        $resolver->setOptional([
-            'user',
-            'username',
-        ]);
-        $resolver->setAllowedTypes([
-            'ts'       => ['float', 'null'],
-            'type'     => ['string'],
-            'subtype'  => ['string'],
-            'user'     => ['string'],
-            'username' => ['string'],
-            'text'     => ['string'],
-        ]);
-        $resolver->setAllowedValues([
-            'type' => ['message', 'im', 'general'],
-        ]);
-        $resolver->setNormalizers([
-            'ts' => function (Options $options, $ts) {
-                if (!$ts) {
-                    return null;
-                }
-
-                return (float) $ts;
-            },
-        ]);
+        return $this->text;
     }
 }

@@ -11,33 +11,10 @@
 
 namespace CL\Slack\Model;
 
-use CL\Slack\Resolvable;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 abstract class AbstractModel
 {
-    use Resolvable;
 
-    /**
-     * @var array
-     */
-    protected $data;
-
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data)
-    {
-        $this->data = $this->resolve($data);
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        return (array) $this->data;
-    }
 }
