@@ -1,6 +1,6 @@
 # Slack [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
-Slack API client for PHP.
+Slack API library for PHP.
 
 **NOTE:** If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
 Additionally, CLI commands for all the Slack API methods can be used by installing the [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle).
