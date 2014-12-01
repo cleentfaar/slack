@@ -16,21 +16,21 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
+class GroupsSetPurposePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var string|null
+     * @var string
      *
      * @Serializer\Type("string")
      */
-    private $topic;
+    private $purpose;
 
     /**
      * @return string|null
      */
-    public function getTopic()
+    public function getPurpose()
     {
-        return $this->topic;
+        return $this->purpose;
     }
 
     /**
@@ -39,7 +39,7 @@ class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
     protected function getOwnErrors()
     {
         return [
-            'too_long' => 'Topic was longer than 250 characters.'
+            'too_long' => 'Purpose was longer than 250 characters.'
         ];
     }
 }

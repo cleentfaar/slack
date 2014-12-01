@@ -19,14 +19,14 @@ use JMS\Serializer\Annotation as Serializer;
 class ChannelsSetPurposePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var string
+     * @var string|null
      *
      * @Serializer\Type("string")
      */
     private $purpose;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPurpose()
     {

@@ -11,35 +11,26 @@
 
 namespace CL\Slack\Payload;
 
+use CL\Slack\Model\Group;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
+class GroupsRenamePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var string|null
+     * @var Group|null
      *
-     * @Serializer\Type("string")
+     * @Serializer\Type("CL\Slack\Model\Group")
      */
-    private $topic;
+    private $group;
 
     /**
-     * @return string|null
+     * @return Group|null
      */
-    public function getTopic()
+    public function getGroup()
     {
-        return $this->topic;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getOwnErrors()
-    {
-        return [
-            'too_long' => 'Topic was longer than 250 characters.'
-        ];
+        return $this->group;
     }
 }

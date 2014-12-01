@@ -16,17 +16,10 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.kick
+ * @see Official documentation at https://api.slack.com/methods/im.open
  */
-class ChannelsKickPayload extends AbstractPostPayload
+class ImOpenPayload extends AbstractPostPayload
 {
-    /**
-     * @var string
-     *
-     * @Serializer\Type("string")
-     */
-    private $channel;
-
     /**
      * @var string
      *
@@ -35,23 +28,7 @@ class ChannelsKickPayload extends AbstractPostPayload
     private $user;
 
     /**
-     * @param string $channelId ID of the channel to remove user from
-     */
-    public function setChannelId($channelId)
-    {
-        $this->channel = $channelId;
-    }
-
-    /**
-     * @return string ID of the channel to remove user from
-     */
-    public function getChannelId()
-    {
-        return $this->channel;
-    }
-
-    /**
-     * @param string $userId ID of the user to remove from channel
+     * @param string $userId ID of the user to open a direct message channel with
      */
     public function setUserId($userId)
     {
@@ -59,7 +36,7 @@ class ChannelsKickPayload extends AbstractPostPayload
     }
 
     /**
-     * @return string ID of the user to remove from channel
+     * @return string ID of the user to open a direct message channel with
      */
     public function getUserId()
     {
@@ -71,6 +48,6 @@ class ChannelsKickPayload extends AbstractPostPayload
      */
     public function getMethod()
     {
-        return 'channels.kick';
+        return 'im.open';
     }
 }

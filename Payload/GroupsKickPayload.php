@@ -16,11 +16,14 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.kick
+ * @see Official documentation at https://api.slack.com/methods/groups.kick
  */
-class ChannelsKickPayload extends AbstractPostPayload
+class GroupsKickPayload extends AbstractPostPayload
 {
     /**
+     * Slack seems to want to call this option "channel", but I can't agree with that (the format of the value is different),
+     * and will just pretend to my users it's a "group" (ID)
+     *
      * @var string
      *
      * @Serializer\Type("string")
@@ -35,23 +38,23 @@ class ChannelsKickPayload extends AbstractPostPayload
     private $user;
 
     /**
-     * @param string $channelId ID of the channel to remove user from
+     * @param string $groupId ID of the group to kick the user from
      */
-    public function setChannelId($channelId)
+    public function setGroupId($groupId)
     {
-        $this->channel = $channelId;
+        $this->channel = $groupId;
     }
 
     /**
-     * @return string ID of the channel to remove user from
+     * @return string ID of the group to kick the user from
      */
-    public function getChannelId()
+    public function getGroupId()
     {
         return $this->channel;
     }
 
     /**
-     * @param string $userId ID of the user to remove from channel
+     * @param string $userId ID of the user to kick from group
      */
     public function setUserId($userId)
     {
@@ -59,7 +62,7 @@ class ChannelsKickPayload extends AbstractPostPayload
     }
 
     /**
-     * @return string ID of the user to remove from channel
+     * @return string ID of the user to kick from group
      */
     public function getUserId()
     {
@@ -71,6 +74,6 @@ class ChannelsKickPayload extends AbstractPostPayload
      */
     public function getMethod()
     {
-        return 'channels.kick';
+        return 'groups.kick';
     }
 }

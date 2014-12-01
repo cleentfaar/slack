@@ -16,30 +16,35 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
+class GroupsOpenPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var string|null
+     * @var bool
      *
-     * @Serializer\Type("string")
+     * @Serializer\Type("boolean")
      */
-    private $topic;
+    private $noOp;
 
     /**
-     * @return string|null
+     * @var bool
+     *
+     * @Serializer\Type("boolean")
      */
-    public function getTopic()
+    private $alreadyOpen;
+
+    /**
+     * @return boolean
+     */
+    public function isAlreadyOpen()
     {
-        return $this->topic;
+        return $this->alreadyOpen;
     }
 
     /**
-     * {@inheritdoc}
+     * @return boolean
      */
-    protected function getOwnErrors()
+    public function isNoOp()
     {
-        return [
-            'too_long' => 'Topic was longer than 250 characters.'
-        ];
+        return $this->noOp;
     }
 }

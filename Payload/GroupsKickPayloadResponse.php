@@ -14,6 +14,6 @@ namespace CL\Slack\Payload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsMarkPayloadResponse extends AbstractPayloadResponse
+class GroupsKickPayloadResponse extends AbstractPayloadResponse
 {
 }

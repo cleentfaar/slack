@@ -16,9 +16,9 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.kick
+ * @see Official documentation at https://api.slack.com/methods/groups.setTopic
  */
-class ChannelsKickPayload extends AbstractPostPayload
+class GroupsSetTopicPayload extends AbstractPostPayload
 {
     /**
      * @var string
@@ -32,38 +32,38 @@ class ChannelsKickPayload extends AbstractPostPayload
      *
      * @Serializer\Type("string")
      */
-    private $user;
+    private $topic;
 
     /**
-     * @param string $channelId ID of the channel to remove user from
+     * @param string $groupId ID of the group to remove user from
      */
-    public function setChannelId($channelId)
+    public function setGroupId($groupId)
     {
-        $this->channel = $channelId;
+        $this->channel = $groupId;
     }
 
     /**
-     * @return string ID of the channel to remove user from
+     * @return string ID of the group to remove user from
      */
-    public function getChannelId()
+    public function getGroupId()
     {
         return $this->channel;
     }
 
     /**
-     * @param string $userId ID of the user to remove from channel
+     * @param string $topic
      */
-    public function setUserId($userId)
+    public function setTopic($topic)
     {
-        $this->user = $userId;
+        $this->topic = $topic;
     }
 
     /**
-     * @return string ID of the user to remove from channel
+     * @return string
      */
-    public function getUserId()
+    public function getTopic()
     {
-        return $this->user;
+        return $this->topic;
     }
 
     /**
@@ -71,6 +71,6 @@ class ChannelsKickPayload extends AbstractPostPayload
      */
     public function getMethod()
     {
-        return 'channels.kick';
+        return 'groups.setTopic';
     }
 }

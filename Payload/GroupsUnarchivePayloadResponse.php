@@ -11,35 +11,18 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
+class GroupsUnarchivePayloadResponse extends AbstractPayloadResponse
 {
-    /**
-     * @var string|null
-     *
-     * @Serializer\Type("string")
-     */
-    private $topic;
-
-    /**
-     * @return string|null
-     */
-    public function getTopic()
-    {
-        return $this->topic;
-    }
-
     /**
      * {@inheritdoc}
      */
     protected function getOwnErrors()
     {
         return [
-            'too_long' => 'Topic was longer than 250 characters.'
+            'not_archived' => 'Channel is not archived',
         ];
     }
 }

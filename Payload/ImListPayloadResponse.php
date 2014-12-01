@@ -11,35 +11,26 @@
 
 namespace CL\Slack\Payload;
 
+use CL\Slack\Model\ImChannel;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
+class ImListPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var string|null
+     * @var ImChannel[]
      *
-     * @Serializer\Type("string")
+     * @Serializer\Type("array<CL\Slack\Model\ImChannel>")
      */
-    private $topic;
+    private $channels;
 
     /**
-     * @return string|null
+     * @return ImChannel[]
      */
-    public function getTopic()
+    public function getImChannels()
     {
-        return $this->topic;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getOwnErrors()
-    {
-        return [
-            'too_long' => 'Topic was longer than 250 characters.'
-        ];
+        return $this->channels;
     }
 }
