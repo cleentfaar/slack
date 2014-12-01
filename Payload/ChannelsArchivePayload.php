@@ -12,7 +12,6 @@
 namespace CL\Slack\Payload;
 
 use JMS\Serializer\Annotation as Serializer;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Payload that triggers the channels.archive-method; archiving a channel.
@@ -26,7 +25,6 @@ class ChannelsArchivePayload extends AbstractPostPayload
     /**
      * @var string
      *
-     * @Assert\NotBlank
      * @Serializer\Type("string")
      */
     private $channel;

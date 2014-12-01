@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,9 +20,6 @@ class ChannelsUnarchivePayload extends AbstractPostPayload
 {
     /**
      * @var string
-     *
-     * @Assert\NotNull
-     * @Assert\NotBlank
      */
     private $channel;
 

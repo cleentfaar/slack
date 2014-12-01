@@ -12,7 +12,6 @@
 namespace CL\Slack\Payload;
 
 use JMS\Serializer\Annotation as Serializer;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -27,8 +26,6 @@ class GroupsArchivePayload extends AbstractPostPayload
      *
      * @var string
      *
-     * @Assert\NotNull
-     * @Assert\NotBlank
      * @Serializer\Type("string")
      */
     private $channel;

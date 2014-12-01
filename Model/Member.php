@@ -11,20 +11,102 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class Member extends AbstractModel
 {
     /**
+     * @var string
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string|null
+     */
+    private $realName;
+
+    /**
+     * @var string|null
+     */
+    private $skype;
+
+    /**
+     * @var string|null
+     */
+    private $phone;
+
+    /**
+     * @var string|null
+     */
+    private $status;
+
+    /**
+     * @var string|null
+     */
+    private $color;
+
+    /**
+     * @var string|null
+     */
+    private $tz;
+
+    /**
+     * @var string|null
+     */
+    private $tzLabel;
+
+    /**
+     * @var string|null
+     */
+    private $tzOffset;
+
+    /**
+     * @var MemberProfile|null
+     */
+    private $profile;
+
+    /**
+     * @var bool|null
+     */
+    private $isAdmin;
+
+    /**
+     * @var bool|null
+     */
+    private $isBot;
+
+    /**
+     * @var bool|null
+     */
+    private $isRestricted;
+
+    /**
+     * @var bool|null
+     */
+    private $isUltraRestricted;
+
+    /**
+     * @var bool|null
+     */
+    private $deleted;
+
+    /**
+     * @var bool|null
+     */
+    private $hasFiles;
+
+    /**
      * @return string The ID of this member.
      */
     public function getId()
     {
-        return $this->data['id'];
+        return $this->id;
     }
 
     /**
@@ -32,7 +114,7 @@ class Member extends AbstractModel
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->name;
     }
 
     /**
@@ -40,7 +122,7 @@ class Member extends AbstractModel
      */
     public function getRealName()
     {
-        return $this->data['real_name'];
+        return $this->realName;
     }
 
     /**
@@ -48,7 +130,7 @@ class Member extends AbstractModel
      */
     public function getSkype()
     {
-        return $this->data['skype'];
+        return $this->skype;
     }
 
     /**
@@ -56,7 +138,7 @@ class Member extends AbstractModel
      */
     public function getPhone()
     {
-        return $this->data['phone'];
+        return $this->phone;
     }
 
     /**
@@ -64,7 +146,7 @@ class Member extends AbstractModel
      */
     public function getStatus()
     {
-        return $this->data['status'];
+        return $this->status;
     }
 
     /**
@@ -72,7 +154,7 @@ class Member extends AbstractModel
      */
     public function getColor()
     {
-        return $this->data['color'];
+        return $this->color;
     }
 
     /**
@@ -80,7 +162,7 @@ class Member extends AbstractModel
      */
     public function getTimezone()
     {
-        return $this->data['tz'];
+        return $this->tz;
     }
 
     /**
@@ -88,7 +170,7 @@ class Member extends AbstractModel
      */
     public function getTimezoneLabel()
     {
-        return $this->data['tz_label'];
+        return $this->tzLabel;
     }
 
     /**
@@ -96,7 +178,7 @@ class Member extends AbstractModel
      */
     public function getTimezoneOffset()
     {
-        return $this->data['tz_offset'];
+        return $this->tzOffset;
     }
 
     /**
@@ -104,7 +186,7 @@ class Member extends AbstractModel
      */
     public function getProfile()
     {
-        return $this->data['profile'];
+        return $this->profile;
     }
 
     /**
@@ -112,7 +194,7 @@ class Member extends AbstractModel
      */
     public function isAdmin()
     {
-        return $this->data['is_admin'];
+        return $this->isAdmin;
     }
 
     /**
@@ -120,7 +202,7 @@ class Member extends AbstractModel
      */
     public function isBot()
     {
-        return $this->data['is_bot'];
+        return $this->isBot;
     }
 
     /**
@@ -128,7 +210,7 @@ class Member extends AbstractModel
      */
     public function isRestricted()
     {
-        return $this->data['is_restricted'];
+        return $this->isRestricted;
     }
 
     /**
@@ -136,7 +218,7 @@ class Member extends AbstractModel
      */
     public function isUltraRestricted()
     {
-        return $this->data['is_ultra_restricted'];
+        return $this->isUltraRestricted;
     }
 
     /**
@@ -144,7 +226,7 @@ class Member extends AbstractModel
      */
     public function isDeleted()
     {
-        return $this->data['deleted'];
+        return $this->deleted;
     }
 
     /**
@@ -152,66 +234,6 @@ class Member extends AbstractModel
      */
     public function hasFiles()
     {
-        return $this->data['has_files'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure(OptionsResolverInterface $resolver)
-    {
-        $resolver->setRequired([
-            'id',
-            'name',
-            'deleted',
-            'color',
-            'profile',
-            'is_admin',
-            'is_owner',
-            'is_bot',
-            'is_primary_owner',
-            'is_restricted',
-            'is_ultra_restricted',
-            'has_files',
-            'real_name',
-            'skype',
-            'status',
-            'phone',
-            'tz',
-            'tz_offset',
-            'tz_label',
-        ]);
-
-        $resolver->setAllowedTypes([
-            'id'                  => ['string'],
-            'name'                => ['string'],
-            'real_name'           => ['string', 'null'],
-            'skype'               => ['string', 'null'],
-            'phone'               => ['string', 'null'],
-            'tz'                  => ['string', 'null'],
-            'tz_label'            => ['string', 'null'],
-            'tz_offset'           => ['integer', 'null'],
-            'status'              => ['string', 'null'],
-            'color'               => ['string', 'null'],
-            'deleted'             => ['bool'],
-            'is_admin'            => ['bool'],
-            'is_owner'            => ['bool'],
-            'is_bot'              => ['bool'],
-            'is_primary_owner'    => ['bool'],
-            'is_restricted'       => ['bool'],
-            'is_ultra_restricted' => ['bool'],
-            'has_files'           => ['bool'],
-            'profile'             => ['\CL\Slack\Model\MemberProfile', 'null'],
-        ]);
-
-        $resolver->setNormalizers([
-            'profile' => function (Options $options, $value) {
-                if (is_array($value)) {
-                    $value = new MemberProfile($value);
-                }
-
-                return $value;
-            },
-        ]);
+        return $this->hasFiles;
     }
 }

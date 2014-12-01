@@ -53,59 +53,39 @@ class ApiClient
     private $eventDispatcher;
 
     /**
-     * @param SerializerInterface           $serializer
-     * @param ClientInterface|null          $httpClient
-     * @param EventDispatcherInterface|null $dispatcher
-     * @param string|null                   $token
+     * @param string              $token
+     * @param SerializerInterface $serializer
      */
     public function __construct(
-        SerializerInterface $serializer,
-        ClientInterface $httpClient = null,
-        EventDispatcherInterface $dispatcher = null,
-        $token = null
+        $token,
+        SerializerInterface $serializer
     ) {
-        $this->serializer      = $serializer;
-        $this->httpClient      = $httpClient ?: new Client();
-        $this->eventDispatcher = $dispatcher ?: new EventDispatcher();
         $this->token           = $token;
+        $this->serializer      = $serializer;
+        $this->httpClient      = new Client();
+        $this->eventDispatcher = new EventDispatcher();
     }
 
     /**
-     * @param PayloadInterface|array $payload The payload to send
-     * @param string|null            $token   Optional token to use during the API-call,
-     *                                        defaults to the one configured during construction
+     * @param PayloadInterface $payload The payload to send
+     * @param string|null      $token   Optional token to use during the API-call,
+     *                                  defaults to the one configured during construction
      *
      * @throws SlackException If the payload could not be sent
      *
      * @return PayloadResponseInterface Actual class depends on the payload used,
      *                                  e.g. chat.postMessage will return an instance of ChatPostMessagePayloadResponse
      */
-    public function send($payload, $method = null, $token = null)
+    public function send(PayloadInterface $payload, $token = null)
     {
         try {
-
             if ($token === null && $this->token === null) {
-                throw new \InvalidArgumentException('You must supply a token to send a payload (you did not provide one during construction)');
+                throw new \InvalidArgumentException('You must supply a token to send a payload, since you did not provide one during construction');
             }
 
-            if (!is_array($payload) && !($payload instanceof PayloadInterface)) {
-                throw new \InvalidArgumentException('The payload must either be an array or an object implementing PayloadInterface');
-            }
+            $responseData = $this->sendRaw($payload->getMethod(), $this->serializePayload($payload), $token);
 
-            $originalPayload = $payload;
-
-            if (!is_array($originalPayload)) {
-                $method        = $payload->getMethod();
-                $payload       = $this->serializePayload($payload);
-            }
-
-            $responseData = $this->sendRaw($method, $payload, $token);
-
-            if (!is_array($originalPayload)) {
-                return $this->deserializeResponse($responseData, $originalPayload->getResponseClass());
-            }
-
-            return $responseData;
+            return $this->deserializeResponse($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
             throw new SlackException('Failed to send payload to the Slack API', null, $e);
         }
@@ -144,11 +124,11 @@ class ApiClient
             }
 
             $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_AFTER, new AfterEvent($responseData));
+
+            return $responseData;
         } catch (\Exception $e) {
             throw new SlackException('Failed to process response from the Slack API', null, $e);
         }
-
-        return $responseData;
     }
 
     /**
@@ -179,12 +159,11 @@ class ApiClient
     }
 
     /**
-     * @param string   $event
-     * @param callable $callable
+     * @return EventDispatcherInterface
      */
-    public function addListener($event, $callable)
+    public function getEventDispatcher()
     {
-        $this->eventDispatcher->addListener($event, $callable);
+        return $this->eventDispatcher;
     }
 
     /**
@@ -205,7 +184,6 @@ class ApiClient
 
             $body = new PostBody();
             $body->replaceFields($payload);
-            $body->setField('token', $token);
 
             $request->setBody($body);
         } else {
