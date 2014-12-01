@@ -12,7 +12,6 @@
 namespace CL\Slack\Transport;
 
 use CL\Slack\Exception\SlackException;
-use CL\Slack\Payload\AbstractPostPayload;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\PayloadResponseInterface;
 use CL\Slack\Transport\Events\AfterEvent;
@@ -20,13 +19,11 @@ use CL\Slack\Transport\Events\BeforeEvent;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Message\RequestInterface;
+use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Post\PostBody;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Validator\ConstraintViolationInterface;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ApiClient
 {
@@ -46,11 +43,6 @@ class ApiClient
     private $serializer;
 
     /**
-     * @var ValidatorInterface
-     */
-    private $validator;
-
-    /**
      * @var ClientInterface
      */
     private $httpClient;
@@ -62,64 +54,101 @@ class ApiClient
 
     /**
      * @param SerializerInterface           $serializer
-     * @param ValidatorInterface            $validator
      * @param ClientInterface|null          $httpClient
      * @param EventDispatcherInterface|null $dispatcher
      * @param string|null                   $token
      */
     public function __construct(
         SerializerInterface $serializer,
-        ValidatorInterface $validator,
         ClientInterface $httpClient = null,
         EventDispatcherInterface $dispatcher = null,
         $token = null
     ) {
         $this->serializer      = $serializer;
-        $this->validator       = $validator;
         $this->httpClient      = $httpClient ?: new Client();
         $this->eventDispatcher = $dispatcher ?: new EventDispatcher();
         $this->token           = $token;
     }
 
     /**
-     * @param PayloadInterface $payload The payload to send
-     * @param string|null      $token   Optional token to use during the API-call,
-     *                                  defaults to the one configured during construction
+     * @param PayloadInterface|array $payload The payload to send
+     * @param string|null            $token   Optional token to use during the API-call,
+     *                                        defaults to the one configured during construction
      *
      * @throws SlackException If the payload could not be sent
      *
      * @return PayloadResponseInterface Actual class depends on the payload used,
-     *                                  e.g. chat.postMessage will return ChatPostMessagePayloadResponse
+     *                                  e.g. chat.postMessage will return an instance of ChatPostMessagePayloadResponse
      */
-    public function send(PayloadInterface $payload, $token = null)
+    public function send($payload, $method = null, $token = null)
+    {
+        try {
+
+            if ($token === null && $this->token === null) {
+                throw new \InvalidArgumentException('You must supply a token to send a payload (you did not provide one during construction)');
+            }
+
+            if (!is_array($payload) && !($payload instanceof PayloadInterface)) {
+                throw new \InvalidArgumentException('The payload must either be an array or an object implementing PayloadInterface');
+            }
+
+            $originalPayload = $payload;
+
+            if (!is_array($originalPayload)) {
+                $method        = $payload->getMethod();
+                $payload       = $this->serializePayload($payload);
+            }
+
+            $responseData = $this->sendRaw($method, $payload, $token);
+
+            if (!is_array($originalPayload)) {
+                return $this->deserializeResponse($responseData, $originalPayload->getResponseClass());
+            }
+
+            return $responseData;
+        } catch (\Exception $e) {
+            throw new SlackException('Failed to send payload to the Slack API', null, $e);
+        }
+    }
+
+    /**
+     * @param string $method
+     * @param array  $data
+     * @param null   $token
+     *
+     * @throws SlackException
+     *
+     * @return array
+     */
+    private function sendRaw($method, array $data, $token = null)
     {
         try {
             if ($token === null && $this->token === null) {
                 throw new \LogicException('You must supply a token to send a payload if you did not provide one during construction');
             }
 
-            $this->validatePayload($payload);
+            $request = $this->createRequest($method, $data, $token);
 
-            $serializedPayload = $this->serializePayload($payload, $token);
-            $request           = $this->createRequest($payload, $serializedPayload);
+            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_BEFORE, new BeforeEvent($data));
 
-            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_BEFORE, new BeforeEvent($serializedPayload));
-
+            /** @var ResponseInterface $response */
             $response = $this->httpClient->send($request);
         } catch (\Exception $e) {
-            throw new SlackException('Failed to send payload to the Slack API', null, $e);
+            throw new SlackException('Failed to send raw payload to the Slack API', null, $e);
         }
 
         try {
-            $responseClass = $payload->getResponseClass();
-            $responseData  = $response->getBody()->getContents();
+            $responseData = json_decode($response->getBody()->getContents(), true);
+            if (!is_array($responseData)) {
+                throw new \Exception(sprintf('Expected response data to be of type "array", got "%s"', gettype($responseData)));
+            }
 
-            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_AFTER, new AfterEvent(json_decode($responseData, true) ?: []));
-
-            return $this->deserializeResponse($responseData, $responseClass);
+            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_AFTER, new AfterEvent($responseData));
         } catch (\Exception $e) {
             throw new SlackException('Failed to process response from the Slack API', null, $e);
         }
+
+        return $responseData;
     }
 
     /**
@@ -159,25 +188,30 @@ class ApiClient
     }
 
     /**
-     * @param PayloadInterface $payload
-     * @param array            $serializedPayload
+     * @param string      $method
+     * @param array       $payload
+     * @param string      $requestMethod
+     * @param string|null $token
      *
      * @return RequestInterface
      */
-    private function createRequest(PayloadInterface $payload, array $serializedPayload)
+    private function createRequest($method, array $payload, $requestMethod = 'GET', $token = null)
     {
-        if ($payload instanceof AbstractPostPayload) {
+        $payload['token'] = $token ?: $this->token;
+
+        if ($requestMethod !== 'GET') {
             $request = $this->httpClient->createRequest('POST');
-            $request->setUrl(self::API_BASE_URL . $payload->getMethod());
+            $request->setUrl(self::API_BASE_URL . $method);
 
             $body = new PostBody();
-            $body->replaceFields($serializedPayload);
+            $body->replaceFields($payload);
+            $body->setField('token', $token);
 
             $request->setBody($body);
         } else {
             $request = $this->httpClient->createRequest('GET');
-            $request->setUrl(self::API_BASE_URL . $payload->getMethod());
-            $request->setQuery($serializedPayload);
+            $request->setUrl(self::API_BASE_URL . $method);
+            $request->setQuery($payload);
         }
 
         return $request;
@@ -185,50 +219,11 @@ class ApiClient
 
     /**
      * @param PayloadInterface $payload
-     * @param string|null      $token
      *
      * @return array
      */
-    private function serializePayload(PayloadInterface $payload, $token = null)
+    private function serializePayload(PayloadInterface $payload)
     {
-        $serializedPayload          = json_decode($this->serializer->serialize($payload, 'json'), true);
-        $serializedPayload['token'] = $token ?: $this->token;
-
-        return $serializedPayload;
-    }
-
-    /**
-     * @param PayloadInterface $payload
-     *
-     * @throws SlackException If the payload could not be validated before creating the request
-     */
-    private function validatePayload(PayloadInterface $payload)
-    {
-        $constraintViolationList = $this->validator->validate($payload);
-
-        if ($constraintViolationList->count() > 0) {
-            throw $this->createValidationException($constraintViolationList, $payload);
-        }
-    }
-
-    /**
-     * @param ConstraintViolationListInterface $constraintViolationList
-     * @param object                           $validatedObject
-     *
-     * @return SlackException
-     */
-    private function createValidationException(ConstraintViolationListInterface $constraintViolationList, $validatedObject)
-    {
-        $violations = '';
-        foreach ($constraintViolationList as $constraintViolation) {
-            /** @var ConstraintViolationInterface $constraintViolation */
-            $violations .= sprintf(
-                "%s: %s\n",
-                $constraintViolation->getPropertyPath(),
-                $constraintViolation->getMessage()
-            );
-        }
-
-        return new SlackException(sprintf('Validation failed for object of class %s: %s', get_class($validatedObject), $violations));
+        return json_decode($this->serializer->serialize($payload, 'json'), true);
     }
 }

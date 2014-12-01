@@ -14,6 +14,7 @@
   "require": {
     "php": ">=5.4",
     "jms/serializer": "~0.16",
+    "symfony/event-dispatcher": "~2.2",
     "symfony/validator": "~2.2",
     "guzzlehttp/guzzle": "~5.0"
   },
