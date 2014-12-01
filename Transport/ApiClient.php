@@ -107,9 +107,9 @@ class ApiClient
                 throw new \LogicException('You must supply a token to send a payload if you did not provide one during construction');
             }
 
-            $request = $this->createRequest($method, $data, $token);
-
             $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_BEFORE, new BeforeEvent($data));
+
+            $request = $this->createRequest($method, $data, $token);
 
             /** @var ResponseInterface $response */
             $response = $this->httpClient->send($request);
@@ -132,16 +132,16 @@ class ApiClient
     }
 
     /**
-     * @param string $responseContent
+     * @param array  $responseData
      * @param string $responseClass
      *
      * @throws SlackException
      *
      * @return PayloadResponseInterface
      */
-    private function deserializeResponse($responseContent, $responseClass)
+    private function deserializeResponse(array $responseData, $responseClass)
     {
-        $deserializedResponse = $this->serializer->deserialize($responseContent, $responseClass, 'json');
+        $deserializedResponse = $this->serializer->deserialize(json_encode($responseData), $responseClass, 'json');
 
         if (!is_object($deserializedResponse)) {
             throw new SlackException('The response could not be deserialized into an object');
