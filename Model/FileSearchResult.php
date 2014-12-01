@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,34 +19,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class FileSearchResult extends AbstractSearchResultModel
 {
     /**
+     * @var SearchFile[]
+     *
+     * @Serializer\Type("array<CL\Slack\Model\SearchFile>")
+     */
+    private $matches;
+
+    /**
      * @return SearchFile[]
      */
     public function getMatches()
     {
-        return parent::getMatches();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure(OptionsResolverInterface $resolver)
-    {
-        parent::configure($resolver);
-        
-        $resolver->setAllowedTypes([
-            'matches' => ['array<\CL\Slack\Model\SearchFile>'],
-        ]);
-        
-        $resolver->setNormalizers([
-            'matches' => function (Options $options, $value) {
-                if (is_array($value)) {
-                    $value = array_map(function ($item) {
-                        return new SearchFile($item);
-                    }, $value);
-                }
-                
-                return $value;
-            },
-        ]);
+        return $this->matches;
     }
 }

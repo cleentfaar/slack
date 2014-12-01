@@ -11,15 +11,17 @@
 
 namespace CL\Slack\Payload;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 abstract class AbstractSearchPayload extends AbstractPayload
 {
-    const SORT_SCORE = 'score';
+    const SORT_SCORE     = 'score';
     const SORT_TIMESTAMP = 'timestamp';
 
-    const SORT_DIR_ASC = 'asc';
+    const SORT_DIR_ASC  = 'asc';
     const SORT_DIR_DESC = 'desc';
 
     /**

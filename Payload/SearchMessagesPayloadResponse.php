@@ -20,14 +20,16 @@ class SearchMessagesPayloadResponse extends AbstractSearchPayloadResponse
 {
     /**
      * @var MessageSearchResult
+     *
+     * @Serializer\Type("CL\Slack\Model\MessageSearchResult")
      */
-    private $result;
+    private $messages;
 
     /**
      * @return MessageSearchResult
      */
-    public function getResult()
+    public function getMessageSearchResult()
     {
-        return $this->result;
+        return $this->messages;
     }
 }

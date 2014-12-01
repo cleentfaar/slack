@@ -11,38 +11,33 @@
 
 namespace CL\Slack\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class AbstractSearchResultModel extends AbstractModel
+abstract class AbstractSearchResultModel extends AbstractModel
 {
     /**
-     * @var SearchMessage[]|SearchFile[]
-     */
-    private $matches;
-
-    /**
      * @var Paging
+     *
+     * @Serializer\Type("CL\Slack\Model\Paging")
      */
     private $pagination;
 
     /**
      * @var Paging
+     *
+     * @Serializer\Type("CL\Slack\Model\Paging")
      */
     private $paging;
 
     /**
      * @var int
+     *
+     * @Serializer\Type("integer")
      */
     private $total;
-
-    /**
-     * @return SearchMessage[]|SearchFile[]
-     */
-    public function getMatches()
-    {
-        return $this->matches;
-    }
 
     /**
      * @return Paging
