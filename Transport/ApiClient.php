@@ -14,8 +14,8 @@ namespace CL\Slack\Transport;
 use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\PayloadResponseInterface;
-use CL\Slack\Transport\Events\AfterEvent;
-use CL\Slack\Transport\Events\BeforeEvent;
+use CL\Slack\Transport\Events\ResponseEvent;
+use CL\Slack\Transport\Events\RequestEvent;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Message\RequestInterface;
@@ -107,7 +107,7 @@ class ApiClient
                 throw new \LogicException('You must supply a token to send a payload if you did not provide one during construction');
             }
 
-            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_BEFORE, new BeforeEvent($data));
+            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_BEFORE, new RequestEvent($data));
 
             $request = $this->createRequest($method, $data, $token);
 
@@ -123,7 +123,7 @@ class ApiClient
                 throw new \Exception(sprintf('Expected response data to be of type "array", got "%s"', gettype($responseData)));
             }
 
-            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_AFTER, new AfterEvent($responseData));
+            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_AFTER, new ResponseEvent($responseData));
 
             return $responseData;
         } catch (\Exception $e) {

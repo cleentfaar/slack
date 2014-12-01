@@ -13,26 +13,26 @@ namespace CL\Slack\Transport\Events;
 
 use Symfony\Component\EventDispatcher\Event;
 
-class AfterEvent extends Event
+class RequestEvent extends Event
 {
     /**
      * @var array
      */
-    private $payloadResponseData;
+    private $rawPayload;
 
     /**
-     * @param array $payloadResponseData
+     * @param array $rawPayload
      */
-    public function __construct(array $payloadResponseData)
+    public function __construct(array $rawPayload)
     {
-        $this->payloadResponseData = $payloadResponseData;
+        $this->payloadData = $rawPayload;
     }
 
     /**
      * @return array
      */
-    public function getPayloadResponseData()
+    public function getRawPayload()
     {
-        return $this->payloadResponseData;
+        return $this->rawPayload;
     }
 }
