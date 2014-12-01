@@ -24,12 +24,44 @@ abstract class AbstractSearchPayload extends AbstractPayload
 
     /**
      * @var string
+     *
+     * @Serializer\Type("string")
      */
-    private $query = '';
+    private $query;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
     private $sort;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Type("string")
+     */
     private $sortDir;
+
+    /**
+     * @var bool
+     *
+     * @Serializer\Type("boolean")
+     */
     private $highlight;
+
+    /**
+     * @var int
+     *
+     * @Serializer\Type("integer")
+     */
     private $count;
+
+    /**
+     * @var int
+     *
+     * @Serializer\Type("integer")
+     */
     private $page;
 
     /**
@@ -49,7 +81,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @param mixed $count
+     * @param int $count
      */
     public function setCount($count)
     {
@@ -57,7 +89,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCount()
     {
@@ -65,7 +97,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @param mixed $highlight
+     * @param bool $highlight
      */
     public function setHighlight($highlight)
     {
@@ -73,7 +105,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getHighlight()
     {
@@ -81,7 +113,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @param mixed $page
+     * @param int $page
      */
     public function setPage($page)
     {
@@ -89,7 +121,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getPage()
     {
@@ -97,7 +129,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @param mixed $sort
+     * @param string $sort
      */
     public function setSort($sort)
     {
@@ -105,7 +137,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSort()
     {
@@ -113,7 +145,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @param mixed $sortDir
+     * @param string $sortDir
      */
     public function setSortDir($sortDir)
     {
@@ -121,7 +153,7 @@ abstract class AbstractSearchPayload extends AbstractPayload
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSortDir()
     {
