@@ -9,10 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Transport;
+namespace CL\Slack\Serializer;
 
-abstract class ApiClientEvents
+/**
+ * @author Cas Leentfaar <info@casleentfaar.com>
+ */
+abstract class PayloadSerializer
 {
-    const EVENT_BEFORE = 'EVENT_BEFORE';
-    const EVENT_AFTER  = 'EVENT_AFTER';
+
 }

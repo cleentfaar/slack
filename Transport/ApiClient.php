@@ -33,6 +33,18 @@ class ApiClient
     const API_BASE_URL = 'https://slack.com/api/';
 
     /**
+     * Event triggered just before it's sent to the Slack API
+     * Any listeners are passed the request data (array) as the first argument
+     */
+    const EVENT_REQUEST = 'EVENT_REQUEST';
+
+    /**
+     * Event triggered just before it's sent to the Slack API
+     * Any listeners are passed the response data (array) as the first argument
+     */
+    const EVENT_RESPONSE = 'EVENT_RESPONSE';
+
+    /**
      * @var string|null
      */
     private $token;
@@ -85,12 +97,31 @@ class ApiClient
                 throw new \InvalidArgumentException('You must supply a token to send a payload, since you did not provide one during construction');
             }
 
-            $responseData = $this->sendRaw($payload->getMethod(), $this->serializePayload($payload), $token);
+            $serializedPayload = $this->serializePayload($payload);
+            $responseData      = $this->sendRaw($payload->getMethod(), $serializedPayload, $token);
 
             return $this->deserializeResponse($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
             throw new SlackException('Failed to send payload to the Slack API', null, $e);
         }
+    }
+
+    /**
+     * @param string   $event
+     * @param callable $callable
+     */
+    public function addListener($event, $callable)
+    {
+        $allowedEvents = [self::EVENT_REQUEST, self::EVENT_RESPONSE];
+        if (!in_array($event, $allowedEvents)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Unknown event to add listener for (%s), must be one of: %s',
+                $event,
+                implode(', ', $allowedEvents)
+            ));
+        }
+
+        $this->eventDispatcher->addListener($event, $callable);
     }
 
     /**
@@ -109,7 +140,7 @@ class ApiClient
                 throw new \LogicException('You must supply a token to send a payload if you did not provide one during construction');
             }
 
-            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_BEFORE, new RequestEvent($data));
+            $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
 
             $request = $this->createRequest($method, $data, $token);
 
@@ -120,12 +151,15 @@ class ApiClient
         }
 
         try {
-            $responseData = json_decode($response->getBody()->getContents(), true);
+            $responseData = $response->json();
             if (!is_array($responseData)) {
-                throw new \Exception(sprintf('Expected response data to be of type "array", got "%s"', gettype($responseData)));
+                throw new \Exception(sprintf(
+                    'Expected JSON-decoded response data to be of type "array", got "%s"',
+                    gettype($responseData)
+                ));
             }
 
-            $this->eventDispatcher->dispatch(ApiClientEvents::EVENT_AFTER, new ResponseEvent($responseData));
+            $this->eventDispatcher->dispatch(self::EVENT_RESPONSE, new ResponseEvent($responseData));
 
             return $responseData;
         } catch (\Exception $e) {
@@ -145,27 +179,11 @@ class ApiClient
     {
         $deserializedResponse = $this->serializer->deserialize(json_encode($responseData), $responseClass, 'json');
 
-        if (!is_object($deserializedResponse)) {
-            throw new SlackException('The response could not be deserialized into an object');
-        }
-
-        if (!($deserializedResponse instanceof $responseClass)) {
-            throw new SlackException(sprintf(
-                'The response could not be deserialized into a payload response object (%s is not an instance of %s)',
-                get_class($deserializedResponse),
-                $responseClass
-            ));
+        if (!is_object($deserializedResponse) || !($deserializedResponse instanceof PayloadResponseInterface)) {
+            throw new SlackException('The response could not be deserialized into a PayloadResponse object');
         }
 
         return $deserializedResponse;
-    }
-
-    /**
-     * @return EventDispatcherInterface
-     */
-    public function getEventDispatcher()
-    {
-        return $this->eventDispatcher;
     }
 
     /**
