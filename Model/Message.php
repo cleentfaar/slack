@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,115 +19,107 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class Message extends SimpleMessage
 {
     /**
-     * @return Channel The channel object on which the message was posted
+     * @var Channel|null
+     *
+     * @Serializer\Type("CL\Slack\Model\Channel")
+     */
+    private $channel;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $permalink;
+
+    /**
+     * @var SimpleMessage|null
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
+     */
+    private $previous;
+
+    /**
+     * @var SimpleMessage|null
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
+     */
+    private $previous2;
+
+    /**
+     * @var SimpleMessage|null
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
+     */
+    private $next;
+
+    /**
+     * @var SimpleMessage|null
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
+     */
+    private $next2;
+
+    /**
+     * @var SimpleMessage|null
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
+     */
+    private $next2Alt;
+
+    /**
+     * @return Channel|null
      */
     public function getChannel()
     {
-        return $this->data['channel'];
+        return $this->channel;
     }
 
     /**
-     * @return string URL pointing to a single page of the message containing details and comments.
-     */
-    public function getPermalink()
-    {
-        return $this->data['permalink'];
-    }
-
-    /**
-     * @return SimpleMessage|null The message that was posted before this message, or null if there wasn't one
-     */
-    public function getPrevious()
-    {
-        return $this->data['previous'];
-    }
-
-    /**
-     * @return SimpleMessage|null The message that was posted before the previous message, or null if there wasn't one
-     */
-    public function getPrevious2()
-    {
-        return $this->data['previous_2'];
-    }
-
-    /**
-     * @return SimpleMessage|null The message that was posted after this message, or null if there wasn't one
+     * @return SimpleMessage|null
      */
     public function getNext()
     {
-        return $this->data['next'];
+        return $this->next;
     }
 
     /**
-     * @return SimpleMessage|null The message that was posted after the next message, or null if there wasn't one
+     * @return SimpleMessage|null
      */
     public function getNext2()
     {
-        return $this->data['next_2'];
+        return $this->next2;
     }
 
     /**
-     * Slack messed up something with there naming; now having both a 'next2' and a 'next_2' entry. This getter serves
-     * as a backup to still be able to access the 'next2' value.
-     * 
-     * @return SimpleMessage|null The (alternative) message that was posted after the next message, or null if there wasn't one
+     * @return SimpleMessage|null
      */
     public function getNext2Alt()
     {
-        return $this->data['next2'];
+        return $this->next2Alt;
     }
 
     /**
-     * {@inheritdoc}
+     * @return null|string
      */
-    protected function configure(OptionsResolverInterface $resolver)
+    public function getPermalink()
     {
-        parent::configure($resolver);
+        return $this->permalink;
+    }
 
-        $resolver->setRequired([
-            'channel',
-            'permalink',
-        ]);
+    /**
+     * @return SimpleMessage|null
+     */
+    public function getPrevious()
+    {
+        return $this->previous;
+    }
 
-        $resolver->setOptional([
-            'previous',
-            'previous_2',
-            'next',
-            'next2', // sigh, stop making typos Slack!
-            'next_2',
-        ]);
-        
-        $resolver->setAllowedTypes([
-            'channel'    => ['\CL\Slack\Model\Channel'],
-            'permalink'  => ['string'],
-            'previous'   => ['\CL\Slack\Model\SimpleMessage', 'null'],
-            'previous_2' => ['\CL\Slack\Model\SimpleMessage', 'null'],
-            'next'       => ['\CL\Slack\Model\SimpleMessage', 'null'],
-            'next2'      => ['\CL\Slack\Model\SimpleMessage', 'null'],
-            'next_2'     => ['\CL\Slack\Model\SimpleMessage', 'null'],
-        ]);
-
-        $simpleMessageNormalizer = function (Options $options, $messageData) {
-            if (is_array($messageData)) {
-                $messageData = new SimpleMessage($messageData);
-            }
-
-            return $messageData;
-        };
-
-        $resolver->setNormalizers([
-            'channel' => function (Options $options, $value) {
-                if (is_array($value)) {
-                    $value = new Channel($value);
-                }
-                
-                return $value;
-            },
-            'previous'   => $simpleMessageNormalizer,
-            'previous_2' => $simpleMessageNormalizer,
-            'next'       => $simpleMessageNormalizer,
-            'next_2'     => $simpleMessageNormalizer,
-            'next2'      => $simpleMessageNormalizer,
-        ]);
+    /**
+     * @return SimpleMessage|null
+     */
+    public function getPrevious2()
+    {
+        return $this->previous2;
     }
 }

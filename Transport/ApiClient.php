@@ -45,7 +45,7 @@ class ApiClient
     /**
      * @var ClientInterface
      */
-    private $httpClient;
+    private $client;
 
     /**
      * @var EventDispatcherInterface
@@ -53,16 +53,18 @@ class ApiClient
     private $eventDispatcher;
 
     /**
-     * @param string              $token
-     * @param SerializerInterface $serializer
+     * @param string               $token
+     * @param SerializerInterface  $serializer
+     * @param ClientInterface|null $client
      */
     public function __construct(
         $token,
-        SerializerInterface $serializer
+        SerializerInterface $serializer,
+        ClientInterface $client = null
     ) {
         $this->token           = $token;
         $this->serializer      = $serializer;
-        $this->httpClient      = new Client();
+        $this->client          = $client ?: new Client();
         $this->eventDispatcher = new EventDispatcher();
     }
 
@@ -112,7 +114,7 @@ class ApiClient
             $request = $this->createRequest($method, $data, $token);
 
             /** @var ResponseInterface $response */
-            $response = $this->httpClient->send($request);
+            $response = $this->client->send($request);
         } catch (\Exception $e) {
             throw new SlackException('Failed to send raw payload to the Slack API', null, $e);
         }
@@ -179,7 +181,7 @@ class ApiClient
         $payload['token'] = $token ?: $this->token;
 
         if ($requestMethod !== 'GET') {
-            $request = $this->httpClient->createRequest('POST');
+            $request = $this->client->createRequest('POST');
             $request->setUrl(self::API_BASE_URL . $method);
 
             $body = new PostBody();
@@ -187,7 +189,7 @@ class ApiClient
 
             $request->setBody($body);
         } else {
-            $request = $this->httpClient->createRequest('GET');
+            $request = $this->client->createRequest('GET');
             $request->setUrl(self::API_BASE_URL . $method);
             $request->setQuery($payload);
         }

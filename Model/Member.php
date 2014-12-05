@@ -11,6 +11,8 @@
 
 namespace CL\Slack\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -18,86 +20,71 @@ class Member extends AbstractModel
 {
     /**
      * @var string
+     *
+     * @Serializer\Type("string")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @Serializer\Type("string")
      */
     private $name;
 
     /**
      * @var string|null
-     */
-    private $realName;
-
-    /**
-     * @var string|null
-     */
-    private $skype;
-
-    /**
-     * @var string|null
-     */
-    private $phone;
-
-    /**
-     * @var string|null
-     */
-    private $status;
-
-    /**
-     * @var string|null
+     *
+     * @Serializer\Type("string")
      */
     private $color;
 
     /**
-     * @var string|null
-     */
-    private $tz;
-
-    /**
-     * @var string|null
-     */
-    private $tzLabel;
-
-    /**
-     * @var string|null
-     */
-    private $tzOffset;
-
-    /**
      * @var MemberProfile|null
+     *
+     * @Serializer\Type("CL\Slack\Model\MemberProfile")
      */
     private $profile;
 
     /**
      * @var bool|null
+     *
+     * @Serializer\Type("boolean")
      */
     private $isAdmin;
 
     /**
      * @var bool|null
+     *
+     * @Serializer\Type("boolean")
      */
     private $isBot;
 
     /**
      * @var bool|null
+     *
+     * @Serializer\Type("boolean")
      */
     private $isRestricted;
 
     /**
      * @var bool|null
+     *
+     * @Serializer\Type("boolean")
      */
     private $isUltraRestricted;
 
     /**
      * @var bool|null
+     *
+     * @Serializer\Type("boolean")
      */
     private $deleted;
 
     /**
      * @var bool|null
+     *
+     * @Serializer\Type("boolean")
      */
     private $hasFiles;
 
@@ -118,67 +105,11 @@ class Member extends AbstractModel
     }
 
     /**
-     * @return string|null The real name of the user, or null if there isn't one set
-     */
-    public function getRealName()
-    {
-        return $this->realName;
-    }
-
-    /**
-     * @return string|null The skype name of the user, or null if there isn't one set
-     */
-    public function getSkype()
-    {
-        return $this->skype;
-    }
-
-    /**
-     * @return string|null The phone number of the user, or null if there isn't one set
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @return string|null Status of the user, or null if not applicable
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * @return string|null Hexadecimal colorcode used in some clients to display a colored username.
      */
     public function getColor()
     {
         return $this->color;
-    }
-
-    /**
-     * @return string|null Timezone of the user (if set), e.g. "Europe/Amsterdam", null otherwise
-     */
-    public function getTimezone()
-    {
-        return $this->tz;
-    }
-
-    /**
-     * @return string|null Timezone label of the user (if set), e.g. "Central European Summer Time", null otherwise
-     */
-    public function getTimezoneLabel()
-    {
-        return $this->tzLabel;
-    }
-
-    /**
-     * @return int|null Timezone offset of the user (if set), e.g. 7200, null otherwise
-     */
-    public function getTimezoneOffset()
-    {
-        return $this->tzOffset;
     }
 
     /**

@@ -37,13 +37,6 @@ class SimpleMessage extends AbstractModel
      *
      * @Serializer\Type("string")
      */
-    protected $subType;
-
-    /**
-     * @var string
-     *
-     * @Serializer\Type("string")
-     */
     protected $user;
 
     /**
@@ -74,14 +67,6 @@ class SimpleMessage extends AbstractModel
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * @return string|null The subtype of message
-     */
-    public function getSubType()
-    {
-        return $this->subType;
     }
 
     /**

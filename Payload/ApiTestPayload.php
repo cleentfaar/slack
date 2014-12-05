@@ -28,7 +28,7 @@ class ApiTestPayload extends AbstractPayload
      * @Serializer\Type("array<string, string>")
      * @Serializer\Inline
      */
-    private $arguments = [];
+    private $args = [];
 
     /**
      * @var string
@@ -38,11 +38,11 @@ class ApiTestPayload extends AbstractPayload
     private $error;
     
     /**
-     * @param array $arguments
+     * @param array $args
      */
-    public function replaceArguments(array $arguments)
+    public function replaceArguments(array $args)
     {
-        $this->arguments = $arguments;
+        $this->args = $args;
     }
 
     /**
@@ -51,7 +51,21 @@ class ApiTestPayload extends AbstractPayload
      */
     public function addArgument($key, $value)
     {
-        $this->arguments[$key] = $value;
+        $this->args[$key] = $value;
+    }
+
+    /**
+     * @param string $key
+     * 
+     * @return mixed
+     */
+    public function getArgument($key)
+    {
+        if (!array_key_exists($key, $this->args)) {
+            throw new \InvalidArgumentException(sprintf('There is no argument with that name: "%s"', $key));
+        }
+        
+        return $this->args[$key];
     }
 
     /**
@@ -59,7 +73,7 @@ class ApiTestPayload extends AbstractPayload
      */
     public function getArguments()
     {
-        return $this->arguments;
+        return $this->args;
     }
 
     /**

@@ -11,7 +11,7 @@
 
 namespace CL\Slack\Model;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -19,125 +19,167 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class MemberProfile extends AbstractModel
 {
     /**
-     * @return string The ID of this member.
+     * @var string|null
+     *
+     * @Serializer\Type("string")
      */
-    public function getId()
-    {
-        return $this->data['id'];
-    }
+    private $realName;
 
     /**
-     * @return string|null The first name of the user, or null if there isn't one set
+     * @var string|null
+     *
+     * @Serializer\Type("string")
      */
-    public function getFirstName()
-    {
-        return $this->data['first_name'];
-    }
+    private $firstName;
 
     /**
-     * @return string|null The last name of the user, or null if there isn't one set
+     * @var string|null
+     *
+     * @Serializer\Type("string")
      */
-    public function getLastName()
-    {
-        return $this->data['last_name'];
-    }
+    private $lastName;
 
     /**
-     * @return string|null The real name of the user, or null if there isn't one set
+     * @var string|null
+     *
+     * @Serializer\Type("string")
      */
-    public function getRealName()
-    {
-        return $this->data['real_name'];
-    }
+    private $skype;
 
     /**
-     * @return string|null The normalized real name of the user, or null if there isn't one set
+     * @var string|null
+     *
+     * @Serializer\Type("string")
      */
-    public function getRealNameNormalized()
-    {
-        return $this->data['real_name_normalized'];
-    }
+    private $phone;
 
     /**
-     * @return string|null The email of the user, or null if there isn't one set
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $email;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $image24;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $image32;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $image48;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $image72;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\Type("string")
+     */
+    private $image192;
+
+    /**
+     * @return string|null
      */
     public function getEmail()
     {
-        return $this->data['email'];
+        return $this->email;
     }
 
     /**
-     * @return string The URL to a 24x24-sized web-viewable image (GIFs, JPEGs or PNGs).
+     * @return string|null
      */
-    public function getImage24()
+    public function getFirstName()
     {
-        return $this->data['image_24'];
+        return $this->firstName;
     }
 
     /**
-     * @return string The URL to a 32x32-sized web-viewable image (GIFs, JPEGs or PNGs).
-     */
-    public function getImage32()
-    {
-        return $this->data['image_32'];
-    }
-
-    /**
-     * @return string The URL to a 48x48-sized web-viewable image (GIFs, JPEGs or PNGs).
-     */
-    public function getImage48()
-    {
-        return $this->data['image_48'];
-    }
-
-    /**
-     * @return string The URL to a 72x72-sized web-viewable image (GIFs, JPEGs or PNGs).
-     */
-    public function getImage72()
-    {
-        return $this->data['image_72'];
-    }
-
-    /**
-     * @return string The URL to a 192x192-sized web-viewable image (GIFs, JPEGs or PNGs).
+     * @return string|null
      */
     public function getImage192()
     {
-        return $this->data['image_192'];
+        return $this->image192;
     }
 
     /**
-     * {@inheritdoc}
+     * @return string|null
      */
-    protected function configure(OptionsResolverInterface $resolver)
+    public function getImage24()
     {
-        $resolver->setRequired([
-            'image_24',
-            'image_32',
-            'image_48',
-            'image_72',
-            'image_192',
-        ]);
-        $resolver->setOptional([
-            'title',
-            'first_name',
-            'last_name',
-            'real_name',
-            'real_name_normalized',
-            'email',
-        ]);
-        $resolver->setAllowedTypes([
-            'image_24'             => ['string'],
-            'image_32'             => ['string'],
-            'image_48'             => ['string'],
-            'image_72'             => ['string'],
-            'image_192'            => ['string'],
-            'title'                => ['string'],
-            'first_name'           => ['string'],
-            'last_name'            => ['string'],
-            'real_name'            => ['string'],
-            'real_name_normalized' => ['string'],
-            'email'                => ['string'],
-        ]);
+        return $this->image24;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImage32()
+    {
+        return $this->image32;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImage48()
+    {
+        return $this->image48;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImage72()
+    {
+        return $this->image72;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRealName()
+    {
+        return $this->realName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSkype()
+    {
+        return $this->skype;
     }
 }
