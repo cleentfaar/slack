@@ -12,6 +12,7 @@
 namespace CL\Slack\Payload;
 
 use CL\Slack\Model\Channel;
+use CL\Slack\Model\SimpleChannel;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -20,14 +21,14 @@ use JMS\Serializer\Annotation as Serializer;
 class ChannelsCreatePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var Channel
+     * @var SimpleChannel
      *
-     * @Serializer\Type("CL\Slack\Model\Channel")
+     * @Serializer\Type("CL\Slack\Model\SimpleChannel")
      */
     private $channel;
 
     /**
-     * @return Channel
+     * @return SimpleChannel
      */
     public function getChannel()
     {
