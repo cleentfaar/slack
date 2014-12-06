@@ -14,6 +14,8 @@ namespace CL\Slack\Tests\Transport;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Tests\AbstractTestCase;
 use CL\Slack\Transport\ApiClient;
+use CL\Slack\Transport\Events\RequestEvent;
+use CL\Slack\Transport\Events\ResponseEvent;
 use GuzzleHttp\Client;
 use GuzzleHttp\Subscriber\History;
 use GuzzleHttp\Subscriber\Mock;
@@ -80,13 +82,13 @@ class ApiClientTest extends AbstractTestCase
 
 
         $apiClient = new ApiClient(self::TOKEN, $serializer, $client);
-        $apiClient->addListener(ApiClient::EVENT_REQUEST, function ($event) use (&$eventsDispatched, $self) {
+        $apiClient->addListener(ApiClient::EVENT_REQUEST, function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
-            $self->assertInstanceOf('CL\Slack\Transport\Events\RequestEvent', $event);
+            $self->assertEquals($mockRequestData, $event->getRawPayload());
         });
-        $apiClient->addListener(ApiClient::EVENT_RESPONSE, function ($event) use (&$eventsDispatched, $self) {
+        $apiClient->addListener(ApiClient::EVENT_RESPONSE, function (ResponseEvent $event) use (&$eventsDispatched, $mockResponseData, $self) {
             $eventsDispatched[ApiClient::EVENT_RESPONSE] = true;
-            $self->assertInstanceOf('CL\Slack\Transport\Events\ResponseEvent', $event);
+            $self->assertEquals($mockResponseData, $event->getRawPayloadResponse());
         });
         $apiClient->send($mockPayload);
 
