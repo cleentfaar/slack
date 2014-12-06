@@ -3,7 +3,8 @@
 Slack API library for PHP.
 
 **NOTE:** If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
-Additionally, CLI commands for all the Slack API methods can be used by installing the [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle).
+Additionally, the bundle provides [console commands](https://github.com/cleentfaar/CLSlackBundle/blob/master/Resources/doc/commands.md) for all the Slack API methods
+that are implemented by this library.
 
 [![Build Status](https://secure.travis-ci.org/cleentfaar/slack.svg)](http://travis-ci.org/cleentfaar/slack)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
