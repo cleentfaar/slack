@@ -25,7 +25,7 @@ class RequestEvent extends Event
      */
     public function __construct(array $rawPayload)
     {
-        $this->payloadData = $rawPayload;
+        $this->rawPayload = $rawPayload;
     }
 
     /**
