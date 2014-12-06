@@ -27,7 +27,7 @@ Additionally, CLI commands for all the Slack API methods can be used by installi
 allowing for complex data to be passed while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) and [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle))
 
-*(*) = small exceptions excluded; for example, the `channel` parameter is accessed using `getChannelId()`, not `getChannel()`*
+* (*) = small exceptions excluded; for example, the `channel` parameter is accessed using `getChannelId()`, not `getChannel()`
 
 ### Further reading
 
