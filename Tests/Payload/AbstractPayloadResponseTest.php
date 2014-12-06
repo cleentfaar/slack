@@ -34,6 +34,7 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($responseData['ok'], $actualPayloadResponse->isOk());
         if (array_key_exists('error', $responseData)) {
             $this->assertEquals($responseData['error'], $actualPayloadResponse->getError());
+            $this->assertInternalType('string', $actualPayloadResponse->getErrorExplanation());
         }
         $this->assertResponse($responseData, $actualPayloadResponse);
     }
