@@ -22,12 +22,12 @@ Additionally, CLI commands for all the Slack API methods can be used by installi
 
 ### Features
 - Allows you to access all the Slack API methods through easy-to-use payload classes (see [usage documentation](Resources/doc/usage.md))
-- `Payload` and `PayloadResponse` follow the same definition as described in the official documentation\*
+- `Payload` and `PayloadResponse` follow the same definition as described in the official documentation (*)
 - `Payload` and `PayloadResponse` classes are serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
 allowing for complex data to be passed while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) and [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle))
 
-** = small exceptions excluded; for example, the `channel` parameter is accessed using `getChannelId()`, not `getChannel()`*
+*(*) = small exceptions excluded; for example, the `channel` parameter is accessed using `getChannelId()`, not `getChannel()`*
 
 ### Further reading
 
