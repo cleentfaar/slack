@@ -20,16 +20,19 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testPayloadResponse()
     {
-        $responseData          = $this->getResponseData();
+        $responseData = array_merge(['ok' => true], $this->getResponseData());
+
+        /** @var PayloadResponseInterface $actualPayloadResponse */
         $actualPayloadResponse = $this->serializer->deserialize(
             json_encode($responseData),
             $this->getResponseClass(),
             'json'
         );
 
+        $this->assertInstanceOf('CL\Slack\Payload\PayloadResponseInterface', $actualPayloadResponse);
         $this->assertInstanceOf($this->getResponseClass(), $actualPayloadResponse);
-
-        return $this->assertResponse($responseData, $actualPayloadResponse);
+        $this->assertEquals($responseData['ok'], $actualPayloadResponse->isOk());
+        $this->assertResponse($responseData, $actualPayloadResponse);
     }
 
     /**

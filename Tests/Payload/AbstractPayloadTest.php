@@ -28,8 +28,7 @@ abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('string', $payload->getMethod());
         $this->assertTrue(class_exists($payload->getResponseClass()));
-
-        return $this->assertPayload($payload, json_decode($payloadData, true));
+        $this->assertPayload($payload, json_decode($payloadData, true));
     }
 
     /**
