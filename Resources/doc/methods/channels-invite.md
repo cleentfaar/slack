@@ -1,6 +1,6 @@
 ## channels.invite
 
-Returns information about a team channel.
+Invites a user to a channel. The token's user must be a member of the channel.
 
 Official documentation: https://api.slack.com/methods/channels.invite
 
