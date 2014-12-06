@@ -11,6 +11,8 @@
 
 namespace CL\Slack\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
