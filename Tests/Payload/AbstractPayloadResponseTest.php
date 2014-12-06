@@ -32,6 +32,9 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('CL\Slack\Payload\PayloadResponseInterface', $actualPayloadResponse);
         $this->assertInstanceOf($this->getResponseClass(), $actualPayloadResponse);
         $this->assertEquals($responseData['ok'], $actualPayloadResponse->isOk());
+        if (array_key_exists('error', $responseData)) {
+            $this->assertEquals($responseData['error'], $actualPayloadResponse->getError());
+        }
         $this->assertResponse($responseData, $actualPayloadResponse);
     }
 
