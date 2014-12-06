@@ -53,6 +53,7 @@ class ApiClientTest extends AbstractTestCase
             'foo' => 'bar',
         ];
 
+        $self                = $this;
         $mockPayloadResponse = $this->getMock('CL\Slack\Payload\PayloadResponseInterface');
 
         $serializerBuilder = $this->getMockBuilder('JMS\Serializer\Serializer');
@@ -77,12 +78,15 @@ class ApiClientTest extends AbstractTestCase
         $client->getEmitter()->attach($history);
         $client->getEmitter()->attach($mock);
 
+
         $apiClient = new ApiClient(self::TOKEN, $serializer, $client);
-        $apiClient->addListener(ApiClient::EVENT_REQUEST, function () use (&$eventsDispatched) {
+        $apiClient->addListener(ApiClient::EVENT_REQUEST, function ($event) use (&$eventsDispatched, $self) {
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
+            $self->assertInstanceOf('CL\Slack\Transport\Events\RequestEvent', $event);
         });
-        $apiClient->addListener(ApiClient::EVENT_RESPONSE, function () use (&$eventsDispatched) {
+        $apiClient->addListener(ApiClient::EVENT_RESPONSE, function ($event) use (&$eventsDispatched, $self) {
             $eventsDispatched[ApiClient::EVENT_RESPONSE] = true;
+            $self->assertInstanceOf('CL\Slack\Transport\Events\ResponseEvent', $event);
         });
         $apiClient->send($mockPayload);
 
