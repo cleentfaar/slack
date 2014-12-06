@@ -2,7 +2,11 @@
 
 Checks authentication and tells you more about token's user.
 
-Official documentation: https://api.slack.com/methods/auth.test
+| | |
+|-------------------------|---------------------------------------------------------------------------------------------------------------|
+| Official documentation  | https://api.slack.com/methods/auth.test                                                                       |
+| `Payload` class         | [ApiTestPayload](https://github.com/cleentfaar/slack/blob/master/Payload/AuthTestPayload.php)                 |
+| `PayloadResponse` class | [ApiTestPayloadResponse](https://github.com/cleentfaar/slack/blob/master/Payload/AuthTestPayloadResponse.php) |
 
 
 ### Usage
