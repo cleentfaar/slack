@@ -15,9 +15,9 @@ Additionally, CLI commands for all the Slack API methods can be used by installi
 
 ### Documentation
 
-[Getting a token](Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
-[Installation](Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
-[API methods](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's payloads.
+- [Getting a token](Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
+- [Installation](Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
+- [API methods](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's payloads.
 
 
 ### Features
