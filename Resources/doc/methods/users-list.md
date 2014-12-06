@@ -1,8 +1,8 @@
 ## users.list
 
-This method returns a list of all users in the team. This includes deleted/deactivated users.
+Returns a list of all users in the team. This includes deleted/deactivated users.
 
-Link to official documentation: https://api.slack.com/methods/users.list
+Official documentation: https://api.slack.com/methods/users.list
 
 
 ### Usage

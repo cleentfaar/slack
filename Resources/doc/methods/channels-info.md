@@ -1,8 +1,8 @@
 ## channels.info
 
-This method returns information about a team channel.
+Returns information about a team channel.
 
-Link to official documentation: https://api.slack.com/methods/channels.info
+Official documentation: https://api.slack.com/methods/channels.info
 
 
 ### Usage

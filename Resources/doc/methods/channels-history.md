@@ -1,19 +1,19 @@
 ## channels.history
 
-This method returns a portion of messages/events from the specified channel. To read the entire history for a channel, 
-call the method with no latest or oldest arguments, and then continue paging using the instructions found in the 
+Returns a portion of messages/events from the specified channel. To read the entire history for a channel,
+don't use `setLatest()` or `setOldest()`, and then continue paging using the instructions found in the
 official documentation (link below).
 
-Link to official documentation: https://api.slack.com/methods/channels.history
+Official documentation: https://api.slack.com/methods/channels.history
 
 
 ### Usage
 
 ```php
 $payload = new ChannelsHistoryPayload();
-$payload->setChannel('your-channel-id-of-choice-here');
+$payload->setChannelId('your-channel-id-of-choice-here');
 
-$apiClient = new ApiClient('your-slack-token-here');
+$apiClient = new ApiClient('your-token-here');
 $response  = $apiClient->send($payload);
 
 if ($response->isOk()) {

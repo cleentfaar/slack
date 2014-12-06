@@ -1,8 +1,8 @@
 ## search.files
 
-This method returns files matching a search query.
+Returns files matching a search query.
 
-Link to official documentation: https://api.slack.com/methods/search.files
+Official documentation: https://api.slack.com/methods/search.files
 
 
 ### Usage

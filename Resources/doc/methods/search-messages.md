@@ -1,8 +1,8 @@
 ## search.messages
 
-This method returns messages matching a search query.
+Returns messages matching a search query.
 
-Link to official documentation: https://api.slack.com/methods/search.messages
+Official documentation: https://api.slack.com/methods/search.messages
 
 
 ### Usage

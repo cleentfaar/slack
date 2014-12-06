@@ -2,7 +2,7 @@
 
 This method allows to to search both messages and files in a single call.
 
-Link to official documentation: https://api.slack.com/methods/search.all
+Official documentation: https://api.slack.com/methods/search.all
 
 
 ### Usage

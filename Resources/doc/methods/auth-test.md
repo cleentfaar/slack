@@ -1,20 +1,22 @@
 ## auth.test
 
-This method checks authentication and tells you who you are.
+Checks authentication and tells you more about token's user.
 
-Link to official documentation: https://api.slack.com/methods/auth.test
+Official documentation: https://api.slack.com/methods/auth.test
 
 
 ### Usage
 
 ```php
-$payload   = new AuthTestPayload();
 $apiClient = new ApiClient('your-slack-token-here');
+$payload   = new AuthTestPayload();
 $response  = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // authentication was successful
+    $response->getTeam();
     $response->getTeamId();
+    $response->getUsername();
     $response->getUserId();
 } else {
     // something went wrong, but what?

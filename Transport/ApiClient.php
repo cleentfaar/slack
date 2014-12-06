@@ -21,6 +21,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Post\PostBody;
+use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -65,17 +66,17 @@ class ApiClient
     private $eventDispatcher;
 
     /**
-     * @param string               $token
-     * @param SerializerInterface  $serializer
-     * @param ClientInterface|null $client
+     * @param string                   $token
+     * @param SerializerInterface|null $serializer
+     * @param ClientInterface|null     $client
      */
     public function __construct(
         $token,
-        SerializerInterface $serializer,
+        SerializerInterface $serializer = null,
         ClientInterface $client = null
     ) {
         $this->token           = $token;
-        $this->serializer      = $serializer;
+        $this->serializer      = $serializer ?: SerializerBuilder::create()->build();
         $this->client          = $client ?: new Client();
         $this->eventDispatcher = new EventDispatcher();
     }

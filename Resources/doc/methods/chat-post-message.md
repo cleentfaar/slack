@@ -2,7 +2,7 @@
 
 This method posts a message to a channel.
 
-Link to official documentation: https://api.slack.com/methods/chat.postMessage
+Official documentation: https://api.slack.com/methods/chat.postMessage
 
 
 ### Usage
