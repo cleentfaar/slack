@@ -36,16 +36,18 @@ abstract class AbstractModelTest extends AbstractTestCase
 
     public function testGetters()
     {
-        $modelData = $this->getModelData();
+        $modelData  = $this->getModelData();
+        $modelClass = $this->getModelClass();
 
         /** @var AbstractModel $model */
         $model = $this->serializer->deserialize(
             json_encode($modelData),
-            $this->getModelClass(),
+            $modelClass,
             'json'
         );
 
         $this->assertInstanceOf('CL\Slack\Model\AbstractModel', $model);
+        $this->assertInstanceOf($modelClass, $model);
 
         $this->assertModel($modelData, $model);
     }
