@@ -17,6 +17,7 @@ class AuthTestPayloadResponseTest extends AbstractPayloadResponseTest
             'user_id' => 'U1234567',
             'team'    => 'acme_team',
             'team_id' => 'T1234567',
+            'url'     => 'https://acme.slack.com/user/U1234567',
         ];
     }
 
@@ -40,5 +41,6 @@ class AuthTestPayloadResponseTest extends AbstractPayloadResponseTest
         $this->assertEquals($payloadResponse->getUsername(), $responseData['user']);
         $this->assertEquals($payloadResponse->getTeamId(), $responseData['team_id']);
         $this->assertEquals($payloadResponse->getTeam(), $responseData['team']);
+        $this->assertEquals($payloadResponse->getUrl(), $responseData['url']);
     }
 }
