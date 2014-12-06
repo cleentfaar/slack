@@ -3,10 +3,10 @@
 Archives a channel.
 
 | | |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Official documentation  | https://api.slack.com/methods/channels.archive                                                                       |
-| `Payload` class         | [ApiTestPayload](https://github.com/cleentfaar/slack/blob/master/Payload/ChannelsArchivePayload.php)                 |
-| `PayloadResponse` class | [ApiTestPayloadResponse](https://github.com/cleentfaar/slack/blob/master/Payload/ChannelsArchivePayloadResponse.php) |
+|-------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Official documentation  | https://api.slack.com/methods/channels.archive                                                                               |
+| `Payload` class         | [ChannelsArchivePayload](https://github.com/cleentfaar/slack/blob/master/Payload/ChannelsArchivePayload.php)                 |
+| `PayloadResponse` class | [ChannelsArchivePayloadResponse](https://github.com/cleentfaar/slack/blob/master/Payload/ChannelsArchivePayloadResponse.php) |
 
 
 ### Usage
