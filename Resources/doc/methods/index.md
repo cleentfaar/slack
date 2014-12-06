@@ -1,6 +1,6 @@
 ## API methods
 
-The following API methods are accessible with this library:
+The following API methods are accessible with this library (click on a name to get a detailed usage example):
 
 - [api.test](api-test.md)
 - [auth.test](auth-test.md)
