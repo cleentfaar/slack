@@ -66,19 +66,21 @@ class ApiClient
     private $eventDispatcher;
 
     /**
-     * @param string                   $token
-     * @param SerializerInterface|null $serializer
-     * @param ClientInterface|null     $client
+     * @param string|null                   $token
+     * @param SerializerInterface|null      $serializer
+     * @param ClientInterface|null          $client
+     * @param EventDispatcherInterface|null $eventDispatcher
      */
     public function __construct(
-        $token,
+        $token = null,
         SerializerInterface $serializer = null,
-        ClientInterface $client = null
+        ClientInterface $client = null,
+        EventDispatcherInterface $eventDispatcher = null
     ) {
         $this->token           = $token;
         $this->serializer      = $serializer ?: SerializerBuilder::create()->build();
         $this->client          = $client ?: new Client();
-        $this->eventDispatcher = new EventDispatcher();
+        $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher();
     }
 
     /**
@@ -137,10 +139,6 @@ class ApiClient
     private function sendRaw($method, array $data, $token = null)
     {
         try {
-            if ($token === null && $this->token === null) {
-                throw new \LogicException('You must supply a token to send a payload if you did not provide one during construction');
-            }
-
             $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
 
             $request = $this->createRequest($method, $data, $token);

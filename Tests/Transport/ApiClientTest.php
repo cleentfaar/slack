@@ -11,6 +11,7 @@
 
 namespace CL\Slack\Tests\Transport;
 
+use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Tests\AbstractTestCase;
 use CL\Slack\Transport\ApiClient;
@@ -65,7 +66,7 @@ class ApiClientTest extends AbstractTestCase
         $serializer->expects($this->once())->method('deserialize')->willReturn($mockPayloadResponse);
 
         /** @var PayloadInterface|\PHPUnit_Framework_MockObject_MockObject $mockPayload */
-        $mockPayload = $this->getMock('CL\Slack\Payload\PayloadInterface');
+        $mockPayload = $this->getMock('CL\Slack\Payload\AbstractGetPayload');
         $mockPayload->expects($this->any())->method('getMethod')->willReturn('mock');
         $mockPayload->expects($this->any())->method('getResponseClass')->willReturn('CL\Slack\Tests\Payload\MockPayloadResponse');
 
@@ -104,5 +105,35 @@ class ApiClientTest extends AbstractTestCase
 
         $this->assertArrayHasKey(ApiClient::EVENT_REQUEST, $eventsDispatched);
         $this->assertArrayHasKey(ApiClient::EVENT_RESPONSE, $eventsDispatched);
+    }
+
+    public function testSendWithoutAnyToken()
+    {
+        $mockPayload = $this->getMock('CL\Slack\Payload\PayloadInterface');
+        $apiClient = new ApiClient();
+        try {
+            $apiClient->send($mockPayload);
+        } catch (SlackException $e) {
+            $previous = $e->getPrevious();
+            $this->assertInstanceOf('\InvalidArgumentException', $previous);
+            $this->assertEquals(
+                'You must supply a token to send a payload, since you did not provide one during construction',
+                $previous->getMessage()
+            );
+
+            return;
+        }
+
+        $this->markTestIncomplete('This test should have thrown an exception');
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Unknown event to add listener for (unknown-event)
+     */
+    public function testAddListenerForUnknownEvent()
+    {
+        $apiClient = new ApiClient();
+        $apiClient->addListener('unknown-event', function() { });
     }
 }
