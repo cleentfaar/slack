@@ -37,6 +37,7 @@ class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
         $this->assertEquals($payloadResponse->getArguments(), $responseData['args']);
+        $this->assertEquals($payloadResponse->getArgument('foo'), $responseData['args']['foo']);
         $this->assertEquals($payloadResponse->getError(), $responseData['error']);
     }
 }
