@@ -18,7 +18,8 @@ that are implemented by this library.
 
 - [Getting a token](Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
 - [Installation](Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
-- [API methods](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's payloads.
+- [Usage](Resources/doc/installation.md) - A few simple examples on how to access the Slack API using this library
+- [API methods](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
 
 
 ### Features
