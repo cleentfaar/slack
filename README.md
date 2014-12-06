@@ -26,7 +26,7 @@ that are implemented by this library.
 - `Payload` and `PayloadResponse` follow the same definition as described in the official documentation (*)
 - `Payload` and `PayloadResponse` classes are serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
 allowing for complex data to be passed while maintaining an OO-approach.
-- Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) and [SlackCliBundle](https://github.com/cleentfaar/CLSlackCliBundle))
+- Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
 
     \* = small exceptions excluded; for example, the `channel` parameter is accessed using `getChannelId()`, not `getChannel()`
 
