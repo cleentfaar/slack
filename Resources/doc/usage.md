@@ -6,7 +6,7 @@ that it has made available.
 To do this, I'm going to be using an example scenario where I want to send a message to Slack, which is probably the
 scenario that drove you to this package in the first place (am I right :smile:?). So let's get slacking:
 
-**For detailed examples of each and every method that this library supports, check out the [method reference](methods/index.md).**
+*For detailed examples of each and every method that this library supports, check out the [library's method reference](methods/index.md).*
 
 ### Sending a payload to Slack (in this case: chat.postMessage)
 
