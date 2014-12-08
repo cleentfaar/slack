@@ -15,7 +15,7 @@
     "php": ">=5.4",
     "jms/serializer": "~0.16",
     "symfony/event-dispatcher": "~2.2",
-    "guzzlehttp/guzzle": "~5.0"
+    "guzzlehttp/guzzle": ">=4.2,~5.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.4"
