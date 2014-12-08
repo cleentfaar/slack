@@ -1,6 +1,6 @@
 # Slack API client [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
-Slack API library for PHP.
+Access your Slack Team's API through PHP.
 
 **NOTE:** If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
 Additionally, the bundle provides [console commands](https://github.com/cleentfaar/CLSlackBundle/blob/master/Resources/doc/commands.md) for all the Slack API methods
@@ -23,13 +23,13 @@ that are implemented by this library.
 
 
 ### Features
-- Allows you to access all the Slack API methods through easy-to-use payload classes (see [usage documentation](Resources/doc/usage.md))
-- `Payload` and `PayloadResponse` follow the same definition as described in the official documentation (*)
+- Allows you to access all the Slack API methods with just a few lines of code (see [usage documentation](Resources/doc/usage.md))
+- `Payload`, `PayloadResponse`, and `Model` classes follow the same definitions as described in the [official documentation](https://api.slack.com),
+with a few exceptions where I think it would make things clearer.
 - `Payload` and `PayloadResponse` classes are serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
 allowing for complex data to be passed while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
 
-    \* = small exceptions excluded; for example, the `channel` parameter is accessed using `getChannelId()`, not `getChannel()`
 
 ### Further reading
 
@@ -39,13 +39,6 @@ understanding of exactly what each API method does and what data it will return.
 
 If you feel there is some part of this package that you would like to see documented in more detail, please don't hesitate
 to create an issue for it.
-
-
-### FAQ
-
-| Question                                      | Answer                                                                                                          |
-|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Why isn't this package marked 'stable' yet?   | The Slack API has not reached a stable state yet, and so I cannot claim to have a stable package for it either. |
 
 
 ### Contributing

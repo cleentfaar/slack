@@ -4,8 +4,9 @@ Before we start talking to the Slack API, you need to have a way of authenticati
 
 ### Method a) Generating a token
 
-First, [get yourself a token](https://api.slack.com/#auth). This link takes you to the Slack API site which lets you 
-generate an API token for your account (after logging in). This is all you need to start working with this library.
+First, login on your Slack Team and [get yourself a token](https://api.slack.com/web).
+This link takes you to the Slack API site which lets you generate an API token for your account (after logging in).
+This is all you need to start working with this library.
 
 
 ### Method b) Use OAuth2 integration

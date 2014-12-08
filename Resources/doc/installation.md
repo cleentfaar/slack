@@ -11,7 +11,7 @@ Add the following to your ``composer.json`` (see http://getcomposer.org/), and j
 
 ```json
 "require" :  {
-    "cleentfaar/slack": "~0.10"
+    "cleentfaar/slack": "~0.11"
 }
 ```
 
