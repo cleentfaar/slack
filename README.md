@@ -24,10 +24,10 @@ that are implemented by this library.
 
 ### Features
 - Allows you to access all the Slack API methods with just a few lines of code (see [usage documentation](Resources/doc/usage.md))
-- `Payload`, `PayloadResponse`, and `Model` classes follow the same definitions as described in the [official documentation](https://api.slack.com),
+- Classes follow the same definitions as described in the [official documentation](https://api.slack.com),
 with a few exceptions where I think it would make things clearer.
-- `Payload` and `PayloadResponse` classes are serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
-allowing for complex data to be passed while maintaining an OO-approach.
+- Data between you and Slack is serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
+allowing for complex objects to be sent while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
 
 
