@@ -26,7 +26,7 @@ if ($response->isOk()) {
     // or...
     // $response->getError(); // outputs 'your-error-to-test-here'
 } else {
-    // normally, this would indicate something but wrong
+    // normally, this would indicate something went wrong
     // but with this method you actually test the errors you pass to them
 
     echo $response->getError(); // outputs 'your-error-to-test-here'

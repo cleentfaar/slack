@@ -11,6 +11,7 @@
 
 namespace CL\Slack\Util;
 
+use CL\Slack\Payload;
 use CL\Slack\Payload\PayloadInterface;
 
 class PayloadRegistry
@@ -19,6 +20,11 @@ class PayloadRegistry
      * @var PayloadInterface[]
      */
     private $payloads = [];
+
+    public function __construct()
+    {
+        $this->registerDefaults();
+    }
 
     /**
      * @param PayloadInterface $payload
@@ -29,9 +35,9 @@ class PayloadRegistry
     {
         if (array_key_exists($payload->getMethod(), $this->payloads)) {
             throw new \InvalidArgumentException(sprintf(
-                'Already registered a payload for this method: %s',
-                $payload->getMethod()
-            ));
+                                                    'Already registered a payload for this method: %s',
+                                                    $payload->getMethod()
+                                                ));
         }
 
         $this->payloads[$payload->getMethod()] = $payload;
@@ -63,5 +69,67 @@ class PayloadRegistry
         }
 
         return $this->payloads[$method];
+    }
+
+    private function registerDefaults()
+    {
+        $payloads = [
+            new Payload\AuthTestPayload(),
+            new Payload\ApiTestPayload(),
+            new Payload\ChannelsArchivePayload(),
+            new Payload\ChannelsCreatePayload(),
+            new Payload\ChannelsHistoryPayload(),
+            new Payload\ChannelsInfoPayload(),
+            new Payload\ChannelsInvitePayload(),
+            new Payload\ChannelsJoinPayload(),
+            new Payload\ChannelsKickPayload(),
+            new Payload\ChannelsLeavePayload(),
+            new Payload\ChannelsListPayload(),
+            new Payload\ChannelsMarkPayload(),
+            new Payload\ChannelsRenamePayload(),
+            new Payload\ChannelsSetPurposePayload(),
+            new Payload\ChannelsSetTopicPayload(),
+            new Payload\ChannelsUnarchivePayload(),
+            new Payload\ChatDeletePayload(),
+            new Payload\ChatPostMessagePayload(),
+            new Payload\ChatUpdatePayload(),
+            new Payload\EmojiListPayload(),
+            new Payload\FilesInfoPayload(),
+            new Payload\FilesListPayload(),
+            new Payload\FilesUploadPayload(),
+            new Payload\GroupsArchivePayload(),
+            new Payload\GroupsClosePayload(),
+            new Payload\GroupsCreateChildPayload(),
+            new Payload\GroupsCreatePayload(),
+            new Payload\GroupsHistoryPayload(),
+            new Payload\GroupsInvitePayload(),
+            new Payload\GroupsKickPayload(),
+            new Payload\GroupsLeavePayload(),
+            new Payload\GroupsListPayload(),
+            new Payload\GroupsMarkPayload(),
+            new Payload\GroupsOpenPayload(),
+            new Payload\GroupsRenamePayload(),
+            new Payload\GroupsSetPurposePayload(),
+            new Payload\GroupsSetTopicPayload(),
+            new Payload\GroupsUnarchivePayload(),
+            new Payload\ImClosePayload(),
+            new Payload\ImHistoryPayload(),
+            new Payload\ImListPayload(),
+            new Payload\ImMarkPayload(),
+            new Payload\ImOpenPayload(),
+            new Payload\OauthAccessPayload(),
+            new Payload\PresenceSetPayload(),
+            new Payload\SearchAllPayload(),
+            new Payload\SearchFilesPayload(),
+            new Payload\SearchMessagesPayload(),
+            new Payload\StarsListPayload(),
+            new Payload\UsersInfoPayload(),
+            new Payload\UsersListPayload(),
+            new Payload\UsersSetActivePayload(),
+        ];
+
+        foreach ($payloads as $payload) {
+            $this->register($payload);
+        }
     }
 }

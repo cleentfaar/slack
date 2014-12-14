@@ -1,7 +1,11 @@
 {
   "name": "cleentfaar/slack",
   "description": "A PHP library providing easy access to the Slack API",
-  "keywords": ["slack", "slack api", "chat"],
+  "keywords": [
+    "slack",
+    "slack api",
+    "chat"
+  ],
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -19,6 +23,10 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~4.4"
+  },
+  "suggest": {
+    "cleentfaar/slack-bundle": "For easy integration with your Symfony projects",
+    "cleentfaar/slack-cli": "Command-line application for interacting with the Slack API"
   },
   "autoload": {
     "psr-0": {
