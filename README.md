@@ -2,9 +2,8 @@
 
 Access your Slack Team's API through PHP.
 
-**NOTE:** If your project is built on top of the Symfony Framework, consider using the bundle I created for it [here](https://github.com/cleentfaar/CLSlackBundle).
-Additionally, the bundle provides [console commands](https://github.com/cleentfaar/CLSlackBundle/blob/master/Resources/doc/commands.md) for all the Slack API methods
-that are implemented by this library.
+*If your project is built on top of the Symfony Framework, consider using the bundle I created for it: [SlackBundle](https://github.com/cleentfaar/CLSlackBundle).
+*If you would like to access the Slack API from the command-line, consider installing the [slack-cli](https://github.com/cleentfaar/slack-cli) package.*
 
 [![Build Status](https://secure.travis-ci.org/cleentfaar/slack.svg)](http://travis-ci.org/cleentfaar/slack)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master)
@@ -16,9 +15,9 @@ that are implemented by this library.
 
 ### Documentation
 
-- [Getting a token](Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
+- [Getting started](Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
 - [Installation](Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
-- [Usage](Resources/doc/installation.md) - A few simple examples on how to access the Slack API using this library
+- [Usage](Resources/doc/usage.md) - A few simple examples on how to access the Slack API using this library
 - [API methods](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
 
 

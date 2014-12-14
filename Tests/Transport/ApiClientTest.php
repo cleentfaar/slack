@@ -72,15 +72,14 @@ class ApiClientTest extends AbstractTestCase
 
         $mockResponseBody = json_encode($mockResponseData);
         $mock->addResponse(sprintf(
-            "HTTP/1.1 200 OK\r\nContent-Length: %d\r\n\r\n%s",
-            strlen($mockResponseBody),
-            $mockResponseBody
-        ));
+                               "HTTP/1.1 200 OK\r\nContent-Length: %d\r\n\r\n%s",
+                               strlen($mockResponseBody),
+                               $mockResponseBody
+                           ));
 
         $client = new Client();
         $client->getEmitter()->attach($history);
         $client->getEmitter()->attach($mock);
-
 
         $apiClient = new ApiClient(self::TOKEN, $serializer, $client);
         $apiClient->addListener(ApiClient::EVENT_REQUEST, function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
@@ -93,15 +92,22 @@ class ApiClientTest extends AbstractTestCase
         });
         $apiClient->send($mockPayload);
 
-        parse_str((string)$history->getLastRequest()->getBody(), $lastRequestContent);
+        $lastRequest = $history->getLastRequest();
+
+        if ($lastRequest->getMethod() !== 'POST') {
+            parse_str((string)$lastRequest->getQuery(), $lastRequestContent);
+            $expectedUrl        = ApiClient::API_BASE_URL . 'mock?' . http_build_query($mockRequestData);
+            $lastRequestContent = $lastRequest->getQuery()->toArray();
+        } else {
+            $expectedUrl        = ApiClient::API_BASE_URL . 'mock';
+            $lastRequestContent = json_decode($lastRequest->getBody(), true);
+        }
+
         $lastResponseContent = json_decode($history->getLastResponse()->getBody(), true);
 
         $this->assertEquals($mockRequestData, $lastRequestContent);
         $this->assertEquals($mockResponseData, $lastResponseContent);
-        $this->assertEquals(
-            ApiClient::API_BASE_URL . 'mock',
-            $history->getLastRequest()->getUrl()
-        );
+        $this->assertEquals($expectedUrl, $history->getLastRequest()->getUrl());
 
         $this->assertArrayHasKey(ApiClient::EVENT_REQUEST, $eventsDispatched);
         $this->assertArrayHasKey(ApiClient::EVENT_RESPONSE, $eventsDispatched);
@@ -110,7 +116,7 @@ class ApiClientTest extends AbstractTestCase
     public function testSendWithoutAnyToken()
     {
         $mockPayload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $apiClient = new ApiClient();
+        $apiClient   = new ApiClient();
         try {
             $apiClient->send($mockPayload);
         } catch (SlackException $e) {
@@ -134,6 +140,7 @@ class ApiClientTest extends AbstractTestCase
     public function testAddListenerForUnknownEvent()
     {
         $apiClient = new ApiClient();
-        $apiClient->addListener('unknown-event', function() { });
+        $apiClient->addListener('unknown-event', function () {
+        });
     }
 }

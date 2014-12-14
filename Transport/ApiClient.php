@@ -101,7 +101,7 @@ class ApiClient
             }
 
             $serializedPayload = $this->serializePayload($payload);
-            $responseData      = $this->sendRaw($payload->getMethod(), $serializedPayload, $token);
+            $responseData      = $this->doSend($payload->getMethod(), $serializedPayload, $token);
 
             return $this->deserializeResponse($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
@@ -136,7 +136,7 @@ class ApiClient
      *
      * @return array
      */
-    private function sendRaw($method, array $data, $token = null)
+    private function doSend($method, array $data, $token = null)
     {
         try {
             $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
@@ -188,12 +188,12 @@ class ApiClient
     /**
      * @param string      $method
      * @param array       $payload
-     * @param string      $requestMethod
      * @param string|null $token
+     * @param string      $requestMethod
      *
      * @return RequestInterface
      */
-    private function createRequest($method, array $payload, $requestMethod = 'GET', $token = null)
+    private function createRequest($method, array $payload, $token = null, $requestMethod = 'GET')
     {
         $payload['token'] = $token ?: $this->token;
 

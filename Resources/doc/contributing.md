@@ -1,6 +1,5 @@
 # Contributing
 
-
 ## Coding standards
 
 Your code should follow [Symfony's coding standards](http://symfony.com/doc/current/contributing/code/standards.html) as close as possible.
