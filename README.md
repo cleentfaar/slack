@@ -22,9 +22,8 @@ Access your Slack Team's API through PHP.
 
 
 ### Features
-- Allows you to access all the Slack API methods with just a few lines of code (see [usage documentation](Resources/doc/usage.md))
-- Classes follow the same definitions as described in the [official documentation](https://api.slack.com),
-with a few exceptions where I think it would make things clearer.
+- Access all of Slack's API methods with just a few lines of code (see [usage documentation](Resources/doc/usage.md))
+- Classes follow the same definitions as described in the [official documentation](https://api.slack.com) (with a few exceptions where I think it would make a better distinction).
 - Data between you and Slack is serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
 allowing for complex objects to be sent while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
@@ -32,7 +31,8 @@ allowing for complex objects to be sent while maintaining an OO-approach.
 
 ### Further reading
 
-I've done my best to include links to the official documentation in the code where I thought it would clarify things.
+I've done my best to include links to the official documentation in the code where appropriate.
+
 Still, you should really check out the [API documentation](https://api.slack.com/) of Slack yourself to get a better
 understanding of exactly what each API method does and what data it will return.
 
@@ -45,6 +45,12 @@ to create an issue for it.
 Got a good idea for this project? Found a nasty bug that needs fixing? That's great!
 Before submitting your PR though, make sure it complies with the [contributing guide](Resources/doc/contributing.md) to
 speed up the merging of your code.
+
+
+### Related packages
+
+- [SlackCli](https://github.com/cleentfaar/slack) - CLI application for all of the Slack API methods.
+- [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) - Symfony Bundle providing integration with this library package.
 
 
 ### Attributions
