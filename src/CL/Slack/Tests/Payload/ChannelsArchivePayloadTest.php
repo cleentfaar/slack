@@ -34,10 +34,11 @@ class ChannelsArchivePayloadTest extends AbstractPayloadTest
      * {@inheritdoc}
      *
      * @param ChannelsArchivePayload $payload
-     * @param array                  $payloadData
      */
-    protected function assertPayload(PayloadInterface $payload, array $payloadData)
+    protected function getExpectedPayloadData(PayloadInterface $payload)
     {
-        $this->assertEquals($payload->getChannelId(), $payloadData['channel']);
+        return [
+            'channel' => $payload->getChannelId(),
+        ];
     }
 }

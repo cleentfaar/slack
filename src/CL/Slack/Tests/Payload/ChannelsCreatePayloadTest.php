@@ -34,10 +34,11 @@ class ChannelsCreatePayloadTest extends AbstractPayloadTest
      * {@inheritdoc}
      *
      * @param ChannelsCreatePayload $payload
-     * @param array                  $payloadData
      */
-    protected function assertPayload(PayloadInterface $payload, array $payloadData)
+    protected function getExpectedPayloadData(PayloadInterface $payload)
     {
-        $this->assertEquals($payload->getName(), $payloadData['name']);
+        return [
+            'name' => $payload->getName(),
+        ];
     }
 }

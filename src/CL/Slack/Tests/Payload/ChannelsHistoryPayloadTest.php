@@ -37,13 +37,14 @@ class ChannelsHistoryPayloadTest extends AbstractPayloadTest
      * {@inheritdoc}
      *
      * @param ChannelsHistoryPayload $payload
-     * @param array                  $payloadData
      */
-    protected function assertPayload(PayloadInterface $payload, array $payloadData)
+    protected function getExpectedPayloadData(PayloadInterface $payload)
     {
-        $this->assertEquals($payload->getChannelId(), $payloadData['channel']);
-        $this->assertEquals($payload->getCount(), $payloadData['count']);
-        $this->assertEquals($payload->getOldest(), $payloadData['oldest']);
-        $this->assertEquals($payload->getLatest(), $payloadData['latest']);
+        return [
+            'channel' => $payload->getChannelId(),
+            'latest'  => $payload->getLatest(),
+            'oldest'  => $payload->getOldest(),
+            'count'   => $payload->getCount(),
+        ];
     }
 }

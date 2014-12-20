@@ -33,9 +33,9 @@ class AuthTestPayloadTest extends AbstractPayloadTest
      * {@inheritdoc}
      *
      * @param AuthTestPayload $payload
-     * @param array           $payloadData
      */
-    protected function assertPayload(PayloadInterface $payload, array $payloadData)
+    protected function getExpectedPayloadData(PayloadInterface $payload)
     {
+        return [];
     }
 }

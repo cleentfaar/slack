@@ -11,22 +11,21 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\ApiTestPayload;
+use CL\Slack\Payload\ChannelsJoinPayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiTestPayloadTest extends AbstractPayloadTest
+class ChannelsJoinPayloadTest extends AbstractPayloadTest
 {
     /**
      * {@inheritdoc}
      */
     protected function createPayload()
     {
-        $payload = new ApiTestPayload();
-        $payload->setError('fake-error');
-        $payload->addArgument('foo', 'bar');
+        $payload = new ChannelsJoinPayload();
+        $payload->setChannel('acme_channel');
 
         return $payload;
     }
@@ -34,13 +33,12 @@ class ApiTestPayloadTest extends AbstractPayloadTest
     /**
      * {@inheritdoc}
      *
-     * @param ApiTestPayload $payload
+     * @param ChannelsJoinPayload $payload
      */
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'error' => $payload->getError(),
-            'foo'   => $payload->getArgument('foo'),
+            'name' => $payload->getChannel(),
         ];
     }
 }
