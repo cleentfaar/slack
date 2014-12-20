@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit colors="true" bootstrap="Tests/bootstrap.php">
+<phpunit colors="true" bootstrap="src/CL/Slack/Tests/bootstrap.php">
     <testsuites>
         <testsuite name="Slack Test Suite">
-            <directory suffix="Test.php">./Tests/</directory>
+            <directory suffix="Test.php">./src/CL/Slack/Tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./</directory>
+            <directory>./src/CL/Slack/</directory>
             <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
-                <directory>./vendor</directory>
+                <directory>./src/CL/Slack/Resources</directory>
+                <directory>./src/CL/Slack/Tests</directory>
+                <directory>./src/CL/Slack/vendor</directory>
             </exclude>
         </whitelist>
     </filter>
