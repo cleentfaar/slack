@@ -44,14 +44,14 @@ abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return PayloadInterface
+     */
+    abstract protected function createPayload();
+
+    /**
      * @param PayloadInterface $payload
      *
      * @return array
      */
     abstract protected function getExpectedPayloadData(PayloadInterface $payload);
-
-    /**
-     * @return PayloadInterface
-     */
-    abstract protected function createPayload();
 }

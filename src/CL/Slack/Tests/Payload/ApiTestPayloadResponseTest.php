@@ -22,7 +22,7 @@ class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * @inheritdoc
      */
-    protected function getResponseData()
+    protected function createResponseData()
     {
         return [
             'error' => 'fake-error',

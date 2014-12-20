@@ -22,7 +22,7 @@ class AuthTestPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * @inheritdoc
      */
-    protected function getResponseData()
+    protected function createResponseData()
     {
         return [
             'user'    => 'acme_user',

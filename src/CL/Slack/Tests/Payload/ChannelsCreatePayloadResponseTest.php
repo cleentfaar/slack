@@ -22,7 +22,7 @@ class ChannelsCreatePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * @inheritdoc
      */
-    protected function getResponseData()
+    protected function createResponseData()
     {
         return [
             'channel' => [

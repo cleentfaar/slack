@@ -33,7 +33,7 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testPayloadResponse()
     {
-        $responseData = array_merge(['ok' => true], $this->getResponseData());
+        $responseData = array_merge(['ok' => true], $this->createResponseData());
 
         /** @var PayloadResponseInterface $actualPayloadResponse */
         $actualPayloadResponse = $this->serializer->deserialize(
@@ -99,7 +99,7 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    protected function getChannelResponseData()
+    protected function createChannelResponseData()
     {
         return [
             'channel' => [
@@ -132,5 +132,5 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    abstract protected function getResponseData();
+    abstract protected function createResponseData();
 }

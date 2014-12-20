@@ -22,13 +22,13 @@ class ChannelsJoinPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * @inheritdoc
      */
-    protected function getResponseData()
+    protected function createResponseData()
     {
         return array_merge(
             [
                 'already_in_channel' => true,
             ],
-            $this->getChannelResponseData()
+            $this->createChannelResponseData()
         );
     }
 

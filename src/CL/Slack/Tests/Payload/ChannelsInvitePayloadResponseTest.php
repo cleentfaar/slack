@@ -22,9 +22,9 @@ class ChannelsInvitePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * @inheritdoc
      */
-    protected function getResponseData()
+    protected function createResponseData()
     {
-        return array_merge([], $this->getChannelResponseData());
+        return array_merge([], $this->createChannelResponseData());
     }
 
     /**
