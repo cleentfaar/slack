@@ -1,6 +1,6 @@
-# Slack API client [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
+# Slack API library [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
 
-Access your Slack Team's API through PHP.
+Access your Slack Team's API through PHP objects.
 
 *If your project is built on top of the Symfony Framework, consider using the bundle I created for it: [SlackBundle](https://github.com/cleentfaar/CLSlackBundle).
 *If you would like to access the Slack API from the command-line, consider installing the [slack-cli](https://github.com/cleentfaar/slack-cli) package.*
@@ -22,8 +22,8 @@ Access your Slack Team's API through PHP.
 
 
 ### Features
-- Access all of Slack's API methods with just a few lines of code (see [usage documentation](Resources/doc/usage.md))
-- Classes follow the same definitions as described in the [official documentation](https://api.slack.com) (with a few exceptions where I think it would make a better distinction).
+- Access all of Slack's API methods with dedicated payload classes (see [usage documentation](Resources/doc/usage.md))
+- Payloads and responses follow the same definitions as described in the [official documentation](https://api.slack.com) (with a few exceptions where I think it would make a better distinction).
 - Data between you and Slack is serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
 allowing for complex objects to be sent while maintaining an OO-approach.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
