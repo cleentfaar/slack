@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This user is part of the CLSlackBundle.
+ * This user is part of the Slack API library.
  *
  * (c) Cas Leentfaar <info@casleentfaar.com>
  *

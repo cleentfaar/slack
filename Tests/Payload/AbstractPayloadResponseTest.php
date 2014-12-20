@@ -1,11 +1,23 @@
 <?php
 
+/*
+ * This file is part of the Slack API library.
+ *
+ * (c) Cas Leentfaar <info@casleentfaar.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace CL\Slack\Tests\Payload;
 
 use CL\Slack\Payload\PayloadResponseInterface;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 
+/**
+ * @author Cas Leentfaar <info@casleentfaar.com>
+ */
 abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -46,9 +58,15 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     abstract protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse);
 
     /**
-     * @return string
+     * @inheritdoc
      */
-    abstract protected function getResponseClass();
+    protected function getResponseClass()
+    {
+        $class = get_class($this);
+        $name  = substr($class, strripos($class, '\\') + 1, -4);
+
+        return sprintf('CL\Slack\Payload\%s', $name);
+    }
 
     /**
      * @return array
