@@ -15,14 +15,14 @@ Access your Slack Team's API through PHP objects.
 
 ### Documentation
 
-- [Getting started](Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
-- [Installation](Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
-- [Usage](Resources/doc/usage.md) - A few simple examples on how to access the Slack API using this library
-- [API methods](Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
+- [Getting started](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
+- [Installation](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
+- [Usage](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/usage.md) - A few simple examples on how to access the Slack API using this library
+- [API methods](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
 
 
 ### Features
-- Access all of Slack's API methods with dedicated payload classes (see [usage documentation](Resources/doc/usage.md))
+- Access all of Slack's API methods with dedicated payload classes (see [usage documentation](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/usage.md))
 - Payloads and responses follow the same definitions as described in the [official documentation](https://api.slack.com) (with a few exceptions where I think it would make a better distinction).
 - Data between you and Slack is serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
 allowing for complex objects to be sent while maintaining an OO-approach.
@@ -43,7 +43,7 @@ to create an issue for it.
 ### Contributing
 
 Got a good idea for this project? Found a nasty bug that needs fixing? That's great!
-Before submitting your PR though, make sure it complies with the [contributing guide](Resources/doc/contributing.md) to
+Before submitting your PR though, make sure it complies with the [contributing guide](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/contributing.md) to
 speed up the merging of your code.
 
 
