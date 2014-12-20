@@ -11,21 +11,22 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\ChannelsInfoPayload;
+use CL\Slack\Payload\ChannelsInvitePayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsInfoPayloadTest extends AbstractPayloadTest
+class ChannelsInvitePayloadTest extends AbstractPayloadTest
 {
     /**
      * {@inheritdoc}
      */
     protected function createPayload()
     {
-        $payload = new ChannelsInfoPayload();
+        $payload = new ChannelsInvitePayload();
         $payload->setChannelId('C1234567');
+        $payload->setUserId('U1234567');
 
         return $payload;
     }
@@ -33,11 +34,12 @@ class ChannelsInfoPayloadTest extends AbstractPayloadTest
     /**
      * {@inheritdoc}
      *
-     * @param ChannelsInfoPayload $payload
-     * @param array               $payloadData
+     * @param ChannelsInvitePayload $payload
+     * @param array                 $payloadData
      */
     protected function assertPayload(PayloadInterface $payload, array $payloadData)
     {
         $this->assertEquals($payload->getChannelId(), $payloadData['channel']);
+        $this->assertEquals($payload->getUserId(), $payloadData['user']);
     }
 }

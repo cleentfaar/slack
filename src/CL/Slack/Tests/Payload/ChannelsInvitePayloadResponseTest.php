@@ -11,36 +11,30 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\ApiTestPayloadResponse;
+use CL\Slack\Payload\ChannelsInvitePayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
+class ChannelsInvitePayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
      * @inheritdoc
      */
     protected function getResponseData()
     {
-        return [
-            'error' => 'fake-error',
-            'args'  => [
-                'foo' => 'bar',
-            ],
-        ];
+        return array_merge([], $this->getChannelResponseData());
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                  $responseData
-     * @param ApiTestPayloadResponse $payloadResponse
+     * @param array                         $responseData
+     * @param ChannelsInvitePayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($payloadResponse->getArguments(), $responseData['args']);
-        $this->assertEquals($payloadResponse->getArgument('foo'), $responseData['args']['foo']);
+        $this->assertResponseWithChannel($responseData, $payloadResponse);
     }
 }
