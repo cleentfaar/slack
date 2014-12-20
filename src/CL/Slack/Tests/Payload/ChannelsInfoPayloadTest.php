@@ -11,24 +11,21 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\ChannelsHistoryPayload;
+use CL\Slack\Payload\ChannelsInfoPayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsHistoryPayloadTest extends AbstractPayloadTest
+class ChannelsInfoPayloadTest extends AbstractPayloadTest
 {
     /**
      * {@inheritdoc}
      */
     protected function createPayload()
     {
-        $payload = new ChannelsHistoryPayload();
+        $payload = new ChannelsInfoPayload();
         $payload->setChannelId('C01234567');
-        $payload->setCount(10);
-        $payload->setOldest(1111.1111);
-        $payload->setLatest(9999.9999);
 
         return $payload;
     }
@@ -36,14 +33,11 @@ class ChannelsHistoryPayloadTest extends AbstractPayloadTest
     /**
      * {@inheritdoc}
      *
-     * @param ChannelsHistoryPayload $payload
-     * @param array                  $payloadData
+     * @param ChannelsInfoPayload $payload
+     * @param array               $payloadData
      */
     protected function assertPayload(PayloadInterface $payload, array $payloadData)
     {
         $this->assertEquals($payload->getChannelId(), $payloadData['channel']);
-        $this->assertEquals($payload->getCount(), $payloadData['count']);
-        $this->assertEquals($payload->getOldest(), $payloadData['oldest']);
-        $this->assertEquals($payload->getLatest(), $payloadData['latest']);
     }
 }

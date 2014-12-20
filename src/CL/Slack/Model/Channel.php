@@ -77,7 +77,7 @@ class Channel extends SimpleChannel
     }
 
     /**
-     * @return Message The latest message in the channel.
+     * @return SimpleMessage The latest message in the channel.
      */
     public function getLatestMessage()
     {
