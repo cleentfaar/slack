@@ -46,7 +46,7 @@ class ChannelsListPayload extends AbstractPayload
     /**
      * @return bool
      */
-    public function isExcludeArchived()
+    public function getExcludeArchived()
     {
         return $this->excludeArchived;
     }

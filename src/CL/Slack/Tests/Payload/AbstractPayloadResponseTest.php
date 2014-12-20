@@ -53,6 +53,8 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Compares the expected response data against the values returned by the actual Response's methods
+     *
      * @param array                    $responseData
      * @param PayloadResponseInterface $payloadResponse
      */
@@ -86,7 +88,8 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @inheritdoc
+     * Returns the response class used for this test-case
+     * Can be overwritten if it deviates from the standard pattern
      */
     protected function getResponseClass()
     {
@@ -97,6 +100,9 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Returns an example of channel-data that could be returned by a response
+     * Used by different tests to simplify their fixtures
+     *
      * @return array
      */
     protected function createChannelResponseData()
@@ -130,6 +136,8 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Returns the data used for comparison against the actual Response class
+     *
      * @return array
      */
     abstract protected function createResponseData();

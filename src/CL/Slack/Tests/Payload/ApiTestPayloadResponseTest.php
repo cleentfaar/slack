@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function createResponseData()
     {
