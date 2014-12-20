@@ -25,7 +25,7 @@ Access your Slack Team's API through PHP objects.
 - Access all of Slack's API methods with dedicated payload classes (see [usage documentation](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/usage.md))
 - Payloads and responses follow the same definitions as described in the [official documentation](https://api.slack.com) (with a few exceptions where I think it would make a better distinction).
 - Data between you and Slack is serialized using the [JMS Serializer](https://github.com/jms/serializer) package,
-allowing for complex objects to be sent while maintaining an OO-approach.
+allowing fully spec-ed PHP objects to be used for working with the API.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
 
 
