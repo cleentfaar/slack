@@ -24,12 +24,10 @@ class ChannelsJoinPayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function createResponseData()
     {
-        return array_merge(
-            [
-                'already_in_channel' => true,
-            ],
-            $this->createChannelResponseData()
-        );
+        return [
+            'already_in_channel' => true,
+            'channel'            => $this->createChannelResponseData()
+        ];
     }
 
     /**
@@ -40,7 +38,7 @@ class ChannelsJoinPayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertResponseWithChannel($responseData, $payloadResponse);
+        $this->assertChannel($responseData['channel'], $payloadResponse->getChannel());
         $this->assertEquals($responseData['already_in_channel'], $payloadResponse->isAlreadyInChannel());
     }
 }

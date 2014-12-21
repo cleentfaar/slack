@@ -61,29 +61,39 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     abstract protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse);
 
     /**
-     * @param array                    $responseData
-     * @param PayloadResponseInterface $payloadResponse
+     * @param array   $expectedChannelResponseData
+     * @param Channel $actualChannel
      */
-    protected function assertResponseWithChannel(array $responseData, PayloadResponseInterface $payloadResponse)
+    protected function assertChannel(array $expectedChannelResponseData, $actualChannel)
     {
-        /** @var Channel $channel */
-        $channel = $payloadResponse->getChannel();
-
-        $this->assertInstanceOf('CL\Slack\Model\Channel', $channel);
-        $this->assertArrayHasKey('channel', $responseData);
-
-        $channelResponseData = $responseData['channel'];
-
-        $this->assertEquals($channel->getId(), $channelResponseData['id']);
-        $this->assertEquals($channel->getCreated()->format('U'), $channelResponseData['created']);
-        $this->assertEquals($channel->getCreator(), $channelResponseData['creator']);
-        $this->assertEquals($channel->getLastRead(), $channelResponseData['last_read']);
-        $this->assertEquals($channel->getLatestMessage()->getText(), $channelResponseData['latest']['text']);
-        $this->assertEquals($channel->getLatestMessage()->getUserId(), $channelResponseData['latest']['user']);
-        $this->assertEquals($channel->getMembers(), $channelResponseData['members']);
-        $this->assertEquals($channel->getName(), $channelResponseData['name']);
-        $this->assertEquals($channel->getPurpose()->getValue(), $channelResponseData['purpose']['value']);
-        $this->assertEquals($channel->getTopic()->getValue(), $channelResponseData['topic']['value']);
+        $this->assertNotEmpty($expectedChannelResponseData);
+        $this->assertInstanceOf('CL\Slack\Model\Channel', $actualChannel);
+        $this->assertInstanceOf('\DateTime', $actualChannel->getCreated());
+        $this->assertEquals($expectedChannelResponseData, [
+            'id'        => $actualChannel->getId(),
+            'created'   => $actualChannel->getCreated()->format('U'),
+            'creator'   => $actualChannel->getCreator(),
+            'last_read' => $actualChannel->getLastRead(),
+            'latest'    => [
+                'channel'  => [
+                    'id'   => $actualChannel->getLatestMessage()->getChannel()->getId(),
+                    'name' => $actualChannel->getLatestMessage()->getChannel()->getName(),
+                ],
+                'ts'       => $actualChannel->getLatestMessage()->getTimestamp(),
+                'type'     => $actualChannel->getLatestMessage()->getType(),
+                'text'     => $actualChannel->getLatestMessage()->getText(),
+                'user'     => $actualChannel->getLatestMessage()->getUserId(),
+                'username' => $actualChannel->getLatestMessage()->getUsername(),
+            ],
+            'members'   => $actualChannel->getMembers(),
+            'name'      => $actualChannel->getName(),
+            'purpose'   => [
+                'value' => $actualChannel->getPurpose()->getValue(),
+            ],
+            'topic'     => [
+                'value' => $actualChannel->getTopic()->getValue(),
+            ],
+        ]);
     }
 
 
@@ -108,29 +118,30 @@ abstract class AbstractPayloadResponseTest extends \PHPUnit_Framework_TestCase
     protected function createChannelResponseData()
     {
         return [
-            'channel' => [
-                'id'        => 'C1234567',
-                'created'   => '12345678',
-                'creator'   => 'U1234567',
-                'last_read' => '12345678',
-                'latest'    => [
-                    'text'    => 'Hello World!',
-                    'user'    => 'U123457',
-                    'channel' => [
-                        'id' => 'C1234567',
-                    ],
+            'id'        => 'C1234567',
+            'created'   => '12345678',
+            'creator'   => 'U1234567',
+            'last_read' => floatval('12345678'),
+            'latest'    => [
+                'ts'       => floatval('12345678'),
+                'text'     => 'Hello World!',
+                'user'     => 'U123457',
+                'username' => 'acme_user',
+                'channel'  => [
+                    'id'   => 'C1234567',
+                    'name' => 'acme_channel',
                 ],
-                'members'   => [
-                    'U1234567'
-                ],
-                'name'      => 'acme_channel',
-                'purpose'   => [
-                    'value' => 'Acme channel\'s purpose here',
-                ],
-                'topic'     => [
-                    'value' => 'Acme channel\'s topic here',
-                ],
-                'username'  => 'acme_user',
+                'type'     => 'message',
+            ],
+            'members'   => [
+                'U1234567'
+            ],
+            'name'      => 'acme_channel',
+            'purpose'   => [
+                'value' => 'Acme channel\'s purpose here',
+            ],
+            'topic'     => [
+                'value' => 'Acme channel\'s topic here',
             ],
         ];
     }

@@ -33,6 +33,13 @@ class SimpleMessage extends AbstractModel
     protected $type;
 
     /**
+     * @var SimpleChannel
+     *
+     * @Serializer\Type("CL\Slack\Model\SimpleChannel")
+     */
+    protected $channel;
+
+    /**
      * @var string
      *
      * @Serializer\Type("string")
@@ -67,6 +74,14 @@ class SimpleMessage extends AbstractModel
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return SimpleChannel
+     */
+    public function getChannel()
+    {
+        return $this->channel;
     }
 
     /**

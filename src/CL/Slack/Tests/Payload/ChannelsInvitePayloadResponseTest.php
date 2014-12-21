@@ -24,7 +24,9 @@ class ChannelsInvitePayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function createResponseData()
     {
-        return array_merge([], $this->createChannelResponseData());
+        return [
+            'channel' => $this->createChannelResponseData()
+        ];
     }
 
     /**
@@ -35,6 +37,6 @@ class ChannelsInvitePayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertResponseWithChannel($responseData, $payloadResponse);
+        $this->assertChannel($responseData['channel'], $payloadResponse->getChannel());
     }
 }

@@ -11,13 +11,13 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\ChannelsInfoPayloadResponse;
+use CL\Slack\Payload\ChannelsListPayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChannelsInfoPayloadResponseTest extends AbstractPayloadResponseTest
+class ChannelsListPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
      * {@inheritdoc}
@@ -25,18 +25,26 @@ class ChannelsInfoPayloadResponseTest extends AbstractPayloadResponseTest
     protected function createResponseData()
     {
         return [
-            'channel' => $this->createChannelResponseData()
+            'channels' => [
+                $this->createChannelResponseData()
+            ],
         ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                       $responseData
-     * @param ChannelsInfoPayloadResponse $payloadResponse
+     * @param array                          $responseData
+     * @param ChannelsListPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertChannel($responseData['channel'], $payloadResponse->getChannel());
+        $channels = $payloadResponse->getChannels();
+
+        $this->assertCount(1, $channels);
+
+        foreach ($channels as $x => $channel) {
+            $this->assertChannel($responseData['channels'][$x], $channel);
+        }
     }
 }
