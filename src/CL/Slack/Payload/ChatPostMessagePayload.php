@@ -121,7 +121,7 @@ class ChatPostMessagePayload extends AbstractPostPayload
      *
      * @see https://api.slack.com/docs/formatting for an explanation of formatting.
      */
-    public function setMessage($message)
+    public function setText($message)
     {
         $this->text = $message;
     }
@@ -129,9 +129,29 @@ class ChatPostMessagePayload extends AbstractPostPayload
     /**
      * @return string Actual message to send.
      */
-    public function getMessage()
+    public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * @deprecated Will be removed soon, use `setText()` instead
+     *
+     * @param string $message
+     */
+    public function setMessage($message)
+    {
+        $this->setText($message);
+    }
+
+    /**
+     * @deprecated Will be removed soon, use `getText()` instead
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->getText();
     }
 
     /**
