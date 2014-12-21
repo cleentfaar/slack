@@ -29,20 +29,16 @@
       </header>
       <section>
         <h1>
-<a id="slack-api-library-" class="anchor" href="#slack-api-library-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slack API library <a href="https://packagist.org/packages/cleentfaar/slack"><img src="https://poser.pugx.org/cleentfaar/slack/license.svg" alt="License"></a>
+<a id="slack-api-library-" class="anchor" href="#slack-api-library-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slack API library <a href="https://github.com/cleentfaar/slack/tree/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></a>
 </h1>
 
 <p>Access your Slack Team's API through PHP objects.</p>
 
-<p><em>If your project is built on top of the Symfony Framework, consider using the bundle I created for it: <a href="https://github.com/cleentfaar/CLSlackBundle">SlackBundle</a>.
-*If you would like to access the Slack API from the command-line, consider installing the <a href="https://github.com/cleentfaar/slack-cli">slack-cli</a> package.</em></p>
-
-<p><a href="http://travis-ci.org/cleentfaar/slack"><img src="https://secure.travis-ci.org/cleentfaar/slack.svg" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master"><img src="https://scrutinizer-ci.com/g/cleentfaar/slack/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/cleentfaar/slack/?branch=master"><img src="https://scrutinizer-ci.com/g/cleentfaar/slack/badges/coverage.png?b=master" alt="Code Coverage"></a><br>
-<a href="https://packagist.org/packages/cleentfaar/slack"><img src="https://poser.pugx.org/cleentfaar/slack/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/cleentfaar/slack"><img src="https://poser.pugx.org/cleentfaar/slack/downloads.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/cleentfaar/slack"><img src="https://poser.pugx.org/cleentfaar/slack/v/unstable.svg" alt="Latest Unstable Version"></a></p>
+<p><a href="https://travis-ci.org/cleentfaar/slack"><img src="https://img.shields.io/travis/cleentfaar/slack/master.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/cleentfaar/slack/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/cleentfaar/slack.svg?style=flat-square" alt="Coverage Status"></a>
+<a href="https://scrutinizer-ci.com/g/cleentfaar/slack"><img src="https://img.shields.io/scrutinizer/g/cleentfaar/slack.svg?style=flat-square" alt="Quality Score"></a>
+<a href="https://github.com/cleentfaar/slack/releases"><img src="https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square" alt="Latest Version"></a>
+<a href="https://packagist.org/packages/cleentfaar/slack"><img src="https://img.shields.io/packagist/dt/cleentfaar/slack.svg?style=flat-square" alt="Total Downloads"></a></p>
 
 <h3>
 <a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h3>
@@ -65,7 +61,7 @@
 <li>Access all of Slack's API methods with dedicated payload classes (see <a href="https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/usage.md">usage documentation</a>)</li>
 <li>Payloads and responses follow the same definitions as described in the <a href="https://api.slack.com">official documentation</a> (with a few exceptions where I think it would make a better distinction).</li>
 <li>Data between you and Slack is serialized using the <a href="https://github.com/jms/serializer">JMS Serializer</a> package,
-allowing for complex objects to be sent while maintaining an OO-approach.</li>
+allowing fully spec-ed PHP objects to be used for working with the API.</li>
 <li>Code has been highly abstracted to support re-use in more specific implementations (see <a href="https://github.com/cleentfaar/CLSlackBundle">SlackBundle</a>)</li>
 </ul>
 
