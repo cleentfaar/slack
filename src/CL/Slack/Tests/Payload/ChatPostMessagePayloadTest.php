@@ -66,7 +66,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
             'attachments'  => [
                 [
                     'text'   => $payload->getAttachments()->first()->getText(),
-                    'fields' => $payload->getAttachments()->first()->getFields()
+                    'fields' => $payload->getAttachments()->first()->getFields()->toArray(),
                 ],
             ],
         ];
