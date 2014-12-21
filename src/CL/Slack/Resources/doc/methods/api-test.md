@@ -23,8 +23,6 @@ $response  = $apiClient->send($payload);
 
 if ($response->isOk()) {
     $response->getArgument('foo'); // outputs 'bar'
-    // or...
-    // $response->getError(); // outputs 'your-error-to-test-here'
 } else {
     // normally, this would indicate something went wrong
     // but with this method you actually test the errors you pass to them
