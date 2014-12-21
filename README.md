@@ -1,13 +1,12 @@
-# Slack API library [![License](https://poser.pugx.org/cleentfaar/slack/license.svg)](https://packagist.org/packages/cleentfaar/slack)
+# Slack API library [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/cleentfaar/slack/tree/master/LICENSE.md)
 
 Access your Slack Team's API through PHP objects.
 
 [![Build Status](https://img.shields.io/travis/cleentfaar/slack/master.svg?style=flat-square)](https://travis-ci.org/cleentfaar/slack)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/cleentfaar/slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/cleentfaar/slack/code-structure)
 [![Quality Score](https://img.shields.io/scrutinizer/g/cleentfaar/slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/cleentfaar/slack)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/cleentfaar/slack/tree/master/LICENSE.md)
 [![Latest Version](https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square)](https://github.com/cleentfaar/slack/releases)
-
+[![Total Downloads](https://img.shields.io/packagist/dt/cleentfaar/slack.svg)](https://packagist.org/packages/cleentfaar/slack)
 
 ### Documentation
 
