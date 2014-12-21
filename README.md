@@ -6,7 +6,7 @@ Access your Slack Team's API through PHP objects.
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/cleentfaar/slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/cleentfaar/slack/code-structure)
 [![Quality Score](https://img.shields.io/scrutinizer/g/cleentfaar/slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/cleentfaar/slack)
 [![Latest Version](https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square)](https://github.com/cleentfaar/slack/releases)
-[![Total Downloads](https://img.shields.io/packagist/dt/cleentfaar/slack.svg)](https://packagist.org/packages/cleentfaar/slack)
+[![Total Downloads](https://img.shields.io/packagist/dt/cleentfaar/slack.svg?style=flat-square)](https://packagist.org/packages/cleentfaar/slack)
 
 ### Documentation
 
