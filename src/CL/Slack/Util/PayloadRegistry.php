@@ -35,9 +35,9 @@ class PayloadRegistry
     {
         if (array_key_exists($payload->getMethod(), $this->payloads)) {
             throw new \InvalidArgumentException(sprintf(
-                                                    'Already registered a payload for this method: %s',
-                                                    $payload->getMethod()
-                                                ));
+                'Already registered a payload for this method: %s',
+                $payload->getMethod()
+            ));
         }
 
         $this->payloads[$payload->getMethod()] = $payload;
