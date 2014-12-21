@@ -19,6 +19,6 @@ tools:
   php_analyzer:
     filter:
       excluded_paths:
-        - 'Tests/*'
+        - 'src/CL/Slack/Tests/*'
   sensiolabs_security_checker: true
   external_code_coverage: true
