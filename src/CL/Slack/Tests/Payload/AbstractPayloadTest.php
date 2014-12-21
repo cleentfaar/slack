@@ -32,15 +32,18 @@ abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
 
     public function testPayload()
     {
-        $payload     = $this->createPayload();
-        $payloadData = $this->serializer->serialize(
-            $payload,
-            'json'
-        );
+        $payload = $this->createPayload();
 
         $this->assertInternalType('string', $payload->getMethod());
         $this->assertTrue(class_exists($payload->getResponseClass()));
-        $this->assertEquals($this->getExpectedPayloadData($payload), json_decode($payloadData, true));
+
+        $expectedPayloadSerialized = $this->serializer->serialize($this->getExpectedPayloadData($payload), 'json');
+        $actualPayloadSerialized   = $this->serializer->serialize($payload, 'json');
+
+        $this->assertEquals(
+            json_decode($expectedPayloadSerialized, true),
+            json_decode($actualPayloadSerialized, true)
+        );
     }
 
     /**

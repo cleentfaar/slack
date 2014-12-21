@@ -29,17 +29,8 @@ class AttachmentTest extends AbstractModelTest
             'fallback' => 'fallback text',
             'text'     => 'normal text',
             'pre_text' => 'pre text',
-            'fields' => [
-                [
-                    'title' => 'first title',
-                    'short' => true,
-                    'value' => 'field1',
-                ],
-                [
-                    'title' => 'second title',
-                    'short' => false,
-                    'value' => 'field2',
-                ],
+            'fields'   => [
+                'foo' => 'bar',
             ],
         ];
     }
@@ -63,13 +54,6 @@ class AttachmentTest extends AbstractModelTest
         $this->assertEquals($expectedData['fallback'], $actualModel->getFallback());
         $this->assertEquals($expectedData['pre_text'], $actualModel->getPreText());
         $this->assertEquals($expectedData['text'], $actualModel->getText());
-
-        $actualFields = $actualModel->getFields();
-        $this->assertCount(count($expectedData['fields']), $actualFields);
-        foreach ($expectedData['fields'] as $x => $attachmentFieldData) {
-            $this->assertEquals($attachmentFieldData['title'], $actualFields[$x]->getTitle());
-            $this->assertEquals($attachmentFieldData['short'], $actualFields[$x]->getShort());
-            $this->assertEquals($attachmentFieldData['value'], $actualFields[$x]->getValue());
-        }
+        $this->assertEquals($expectedData['fields'], $actualModel->getFields()->toArray());
     }
 }

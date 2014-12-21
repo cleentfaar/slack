@@ -12,6 +12,7 @@
 namespace CL\Slack\Payload;
 
 use CL\Slack\Model\Attachment;
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -85,11 +86,16 @@ class ChatPostMessagePayload extends AbstractPostPayload
     private $parse;
 
     /**
-     * @var Attachment[]
+     * @var ArrayCollection|Attachment[]
      *
-     * @Serializer\Type("array<CL\Slack\Model\Attachment>")
+     * @Serializer\Type("ArrayCollection<CL\Slack\Model\Attachment>")
      */
     private $attachments;
+
+    public function __construct()
+    {
+        $this->attachments = new ArrayCollection();
+    }
 
     /**
      * Sets the channel to send the message to.
@@ -262,7 +268,7 @@ class ChatPostMessagePayload extends AbstractPostPayload
     }
 
     /**
-     * @return Attachment[]
+     * @return Attachment[]|ArrayCollection
      */
     public function getAttachments()
     {
@@ -274,7 +280,7 @@ class ChatPostMessagePayload extends AbstractPostPayload
      */
     public function addAttachment($attachment)
     {
-        $this->attachments[] = $attachment;
+        $this->attachments->add($attachment);
     }
 
     /**

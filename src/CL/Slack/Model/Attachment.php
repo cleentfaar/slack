@@ -11,6 +11,7 @@
 
 namespace CL\Slack\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -47,11 +48,16 @@ class Attachment extends AbstractModel
     private $color;
 
     /**
-     * @var AttachmentField[]
+     * @var array
      *
-     * @Serializer\Type("array<CL\Slack\Model\AttachmentField>")
+     * @Serializer\Type("ArrayCollection<string, string>")
      */
-    private $fields = [];
+    private $fields;
+
+    public function __construct()
+    {
+        $this->fields = new ArrayCollection();
+    }
 
     /**
      * @param string $fallback Required text summary of the attachment that is shown by clients that understand attachments
@@ -120,18 +126,33 @@ class Attachment extends AbstractModel
     }
 
     /**
-     * @param AttachmentField[] $fields
+     * @param string $key
+     * @param mixed  $value
      */
-    public function setFields(array $fields)
+    public function setField($key, $value)
     {
-        $this->fields = $fields;
+        $this->fields[$key] = $value;
     }
 
     /**
-     * @return AttachmentField[]
+     * @return ArrayCollection
      */
     public function getFields()
     {
         return $this->fields;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    public function getField($key)
+    {
+        if (!array_key_exists($key, $this->fields)) {
+            throw new \InvalidArgumentException(sprintf('There is no field with that name: %s', $key));
+        }
+
+        return $this->fields[$key];
     }
 }
