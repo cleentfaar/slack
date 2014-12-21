@@ -22,8 +22,6 @@ class FilesUploadPayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Assert\NotBlank
      */
     private $content;
 
@@ -49,11 +47,12 @@ class FilesUploadPayload extends AbstractPayload
     private $title;
 
     /**
-     * @var string|null
+     * @var array
      *
      * @Serializer\Type("string")
+     * @Serializer\Accessor(setter="setImplodedChannels", getter="getImplodedChannels")
      */
-    private $channels;
+    private $channels = [];
 
     /**
      * @param string $content
@@ -72,21 +71,45 @@ class FilesUploadPayload extends AbstractPayload
     }
 
     /**
-     * @param string|null $channels
+     * @param array $channels
      */
-    public function setChannels($channels)
+    public function setChannels(array $channels)
     {
         $this->channels = $channels;
     }
 
     /**
-     * @return string|null
+     * @param string $channel
+     */
+    public function addChannel($channel)
+    {
+        $this->channels[] = $channel;
+    }
+
+    /**
+     * @return array
      */
     public function getChannels()
     {
         return $this->channels;
     }
 
+    /**
+     * @param string $channels
+     */
+    public function setImplodedChannels($channels)
+    {
+        $this->channels = explode(',', $channels);
+    }
+
+    /**
+     * @return string
+     */
+    public function getImplodedChannels()
+    {
+        return implode(',', $this->channels);
+    }
+    
     /**
      * @param string|null $filename
      */

@@ -56,11 +56,12 @@ class FilesListPayload extends AbstractPayload
     private $page;
 
     /**
-     * @var string
+     * @var array
      *
      * @Serializer\Type("string")
+     * @Serializer\Accessor(setter="setImplodedTypes", getter="getImplodedTypes")
      */
-    private $types;
+    private $types = ['all'];
 
     /**
      * Filter files created by a single user.
@@ -159,22 +160,37 @@ class FilesListPayload extends AbstractPayload
      * zips - Zip files
      * pdfs - PDF files
      *
-     * You can pass multiple values in the types argument, like types=posts,snippets.
      * The default value is all, which does not filter the list.
      *
-     * @param string $types
+     * @param array $types
      */
-    public function setTypes($types)
+    public function setTypes(array $types)
     {
         $this->types = $types;
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getTypes()
     {
         return $this->types;
+    }
+
+    /**
+     * @param string $types
+     */
+    public function setImplodedTypes($types)
+    {
+        $this->types = explode(',', $types);
+    }
+
+    /**
+     * @return string
+     */
+    public function getImplodedTypes()
+    {
+        return implode(',', $this->types);
     }
 
     /**
