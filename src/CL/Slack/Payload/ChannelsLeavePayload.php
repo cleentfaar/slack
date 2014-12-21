@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.leave
  */
-class ChannelsLeavePayload extends AbstractPostPayload
+class ChannelsLeavePayload extends AbstractPayload
 {
     /**
      * @var string

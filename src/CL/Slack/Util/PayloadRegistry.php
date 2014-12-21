@@ -14,6 +14,9 @@ namespace CL\Slack\Util;
 use CL\Slack\Payload;
 use CL\Slack\Payload\PayloadInterface;
 
+/**
+ * @author Cas Leentfaar <info@casleentfaar.com>
+ */
 class PayloadRegistry
 {
     /**

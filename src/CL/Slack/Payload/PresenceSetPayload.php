@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/presence.set
  */
-class PresenceSetPayload extends AbstractPostPayload
+class PresenceSetPayload extends AbstractPayload
 {
     /**
      * @var string

@@ -18,7 +18,7 @@ namespace CL\Slack\Payload;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.create
  */
-class ChannelsCreatePayload extends AbstractPostPayload
+class ChannelsCreatePayload extends AbstractPayload
 {
     /**
      * @var string

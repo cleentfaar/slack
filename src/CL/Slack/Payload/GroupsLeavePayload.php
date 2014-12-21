@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/groups.leave
  */
-class GroupsLeavePayload extends AbstractPostPayload
+class GroupsLeavePayload extends AbstractPayload
 {
     /**
      * Slack seems to want to call this option "channel", but I can't agree with that (the format of the value is different),

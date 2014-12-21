@@ -13,6 +13,9 @@ namespace CL\Slack\Transport\Events;
 
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * @author Cas Leentfaar <info@casleentfaar.com>
+ */
 class ResponseEvent extends Event
 {
     /**

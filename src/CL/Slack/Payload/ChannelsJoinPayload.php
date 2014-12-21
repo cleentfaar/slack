@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.join
  */
-class ChannelsJoinPayload extends AbstractPostPayload
+class ChannelsJoinPayload extends AbstractPayload
 {
     /**
      * @var string

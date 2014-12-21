@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/im.open
  */
-class ImOpenPayload extends AbstractPostPayload
+class ImOpenPayload extends AbstractPayload
 {
     /**
      * @var string

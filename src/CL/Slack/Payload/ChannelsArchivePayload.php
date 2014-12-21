@@ -20,7 +20,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.archive
  */
-class ChannelsArchivePayload extends AbstractPostPayload
+class ChannelsArchivePayload extends AbstractPayload
 {
     /**
      * @var string

@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see    Official documentation at https://api.slack.com/methods/groups.rename
  */
-class GroupsRenamePayload extends AbstractPostPayload
+class GroupsRenamePayload extends AbstractPayload
 {
     /**
      * Slack seems to want to call this option "channel", but I can't agree with that (the format of the value is different),

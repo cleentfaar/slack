@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/oauth.access
  */
-class OauthAccessPayload extends AbstractPostPayload
+class OauthAccessPayload extends AbstractPayload
 {
     /**
      * @var string

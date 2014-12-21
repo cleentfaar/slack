@@ -14,6 +14,7 @@ namespace CL\Slack\Transport;
 use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\PayloadResponseInterface;
+use CL\Slack\Util\PayloadSerializer;
 use CL\Slack\Transport\Events\ResponseEvent;
 use CL\Slack\Transport\Events\RequestEvent;
 use GuzzleHttp\Client;
@@ -21,11 +22,12 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Post\PostBody;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * @author Cas Leentfaar <info@casleentfaar.com>
+ */
 class ApiClient
 {
     /**
@@ -51,7 +53,7 @@ class ApiClient
     private $token;
 
     /**
-     * @var SerializerInterface
+     * @var PayloadSerializer
      */
     private $serializer;
 
@@ -67,18 +69,18 @@ class ApiClient
 
     /**
      * @param string|null                   $token
-     * @param SerializerInterface|null      $serializer
+     * @param PayloadSerializer|null        $serializer
      * @param ClientInterface|null          $client
      * @param EventDispatcherInterface|null $eventDispatcher
      */
     public function __construct(
         $token = null,
-        SerializerInterface $serializer = null,
+        PayloadSerializer $serializer = null,
         ClientInterface $client = null,
         EventDispatcherInterface $eventDispatcher = null
     ) {
         $this->token           = $token;
-        $this->serializer      = $serializer ?: SerializerBuilder::create()->build();
+        $this->serializer      = $serializer;
         $this->client          = $client ?: new Client();
         $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher();
     }
@@ -100,10 +102,10 @@ class ApiClient
                 throw new \InvalidArgumentException('You must supply a token to send a payload, since you did not provide one during construction');
             }
 
-            $serializedPayload = $this->serializePayload($payload);
+            $serializedPayload = $this->serializer->serializePayload($payload);
             $responseData      = $this->doSend($payload->getMethod(), $serializedPayload, $token);
 
-            return $this->deserializeResponse($responseData, $payload->getResponseClass());
+            return $this->serializer->deserializePayloadResponse($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
             throw new SlackException('Failed to send payload to the Slack API', null, $e);
         }
@@ -139,6 +141,8 @@ class ApiClient
     private function doSend($method, array $data, $token = null)
     {
         try {
+            $data['token'] = $token ?: $this->token;
+
             $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
 
             $request = $this->createRequest($method, $data, $token);
@@ -167,60 +171,21 @@ class ApiClient
     }
 
     /**
-     * @param array  $responseData
-     * @param string $responseClass
-     *
-     * @throws SlackException
-     *
-     * @return PayloadResponseInterface
-     */
-    private function deserializeResponse(array $responseData, $responseClass)
-    {
-        $deserializedResponse = $this->serializer->deserialize(json_encode($responseData), $responseClass, 'json');
-
-        if (!is_object($deserializedResponse) || !($deserializedResponse instanceof PayloadResponseInterface)) {
-            throw new SlackException('The response could not be deserialized into a PayloadResponse object');
-        }
-
-        return $deserializedResponse;
-    }
-
-    /**
      * @param string      $method
      * @param array       $payload
-     * @param string|null $token
-     * @param string      $requestMethod
      *
      * @return RequestInterface
      */
-    private function createRequest($method, array $payload, $token = null, $requestMethod = 'GET')
+    private function createRequest($method, array $payload)
     {
-        $payload['token'] = $token ?: $this->token;
+        $request = $this->client->createRequest('POST');
+        $request->setUrl(self::API_BASE_URL . $method);
 
-        if ($requestMethod !== 'GET') {
-            $request = $this->client->createRequest('POST');
-            $request->setUrl(self::API_BASE_URL . $method);
+        $body = new PostBody();
+        $body->replaceFields($payload);
 
-            $body = new PostBody();
-            $body->replaceFields($payload);
-
-            $request->setBody($body);
-        } else {
-            $request = $this->client->createRequest('GET');
-            $request->setUrl(self::API_BASE_URL . $method);
-            $request->setQuery($payload);
-        }
+        $request->setBody($body);
 
         return $request;
-    }
-
-    /**
-     * @param PayloadInterface $payload
-     *
-     * @return array
-     */
-    private function serializePayload(PayloadInterface $payload)
-    {
-        return json_decode($this->serializer->serialize($payload, 'json'), true);
     }
 }

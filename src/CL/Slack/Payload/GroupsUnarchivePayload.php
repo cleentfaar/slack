@@ -16,7 +16,7 @@ namespace CL\Slack\Payload;
  *
  * @see Official documentation at https://api.slack.com/methods/groups.unarchive
  */
-class GroupsUnarchivePayload extends AbstractPostPayload
+class GroupsUnarchivePayload extends AbstractPayload
 {
     /**
      * @var string

@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/groups.mark
  */
-class GroupsMarkPayload extends AbstractPostPayload
+class GroupsMarkPayload extends AbstractPayload
 {
 
     /**

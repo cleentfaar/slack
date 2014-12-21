@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/files.upload
  */
-class FilesUploadPayload extends AbstractPostPayload
+class FilesUploadPayload extends AbstractPayload
 {
     /**
      * @var string

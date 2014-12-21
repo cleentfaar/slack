@@ -16,7 +16,7 @@ namespace CL\Slack\Payload;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.unarchive
  */
-class ChannelsUnarchivePayload extends AbstractPostPayload
+class ChannelsUnarchivePayload extends AbstractPayload
 {
     /**
      * @var string

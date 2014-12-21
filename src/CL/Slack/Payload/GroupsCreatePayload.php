@@ -16,7 +16,7 @@ namespace CL\Slack\Payload;
  *
  * @see Official documentation at https://api.slack.com/methods/groups.create
  */
-class GroupsCreatePayload extends AbstractPostPayload
+class GroupsCreatePayload extends AbstractPayload
 {
     /**
      * @var string Name of group to create

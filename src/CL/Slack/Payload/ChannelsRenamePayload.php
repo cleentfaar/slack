@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see    Official documentation at https://api.slack.com/methods/channels.rename
  */
-class ChannelsRenamePayload extends AbstractPostPayload
+class ChannelsRenamePayload extends AbstractPayload
 {
     /**
      * @var string

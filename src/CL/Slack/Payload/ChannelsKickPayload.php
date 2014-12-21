@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.kick
  */
-class ChannelsKickPayload extends AbstractPostPayload
+class ChannelsKickPayload extends AbstractPayload
 {
     /**
      * @var string

@@ -59,29 +59,27 @@ class ApiClientTest extends AbstractTestCase
         $self                = $this;
         $mockPayloadResponse = $this->getMock('CL\Slack\Payload\PayloadResponseInterface');
 
-        $serializerBuilder = $this->getMockBuilder('JMS\Serializer\Serializer');
-        $serializerBuilder->disableOriginalConstructor();
-        $serializer = $serializerBuilder->getMock();
-        $serializer->expects($this->once())->method('serialize')->willReturn(json_encode($mockRequestData));
-        $serializer->expects($this->once())->method('deserialize')->willReturn($mockPayloadResponse);
+        $payloadSerializer = $this->getMock('CL\Slack\Util\PayloadSerializer');
+        $payloadSerializer->expects($this->once())->method('serializePayload')->willReturn($mockRequestData);
+        $payloadSerializer->expects($this->once())->method('deserializePayloadResponse')->willReturn($mockPayloadResponse);
 
         /** @var PayloadInterface|\PHPUnit_Framework_MockObject_MockObject $mockPayload */
-        $mockPayload = $this->getMock('CL\Slack\Payload\AbstractGetPayload');
+        $mockPayload = $this->getMock('CL\Slack\Payload\AbstractPayload');
         $mockPayload->expects($this->any())->method('getMethod')->willReturn('mock');
         $mockPayload->expects($this->any())->method('getResponseClass')->willReturn('CL\Slack\Tests\Payload\MockPayloadResponse');
 
         $mockResponseBody = json_encode($mockResponseData);
         $mock->addResponse(sprintf(
-                               "HTTP/1.1 200 OK\r\nContent-Length: %d\r\n\r\n%s",
-                               strlen($mockResponseBody),
-                               $mockResponseBody
-                           ));
+            "HTTP/1.1 200 OK\r\nContent-Length: %d\r\n\r\n%s",
+            strlen($mockResponseBody),
+            $mockResponseBody
+        ));
 
         $client = new Client();
         $client->getEmitter()->attach($history);
         $client->getEmitter()->attach($mock);
 
-        $apiClient = new ApiClient(self::TOKEN, $serializer, $client);
+        $apiClient = new ApiClient(self::TOKEN, $payloadSerializer, $client);
         $apiClient->addListener(ApiClient::EVENT_REQUEST, function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
             $self->assertEquals($mockRequestData, $event->getRawPayload());
@@ -90,19 +88,12 @@ class ApiClientTest extends AbstractTestCase
             $eventsDispatched[ApiClient::EVENT_RESPONSE] = true;
             $self->assertEquals($mockResponseData, $event->getRawPayloadResponse());
         });
+
         $apiClient->send($mockPayload);
 
-        $lastRequest = $history->getLastRequest();
-
-        if ($lastRequest->getMethod() !== 'POST') {
-            parse_str((string)$lastRequest->getQuery(), $lastRequestContent);
-            $expectedUrl        = ApiClient::API_BASE_URL . 'mock?' . http_build_query($mockRequestData);
-            $lastRequestContent = $lastRequest->getQuery()->toArray();
-        } else {
-            $expectedUrl        = ApiClient::API_BASE_URL . 'mock';
-            $lastRequestContent = json_decode($lastRequest->getBody(), true);
-        }
-
+        $lastRequest         = $history->getLastRequest();
+        $expectedUrl         = ApiClient::API_BASE_URL . 'mock';
+        parse_str((string) $lastRequest->getBody(), $lastRequestContent);
         $lastResponseContent = json_decode($history->getLastResponse()->getBody(), true);
 
         $this->assertEquals($mockRequestData, $lastRequestContent);

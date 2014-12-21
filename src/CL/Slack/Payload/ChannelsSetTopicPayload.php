@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/channels.setTopic
  */
-class ChannelsSetTopicPayload extends AbstractPostPayload
+class ChannelsSetTopicPayload extends AbstractPayload
 {
     /**
      * @var string

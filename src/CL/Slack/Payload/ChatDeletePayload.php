@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @see Official documentation at https://api.slack.com/methods/chat.delete
  */
-class ChatDeletePayload extends AbstractPostPayload
+class ChatDeletePayload extends AbstractPayload
 {
     /**
      * @var string
