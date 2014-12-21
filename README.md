@@ -8,6 +8,7 @@ Access your Slack Team's API through PHP objects.
 [![Latest Version](https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square)](https://github.com/cleentfaar/slack/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/cleentfaar/slack.svg?style=flat-square)](https://packagist.org/packages/cleentfaar/slack)
 
+
 ### Documentation
 
 - [Getting started](https://github.com/cleentfaar/slack/tree/master/src/CL/Slack/Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
