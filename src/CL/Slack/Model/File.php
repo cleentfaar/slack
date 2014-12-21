@@ -279,7 +279,7 @@ class File extends AbstractModel
     }
 
     /**
-     * @return float The (Slack) timestamp on which the file was posted
+     * @return \DateTime The timestamp on which the file was posted
      */
     public function getTimestamp()
     {
@@ -329,7 +329,7 @@ class File extends AbstractModel
     /**
      * @return bool|null
      */
-    public function getEditable()
+    public function isEditable()
     {
         return $this->editable;
     }
@@ -367,25 +367,25 @@ class File extends AbstractModel
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getIsExternal()
+    public function isExternal()
     {
         return $this->isExternal;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getIsPublic()
+    public function isPublic()
     {
         return $this->isPublic;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getIsStarred()
+    public function isStarred()
     {
         return $this->isStarred;
     }
