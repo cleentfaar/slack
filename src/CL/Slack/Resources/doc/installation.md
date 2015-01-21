@@ -7,13 +7,8 @@ First you need to get a hold of this library. There are two ways of doing this:
 
 #### Method a) Using composer
 
-Add the following to your ``composer.json`` (see http://getcomposer.org/), and jump to step 3.
+Install Composer (see http://getcomposer.org/), then run `$ composer require cleentfaar/slack ~0.12`, and jump to step 3.
 
-```json
-"require" :  {
-    "cleentfaar/slack": "~0.11"
-}
-```
 
 #### Method b) Using submodules
 
@@ -23,10 +18,6 @@ Run the following commands to bring in the needed libraries as submodules.
 git submodule add https://github.com/cleentfaar/slack.git vendor/bundles/CL/Slack
 ```
 
-
-## Step 2) Register the namespaces
-
-If you installed the bundle by composer, use the created autoload.php  (jump to step 3).
 Add the following two namespace entries to the `registerNamespaces` call in your autoloader:
 
 ``` php
@@ -40,7 +31,6 @@ $loader->registerNamespaces(array(
 ```
 
 
-### Step 3) Start slacking!
+### Step 3) Start using this package!
 
-Ready to become a professional slacker :smile:? Check out the [usage documentation](usage.md) or the more detailed 
-[method reference](methods/index.md)!
+Check out the [usage documentation](https://github.com/cleentfaar/slack/tree/master/Resources/doc/usage.md)!
