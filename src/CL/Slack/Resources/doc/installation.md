@@ -21,7 +21,6 @@ git submodule add https://github.com/cleentfaar/slack.git vendor/bundles/CL/Slac
 Add the following two namespace entries to the `registerNamespaces` call in your autoloader:
 
 ``` php
-<?php
 // app/autoload.php
 $loader->registerNamespaces(array(
     // ...
@@ -33,4 +32,4 @@ $loader->registerNamespaces(array(
 
 ### Step 3) Start using this package!
 
-Check out the [usage documentation](https://github.com/cleentfaar/slack/tree/master/Resources/doc/usage.md)!
+Check out the [usage documentation](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md)!
