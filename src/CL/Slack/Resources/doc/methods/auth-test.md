@@ -5,8 +5,8 @@ Checks authentication and tells you more about token's user.
 | | |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|
 | Official documentation  | https://api.slack.com/methods/auth.test                                                                        |
-| `Payload` class         | [AuthTestPayload](https://github.com/cleentfaar/slack/blob/master/Payload/AuthTestPayload.php)                 |
-| `PayloadResponse` class | [AuthTestPayloadResponse](https://github.com/cleentfaar/slack/blob/master/Payload/AuthTestPayloadResponse.php) |
+| `Payload` class         | [AuthTestPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/AuthTestPayload.php)                 |
+| `PayloadResponse` class | [AuthTestPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/AuthTestPayloadResponse.php) |
 
 
 ### Usage
