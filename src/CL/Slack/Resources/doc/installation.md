@@ -33,4 +33,4 @@ $loader->registerNamespaces(array(
 
 ### Step 3) Start using this package!
 
-Check out the [usage documentation](https://github.com/cleentfaar/slack/tree/master/Resources/doc/usage.md)!
+Check out the [usage documentation](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md)!
