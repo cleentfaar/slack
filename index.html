@@ -1,100 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+    <title></title>
 
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/css/highlight.dark.css">
-        <link rel="stylesheet" href="/css/main.css">
-    </head>
-    <body>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/highlight.dark.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
 
-        <header class="navbar navbar-default navbar-fixed-top">
+    <header class="navbar navbar-default navbar-fixed-top">
 
-            <a class="navbar-brand" href="/">
-                The title
-                <small class="hidden-xs hidden-sm">
-                    This is the default subtitle!
-                </small>
-            </a>
+      <a class="navbar-brand" href="/">
+        The title
+        <small class="hidden-xs hidden-sm">
+          This is the default subtitle!
+        </small>
+      </a>
 
-            
-        </header>
 
-        <main class="container">
-            <div class="row">
+    </header>
 
-                
-                <section id="content" class="col-sm-12">
-                    <h1>Slack API library <a href="https://github.com/cleentfaar/slack/blob/master/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" /></a></h1>
-<p>Access your Slack Team's API through PHP objects.</p>
-<p><a href="https://travis-ci.org/cleentfaar/slack"><img alt="Build Status" src="https://img.shields.io/travis/cleentfaar/slack/master.svg?style=flat-square" /></a>
-<a href="https://scrutinizer-ci.com/g/cleentfaar/slack/code-structure"><img alt="Coverage Status" src="https://img.shields.io/scrutinizer/coverage/g/cleentfaar/slack.svg?style=flat-square" /></a>
-<a href="https://scrutinizer-ci.com/g/cleentfaar/slack"><img alt="Quality Score" src="https://img.shields.io/scrutinizer/g/cleentfaar/slack.svg?style=flat-square" /></a>
-<a href="https://github.com/cleentfaar/slack/releases"><img alt="Latest Version" src="https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square" /></a>
-<a href="https://packagist.org/packages/cleentfaar/slack"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/cleentfaar/slack.svg?style=flat-square" /></a></p>
-<h3>Documentation</h3>
-<ul>
-<li><a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/getting-started.html">Getting started</a> - Before you use this library, you need to generate a token or setup oAuth.</li>
-<li><a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/installation.html">Installation</a> - Information on installing this library through composer or as a git submodule.</li>
-<li><a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.html">Usage</a> - A few simple examples on how to access the Slack API using this library</li>
-<li><a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/index.html">API methods</a> - Detailed information on each of Slack's API methods and how to access them using this library's <code>Payload</code> classes.</li>
-</ul>
-<h3>Features</h3>
-<ul>
-<li>Access all of Slack's API methods with dedicated payload classes (see <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.html">usage documentation</a>)</li>
-<li>Payloads and responses follow the same definitions as described in the <a href="https://api.slack.com">official documentation</a> (with a few exceptions where I think it would make a better distinction).</li>
-<li>Data between you and Slack is serialized using the <a href="https://github.com/jms/serializer">JMS Serializer</a> package,
-allowing fully spec-ed PHP objects to be used for working with the API.</li>
-<li>Code has been highly abstracted to support re-use in more specific implementations (see <a href="https://github.com/cleentfaar/CLSlackBundle">SlackBundle</a>)</li>
-</ul>
-<h3>Further reading</h3>
-<p>I've done my best to include links to the official documentation in the code where appropriate.</p>
-<p>Still, you should really check out the <a href="https://api.slack.com/">API documentation</a> of Slack yourself to get a better
-understanding of exactly what each API method does and what data it will return.</p>
-<p>If you feel there is some part of this package that you would like to see documented in more detail, please don't hesitate
-to create an issue for it.</p>
-<h3>Contributing</h3>
-<p>Got a good idea for this project? Found a nasty bug that needs fixing? That's great!
-Before submitting your PR though, make sure it complies with the <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/contributing.html">contributing guide</a> to
-speed up the merging of your code.</p>
-<h3>Related packages</h3>
-<ul>
-<li><a href="https://github.com/cleentfaar/slack">SlackCli</a> - CLI application for all of the Slack API methods.</li>
-<li><a href="https://github.com/cleentfaar/CLSlackBundle">SlackBundle</a> - Symfony Bundle providing integration with this library package.</li>
-</ul>
-<h3>Attributions</h3>
-<ul>
-<li>The <a href="https://slack.com/">Slack</a> staff, for making an awesome product and very clean API documentation.</li>
-</ul>
-                </section>
+    <main class="container">
+      <div class="row">
 
-            </div>
-        </main>
 
-        <footer>
-            <div class="container">
-                <p class="text-muted">
-                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
-                </p>
-            </div>
-        </footer>
+        <section id="content" class="col-sm-12">
+          <h1>Slack API library
+            <a href="https://github.com/cleentfaar/slack/blob/master/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"/></a></h1>
+          <p>Access your Slack Team's API through PHP objects.</p>
+          <p>
+            <a href="https://travis-ci.org/cleentfaar/slack"><img alt="Build Status" src="https://img.shields.io/travis/cleentfaar/slack/master.svg?style=flat-square"/></a>
+            <a href="https://scrutinizer-ci.com/g/cleentfaar/slack/code-structure"><img alt="Coverage Status" src="https://img.shields.io/scrutinizer/coverage/g/cleentfaar/slack.svg?style=flat-square"/></a>
+            <a href="https://scrutinizer-ci.com/g/cleentfaar/slack"><img alt="Quality Score" src="https://img.shields.io/scrutinizer/g/cleentfaar/slack.svg?style=flat-square"/></a>
+            <a href="https://github.com/cleentfaar/slack/releases"><img alt="Latest Version" src="https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square"/></a>
+            <a href="https://packagist.org/packages/cleentfaar/slack"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/cleentfaar/slack.svg?style=flat-square"/></a>
+          </p>
+          <h3>Documentation</h3>
+          <ul>
+            <li>
+              <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/getting-started.html">Getting started</a> - Before you use this library, you need to generate a token or setup oAuth.
+            </li>
+            <li>
+              <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/installation.html">Installation</a> - Information on installing this library through composer or as a git submodule.
+            </li>
+            <li>
+              <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.html">Usage</a> - A few simple examples on how to access the Slack API using this library
+            </li>
+            <li>
+              <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/index.html">API methods</a> - Detailed information on each of Slack's API methods and how to access them using this library's
+              <code>Payload</code> classes.
+            </li>
+          </ul>
+          <h3>Features</h3>
+          <ul>
+            <li>Access all of Slack's API methods with dedicated payload classes (see
+              <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.html">usage documentation</a>)
+            </li>
+            <li>Payloads and responses follow the same definitions as described in the
+              <a href="https://api.slack.com">official documentation</a> (with a few exceptions where I think it would make a better distinction).
+            </li>
+            <li>Data between you and Slack is serialized using the
+              <a href="https://github.com/jms/serializer">JMS Serializer</a> package,
+              allowing fully spec-ed PHP objects to be used for working with the API.
+            </li>
+            <li>Code has been highly abstracted to support re-use in more specific implementations (see
+              <a href="https://github.com/cleentfaar/CLSlackBundle">SlackBundle</a>)
+            </li>
+          </ul>
+          <h3>Further reading</h3>
+          <p>I've done my best to include links to the official documentation in the code where appropriate.</p>
+          <p>Still, you should really check out the
+            <a href="https://api.slack.com/">API documentation</a> of Slack yourself to get a better
+            understanding of exactly what each API method does and what data it will return.</p>
+          <p>If you feel there is some part of this package that you would like to see documented in more detail, please don't hesitate
+            to create an issue for it.</p>
+          <h3>Contributing</h3>
+          <p>Got a good idea for this project? Found a nasty bug that needs fixing? That's great!
+            Before submitting your PR though, make sure it complies with the
+            <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/contributing.html">contributing guide</a> to
+            speed up the merging of your code.</p>
+          <h3>Related packages</h3>
+          <ul>
+            <li>
+              <a href="https://github.com/cleentfaar/slack">SlackCli</a> - CLI application for all of the Slack API methods.
+            </li>
+            <li>
+              <a href="https://github.com/cleentfaar/CLSlackBundle">SlackBundle</a> - Symfony Bundle providing integration with this library package.
+            </li>
+          </ul>
+          <h3>Attributions</h3>
+          <ul>
+            <li>The
+              <a href="https://slack.com/">Slack</a> staff, for making an awesome product and very clean API documentation.
+            </li>
+          </ul>
+        </section>
 
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+      </div>
+    </main>
 
-        <script>
-            $(function() {
-                $("section>h1").wrap('<div class="page-header" />');
-                // Syntax highlighting
-                hljs.initHighlightingOnLoad();
-            });
-        </script>
+    <footer>
+      <div class="container">
+        <p class="text-muted">
+          website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+        </p>
+      </div>
+    </footer>
 
-    </body>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+    <script>
+      $(function () {
+        $("section>h1").wrap('<div class="page-header" />');
+        // Syntax highlighting
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+  </body>
 </html>

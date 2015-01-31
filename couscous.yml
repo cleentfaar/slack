@@ -2,11 +2,11 @@ template:
     directory: .
 
 github:
-    user: CouscousPHP
+    user: cleentfaar
     repo: Template-Light
 
-title: Couscous Light
-subTitle: An amazing template for Couscous.
+title: Slack
+subTitle: by Cas Leentfaar
 
 # The left menu bar
 menu:
@@ -14,8 +14,4 @@ menu:
         home:
             text: Home page
             # You can use relative urls
-            relativeUrl: /
-        couscous:
-            text: Couscous.io
-            # Or absolute urls
-            absoluteUrl: http://couscous.io
+            relativeUrl: /slack/
