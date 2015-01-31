@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h2>channels.archive</h2>
+<p>Archives a channel.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Official documentation</td>
+<td><a href="https://api.slack.com/methods/channels.archive">https://api.slack.com/methods/channels.archive</a></td>
+</tr>
+<tr>
+<td><code>Payload</code> class</td>
+<td><a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsArchivePayload.php">ChannelsArchivePayload</a></td>
+</tr>
+<tr>
+<td><code>PayloadResponse</code> class</td>
+<td><a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsArchivePayloadResponse.php">ChannelsArchivePayloadResponse</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Usage</h3>
+<pre><code class="language-php">$payload = new ChannelsArchivePayload();
+$payload-&gt;setChannelId('your-channel-id-of-choice-here');
+
+$apiClient = new ApiClient('your-token-here');
+$response  = $apiClient-&gt;send($payload);
+
+if ($response-&gt;isOk()) {
+    // channel has been archived!
+} else {
+    // something went wrong, but what?
+
+    // simple error (Slack's error message)
+    echo $response-&gt;getError();
+
+    // explained error (Slack's explanation of the error, according to the documentation)
+    echo $response-&gt;getErrorExplanation();
+}</code></pre>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

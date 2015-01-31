@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h2>Getting started</h2>
+<p>Before we start talking to the Slack API, you need to have a way of authenticating yourself. There are two ways of doing this.</p>
+<h3>Method a) Generating a token</h3>
+<p>First, login on your Slack Team and <a href="https://api.slack.com/web">get yourself a token</a>.
+This link takes you to the Slack API site which lets you generate an API token for your account (after logging in).
+This is all you need to start working with this library.</p>
+<h3>Method b) Use OAuth2 integration</h3>
+<p>Alternatively, you could submit your project/application to Slack and <a href="https://api.slack.com/docs/oauth">configure OAuth authentication</a>.
+This can be useful if you have a website that will let visitors access the API with their own accounts. Code for dealing
+with OAuth authentication is not included in this library as there are already plenty of good libraries for it here on GitHub.</p>
+<p>However, if you feel you can make a decent OAuth2 extension on top of this library (specifically for connecting with Slack)
+and would like to work together on this, feel free to submit an issue about it.</p>
+<h2>Ready?</h2>
+<p>Check out the <a href="installation.html">installation documentation</a></p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h2>Installation</h2>
+<h3>Step 1) Get the library</h3>
+<p>First you need to get a hold of this library. There are two ways of doing this:</p>
+<h4>Method a) Using composer</h4>
+<p>Install Composer (see <a href="http://getcomposer.org/">http://getcomposer.org/</a>), then run <code>$ composer require cleentfaar/slack ~0.12</code>, and jump to step 3.</p>
+<h4>Method b) Using submodules</h4>
+<p>Run the following commands to bring in the needed libraries as submodules.</p>
+<pre><code class="language-bash">git submodule add https://github.com/cleentfaar/slack.git vendor/bundles/CL/Slack</code></pre>
+<p>Add the following two namespace entries to the <code>registerNamespaces</code> call in your autoloader:</p>
+<pre><code class="language-php">// app/autoload.php
+$loader-&gt;registerNamespaces(array(
+    // ...
+    'CL\Slack' =&gt; __DIR__.'/../vendor/bundles/cleentfaar/slack',
+    // ...
+));</code></pre>
+<h3>Step 3) Start using this package!</h3>
+<p>Check out the <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.html">usage documentation</a>!</p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>
