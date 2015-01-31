@@ -41,7 +41,7 @@ in this case converted from `chat.postMessage`.
 
 All that's left to do now is to send the payload we created. This is very simple as well:
 ```php
-/** @var ChatPostMessagePayloadResponse $response
+/** @var ChatPostMessagePayloadResponse $response */
 $response = $client->send($payload);
 
 // the following is very much up to you, this is just a very simple example

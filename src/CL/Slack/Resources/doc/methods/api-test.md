@@ -5,8 +5,8 @@ Tests passing and receiving arguments and errors from the Slack API.
 | | |
 |-------------------------|--------------------------------------------------------------------------------------------------------------|
 | Official documentation  | https://api.slack.com/methods/api.test                                                                       |
-| `Payload` class         | [ApiTestPayload](https://github.com/cleentfaar/slack/blob/master/Payload/ApiTestPayload.php)                 |
-| `PayloadResponse` class | [ApiTestPayloadResponse](https://github.com/cleentfaar/slack/blob/master/Payload/ApiTestPayloadResponse.php) |
+| `Payload` class         | [ApiTestPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ApiTestPayload.php)                 |
+| `PayloadResponse` class | [ApiTestPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ApiTestPayloadResponse.php) |
 
 
 ### Usage
