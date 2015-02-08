@@ -18,6 +18,7 @@
   ],
   "require": {
     "php": ">=5.4",
+    "ext-curl": "*",
     "jms/serializer": "~0.16",
     "symfony/event-dispatcher": "~2.2",
     "guzzlehttp/guzzle": ">=4.2",
