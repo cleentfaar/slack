@@ -69,13 +69,13 @@ class ApiClient
 
     /**
      * @param string|null                   $token
-     * @param PayloadSerializer|null        $serializer
+     * @param PayloadSerializer             $serializer
      * @param ClientInterface|null          $client
      * @param EventDispatcherInterface|null $eventDispatcher
      */
     public function __construct(
         $token = null,
-        PayloadSerializer $serializer = null,
+        PayloadSerializer $serializer,
         ClientInterface $client = null,
         EventDispatcherInterface $eventDispatcher = null
     ) {
@@ -171,8 +171,8 @@ class ApiClient
     }
 
     /**
-     * @param string      $method
-     * @param array       $payload
+     * @param string $method
+     * @param array  $payload
      *
      * @return RequestInterface
      */
