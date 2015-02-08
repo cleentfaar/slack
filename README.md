@@ -45,7 +45,7 @@ speed up the merging of your code.
 
 ### Related packages
 
-- [SlackCli](https://github.com/cleentfaar/slack) - CLI application for all of the Slack API methods.
+- [Slack CLI](https://github.com/cleentfaar/slack-cli) - CLI application for all of the Slack API methods.
 - [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) - Symfony Bundle providing integration with this library package.
 
 
