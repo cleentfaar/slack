@@ -28,7 +28,7 @@ Most likely you will just want to send some messages to one of your Slack channe
 
 ```php
 $payload = new ChatPostMessagePayload();
-$payload->setChannel('general');
+$payload->setChannel('#general');
 $payload->setMessage('Hello world!');
 ```
 
