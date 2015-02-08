@@ -107,7 +107,7 @@ class ApiClient
 
             return $this->serializer->deserializePayloadResponse($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
-            throw new SlackException('Failed to send payload to the Slack API', null, $e);
+            throw new SlackException('Failed to send payload', null, $e);
         }
     }
 
@@ -150,7 +150,7 @@ class ApiClient
             /** @var ResponseInterface $response */
             $response = $this->client->send($request);
         } catch (\Exception $e) {
-            throw new SlackException('Failed to send raw payload to the Slack API', null, $e);
+            throw new SlackException('Failed to send data to the Slack API', null, $e);
         }
 
         try {
