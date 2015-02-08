@@ -7,7 +7,9 @@ First you need to get a hold of this library. There are two ways of doing this:
 
 #### Method a) Using composer
 
-Install Composer (see http://getcomposer.org/), then run `$ composer require cleentfaar/slack ~0.12`, and jump to step 3.
+1. Install Composer (see http://getcomposer.org/)
+2. Run `$ composer require cleentfaar/slack ~0.12`
+3. Jump to [step 2](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/installation.md#step-2-start-using-this-package).
 
 
 #### Method b) Using submodules
@@ -30,6 +32,6 @@ $loader->registerNamespaces(array(
 ```
 
 
-### Step 3) Start using this package!
+### Step 2) Start using this package!
 
 Check out the [usage documentation](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md)!
