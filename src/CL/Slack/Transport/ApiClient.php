@@ -75,12 +75,12 @@ class ApiClient
      */
     public function __construct(
         $token = null,
-        PayloadSerializer $serializer,
+        PayloadSerializer $serializer = null,
         ClientInterface $client = null,
         EventDispatcherInterface $eventDispatcher = null
     ) {
         $this->token           = $token;
-        $this->serializer      = $serializer;
+        $this->serializer      = $serializer ?: new PayloadSerializer();
         $this->client          = $client ?: new Client();
         $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher();
     }
