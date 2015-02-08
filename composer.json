@@ -1,6 +1,7 @@
 {
   "name": "cleentfaar/slack",
-  "description": "A PHP library providing easy access to the Slack API",
+  "description": "Access your Slack Team's API through PHP objects",
+  "homepage": "http://cleentfaar.github.io/slack/",
   "keywords": [
     "slack",
     "slack api",
@@ -20,6 +21,7 @@
     "jms/serializer": "~0.16",
     "symfony/event-dispatcher": "~2.2",
     "guzzlehttp/guzzle": ">=4.2",
+    "doctrine/annotations": "~1.2",
     "doctrine/collections": "~1.2"
   },
   "require-dev": {

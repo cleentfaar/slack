@@ -13,6 +13,7 @@ namespace CL\Slack\Util;
 
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\PayloadResponseInterface;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 
@@ -31,6 +32,11 @@ class PayloadSerializer
      */
     public function __construct(SerializerInterface $serializer = null)
     {
+        if (!AnnotationRegistry::loadAnnotationClass('CL\Slack\Payload\AuthTestPayload')) {
+            // temporary workaround to reduce bootstrapping
+            AnnotationRegistry::registerLoader('class_exists');
+        }
+        
         $this->serializer = $serializer ?: SerializerBuilder::create()->build();
     }
 

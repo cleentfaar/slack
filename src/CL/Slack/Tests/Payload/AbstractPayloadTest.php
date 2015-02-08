@@ -12,6 +12,7 @@
 namespace CL\Slack\Tests\Payload;
 
 use CL\Slack\Payload\PayloadInterface;
+use CL\Slack\Util\PayloadSerializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 
@@ -21,12 +22,18 @@ use JMS\Serializer\SerializerInterface;
 abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @var PayloadSerializer
+     */
+    private $payloadSerializer;
+
+    /**
      * @var SerializerInterface
      */
     private $serializer;
 
     protected function setUp()
     {
+        $this->payloadSerializer = new PayloadSerializer();
         $this->serializer = SerializerBuilder::create()->build();
     }
 
@@ -38,7 +45,7 @@ abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(class_exists($payload->getResponseClass()));
 
         $expectedPayloadSerialized = $this->serializer->serialize($this->getExpectedPayloadData($payload), 'json');
-        $actualPayloadSerialized   = $this->serializer->serialize($payload, 'json');
+        $actualPayloadSerialized   = json_encode($this->payloadSerializer->serializePayload($payload));
 
         $this->assertEquals(
             json_decode($expectedPayloadSerialized, true),
