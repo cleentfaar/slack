@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CL\\Slack\\": "src/"
+      "CL\\Slack\\": "src/CL/Slack/"
     }
   },
   "config": {
