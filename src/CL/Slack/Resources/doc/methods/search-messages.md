@@ -2,7 +2,11 @@
 
 Returns messages matching a search query.
 
-Official documentation: https://api.slack.com/methods/search.messages
+| | |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| Official documentation  | https://api.slack.com/methods/search.messages                                                                                                  |
+| `Payload` class         | [SearchMessagesPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/SearchMessagesPayload.php)                             |
+| `PayloadResponse` class | [SearchMessagesPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/SearchMessagesPayloadResponse.php)             |
 
 
 ### Usage

@@ -1,12 +1,12 @@
-## channels.invite
+## channels.kick
 
-Invites a user to a channel. The token's user must be a member of the channel.
+This method allows a user to remove another member from a team channel.
 
 | | |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| Official documentation  | https://api.slack.com/methods/channels.invite                                                                                             |
-| `Payload` class         | [ChannelsInvitePayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsInvitePayload.php)                   |
-| `PayloadResponse` class | [ChannelsInvitePayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsInvitePayloadResponse.php)   |
+| Official documentation  | https://api.slack.com/methods/channels.kick                                                                                               |
+| `Payload` class         | [ChannelsKickPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsKickPayload.php)                       |
+| `PayloadResponse` class | [ChannelsKickPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsKickPayloadResponse.php)       |
 
 
 ### Usage

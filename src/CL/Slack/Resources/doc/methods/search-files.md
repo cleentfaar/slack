@@ -1,8 +1,12 @@
 ## search.files
 
-Returns files matching a search query.
+This method allows to to search both messages and files in a single call.
 
-Official documentation: https://api.slack.com/methods/search.files
+| | |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| Official documentation  | https://api.slack.com/methods/search.files                                                                                                  |
+| `Payload` class         | [SearchFilesPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/SearchFilesPayload.php)                             |
+| `PayloadResponse` class | [SearchFilesPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/SearchFilesPayloadResponse.php)             |
 
 
 ### Usage

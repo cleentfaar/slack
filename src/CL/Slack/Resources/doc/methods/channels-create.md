@@ -5,8 +5,8 @@ Creates a new channel.
 | | |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | Official documentation  | https://api.slack.com/methods/channels.create                                                                                             |
-| `Payload` class         | [ChannelsArchivePayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsCreatePayload.php)                  |
-| `PayloadResponse` class | [ChannelsArchivePayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsCreatePayloadResponse.php)  |
+| `Payload` class         | [ChannelsCreatePayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsCreatePayload.php)                   |
+| `PayloadResponse` class | [ChannelsCreatePayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsCreatePayloadResponse.php)   |
 
 
 ### Usage

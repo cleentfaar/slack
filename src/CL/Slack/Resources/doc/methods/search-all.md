@@ -1,8 +1,12 @@
 ## search.all
 
-This method allows to to search both messages and files in a single call.
+This method updates a message in a channel.
 
-Official documentation: https://api.slack.com/methods/search.all
+| | |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| Official documentation  | https://api.slack.com/methods/search.all                                                                                                  |
+| `Payload` class         | [SearchAllPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/SearchAllPayload.php)                             |
+| `PayloadResponse` class | [SearchAllPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/SearchAllPayloadResponse.php)             |
 
 
 ### Usage

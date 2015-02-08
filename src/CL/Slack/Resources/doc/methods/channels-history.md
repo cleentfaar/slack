@@ -4,7 +4,11 @@ Returns a portion of messages/events from the specified channel. To read the ent
 don't use `setLatest()` or `setOldest()`, and then continue paging using the instructions found in the
 official documentation (link below).
 
-Official documentation: https://api.slack.com/methods/channels.history
+| | |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| Official documentation  | https://api.slack.com/methods/channels.history                                                                                            |
+| `Payload` class         | [ChannelsHistoryPayload](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsHistoryPayload.php)                 |
+| `PayloadResponse` class | [ChannelsHistoryPayloadResponse](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Payload/ChannelsHistoryPayloadResponse.php) |
 
 
 ### Usage
