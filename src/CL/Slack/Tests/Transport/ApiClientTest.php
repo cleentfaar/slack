@@ -13,10 +13,12 @@ namespace CL\Slack\Tests\Transport;
 
 use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
+use CL\Slack\Payload\PayloadResponseInterface;
 use CL\Slack\Tests\AbstractTestCase;
 use CL\Slack\Transport\ApiClient;
 use CL\Slack\Transport\Events\RequestEvent;
 use CL\Slack\Transport\Events\ResponseEvent;
+use CL\Slack\Util\PayloadSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\Subscriber\History;
 use GuzzleHttp\Subscriber\Mock;
@@ -56,12 +58,8 @@ class ApiClientTest extends AbstractTestCase
             'foo' => 'bar',
         ];
 
-        $self                = $this;
-        $mockPayloadResponse = $this->getMock('CL\Slack\Payload\PayloadResponseInterface');
-
-        $payloadSerializer = $this->getMock('CL\Slack\Util\PayloadSerializer');
-        $payloadSerializer->expects($this->once())->method('serializePayload')->willReturn($mockRequestData);
-        $payloadSerializer->expects($this->once())->method('deserializePayloadResponse')->willReturn($mockPayloadResponse);
+        $self              = $this;
+        $payloadSerializer = $this->createPayloadSerializerMock($mockRequestData);
 
         /** @var PayloadInterface|\PHPUnit_Framework_MockObject_MockObject $mockPayload */
         $mockPayload = $this->getMock('CL\Slack\Payload\AbstractPayload');
@@ -91,8 +89,8 @@ class ApiClientTest extends AbstractTestCase
 
         $apiClient->send($mockPayload);
 
-        $lastRequest         = $history->getLastRequest();
-        $expectedUrl         = ApiClient::API_BASE_URL . 'mock';
+        $lastRequest = $history->getLastRequest();
+        $expectedUrl = ApiClient::API_BASE_URL . 'mock';
         parse_str((string) $lastRequest->getBody(), $lastRequestContent);
         $lastResponseContent = json_decode($history->getLastResponse()->getBody(), true);
 
@@ -106,8 +104,9 @@ class ApiClientTest extends AbstractTestCase
 
     public function testSendWithoutAnyToken()
     {
-        $mockPayload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $apiClient   = new ApiClient();
+        $mockPayload       = $this->getMock('CL\Slack\Payload\PayloadInterface');
+        $payloadSerializer = $this->createPayloadSerializerMock([], false);
+        $apiClient         = new ApiClient(null, $payloadSerializer);
         try {
             $apiClient->send($mockPayload);
         } catch (SlackException $e) {
@@ -130,8 +129,30 @@ class ApiClientTest extends AbstractTestCase
      */
     public function testAddListenerForUnknownEvent()
     {
-        $apiClient = new ApiClient();
+        $payloadSerializer = $this->createPayloadSerializerMock([], false);
+        $apiClient         = new ApiClient(null, $payloadSerializer);
+
         $apiClient->addListener('unknown-event', function () {
+            return;
         });
+    }
+
+    /**
+     * @param array $mockRequestData
+     * @param bool  $mockReturns
+     *
+     * @return PayloadSerializer|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createPayloadSerializerMock(array $mockRequestData, $mockReturns = true)
+    {
+        $mockPayloadResponse = $this->getMock('CL\Slack\Payload\PayloadResponseInterface');
+        $payloadSerializer   = $this->getMock('CL\Slack\Util\PayloadSerializer');
+
+        if ($mockReturns) {
+            $payloadSerializer->expects($this->once())->method('serializePayload')->willReturn($mockRequestData);
+            $payloadSerializer->expects($this->once())->method('deserializePayloadResponse')->willReturn($mockPayloadResponse);
+        }
+
+        return $payloadSerializer;
     }
 }
