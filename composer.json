@@ -30,12 +30,11 @@
     "cleentfaar/slack-cli": "Command-line application for interacting with the Slack API"
   },
   "autoload": {
-    "psr-0": {
-      "CL\\Slack": "src/"
+    "psr-4": {
+      "CL\\Slack\\": "src/"
     }
   },
   "config": {
     "bin-dir": "bin"
-  },
-  "target-dir": "CL/Slack"
+  }
 }

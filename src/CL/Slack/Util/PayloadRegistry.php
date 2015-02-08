@@ -64,10 +64,17 @@ class PayloadRegistry
     public function get($method)
     {
         if (!array_key_exists($method, $this->payloads)) {
+            if (!empty($this->payloads)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'There is no payload available for that method (%s), available methods are: %s',
+                    $method,
+                    implode(', ', array_keys($this->payloads))
+                ));
+            }
+            
             throw new \InvalidArgumentException(sprintf(
-                'There is no payload available for that method (%s), available methods are: %s',
-                $method,
-                implode(', ', array_keys($this->payloads))
+                'There is no payload available for that method (%s)',
+                $method
             ));
         }
 
