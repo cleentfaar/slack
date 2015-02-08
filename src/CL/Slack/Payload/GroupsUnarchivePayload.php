@@ -14,7 +14,7 @@ namespace CL\Slack\Payload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/groups.unarchive
+ * @link Official documentation at https://api.slack.com/methods/groups.unarchive
  */
 class GroupsUnarchivePayload extends AbstractPayload
 {

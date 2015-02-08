@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/im.mark
+ * @link Official documentation at https://api.slack.com/methods/im.mark
  */
 class ImMarkPayload extends AbstractPayload
 {

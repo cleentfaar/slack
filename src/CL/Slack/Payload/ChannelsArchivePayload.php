@@ -14,11 +14,9 @@ namespace CL\Slack\Payload;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Payload that triggers the channels.archive-method; archiving a channel.
- *
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.archive
+ * @link Official documentation at https://api.slack.com/methods/channels.archive
  */
 class ChannelsArchivePayload extends AbstractPayload
 {

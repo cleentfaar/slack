@@ -16,7 +16,7 @@ namespace CL\Slack\Payload;
  *
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.create
+ * @link Official documentation at https://api.slack.com/methods/channels.create
  */
 class ChannelsCreatePayload extends AbstractPayload
 {

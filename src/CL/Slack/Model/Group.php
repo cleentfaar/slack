@@ -17,7 +17,8 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
 class Group extends AbstractModel
-{/**
+{
+    /**
      * @var string
      *
      * @Serializer\Type("string")

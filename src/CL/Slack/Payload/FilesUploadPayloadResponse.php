@@ -17,7 +17,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/files.upload
+ * @link Official documentation at https://api.slack.com/methods/files.upload
  */
 class FilesUploadPayloadResponse extends AbstractPayloadResponse
 {

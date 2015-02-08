@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/groups.history
+ * @link Official documentation at https://api.slack.com/methods/groups.history
  */
 class GroupsHistoryPayload extends AbstractPayload
 {

@@ -14,7 +14,7 @@ namespace CL\Slack\Payload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.list
+ * @link Official documentation at https://api.slack.com/methods/channels.list
  */
 class EmojiListPayload extends AbstractPayload
 {

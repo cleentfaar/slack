@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/users.info
+ * @link Official documentation at https://api.slack.com/methods/users.info
  */
 class UsersInfoPayload extends AbstractPayload
 {

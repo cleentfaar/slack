@@ -14,7 +14,7 @@ namespace CL\Slack\Payload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/channels.unarchive
+ * @link Official documentation at https://api.slack.com/methods/channels.unarchive
  */
 class ChannelsUnarchivePayload extends AbstractPayload
 {

@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
- * @see Official documentation at https://api.slack.com/methods/im.history
+ * @link Official documentation at https://api.slack.com/methods/im.history
  */
 class ImHistoryPayload extends AbstractPayload
 {
