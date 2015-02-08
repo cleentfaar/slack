@@ -24,7 +24,7 @@ class PayloadRegistryTest extends AbstractTestCase
      */
     private $payloadRegistry;
 
-    public function __construct()
+    protected function setUp()
     {
         $this->payloadRegistry = new PayloadRegistry();
     }
