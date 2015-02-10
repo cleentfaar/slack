@@ -1,0 +1,6 @@
+CL\Slack\Payload\FilesListPayloadResponse:
+    properties:
+        files:
+            type: array<CL\Slack\Model\File>
+        paging:
+            type: CL\Slack\Model\Paging

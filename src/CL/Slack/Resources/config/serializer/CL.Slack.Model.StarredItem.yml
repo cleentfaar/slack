@@ -1,0 +1,8 @@
+CL\Slack\Model\StarredItem:
+    properties:
+        type:
+            type: string
+        comment:
+            type: string
+        file:
+            type: CL\Slack\Model\File

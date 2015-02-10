@@ -1,0 +1,6 @@
+CL\Slack\Payload\ChannelsInvitePayload:
+    properties:
+        channel:
+            type: string
+        user:
+            type: string

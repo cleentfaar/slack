@@ -1,0 +1,4 @@
+CL\Slack\Payload\ImOpenPayload:
+    properties:
+        user:
+            type: string

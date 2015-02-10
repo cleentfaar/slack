@@ -1,0 +1,10 @@
+CL\Slack\Model\Customizable:
+    properties:
+        value:
+            type: string
+        creator:
+            type: string
+        type:
+            type: string
+        lastSet:
+            type: DateTime<'U'>

@@ -12,7 +12,6 @@
 namespace CL\Slack\Payload;
 
 use CL\Slack\Model\File;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -21,8 +20,6 @@ class FilesInfoPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var File|null
-     *
-     * @Serializer\Type("CL\Slack\Model\File")
      */
     private $file;
 

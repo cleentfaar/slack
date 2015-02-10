@@ -1,0 +1,10 @@
+CL\Slack\Payload\ChannelsHistoryPayload:
+    properties:
+        channel:
+            type: string
+        oldest:
+            type: float
+        latest:
+            type: float
+        count:
+            type: integer

@@ -1,0 +1,4 @@
+CL\Slack\Payload\ChannelsListPayloadResponse:
+    properties:
+        channels:
+            type: array<CL\Slack\Model\Channel>

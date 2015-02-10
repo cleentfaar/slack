@@ -1,0 +1,15 @@
+CL\Slack\Payload\FilesUploadPayload:
+    properties:
+        content:
+            type: string
+        fileType:
+            type: string
+        filename:
+            type: string
+        title:
+            type: string
+        channels:
+            type: string
+            accessor:
+                setter: setChannelsFromString
+                getter: getChannelsAsString

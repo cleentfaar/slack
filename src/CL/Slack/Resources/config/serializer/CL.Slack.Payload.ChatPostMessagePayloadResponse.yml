@@ -1,0 +1,6 @@
+CL\Slack\Payload\ChatPostMessagePayloadResponse:
+    properties:
+        ts:
+            type: float
+        channel:
+            type: string

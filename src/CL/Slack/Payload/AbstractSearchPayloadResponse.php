@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,8 +18,6 @@ abstract class AbstractSearchPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $query;
 

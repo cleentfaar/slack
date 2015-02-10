@@ -1,0 +1,6 @@
+CL\Slack\Payload\SearchAllPayloadResponse:
+    properties:
+        files:
+            type: CL\Slack\Model\FileResult
+        messages:
+            type: CL\Slack\Model\MessageResult

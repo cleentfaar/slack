@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,43 +18,31 @@ class Channel extends SimpleChannel
 {
     /**
      * @var SimpleMessage
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
      */
     private $latest;
 
     /**
      * @var float
-     *
-     * @Serializer\Type("float")
      */
     private $lastRead;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $isMember;
 
     /**
      * @var array<string>
-     *
-     * @Serializer\Type("array<string>")
      */
     private $members = [];
 
     /**
      * @var Customizable
-     *
-     * @Serializer\Type("CL\Slack\Model\Customizable")
      */
     private $topic;
 
     /**
      * @var Customizable
-     *
-     * @Serializer\Type("CL\Slack\Model\Customizable")
      */
     private $purpose;
 
@@ -79,7 +65,7 @@ class Channel extends SimpleChannel
     /**
      * @return SimpleMessage The latest message in the channel.
      */
-    public function getLatestMessage()
+    public function getLatest()
     {
         return $this->latest;
     }

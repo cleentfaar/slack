@@ -1,0 +1,18 @@
+CL\Slack\Payload\FilesListPayload:
+    properties:
+        user:
+            type: string
+        tsFrom:
+            type: DateTime<'U'>
+        tsTo:
+            type: DateTime<'U'>
+        count:
+            type: integer
+        page:
+            type: integer
+        types:
+            type: array
+            accesor: 
+                setter: setTypesFromString
+                getter: getTypesAsString
+            

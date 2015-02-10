@@ -57,3 +57,7 @@ posted in the `#general` of your team's Slack instance. If this did not happen, 
 errors below.
 
 *NOTE:* Although the setters and getters are different of each payload, they are all handled in a similar way as illustrated above.
+
+## Next chapter
+
+In the next chapter, I show you an example of using the events made available by this package: [Events](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/events.md)

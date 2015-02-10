@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\FileSearchResult;
-use JMS\Serializer\Annotation as Serializer;
+use CL\Slack\Model\FileResult;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,16 +19,14 @@ use JMS\Serializer\Annotation as Serializer;
 class SearchFilesPayloadResponse extends AbstractSearchPayloadResponse
 {
     /**
-     * @var FileSearchResult
-     *
-     * @Serializer\Type("CL\Slack\Model\FileSearchResult")
+     * @var FileResult
      */
     private $files;
 
     /**
-     * @return FileSearchResult
+     * @return FileResult
      */
-    public function getFileSearchResult()
+    public function getResult()
     {
         return $this->files;
     }

@@ -1,0 +1,12 @@
+CL\Slack\Model\ImChannel:
+    properties:
+        id:
+            type: string
+        created:
+            type: DateTime<'U'>
+        user:
+            type: string
+        isIm:
+            type: boolean
+        isUserDeleted:
+            type: boolean

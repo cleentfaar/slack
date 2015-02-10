@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,11 +20,9 @@ class ImClosePayload extends AbstractPayload
 {
     /**
      * Slack seems to want to call this option "channel", but I can't agree with that (the format of the value is different),
-     * and will just pretend to my users it's a "group" (ID)
+     * and will just pretend to my users it's an IM ID
      *
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 
@@ -39,7 +35,7 @@ class ImClosePayload extends AbstractPayload
     }
 
     /**
-     * @return string ID of a im channel to close
+     * @return string ID of the im channel to close
      */
     public function getImId()
     {

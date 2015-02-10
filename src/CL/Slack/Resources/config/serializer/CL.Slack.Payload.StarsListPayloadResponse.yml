@@ -1,0 +1,6 @@
+CL\Slack\Payload\StarsListPayloadResponse:
+    properties:
+        items:
+            type: array<CL\Slack\Model\StarredItem>
+        paging:
+            type: CL\Slack\Model\Paging

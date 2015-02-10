@@ -1,0 +1,10 @@
+CL\Slack\Payload\OauthAccessPayload:
+    properties:
+        clientId:
+            type: string
+        clientSecret:
+            type: string
+        code:
+            type: string
+        redirectUri:
+            type: string

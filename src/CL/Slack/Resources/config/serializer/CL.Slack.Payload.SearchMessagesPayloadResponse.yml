@@ -1,0 +1,4 @@
+CL\Slack\Payload\SearchMessagesPayloadResponse:
+    properties:
+        messages:
+            type: CL\Slack\Model\MessageResult

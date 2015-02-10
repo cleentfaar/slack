@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,15 +18,11 @@ class ChatPostMessagePayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var float|null
-     *
-     * @Serializer\Type("float")
      */
     private $ts;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 

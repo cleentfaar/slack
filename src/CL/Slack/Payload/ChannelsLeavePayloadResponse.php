@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,8 +18,6 @@ class ChannelsLeavePayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $notInChannel;
 

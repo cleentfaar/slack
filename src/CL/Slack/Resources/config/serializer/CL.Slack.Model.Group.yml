@@ -1,0 +1,28 @@
+CL\Slack\Model\Group:
+    properties:
+        id:
+            type: string
+        name:
+            type: string
+        created:
+            type: DateTime<'U'>
+        creator:
+            type: string
+        isArchived:
+            type: boolean
+        members:
+            type: array<string>
+        topic:
+            type: CL\Slack\Model\Customizable
+        purpose:
+            type: CL\Slack\Model\Customizable
+        isGroup:
+            type: boolean
+        lastRead:
+            type: float
+        latest:
+            type: CL\Slack\Model\Message
+        unreadCount:
+            type: integer
+        unreadCountDisplay:
+            type: integer

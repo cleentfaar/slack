@@ -11,7 +11,7 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\MessageSearchResult;
+use CL\Slack\Model\MessageResult;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -19,16 +19,14 @@ use CL\Slack\Model\MessageSearchResult;
 class SearchMessagesPayloadResponse extends AbstractSearchPayloadResponse
 {
     /**
-     * @var MessageSearchResult
-     *
-     * @Serializer\Type("CL\Slack\Model\MessageSearchResult")
+     * @var MessageResult
      */
     private $messages;
 
     /**
-     * @return MessageSearchResult
+     * @return MessageResult
      */
-    public function getMessageSearchResult()
+    public function getResult()
     {
         return $this->messages;
     }

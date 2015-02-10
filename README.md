@@ -57,17 +57,21 @@ speed up the merging of your code.
 
 ###### Why am I getting a cURL 60 error when attempting to connect to the Slack API?
 
-Under the hood this library uses [Guzzle](https://github.com/guzzle/guzzle) to connect to the Slack API, and Guzzle's default method for sending HTTP requests is cURL.
+Under the hood this library uses [Guzzle](https://github.com/guzzle/guzzle) to connect to the Slack API, and Guzzle's 
+default method for sending HTTP requests is cURL.
 
-The full error code is *CURLE_SSL_CACERT: Peer certificate cannot be authenticated with known CA certificates* and may be due, especially on Windows or OS X, to [Guzzle not being able to find an up to date CA certificate bundle on the operating system](http://docs.guzzlephp.org/en/latest/faq.html#why-am-i-getting-an-ssl-verification-error).
+The full error code is *CURLE_SSL_CACERT: Peer certificate cannot be authenticated with known CA certificates* and may 
+be due, especially on Windows or OS X, to [Guzzle not being able to find an up to date CA certificate bundle on the operating system](http://docs.guzzlephp.org/en/latest/faq.html#why-am-i-getting-an-ssl-verification-error).
 
-To fix this you create a Guzzle client manually using an alternative CA cert bundle, or [disabling peer verification](http://guzzle.readthedocs.org/en/latest/clients.html#verify) (not recommended for security reasons), and pass it to the API Client.
+To fix this you first create the Guzzle client manually using an alternative CA cert bundle, or [disabling peer verification](http://guzzle.readthedocs.org/en/latest/clients.html#verify) (not recommended for security reasons), and pass it to the API Client.
 
 ```php
 $client = new \GuzzleHttp\Client();
 $client->setDefaultOption('verify', 'C:\Program Files (x86)\Git\bin\curl-ca-bundle.crt');
 
-$apiClient =  new ApiClient('api-token-here', new PayloadSerializer(), $client);
+// continue as normal, using the client above
+
+$apiClient =  new ApiClient('api-token-here', $client);
 ```
 
-If you get a different error code you can look at the [list of cURL error code](http://curl.haxx.se/libcurl/c/libcurl-errors.html), or consult the [Guzzle documentation](http://docs.guzzlephp.org/en/latest/) directly.
+If you get a different error code you can look at the [list of cURL error codes](http://curl.haxx.se/libcurl/c/libcurl-errors.html), or consult the [Guzzle documentation](http://docs.guzzlephp.org/en/latest/) directly.

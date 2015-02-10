@@ -1,0 +1,4 @@
+CL\Slack\Payload\GroupsLeavePayload:
+    properties:
+        channel:
+            type: string

@@ -1,0 +1,4 @@
+CL\Slack\Payload\ImListPayloadResponse:
+    properties:
+        channels:
+            type: array<CL\Slack\Model\ImChannel>

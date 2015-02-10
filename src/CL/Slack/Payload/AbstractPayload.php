@@ -19,7 +19,7 @@ abstract class AbstractPayload implements PayloadInterface
     /**
      * {@inheritdoc}
      */
-    final public function getResponseClass()
+    public function getResponseClass()
     {
         return sprintf('%sResponse', get_class($this));
     }

@@ -20,15 +20,11 @@ class GroupsOpenPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $noOp;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $alreadyOpen;
 

@@ -1,0 +1,22 @@
+CL\Slack\Model\User:
+    properties:
+        id:
+            type: string
+        name:
+            type: string
+        color:
+            type: string
+        profile:
+            type: CL\Slack\Model\UserProfile
+        isAdmin:
+            type: boolean
+        isBot:
+            type: boolean
+        isRestricted:
+            type: boolean
+        isUltraRestricted:
+            type: boolean
+        deleted:
+            type: boolean
+        hasFiles:
+            type: boolean

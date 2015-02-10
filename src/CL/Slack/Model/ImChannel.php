@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,31 +18,28 @@ class ImChannel extends AbstractModel
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Type("DateTime<'U'>")
      */
-    protected $created;
+    private $created;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
-    protected $isIm;
+    private $isIm;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
-    protected $isUserDeleted;
+    private $isUserDeleted;
+
+    /**
+     * @var string
+     */
+    private $user;
 
     /**
      * @return string The ID of this channel.
@@ -65,7 +60,7 @@ class ImChannel extends AbstractModel
     /**
      * @return boolean
      */
-    public function isIsIm()
+    public function isIm()
     {
         return $this->isIm;
     }
@@ -73,8 +68,16 @@ class ImChannel extends AbstractModel
     /**
      * @return boolean
      */
-    public function isIsUserDeleted()
+    public function isUserDeleted()
     {
         return $this->isUserDeleted;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->user;
     }
 }

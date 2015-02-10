@@ -1,0 +1,4 @@
+CL\Slack\Model\MessageResultItem:
+    properties:
+        channel:
+            type: CL\Slack\Model\SimpleChannel

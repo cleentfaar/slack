@@ -45,7 +45,7 @@ class FilesListPayloadTest extends AbstractPayloadTest
         return [
             'page'    => $payload->getPage(),
             'count'   => $payload->getCount(),
-            'types'   => $payload->getImplodedTypes(),
+            'types'   => $payload->getTypes(),
             'user'    => $payload->getUserId(),
             'ts_from' => $payload->getTimestampFrom()->format('U'),
             'ts_to'   => $payload->getTimestampTo()->format('U'),

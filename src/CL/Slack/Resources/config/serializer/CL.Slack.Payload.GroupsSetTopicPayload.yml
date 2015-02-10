@@ -1,0 +1,6 @@
+CL\Slack\Payload\GroupsSetTopicPayload:
+    properties:
+        channel:
+            type: string
+        topic:
+            type: string

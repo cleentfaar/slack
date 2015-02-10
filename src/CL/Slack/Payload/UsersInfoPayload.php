@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,8 +20,6 @@ class UsersInfoPayload extends AbstractPayload
 {
     /**
      * @var string $user ID of the user to get info on
-     *
-     * @Serializer\Type("string")
      */
     private $user;
 

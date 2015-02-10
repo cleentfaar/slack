@@ -1,0 +1,6 @@
+CL\Slack\Payload\ChannelsRenamePayload:
+    properties:
+        channel:
+            type: string
+        name:
+            type: string

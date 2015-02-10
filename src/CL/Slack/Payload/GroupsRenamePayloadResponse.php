@@ -21,8 +21,6 @@ class GroupsRenamePayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var Group|null
-     *
-     * @Serializer\Type("CL\Slack\Model\Group")
      */
     private $group;
 

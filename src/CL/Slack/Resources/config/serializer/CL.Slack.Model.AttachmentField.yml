@@ -1,0 +1,8 @@
+CL\Slack\Model\AttachmentField:
+    properties:
+        title:
+            type: string
+        value:
+            type: string
+        short:
+            type: boolean

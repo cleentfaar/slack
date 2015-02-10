@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,253 +18,186 @@ class File extends AbstractModel
 {
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $id;
 
     /**
-     * @var string|null
-     *
-     * @Serializer\Type("string")
+     * @var \DateTime|null
      */
-    private $user;
+    private $created;
 
     /**
      * @var \DateTime|null
-     *
-     * @Serializer\Type("DateTime<'U'>")
      */
     private $timestamp;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
+     */
+    private $user;
+
+    /**
+     * @var string|null
      */
     private $name;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $title;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $mimeType;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $fileType;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $prettyType;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $mode;
 
     /**
      * @var boolean|null
-     *
-     * @Serializer\Type("boolean")
      */
     private $editable;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $externalType;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $size;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $url;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $urlDownload;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $urlPrivate;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $urlPrivateDownload;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $thumb64;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $thumb80;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $thumb360;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $thumb360Gif;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $thumb360W;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $thumb360H;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $permalink;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $editLink;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $preview;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $previewHighlight;
 
     /**
      * @var int|null
-     *
-     * @Serializer\Type("integer")
      */
     private $lines;
 
     /**
      * @var int|null
-     *
-     * @Serializer\Type("integer")
      */
     private $linesMore;
 
     /**
      * @var boolean|null
-     *
-     * @Serializer\Type("boolean")
      */
     private $isPublic;
 
     /**
      * @var boolean|null
-     *
-     * @Serializer\Type("boolean")
      */
     private $isExternal;
 
     /**
      * @var boolean|null
-     *
-     * @Serializer\Type("boolean")
      */
     private $isStarred;
 
     /**
      * @var boolean|null
-     *
-     * @Serializer\Type("boolean")
      */
     private $publicUrlShared;
 
     /**
      * @var array<string>|null
-     *
-     * @Serializer\Type("array<string>")
      */
     private $channels;
 
     /**
      * @var array<string>|null
-     *
-     * @Serializer\Type("array<string>")
      */
     private $groups;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $initialComment;
 
     /**
-     * @var int
-     *
-     * @Serializer\Type("integer")
+     * @var integer
      */
     private $numStars;
 
@@ -279,7 +210,15 @@ class File extends AbstractModel
     }
 
     /**
-     * @return \DateTime The timestamp on which the file was posted
+     * @return \DateTime|null The timestamp on which the file was created
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return \DateTime|null The timestamp on which the file was posted
      */
     public function getTimestamp()
     {
@@ -463,9 +402,9 @@ class File extends AbstractModel
     }
 
     /**
-     * @return mixed
+     * @return boolean
      */
-    public function getPublicUrlShared()
+    public function isPublicUrlShared()
     {
         return $this->publicUrlShared;
     }

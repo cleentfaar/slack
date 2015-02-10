@@ -1,0 +1,4 @@
+CL\Slack\Payload\GroupsListPayloadResponse:
+    properties:
+        groups:
+            type: array<CL\Slack\Model\Group>

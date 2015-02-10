@@ -21,7 +21,7 @@ class PayloadFactoryTest extends AbstractTestCase
 {
     public function testChatPostMessage()
     {
-        $channel   = 'test-channel';
+        $channel   = '#acme_channel';
         $text      = 'Hello world!';
         $username  = 'acme';
         $iconEmoji = 'foobar';

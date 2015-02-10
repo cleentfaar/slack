@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\Member;
-use JMS\Serializer\Annotation as Serializer;
+use CL\Slack\Model\User;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,15 +19,17 @@ use JMS\Serializer\Annotation as Serializer;
 class UsersListPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var Member[]
-     *
-     * @Serializer\Type("array<CL\Slack\Model\Member>")
+     * @var User[]
      */
     private $members;
 
     /**
-     * @return Member[] Contains 1 or more members of the team, in no particular order. For deactivated users,
-     *                  deleted will be true. The color field is used in some clients to display a colored username.
+     * Returns 1 or more members of the team, in no particular order.
+     *
+     * For deactivated users, deleted will be true.
+     * The color property is used in some clients to display a colored username.
+     * 
+     * @return User[] 
      */
     public function getUsers()
     {

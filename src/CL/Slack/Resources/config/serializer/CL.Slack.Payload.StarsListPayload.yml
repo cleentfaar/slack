@@ -1,0 +1,8 @@
+CL\Slack\Payload\StarsListPayload:
+    properties:
+        count:
+            type: integer
+        page:
+            type: integer
+        user:
+            type: string

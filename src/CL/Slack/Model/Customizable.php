@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,22 +18,21 @@ class Customizable extends AbstractModel
 {
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $value;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $type;
 
     /**
+     * @var string|null
+     */
+    private $creator;
+
+    /**
      * @var \DateTime|null
-     *
-     * @Serializer\Type("DateTime<'U'>")
      */
     private $lastSet;
 
@@ -56,8 +53,18 @@ class Customizable extends AbstractModel
     }
 
     /**
-     * @return \DateTime|null The last date on which this customizable was customized ^_^,
-     *                        or null if this was the first change
+     * @return string|null
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * Returns the last date on which this customizable was customized ^_^,
+     * or null if this was the first change
+     * 
+     * @return \DateTime|null
      */
     public function getLastSet()
     {

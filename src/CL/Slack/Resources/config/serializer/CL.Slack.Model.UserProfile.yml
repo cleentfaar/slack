@@ -1,0 +1,29 @@
+CL\Slack\Model\UserProfile:
+    properties:
+        realName:
+            type: string
+        firstName:
+            type: string
+        lastName:
+            type: string
+        skype:
+            type: string
+        phone:
+            type: string
+        email:
+            type: string
+        image24:
+            type: string
+            serialized_name: image_24
+        image32:
+            type: string
+            serialized_name: image_32
+        image48:
+            type: string
+            serialized_name: image_48
+        image72:
+            type: string
+            serialized_name: image_72
+        image192:
+            type: string
+            serialized_name: image_192

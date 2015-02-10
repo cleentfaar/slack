@@ -1,0 +1,14 @@
+CL\Slack\Payload\AbstractSearchPayload:
+    properties:
+        query:
+            type: string
+        count:
+            type: integer
+        page:
+            type: integer
+        highlight:
+            type: boolean
+        sort:
+            type: string
+        sort_dir:
+            type: string

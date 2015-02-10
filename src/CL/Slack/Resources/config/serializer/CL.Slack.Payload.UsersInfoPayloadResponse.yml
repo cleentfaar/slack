@@ -1,0 +1,4 @@
+CL\Slack\Payload\UsersInfoPayloadResponse:
+    properties:
+        user:
+            type: CL\Slack\Model\User

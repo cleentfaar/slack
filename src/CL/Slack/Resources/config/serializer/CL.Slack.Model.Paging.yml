@@ -1,0 +1,10 @@
+CL\Slack\Model\Paging:
+    properties:
+        total:
+            type: integer
+        count:
+            type: integer
+        page:
+            type: integer
+        pages:
+            type: integer

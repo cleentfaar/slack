@@ -20,8 +20,6 @@ class GroupsUnarchivePayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 

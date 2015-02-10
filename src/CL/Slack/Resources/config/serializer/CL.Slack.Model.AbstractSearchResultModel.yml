@@ -1,0 +1,10 @@
+CL\Slack\Model\AbstractSearchResultModel:
+    properties:
+        pagination:
+            type: CL\Slack\Model\Paging
+        paging:
+            type: CL\Slack\Model\Paging
+        total:
+            type: integer
+        channel:
+            type: string

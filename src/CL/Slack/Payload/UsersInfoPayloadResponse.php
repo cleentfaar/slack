@@ -11,8 +11,7 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\Member;
-use JMS\Serializer\Annotation as Serializer;
+use CL\Slack\Model\User;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -20,14 +19,12 @@ use JMS\Serializer\Annotation as Serializer;
 class UsersInfoPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var Member|null
-     *
-     * @Serializer\Type("CL\Slack\Model\Member")
+     * @var User|null
      */
     private $user;
 
     /**
-     * @return Member|null
+     * @return User|null
      */
     public function getUser()
     {

@@ -1,0 +1,6 @@
+CL\Slack\Payload\ChatDeletePayload:
+    properties:
+        channel:
+            type: string
+        ts:
+            type: float

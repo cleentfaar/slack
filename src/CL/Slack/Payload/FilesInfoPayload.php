@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,22 +20,16 @@ class FilesInfoPayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $file;
 
     /**
      * @var int|null
-     *
-     * @Serializer\Type("integer")
      */
     private $count;
 
     /**
      * @var int|null
-     *
-     * @Serializer\Type("integer")
      */
     private $page;
 

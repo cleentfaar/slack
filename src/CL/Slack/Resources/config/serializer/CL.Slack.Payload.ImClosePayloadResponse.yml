@@ -1,0 +1,6 @@
+CL\Slack\Payload\ImClosePayloadResponse:
+    properties:
+        noOp:
+            type: boolean
+        alreadyClosed:
+            type: boolean

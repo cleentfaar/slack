@@ -11,10 +11,8 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\File;
 use CL\Slack\Model\Paging;
 use CL\Slack\Model\StarredItem;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -23,15 +21,11 @@ class StarsListPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var StarredItem[]
-     *
-     * @Serializer\Type("array<CL\Slack\Model\StarredItem>")
      */
     private $items = [];
 
     /**
      * @var Paging
-     *
-     * @Serializer\Type("CL\Slack\Model\Paging")
      */
     private $paging;
 

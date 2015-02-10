@@ -12,7 +12,6 @@
 namespace CL\Slack\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -21,42 +20,158 @@ class Attachment extends AbstractModel
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
-    private $fallback;
+    private $title;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
+     */
+    private $titleLink;
+
+    /**
+     * @var string
+     */
+    private $imageUrl;
+
+    /**
+     * @var string
+     */
+    private $authorName;
+
+    /**
+     * @var string
+     */
+    private $authorLink;
+
+    /**
+     * @var string
+     */
+    private $authorIcon;
+
+    /**
+     * @var string
      */
     private $preText;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $text;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $color;
 
     /**
-     * @var array
-     *
-     * @Serializer\Type("ArrayCollection<string, string>")
+     * @var string
+     */
+    private $fallback;
+
+    /**
+     * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
 
     public function __construct()
     {
         $this->fields = new ArrayCollection();
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $titleLink
+     */
+    public function setTitleLink($titleLink)
+    {
+        $this->titleLink = $titleLink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitleLink()
+    {
+        return $this->titleLink;
+    }
+
+    /**
+     * @param string $imageUrl
+     */
+    public function setImageUrl($imageUrl)
+    {
+        $this->imageUrl = $imageUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * @param string $authorName
+     */
+    public function setAuthorName($authorName)
+    {
+        $this->authorName = $authorName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorName()
+    {
+        return $this->authorName;
+    }
+
+    /**
+     * @param string $authorLink
+     */
+    public function setAuthorLink($authorLink)
+    {
+        $this->authorLink = $authorLink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorLink()
+    {
+        return $this->authorLink;
+    }
+
+    /**
+     * @param string $authorIcon
+     */
+    public function setAuthorIcon($authorIcon)
+    {
+        $this->authorIcon = $authorIcon;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorIcon()
+    {
+        return $this->authorIcon;
     }
 
     /**
@@ -126,33 +241,18 @@ class Attachment extends AbstractModel
     }
 
     /**
-     * @param string $key
-     * @param mixed  $value
+     * @param AttachmentField $field
      */
-    public function setField($key, $value)
+    public function addField(AttachmentField $field)
     {
-        $this->fields[$key] = $value;
+        $this->fields->add($field);
     }
 
     /**
-     * @return ArrayCollection
+     * @return AttachmentField[]|ArrayCollection
      */
     public function getFields()
     {
         return $this->fields;
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return mixed
-     */
-    public function getField($key)
-    {
-        if (!array_key_exists($key, $this->fields)) {
-            throw new \InvalidArgumentException(sprintf('There is no field with that name: %s', $key));
-        }
-
-        return $this->fields[$key];
     }
 }

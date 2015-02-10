@@ -1,0 +1,14 @@
+CL\Slack\Model\Channel:
+    properties:
+        latest:
+            type: CL\Slack\Model\SimpleMessage
+        lastRead:
+            type: float
+        isMember:
+            type: boolean
+        members:
+            type: array<string>
+        topic:
+            type: CL\Slack\Model\Customizable
+        purpose:
+            type: CL\Slack\Model\Customizable

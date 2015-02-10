@@ -13,7 +13,6 @@ namespace CL\Slack\Payload;
 
 use CL\Slack\Model\File;
 use CL\Slack\Model\Paging;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -22,15 +21,11 @@ class FilesListPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var File[]
-     *
-     * @Serializer\Type("array<CL\Slack\Model\File>")
      */
     private $files = [];
 
     /**
      * @var Paging
-     *
-     * @Serializer\Type("CL\Slack\Model\Paging")
      */
     private $paging;
 

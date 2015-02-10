@@ -128,7 +128,6 @@ class PayloadRegistry
             new Payload\ImMarkPayload(),
             new Payload\ImOpenPayload(),
             new Payload\OauthAccessPayload(),
-            new Payload\PresenceSetPayload(),
             new Payload\SearchAllPayload(),
             new Payload\SearchFilesPayload(),
             new Payload\SearchMessagesPayload(),
@@ -136,6 +135,7 @@ class PayloadRegistry
             new Payload\UsersInfoPayload(),
             new Payload\UsersListPayload(),
             new Payload\UsersSetActivePayload(),
+            new Payload\UsersSetPresencePayload(),
         ];
 
         foreach ($payloads as $payload) {
