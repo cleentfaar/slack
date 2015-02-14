@@ -1,5 +1,7 @@
 CL\Slack\Model\Message:
     properties:
+        ts:
+            type: float
         type:
             type: string
         user:

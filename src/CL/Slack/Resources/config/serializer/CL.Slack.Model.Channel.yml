@@ -2,6 +2,8 @@ CL\Slack\Model\Channel:
     properties:
         id:
             type: string
+        name:
+            type: string
         latest:
             type: CL\Slack\Model\SimpleMessage
         lastRead:
