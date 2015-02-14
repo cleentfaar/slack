@@ -11,7 +11,7 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\GroupsClosePayloadResponse;
+use CL\Slack\Payload\ImClosePayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
 
 /**
@@ -24,16 +24,21 @@ class ImClosePayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function createResponseData()
     {
-        return [];
+        return [
+            'no_op'        => true,
+            'already_closed' => true,
+        ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                      $responseData
-     * @param GroupsClosePayloadResponse $payloadResponse
+     * @param array                  $responseData
+     * @param ImClosePayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
+        $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
+        $this->assertEquals($responseData['already_closed'], $payloadResponse->isAlreadyClosed());
     }
 }

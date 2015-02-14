@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,36 +18,26 @@ class AuthTestPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $user;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $userId;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $team;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $teamId;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $url;
 

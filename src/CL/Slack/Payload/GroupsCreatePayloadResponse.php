@@ -12,7 +12,6 @@
 namespace CL\Slack\Payload;
 
 use CL\Slack\Model\GroupWithState;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -21,8 +20,6 @@ class GroupsCreatePayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var GroupWithState|null
-     *
-     * @Serializer\Type("CL\Slack\Model\GroupWithState")
      */
     private $group;
 

@@ -11,13 +11,13 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\GroupsClosePayloadResponse;
+use CL\Slack\Payload\GroupsCreateChildPayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class GroupsClosePayloadResponseTest extends AbstractPayloadResponseTest
+class GroupsCreateChildPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
      * {@inheritdoc}
@@ -25,20 +25,18 @@ class GroupsClosePayloadResponseTest extends AbstractPayloadResponseTest
     protected function createResponseData()
     {
         return [
-            'no_op'        => true,
-            'already_closed' => true,
+            'group' => $this->createGroup(),
         ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                      $responseData
-     * @param GroupsClosePayloadResponse $payloadResponse
+     * @param array                            $responseData
+     * @param GroupsCreateChildPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
-        $this->assertEquals($responseData['already_closed'], $payloadResponse->isAlreadyClosed());
+        $this->assertGroup($responseData['group'], $payloadResponse->getGroup());
     }
 }

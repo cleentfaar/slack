@@ -12,7 +12,6 @@
 namespace CL\Slack\Payload;
 
 use CL\Slack\Model\Group;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -21,15 +20,11 @@ class GroupsInvitePayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var bool|null
-     *
-     * @Serializer\Type("boolean")
      */
     private $alreadyInGroup;
 
     /**
      * @var Group|null
-     *
-     * @Serializer\Type("CL\Slack\Model\Group")
      */
     private $group;
 

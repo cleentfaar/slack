@@ -11,13 +11,13 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\GroupsClosePayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
+use CL\Slack\Payload\SearchMessagesPayloadResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class GroupsClosePayloadResponseTest extends AbstractPayloadResponseTest
+class SearchMessagesPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
      * {@inheritdoc}
@@ -25,20 +25,25 @@ class GroupsClosePayloadResponseTest extends AbstractPayloadResponseTest
     protected function createResponseData()
     {
         return [
-            'no_op'        => true,
-            'already_closed' => true,
+            'messages' => $this->createMessageResult(),
         ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                      $responseData
-     * @param GroupsClosePayloadResponse $payloadResponse
+     * @param array                         $responseData
+     * @param SearchMessagesPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
-        $this->assertEquals($responseData['already_closed'], $payloadResponse->isAlreadyClosed());
+        $fileResult = $payloadResponse->getResult();
+
+        $this->assertInstanceOf('CL\Slack\Model\MessageResult', $fileResult);
+        $this->assertCount(1, $fileResult->getMatches());
+
+        foreach ($fileResult->getMatches() as $x => $match) {
+            $this->assertMessageResultItem($responseData['messages']['matches'][$x], $match);
+        }
     }
 }

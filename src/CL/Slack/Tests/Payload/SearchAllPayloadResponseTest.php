@@ -41,6 +41,8 @@ class SearchAllPayloadResponseTest extends AbstractPayloadResponseTest
         $fileResult    = $payloadResponse->getFileResult();
         $messageResult = $payloadResponse->getMessageResult();
 
+        $this->assertInstanceOf('CL\Slack\Model\FileResult', $fileResult);
+        $this->assertInstanceOf('CL\Slack\Model\MessageResult', $messageResult);
         $this->assertCount(1, $fileResult->getMatches());
         $this->assertCount(1, $messageResult->getMatches());
 
