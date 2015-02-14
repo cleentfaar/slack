@@ -27,7 +27,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
     protected function createPayload()
     {
         $payload = new ChatPostMessagePayload();
-        $payload->setChannel('acme_channel');
+        $payload->setChannel('#acme_channel');
         $payload->setUsername('acme_user');
         $payload->setText('Hello World!');
         $payload->setIconEmoji(':truck:');
@@ -37,9 +37,23 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
         $payload->setUnfurlMedia(false);
         $payload->setIconUrl('http://foo.bar/emoji-1.png');
 
+        $fakeAttachmentField = new AttachmentField();
+        $fakeAttachmentField->setShort(false);
+        $fakeAttachmentField->setTitle('the title');
+        $fakeAttachmentField->setValue('the value');
+
         $fakeAttachment = new Attachment();
+        $fakeAttachment->setTitle('the title');
+        $fakeAttachment->setTitleLink('http://thetitlelink.com');
+        $fakeAttachment->setColor('the color');
+        $fakeAttachment->setFallback('the fallback');
+        $fakeAttachment->setImageUrl('the image url');
+        $fakeAttachment->setPreText('this is...');
         $fakeAttachment->setText('my attachment');
-        $fakeAttachment->setField('foo', 'bar');
+        $fakeAttachment->setAuthorIcon(':skull:');
+        $fakeAttachment->setAuthorName('the author');
+        $fakeAttachment->setAuthorLink('http://theauthor.com');
+        $fakeAttachment->addField($fakeAttachmentField);
 
         $payload->addAttachment($fakeAttachment);
 
@@ -53,6 +67,12 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
      */
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
+        /** @var Attachment $attachment */
+        $attachment = $payload->getAttachments()->first();
+
+        /** @var AttachmentField $attachmentField */
+        $attachmentField = $attachment->getFields()->first();
+
         return [
             'channel'      => $payload->getChannel(),
             'text'         => $payload->getText(),
@@ -61,12 +81,27 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
             'icon_url'     => $payload->getIconUrl(),
             'unfurl_media' => $payload->getUnfurlMedia(),
             'unfurl_links' => $payload->getUnfurlLinks(),
-            'link_names'   => $payload->getLinkNames() ? '1' : '0',
+            'link_names'   => $payload->getLinkNames(),
             'parse'        => $payload->getParse(),
             'attachments'  => [
                 [
-                    'text'   => $payload->getAttachments()->first()->getText(),
-                    'fields' => $payload->getAttachments()->first()->getFields()->toArray(),
+                    'title'       => $attachment->getTitle(),
+                    'title_link'  => $attachment->getTitleLink(),
+                    'pre_text'    => $attachment->getPreText(),
+                    'text'        => $attachment->getText(),
+                    'author_name' => $attachment->getAuthorName(),
+                    'author_link' => $attachment->getAuthorLink(),
+                    'author_icon' => $attachment->getAuthorIcon(),
+                    'color'       => $attachment->getColor(),
+                    'fallback'    => $attachment->getFallback(),
+                    'image_url'   => $attachment->getImageUrl(),
+                    'fields'      => [
+                        [
+                            'title' => $attachmentField->getTitle(),
+                            'short' => $attachmentField->isShort(),
+                            'value' => $attachmentField->getValue(),
+                        ]
+                    ],
                 ],
             ],
         ];

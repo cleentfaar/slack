@@ -1,0 +1,14 @@
+CL\Slack\Model\SimpleChannel:
+    properties:
+        id:
+            type: string
+        name:
+            type: string
+        created:
+            type: DateTime<'U'>
+        creator:
+            type: string
+        isArchived:
+            type: boolean
+        isGeneral:
+            type: boolean

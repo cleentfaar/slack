@@ -1,0 +1,4 @@
+CL\Slack\Model\MessageResult:
+    properties:
+        matches:
+            type: array<CL\Slack\Model\MessageResultItem>

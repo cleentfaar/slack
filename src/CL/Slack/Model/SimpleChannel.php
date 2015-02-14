@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,43 +18,31 @@ class SimpleChannel extends AbstractModel
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $id;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $name;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Type("DateTime<'U'>")
      */
     protected $created;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $creator;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     protected $isArchived;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     protected $isGeneral;
 

@@ -25,7 +25,7 @@ class ChannelsJoinPayloadTest extends AbstractPayloadTest
     protected function createPayload()
     {
         $payload = new ChannelsJoinPayload();
-        $payload->setChannel('acme_channel');
+        $payload->setChannel('#acme_channel');
 
         return $payload;
     }

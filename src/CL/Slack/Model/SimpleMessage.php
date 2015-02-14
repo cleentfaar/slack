@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,43 +18,31 @@ class SimpleMessage extends AbstractModel
 {
     /**
      * @var float
-     *
-     * @Serializer\Type("float")
      */
     protected $ts;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $type;
 
     /**
      * @var SimpleChannel
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleChannel")
      */
-    protected $channel;
+    private $channel;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $user;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $username;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     protected $text;
 

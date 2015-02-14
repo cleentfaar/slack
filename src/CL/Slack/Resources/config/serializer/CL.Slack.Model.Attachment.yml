@@ -1,0 +1,12 @@
+CL\Slack\Model\Attachment:
+    properties:
+        fallback:
+            type: string
+        preText:
+            type: string
+        text:
+            type: string
+        color:
+            type: string
+        fields:
+            type: ArrayCollection<CL\Slack\Model\AttachmentField>

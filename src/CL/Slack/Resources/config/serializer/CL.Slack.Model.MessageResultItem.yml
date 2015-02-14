@@ -1,0 +1,12 @@
+CL\Slack\Model\MessageResultItem:
+    properties:
+        type:
+            type: string
+        channel:
+            type: CL\Slack\Model\SimpleChannel
+        user:
+            type: string
+        username:
+            type: string
+        text:
+            type: string

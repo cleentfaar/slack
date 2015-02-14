@@ -19,51 +19,37 @@ use JMS\Serializer\Annotation as Serializer;
 class Message extends SimpleMessage
 {
     /**
-     * @var Channel|null
-     *
-     * @Serializer\Type("CL\Slack\Model\Channel")
+     * @var Channel
      */
     private $channel;
-
+    
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $permalink;
 
     /**
      * @var SimpleMessage|null
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
      */
     private $previous;
 
     /**
      * @var SimpleMessage|null
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
      */
     private $previous2;
 
     /**
      * @var SimpleMessage|null
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
      */
     private $next;
 
     /**
      * @var SimpleMessage|null
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
      */
     private $next2;
 
     /**
      * @var SimpleMessage|null
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleMessage")
      */
     private $next2Alt;
 

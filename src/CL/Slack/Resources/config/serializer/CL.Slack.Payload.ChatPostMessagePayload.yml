@@ -1,0 +1,22 @@
+CL\Slack\Payload\ChatPostMessagePayload:
+    properties:
+        channel:
+            type: string
+        text:
+            type: string
+        username:
+            type: string
+        iconEmoji:
+            type: string
+        iconUrl:
+            type: string
+        unfurlLinks:
+            type: string
+        unfurlMedia:
+            type: string
+        linkNames:
+            type: string
+        parse:
+            type: string
+        attachments:
+            type: ArrayCollection<CL\Slack\Model\Attachment>

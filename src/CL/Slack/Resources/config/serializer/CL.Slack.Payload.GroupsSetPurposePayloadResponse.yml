@@ -1,0 +1,4 @@
+CL\Slack\Payload\GroupsSetPurposePayloadResponse:
+    properties:
+        purpose:
+            type: string

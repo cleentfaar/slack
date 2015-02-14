@@ -1,0 +1,4 @@
+CL\Slack\Payload\ApiTestPayloadResponse:
+    properties:
+        args:
+            type: array

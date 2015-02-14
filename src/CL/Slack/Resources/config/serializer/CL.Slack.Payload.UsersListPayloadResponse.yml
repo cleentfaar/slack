@@ -1,0 +1,4 @@
+CL\Slack\Payload\UsersListPayloadResponse:
+    properties:
+        members:
+            type: array<CL\Slack\Model\User>

@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,29 +18,21 @@ class Paging extends AbstractModel
 {
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $count;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $total;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $page;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $pages;
 

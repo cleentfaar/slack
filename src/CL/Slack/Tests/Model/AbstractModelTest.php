@@ -12,9 +12,8 @@
 namespace CL\Slack\Tests\Model;
 
 use CL\Slack\Model\AbstractModel;
+use CL\Slack\Serializer\ModelSerializer;
 use CL\Slack\Tests\AbstractTestCase;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -22,7 +21,7 @@ use JMS\Serializer\SerializerInterface;
 abstract class AbstractModelTest extends AbstractTestCase
 {
     /**
-     * @var SerializerInterface
+     * @var ModelSerializer
      */
     protected $serializer;
 
@@ -31,7 +30,7 @@ abstract class AbstractModelTest extends AbstractTestCase
      */
     protected function setUp()
     {
-        $this->serializer = SerializerBuilder::create()->build();
+        $this->serializer = new ModelSerializer();
     }
 
     public function testGetters()
@@ -41,13 +40,13 @@ abstract class AbstractModelTest extends AbstractTestCase
 
         /** @var AbstractModel $model */
         $model = $this->serializer->deserialize(
-            json_encode($modelData),
+            $modelData,
             $modelClass,
             'json'
         );
 
-        $this->assertInstanceOf('CL\Slack\Model\AbstractModel', $model);
         $this->assertInstanceOf($modelClass, $model);
+        $this->assertInstanceOf('CL\Slack\Model\AbstractModel', $model);
 
         $this->assertModel($modelData, $model);
     }

@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,15 +20,11 @@ class GroupsSetPurposePayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $purpose;
 

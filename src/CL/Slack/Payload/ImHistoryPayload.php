@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * Payload that triggers the channels.history-method; allowing you to fetch historical information about a given channel
  *
@@ -24,29 +22,21 @@ class ImHistoryPayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("float")
      */
     private $oldest;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("float")
      */
     private $latest;
 
     /**
-     * @var string
-     *
-     * @Serializer\Type("integer")
+     * @var integer
      */
     private $count;
 

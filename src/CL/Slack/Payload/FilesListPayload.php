@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,44 +20,31 @@ class FilesListPayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $user;
 
     /**
-     * @var string
-     *
-     * @Serializer\Type("DateTime<'U'>")
+     * @var \DateTime
      */
     private $tsFrom;
 
     /**
-     * @var string
-     *
-     * @Serializer\Type("DateTime<'U'>")
+     * @var \DateTime
      */
     private $tsTo;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $count;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $page;
 
     /**
      * @var array
-     *
-     * @Serializer\Type("string")
-     * @Serializer\Accessor(setter="setImplodedTypes", getter="getImplodedTypes")
      */
     private $types = ['all'];
 
@@ -180,7 +165,7 @@ class FilesListPayload extends AbstractPayload
     /**
      * @param string $types
      */
-    public function setImplodedTypes($types)
+    public function setTypesFromString($types)
     {
         $this->types = explode(',', $types);
     }
@@ -188,7 +173,7 @@ class FilesListPayload extends AbstractPayload
     /**
      * @return string
      */
-    public function getImplodedTypes()
+    public function getTypesAsString()
     {
         return implode(',', $this->types);
     }

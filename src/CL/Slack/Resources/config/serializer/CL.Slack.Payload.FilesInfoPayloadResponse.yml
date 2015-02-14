@@ -1,0 +1,4 @@
+CL\Slack\Payload\FilesInfoPayloadResponse:
+    properties:
+        file:
+            type: CL\Slack\Model\File

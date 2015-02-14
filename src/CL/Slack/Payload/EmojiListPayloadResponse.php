@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,10 +18,8 @@ class EmojiListPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var array<string, string>
-     *
-     * @Serializer\Type("array<string, string>")
      */
-    private $emoji;
+    private $emoji = [];
 
     /**
      * @return array<string, string>

@@ -25,7 +25,7 @@ class ChannelsRenamePayloadResponseTest extends AbstractPayloadResponseTest
     protected function createResponseData()
     {
         return [
-            'channel' => $this->createChannelResponseData(),
+            'channel' => $this->createChannel(),
         ];
     }
 

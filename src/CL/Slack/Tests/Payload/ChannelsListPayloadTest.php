@@ -38,7 +38,7 @@ class ChannelsListPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'exclude_archived' => $payload->getExcludeArchived(),
+            'exclude_archived' => $payload->isExcludeArchived(),
         ];
     }
 }

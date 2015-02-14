@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,29 +20,21 @@ class OauthAccessPayload extends AbstractPayload
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $clientId;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $clientSecret;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $code;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $redirectUri;
 

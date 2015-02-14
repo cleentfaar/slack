@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * Payload that triggers the api.test-method; allowing you to test a connection with the Slack API.
  *
@@ -24,16 +22,11 @@ class ApiTestPayload extends AbstractPayload
 {
     /**
      * @var array
-     *
-     * @Serializer\Type("array<string, string>")
-     * @Serializer\Inline
      */
     private $args = [];
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $error;
     

@@ -1,0 +1,84 @@
+CL\Slack\Model\File:
+    properties:
+        id:
+            type: string
+        created:
+            type: DateTime<'U'>
+        timestamp:
+            type: DateTime<'U'>
+        user:
+            type: string
+        name:
+            type: string
+        title:
+            type: string
+        mimeType:
+            type: string
+            serialized_name: mimetype
+        fileType:
+            type: string
+            serialized_name: filetype
+        prettyType:
+            type: string
+        mode:
+            type: string
+        editable:
+            type: boolean
+        externalType:
+            type: string
+        size:
+            type: string
+        url:
+            type: string
+        urlDownload:
+            type: string
+        urlPrivate:
+            type: string
+        urlPrivateDownload:
+            type: string
+        thumb64:
+            type: string
+            serialized_name: thumb_64
+        thumb80:
+            type: string
+            serialized_name: thumb_80
+        thumb360:
+            type: string
+            serialized_name: thumb_360
+        thumb360Gif:
+            type: string
+            serialized_name: thumb_360_gif
+        thumb360W:
+            type: string
+            serialized_name: thumb_360_w
+        thumb360H:
+            type: string
+            serialized_name: thumb_360_h
+        permalink:
+            type: string
+        editLink:
+            type: string
+        preview:
+            type: string
+        previewHighlight:
+            type: string
+        lines:
+            type: integer
+        linesMore:
+            type: integer
+        isPublic:
+            type: boolean
+        isExternal:
+            type: boolean
+        isStarred:
+            type: boolean
+        publicUrlShared:
+            type: boolean
+        channels:
+            type: array<string>
+        groups:
+            type: array<string>
+        initialComment:
+            type: string
+        numStars:
+            type: integer

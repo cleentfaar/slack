@@ -1,0 +1,8 @@
+CL\Slack\Payload\ImHistoryPayloadResponse:
+    properties:
+        latest:
+            type: float
+        hasMore:
+            type: boolean
+        messages:
+            type: array<CL\Slack\Model\SimpleMessage>

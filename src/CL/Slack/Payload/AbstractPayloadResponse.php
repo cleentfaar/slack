@@ -2,8 +2,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -11,15 +9,11 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
 {
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $ok;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $error;
 

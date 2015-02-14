@@ -5,6 +5,12 @@ php:
     - 5.6
     - hhvm
 
+matrix:
+  fast_finish: true
+  allow_failures:
+    # hhvm does not understand JMS' object inheritance during (de)serialization
+    - php: hhvm
+
 before_script: composer install
 
 script: ./bin/phpunit --coverage-clover=coverage.clover

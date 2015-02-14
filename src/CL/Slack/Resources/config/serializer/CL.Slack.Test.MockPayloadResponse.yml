@@ -1,0 +1,4 @@
+CL\Slack\Test\MockPayloadResponse:
+    properties:
+        foo:
+            type: string

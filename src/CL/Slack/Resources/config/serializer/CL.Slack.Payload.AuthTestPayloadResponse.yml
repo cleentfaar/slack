@@ -1,0 +1,12 @@
+CL\Slack\Payload\AuthTestPayloadResponse:
+    properties:
+        user:
+            type: string
+        userId:
+            type: string
+        team:
+            type: string
+        teamId:
+            type: string
+        url:
+            type: string

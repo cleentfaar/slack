@@ -1,0 +1,6 @@
+CL\Slack\Payload\OauthAccessPayloadResponse:
+    properties:
+        accessToken:
+            type: string
+        scope:
+            type: string

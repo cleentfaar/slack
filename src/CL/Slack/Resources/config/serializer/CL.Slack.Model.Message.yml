@@ -1,0 +1,12 @@
+CL\Slack\Model\Message:
+    properties:
+        type:
+            type: string
+        user:
+            type: string
+        username:
+            type: string
+        text:
+            type: string
+        channel:
+            type: CL\Slack\Model\Channel

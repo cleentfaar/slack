@@ -1,0 +1,4 @@
+CL\Slack\Payload\EmojiListPayloadResponse:
+    properties:
+        emoji:
+            type: array<string, string>

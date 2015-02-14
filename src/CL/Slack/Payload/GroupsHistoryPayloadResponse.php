@@ -12,7 +12,6 @@
 namespace CL\Slack\Payload;
 
 use CL\Slack\Model\SimpleMessage;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -21,22 +20,16 @@ class GroupsHistoryPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var float|null
-     *
-     * @Serializer\Type("float")
      */
     private $latest;
 
     /**
      * @var SimpleMessage[]
-     *
-     * @Serializer\Type("array<CL\Slack\Model\SimpleMessage>")
      */
     private $messages;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $hasMore;
 

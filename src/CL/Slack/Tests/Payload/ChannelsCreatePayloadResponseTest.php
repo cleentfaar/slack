@@ -25,12 +25,7 @@ class ChannelsCreatePayloadResponseTest extends AbstractPayloadResponseTest
     protected function createResponseData()
     {
         return [
-            'channel' => [
-                'id'      => 'C1234567',
-                'name'    => 'acme_channel',
-                'created' => '12345678',
-                'creator' => 'U1234567',
-            ],
+            'channel' => $this->createChannel(),
         ];
     }
 
@@ -42,11 +37,6 @@ class ChannelsCreatePayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $channel = $payloadResponse->getChannel();
-
-        $this->assertEquals($channel->getId(), $responseData['channel']['id']);
-        $this->assertEquals($channel->getName(), $responseData['channel']['name']);
-        $this->assertEquals($channel->getCreated()->format('U'), $responseData['channel']['created']);
-        $this->assertEquals($channel->getCreator(), $responseData['channel']['creator']);
+        $this->assertChannel($responseData['channel'], $payloadResponse->getChannel());
     }
 }

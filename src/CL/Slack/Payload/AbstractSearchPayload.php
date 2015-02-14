@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -26,43 +24,31 @@ abstract class AbstractSearchPayload extends AbstractPayload
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $query;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $sort;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $sortDir;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $highlight;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $count;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $page;
 

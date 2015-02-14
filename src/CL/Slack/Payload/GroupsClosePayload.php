@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -25,8 +23,6 @@ class GroupsClosePayload extends AbstractPayload
      * and will just pretend to my users it's a "group" (ID)
      *
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 

@@ -46,7 +46,7 @@ class FilesUploadPayloadTest extends AbstractPayloadTest
             'content'   => $payload->getContent(),
             'filename'  => $payload->getFilename(),
             'file_type' => $payload->getFileType(),
-            'channels'  => $payload->getImplodedChannels(),
+            'channels'  => $payload->getChannelsAsString(),
         ];
     }
 }

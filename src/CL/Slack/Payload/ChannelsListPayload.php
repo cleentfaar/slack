@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -22,8 +20,6 @@ class ChannelsListPayload extends AbstractPayload
 {
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
     private $excludeArchived;
 
@@ -46,7 +42,7 @@ class ChannelsListPayload extends AbstractPayload
     /**
      * @return bool
      */
-    public function getExcludeArchived()
+    public function isExcludeArchived()
     {
         return $this->excludeArchived;
     }

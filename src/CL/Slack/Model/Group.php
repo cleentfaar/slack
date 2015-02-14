@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,59 +18,68 @@ class Group extends AbstractModel
 {
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
-    protected $name;
+    private $name;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Type("DateTime<'U'>")
      */
-    protected $created;
+    private $created;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("string")
      */
-    protected $creator;
+    private $creator;
 
     /**
      * @var bool
-     *
-     * @Serializer\Type("boolean")
      */
-    protected $isArchived;
+    private $isArchived;
 
     /**
      * @var array<string>
-     *
-     * @Serializer\Type("array<string>")
      */
-    protected $members = [];
+    private $members = [];
 
     /**
      * @var Customizable
-     *
-     * @Serializer\Type("CL\Slack\Model\Customizable")
      */
-    protected $topic;
+    private $topic;
 
     /**
      * @var Customizable
-     *
-     * @Serializer\Type("CL\Slack\Model\Customizable")
      */
-    protected $purpose;
+    private $purpose;
+
+    /**
+     * @var boolean
+     */
+    private $isGroup = true;
+
+    /**
+     * @var float
+     */
+    private $lastRead;
+
+    /**
+     * @var Message
+     */
+    private $latest;
+
+    /**
+     * @var integer
+     */
+    private $unreadCount;
+
+    /**
+     * @var integer
+     */
+    private $unreadCountDisplay;
 
     /**
      * @return string The ID of this group.
@@ -137,5 +144,45 @@ class Group extends AbstractModel
     public function getPurpose()
     {
         return $this->purpose;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isGroup()
+    {
+        return $this->isGroup;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLastRead()
+    {
+        return $this->lastRead;
+    }
+
+    /**
+     * @return Message
+     */
+    public function getLatest()
+    {
+        return $this->latest;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnreadCount()
+    {
+        return $this->unreadCount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnreadCountDisplay()
+    {
+        return $this->unreadCountDisplay;
     }
 }

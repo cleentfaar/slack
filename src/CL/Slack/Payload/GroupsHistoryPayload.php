@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -25,31 +23,28 @@ class GroupsHistoryPayload extends AbstractPayload
      * and will just pretend to my users it's a "group" (ID)
      *
      * @var string
-     *
-     * @Serializer\Type("string")
      */
     private $channel;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("float")
      */
     private $oldest;
 
     /**
      * @var string
-     *
-     * @Serializer\Type("float")
      */
     private $latest;
 
     /**
-     * @var string
-     *
-     * @Serializer\Type("integer")
+     * @var integer
      */
     private $count;
+
+    /**
+     * @var boolean
+     */
+    private $inclusive;
 
     /**
      * @param string $groupId ID of the group to clone and archive.
@@ -113,6 +108,22 @@ class GroupsHistoryPayload extends AbstractPayload
     public function getCount()
     {
         return $this->count;
+    }
+
+    /**
+     * @param boolean $inclusive
+     */
+    public function setInclusive($inclusive)
+    {
+        $this->inclusive = $inclusive;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getInclusive()
+    {
+        return $this->inclusive;
     }
 
     /**

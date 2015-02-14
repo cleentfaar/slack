@@ -1,0 +1,4 @@
+CL\Slack\Payload\FilesUploadPayloadResponse:
+    properties:
+        file:
+            type: CL\Slack\Model\File

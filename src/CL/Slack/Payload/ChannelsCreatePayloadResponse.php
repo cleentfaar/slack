@@ -11,9 +11,7 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\Channel;
 use CL\Slack\Model\SimpleChannel;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -22,8 +20,6 @@ class ChannelsCreatePayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var SimpleChannel
-     *
-     * @Serializer\Type("CL\Slack\Model\SimpleChannel")
      */
     private $channel;
 

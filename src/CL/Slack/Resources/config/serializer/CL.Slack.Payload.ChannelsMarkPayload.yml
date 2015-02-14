@@ -1,0 +1,6 @@
+CL\Slack\Payload\ChannelsMarkPayload:
+    properties:
+        channel:
+            type: string
+        ts:
+            type: float

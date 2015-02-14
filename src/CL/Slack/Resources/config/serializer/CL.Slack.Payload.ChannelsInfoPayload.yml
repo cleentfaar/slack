@@ -1,0 +1,4 @@
+CL\Slack\Payload\ChannelsInfoPayload:
+    properties:
+        channel:
+            type: string

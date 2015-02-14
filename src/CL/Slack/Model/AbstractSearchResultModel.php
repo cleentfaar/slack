@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Model;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
@@ -20,24 +18,23 @@ abstract class AbstractSearchResultModel extends AbstractModel
 {
     /**
      * @var Paging
-     *
-     * @Serializer\Type("CL\Slack\Model\Paging")
      */
     private $pagination;
 
     /**
      * @var Paging
-     *
-     * @Serializer\Type("CL\Slack\Model\Paging")
      */
     private $paging;
 
     /**
      * @var int
-     *
-     * @Serializer\Type("integer")
      */
     private $total;
+
+    /**
+     * @var string
+     */
+    private $channel;
 
     /**
      * @return Paging
@@ -61,5 +58,13 @@ abstract class AbstractSearchResultModel extends AbstractModel
     public function getTotal()
     {
         return $this->total;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->channel;
     }
 }

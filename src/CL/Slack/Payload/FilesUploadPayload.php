@@ -11,8 +11,6 @@
 
 namespace CL\Slack\Payload;
 
-use JMS\Serializer\Annotation as Serializer;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -27,30 +25,21 @@ class FilesUploadPayload extends AbstractPayload
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $fileType;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $filename;
 
     /**
      * @var string|null
-     *
-     * @Serializer\Type("string")
      */
     private $title;
 
     /**
      * @var array
-     *
-     * @Serializer\Type("string")
-     * @Serializer\Accessor(setter="setImplodedChannels", getter="getImplodedChannels")
      */
     private $channels = [];
 
@@ -92,22 +81,6 @@ class FilesUploadPayload extends AbstractPayload
     public function getChannels()
     {
         return $this->channels;
-    }
-
-    /**
-     * @param string $channels
-     */
-    public function setImplodedChannels($channels)
-    {
-        $this->channels = explode(',', $channels);
-    }
-
-    /**
-     * @return string
-     */
-    public function getImplodedChannels()
-    {
-        return implode(',', $this->channels);
     }
     
     /**
@@ -156,6 +129,22 @@ class FilesUploadPayload extends AbstractPayload
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @param string $channels
+     */
+    public function setChannelsFromString($channels)
+    {
+        $this->channels = explode(',', $channels);
+    }
+
+    /**
+     * @return string
+     */
+    public function getChannelsAsString()
+    {
+        return implode(',', $this->channels);
     }
 
     /**

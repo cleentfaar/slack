@@ -1,0 +1,4 @@
+CL\Slack\Payload\ChannelsCreatePayloadResponse:
+    properties:
+        channel:
+            type: CL\Slack\Model\Channel

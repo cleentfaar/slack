@@ -14,7 +14,8 @@ namespace CL\Slack\Transport;
 use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\PayloadResponseInterface;
-use CL\Slack\Util\PayloadSerializer;
+use CL\Slack\Serializer\PayloadSerializer;
+use CL\Slack\Serializer\PayloadResponseSerializer;
 use CL\Slack\Transport\Events\ResponseEvent;
 use CL\Slack\Transport\Events\RequestEvent;
 use GuzzleHttp\Client;
@@ -55,7 +56,12 @@ class ApiClient
     /**
      * @var PayloadSerializer
      */
-    private $serializer;
+    private $payloadSerializer;
+
+    /**
+     * @var PayloadResponseSerializer
+     */
+    private $payloadResponseSerializer;
 
     /**
      * @var ClientInterface
@@ -69,20 +75,19 @@ class ApiClient
 
     /**
      * @param string|null                   $token
-     * @param PayloadSerializer             $serializer
      * @param ClientInterface|null          $client
      * @param EventDispatcherInterface|null $eventDispatcher
      */
     public function __construct(
         $token = null,
-        PayloadSerializer $serializer = null,
         ClientInterface $client = null,
         EventDispatcherInterface $eventDispatcher = null
     ) {
-        $this->token           = $token;
-        $this->serializer      = $serializer ?: new PayloadSerializer();
-        $this->client          = $client ?: new Client();
-        $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher();
+        $this->token                     = $token;
+        $this->payloadSerializer         = new PayloadSerializer();
+        $this->payloadResponseSerializer = new PayloadResponseSerializer();
+        $this->client                    = $client ?: new Client();
+        $this->eventDispatcher           = $eventDispatcher ?: new EventDispatcher();
     }
 
     /**
@@ -102,10 +107,10 @@ class ApiClient
                 throw new \InvalidArgumentException('You must supply a token to send a payload, since you did not provide one during construction');
             }
 
-            $serializedPayload = $this->serializer->serializePayload($payload);
+            $serializedPayload = $this->payloadSerializer->serialize($payload);
             $responseData      = $this->doSend($payload->getMethod(), $serializedPayload, $token);
 
-            return $this->serializer->deserializePayloadResponse($responseData, $payload->getResponseClass());
+            return $this->payloadResponseSerializer->deserialize($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
             throw new SlackException('Failed to send payload', null, $e);
         }

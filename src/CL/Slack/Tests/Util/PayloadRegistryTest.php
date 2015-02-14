@@ -12,6 +12,7 @@
 namespace CL\Slack\Util;
 
 use CL\Slack\Payload;
+use CL\Slack\Test\MockPayload;
 use CL\Slack\Tests\AbstractTestCase;
 
 /**
@@ -31,22 +32,20 @@ class PayloadRegistryTest extends AbstractTestCase
 
     public function testRegisterNew()
     {
-        $payload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $payload->expects($this->any())->method('getMethod')->willReturn('foo.bar');
+        $payload = new MockPayload();
 
         $this->payloadRegistry->register($payload);
 
-        $this->assertEquals($payload, $this->payloadRegistry->get('foo.bar'));
+        $this->assertEquals($payload, $this->payloadRegistry->get($payload->getMethod()));
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Already registered a payload for this method: foo.bar
+     * @expectedExceptionMessage Already registered a payload for this method: mock
      */
     public function testRegisterExisting()
     {
-        $payload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $payload->expects($this->any())->method('getMethod')->willReturn('foo.bar');
+        $payload = new MockPayload();
 
         $this->payloadRegistry->register($payload);
 
@@ -56,34 +55,32 @@ class PayloadRegistryTest extends AbstractTestCase
 
     public function testHasTrue()
     {
-        $payload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $payload->expects($this->any())->method('getMethod')->willReturn('foo.bar');
+        $payload = new MockPayload();
 
         $this->payloadRegistry->register($payload);
 
-        $this->assertTrue($this->payloadRegistry->has('foo.bar'));
+        $this->assertTrue($this->payloadRegistry->has($payload->getMethod()));
     }
 
     public function testHasFalse()
     {
-        $this->assertFalse($this->payloadRegistry->has('foo.bar'));
+        $this->assertFalse($this->payloadRegistry->has('foo'));
     }
 
     public function testGetExisting()
     {
-        $payload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $payload->expects($this->any())->method('getMethod')->willReturn('foo.bar');
+        $payload = new MockPayload();
 
         $this->payloadRegistry->register($payload);
-        $this->assertInstanceOf('CL\Slack\Payload\PayloadInterface', $this->payloadRegistry->get('foo.bar'));
+        $this->assertInstanceOf('CL\Slack\Payload\PayloadInterface', $this->payloadRegistry->get($payload->getMethod()));
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage There is no payload available for that method (foo.bar)
+     * @expectedExceptionMessage There is no payload available for that method (foo)
      */
     public function testGetUnknown()
     {
-        $this->payloadRegistry->get('foo.bar');
+        $this->payloadRegistry->get('foo');
     }
 }
