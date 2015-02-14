@@ -15,6 +15,7 @@ Access your Slack Team's API through PHP objects.
 - [Installation](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
 - [Usage](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md) - A few simple examples on how to access the Slack API using this library
 - [API methods](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
+- [Events](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/events.md) - Examples for listening to events fired by the `ApiClient`
 
 
 ### Features
