@@ -13,6 +13,8 @@ namespace CL\Slack\Model;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
+ *
+ * @link Official documentation at https://api.slack.com/methods/search.all
  */
 class Paging extends AbstractModel
 {

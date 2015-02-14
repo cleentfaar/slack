@@ -15,6 +15,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
+ *
+ * @link Official documentation at https://api.slack.com/docs/attachments
  */
 class Attachment extends AbstractModel
 {

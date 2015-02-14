@@ -66,19 +66,39 @@ class ChatUpdatePayload extends AbstractPayload
     }
 
     /**
-     * @param string $message
+     * @param string $text
      */
-    public function setMessage($message)
+    public function setText($text)
     {
-        $this->text = $message;
+        $this->text = $text;
     }
 
     /**
      * @return string
      */
-    public function getMessage()
+    public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * @deprecated Will be removed soon, use `setText()` instead
+     *
+     * @param string $message
+     */
+    public function setMessage($message)
+    {
+        $this->setText($message);
+    }
+
+    /**
+     * @deprecated Will be removed soon, use `getText()` instead
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->getText();
     }
 
     /**
