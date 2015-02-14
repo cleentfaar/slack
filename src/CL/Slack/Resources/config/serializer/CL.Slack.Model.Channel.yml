@@ -4,6 +4,14 @@ CL\Slack\Model\Channel:
             type: string
         name:
             type: string
+        created:
+            type: DateTime<'U'>
+        creator:
+            type: string
+        isArchived:
+            type: boolean
+        isGeneral:
+            type: boolean
         latest:
             type: CL\Slack\Model\SimpleMessage
         lastRead:
