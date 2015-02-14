@@ -25,7 +25,7 @@ class FileResultTest extends AbstractModelTest
     protected function getModelData()
     {
         return [
-            "matches" => [
+            'matches' => [
                 $this->createFileResultItem()
             ],
         ];

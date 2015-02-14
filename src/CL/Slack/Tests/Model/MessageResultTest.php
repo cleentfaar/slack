@@ -25,7 +25,7 @@ class MessageResultTest extends AbstractModelTest
     protected function getModelData()
     {
         return [
-            "matches" => [
+            'matches' => [
                 $this->createMessageResultItem()
             ],
         ];

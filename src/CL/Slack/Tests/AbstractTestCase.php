@@ -18,6 +18,7 @@ use CL\Slack\Model\FileResultItem;
 use CL\Slack\Model\Group;
 use CL\Slack\Model\GroupWithState;
 use CL\Slack\Model\ImChannel;
+use CL\Slack\Model\Message;
 use CL\Slack\Model\MessageResultItem;
 use CL\Slack\Model\Paging;
 use CL\Slack\Model\SimpleChannel;
@@ -83,10 +84,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param array         $expected
-     * @param SimpleMessage $actual
+     * @param array   $expected
+     * @param Message $actual
      */
-    protected function assertMessage(array $expected, SimpleMessage $actual)
+    protected function assertMessage(array $expected, Message $actual)
     {
         $this->assertEquals($expected, [
             'channel'  => [
@@ -135,7 +136,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertChannel(array $expected, Channel $actual)
     {
-        $this->assertMessage($expected['latest'], $actual->getLatest());
+        $this->assertSimpleMessage($expected['latest'], $actual->getLatest());
         $this->assertCustomizable($expected['purpose'], $actual->getPurpose());
         $this->assertCustomizable($expected['topic'], $actual->getTopic());
         $this->assertInstanceOf('\DateTime', $actual->getCreated());
