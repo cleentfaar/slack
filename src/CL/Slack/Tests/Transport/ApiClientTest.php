@@ -13,7 +13,7 @@ namespace CL\Slack\Tests\Transport;
 
 use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
-use CL\Slack\Test\MockPayload;
+use CL\Slack\Test\Payload\MockPayload;
 use CL\Slack\Tests\AbstractTestCase;
 use CL\Slack\Transport\ApiClient;
 use CL\Slack\Transport\Events\RequestEvent;

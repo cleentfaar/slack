@@ -37,7 +37,7 @@ class PayloadResponseSerializerTest extends AbstractTestCase
             'result' => []
         ];
 
-        $mockResponseClass = 'CL\Slack\Test\MockPayloadResponse';
+        $mockResponseClass = 'CL\Slack\Test\Payload\MockPayloadResponse';
         $serializedPayload = $this->payloadResponseSerializer->deserialize(
             $payloadResponse,
             $mockResponseClass

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Test;
+namespace CL\Slack\Test\Payload;
 
 use CL\Slack\Payload\AbstractPayloadResponse;
 

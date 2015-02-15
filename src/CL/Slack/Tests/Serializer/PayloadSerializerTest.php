@@ -11,7 +11,7 @@
 
 namespace CL\Slack\Tests\Serializer;
 
-use CL\Slack\Test\MockPayload;
+use CL\Slack\Test\Payload\MockPayload;
 use CL\Slack\Tests\AbstractTestCase;
 use CL\Slack\Serializer\PayloadSerializer;
 

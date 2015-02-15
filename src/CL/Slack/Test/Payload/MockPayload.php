@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Test;
+namespace CL\Slack\Test\Payload;
 
 use CL\Slack\Payload\AbstractPayload;
 
@@ -38,6 +38,6 @@ class MockPayload extends AbstractPayload
     
     public function getResponseClass()
     {
-        return 'CL\Slack\Test\MockPayloadResponse';
+        return 'CL\Slack\Test\Payload\MockPayloadResponse';
     }
 }
