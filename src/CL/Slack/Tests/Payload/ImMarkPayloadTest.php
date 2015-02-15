@@ -26,7 +26,7 @@ class ImMarkPayloadTest extends AbstractPayloadTest
     {
         $payload = new ImMarkPayload();
         $payload->setImId('I1234567');
-        $payload->setTimestamp('1358546515.000001');
+        $payload->setTimestamp('1234567.1234567');
 
         return $payload;
     }
