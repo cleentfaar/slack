@@ -45,11 +45,11 @@ class ChatDeletePayloadResponse extends AbstractPayloadResponse
     /**
      * {@inheritdoc}
      */
-    protected function getOwnErrors()
+    protected function getPossibleErrors()
     {
-        return [
+        return array_merge(parent::getPossibleErrors(), [
             'message_not_found'   => 'No message exists with the requested timestamp',
             'cant_delete_message' => 'Authenticated user does not have permission to delete this message',
-        ];
+        ]);
     }
 }

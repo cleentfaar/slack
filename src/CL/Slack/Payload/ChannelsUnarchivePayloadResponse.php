@@ -19,10 +19,10 @@ class ChannelsUnarchivePayloadResponse extends AbstractPayloadResponse
     /**
      * {@inheritdoc}
      */
-    protected function getOwnErrors()
+    protected function getPossibleErrors()
     {
-        return [
+        return array_merge(parent::getPossibleErrors(), [
             'not_archived' => 'Channel is not archived',
-        ];
+        ]);
     }
 }

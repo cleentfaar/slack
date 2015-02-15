@@ -32,10 +32,10 @@ class GroupsSetPurposePayloadResponse extends AbstractPayloadResponse
     /**
      * {@inheritdoc}
      */
-    protected function getOwnErrors()
+    protected function getPossibleErrors()
     {
-        return [
+        return array_merge(parent::getPossibleErrors(), [
             'too_long' => 'Purpose was longer than 250 characters.'
-        ];
+        ]);
     }
 }

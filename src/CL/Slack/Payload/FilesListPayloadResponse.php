@@ -48,10 +48,10 @@ class FilesListPayloadResponse extends AbstractPayloadResponse
     /**
      * {@inheritdoc}
      */
-    protected function getOwnErrors()
+    protected function getPossibleErrors()
     {
-        return [
+        return array_merge(parent::getPossibleErrors(), [
             'unknown_type' => 'Value passed for types was invalid',
-        ];
+        ]);
     }
 }

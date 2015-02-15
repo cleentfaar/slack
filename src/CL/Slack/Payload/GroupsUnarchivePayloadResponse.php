@@ -19,10 +19,10 @@ class GroupsUnarchivePayloadResponse extends AbstractPayloadResponse
     /**
      * {@inheritdoc}
      */
-    protected function getOwnErrors()
+    protected function getPossibleErrors()
     {
-        return [
-            'not_archived' => 'Channel is not archived',
-        ];
+        return array_merge(parent::getPossibleErrors(), [
+            'not_archived' => 'Group is not archived',
+        ]);
     }
 }
