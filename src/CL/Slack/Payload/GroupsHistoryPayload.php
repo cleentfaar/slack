@@ -63,7 +63,7 @@ class GroupsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @param float|string|null $latest
+     * @param string|string|null $latest
      */
     public function setLatest($latest = null)
     {
@@ -71,7 +71,7 @@ class GroupsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @return float|string|null
+     * @return string|string|null
      */
     public function getLatest()
     {
@@ -79,7 +79,7 @@ class GroupsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @param float|null $oldest
+     * @param string|null $oldest
      */
     public function setOldest($oldest = null)
     {
@@ -87,7 +87,7 @@ class GroupsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @return float|null
+     * @return string|null
      */
     public function getOldest()
     {

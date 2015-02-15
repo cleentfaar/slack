@@ -15,7 +15,7 @@ CL\Slack\Model\Channel:
         latest:
             type: CL\Slack\Model\SimpleMessage
         lastRead:
-            type: float
+            type: string
         isMember:
             type: boolean
         members:

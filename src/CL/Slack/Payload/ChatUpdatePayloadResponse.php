@@ -22,7 +22,7 @@ class ChatUpdatePayloadResponse extends AbstractPayloadResponse
     private $channel;
 
     /**
-     * @var float
+     * @var string
      */
     private $ts;
 
@@ -40,7 +40,7 @@ class ChatUpdatePayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * @return float
+     * @return string
      */
     public function getTimestamp()
     {

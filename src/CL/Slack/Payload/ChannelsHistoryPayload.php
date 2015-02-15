@@ -27,12 +27,12 @@ class ChannelsHistoryPayload extends AbstractPayload
     private $channel;
 
     /**
-     * @var float
+     * @var string
      */
     private $oldest;
 
     /**
-     * @var float
+     * @var string
      */
     private $latest;
 
@@ -58,7 +58,7 @@ class ChannelsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @param float|string|null $latest
+     * @param string|string|null $latest
      */
     public function setLatest($latest = null)
     {
@@ -66,7 +66,7 @@ class ChannelsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @return float|string|null
+     * @return string|string|null
      */
     public function getLatest()
     {
@@ -74,7 +74,7 @@ class ChannelsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @param float|null $oldest
+     * @param string|null $oldest
      */
     public function setOldest($oldest = null)
     {
@@ -82,7 +82,7 @@ class ChannelsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @return float|null
+     * @return string|null
      */
     public function getOldest()
     {

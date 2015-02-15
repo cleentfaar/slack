@@ -1,7 +1,7 @@
 CL\Slack\Payload\ImHistoryPayloadResponse:
     properties:
         latest:
-            type: float
+            type: string
         hasMore:
             type: boolean
         messages:

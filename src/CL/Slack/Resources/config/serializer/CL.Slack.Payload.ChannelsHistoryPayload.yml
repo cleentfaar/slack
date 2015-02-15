@@ -3,8 +3,8 @@ CL\Slack\Payload\ChannelsHistoryPayload:
         channel:
             type: string
         oldest:
-            type: float
+            type: string
         latest:
-            type: float
+            type: string
         count:
             type: integer

@@ -22,7 +22,7 @@ class ChatDeletePayloadResponse extends AbstractPayloadResponse
     private $channel;
 
     /**
-     * @var float
+     * @var string
      */
     private $ts;
 
@@ -35,7 +35,7 @@ class ChatDeletePayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * @return float
+     * @return string
      */
     public function getTimestamp()
     {

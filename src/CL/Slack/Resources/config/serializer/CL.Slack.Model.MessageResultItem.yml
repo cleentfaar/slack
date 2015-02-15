@@ -1,7 +1,7 @@
 CL\Slack\Model\MessageResultItem:
     properties:
         ts:
-            type: float
+            type: string
         type:
             type: string
         channel:

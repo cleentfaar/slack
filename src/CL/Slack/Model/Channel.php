@@ -24,7 +24,7 @@ class Channel extends SimpleChannel
     private $latest;
 
     /**
-     * @var float
+     * @var string
      */
     private $lastRead;
 
@@ -73,7 +73,7 @@ class Channel extends SimpleChannel
     }
 
     /**
-     * @return float The Slack timestamp for the last message the calling user has read in this channel.
+     * @return string The Slack timestamp for the last message the calling user has read in this channel.
      */
     public function getLastRead()
     {

@@ -19,7 +19,7 @@ use CL\Slack\Model\SimpleMessage;
 class ImHistoryPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var float|null
+     * @var string|null
      */
     private $latest;
 
@@ -34,7 +34,7 @@ class ImHistoryPayloadResponse extends AbstractPayloadResponse
     private $hasMore;
 
     /**
-     * @return float|null The (Slack) timestamp on which the latest action was performed on the channel.
+     * @return string|null The (Slack) timestamp on which the latest action was performed on the channel.
      */
     public function getLatest()
     {

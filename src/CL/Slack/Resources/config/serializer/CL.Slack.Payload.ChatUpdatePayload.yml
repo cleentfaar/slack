@@ -5,4 +5,4 @@ CL\Slack\Payload\ChatUpdatePayload:
         channel:
             type: string
         ts:
-            type: float
+            type: string

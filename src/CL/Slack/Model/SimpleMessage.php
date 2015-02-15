@@ -19,7 +19,7 @@ namespace CL\Slack\Model;
 class SimpleMessage extends AbstractModel
 {
     /**
-     * @var float
+     * @var string
      */
     protected $ts;
 
@@ -49,7 +49,7 @@ class SimpleMessage extends AbstractModel
     protected $text;
 
     /**
-     * @return float|null The Slack timestamp on which the message was posted
+     * @return string|null The Slack timestamp on which the message was posted
      */
     public function getTimestamp()
     {

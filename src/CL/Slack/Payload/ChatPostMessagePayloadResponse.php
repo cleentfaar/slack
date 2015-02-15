@@ -17,7 +17,7 @@ namespace CL\Slack\Payload;
 class ChatPostMessagePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var float|null
+     * @var string|null
      */
     private $ts;
 
@@ -27,7 +27,7 @@ class ChatPostMessagePayloadResponse extends AbstractPayloadResponse
     private $channel;
 
     /**
-     * @return float|null The Slack timestamp on which your message has been posted, or null if the call failed
+     * @return string|null The Slack timestamp on which your message has been posted, or null if the call failed
      */
     public function getTimestamp()
     {

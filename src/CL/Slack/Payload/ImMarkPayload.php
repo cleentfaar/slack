@@ -27,7 +27,7 @@ class ImMarkPayload extends AbstractPayload
     private $channel;
 
     /**
-     * @var float
+     * @var string
      */
     private $ts;
 
@@ -48,7 +48,7 @@ class ImMarkPayload extends AbstractPayload
     }
 
     /**
-     * @param float $timestamp
+     * @param string $timestamp
      */
     public function setTimestamp($timestamp)
     {
@@ -56,7 +56,7 @@ class ImMarkPayload extends AbstractPayload
     }
 
     /**
-     * @return float
+     * @return string
      */
     public function getTimestamp()
     {

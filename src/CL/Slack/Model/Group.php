@@ -64,7 +64,7 @@ class Group extends AbstractModel
     private $isGroup = true;
 
     /**
-     * @var float
+     * @var string
      */
     private $lastRead;
 
@@ -157,7 +157,7 @@ class Group extends AbstractModel
     }
 
     /**
-     * @return float
+     * @return string
      */
     public function getLastRead()
     {

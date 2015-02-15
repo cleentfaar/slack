@@ -19,7 +19,7 @@ CL\Slack\Model\Group:
         isGroup:
             type: boolean
         lastRead:
-            type: float
+            type: string
         latest:
             type: CL\Slack\Model\Message
         unreadCount:

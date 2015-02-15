@@ -1,7 +1,7 @@
 CL\Slack\Payload\GroupsHistoryPayloadResponse:
     properties:
         latest:
-            type: float
+            type: string
         messages:
             type: array<CL\Slack\Model\SimpleMessage>
         hasMore:
