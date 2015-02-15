@@ -22,7 +22,7 @@ class GroupsMarkPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [];
     }

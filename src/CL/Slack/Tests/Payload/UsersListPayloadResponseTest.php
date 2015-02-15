@@ -22,7 +22,7 @@ class UsersListPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'members' => [

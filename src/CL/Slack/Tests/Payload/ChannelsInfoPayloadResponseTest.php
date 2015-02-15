@@ -22,7 +22,7 @@ class ChannelsInfoPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'channel' => $this->createChannel()

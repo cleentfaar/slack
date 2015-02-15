@@ -22,7 +22,7 @@ class ChannelsJoinPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'already_in_channel' => true,

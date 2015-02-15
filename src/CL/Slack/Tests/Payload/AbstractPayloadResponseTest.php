@@ -75,5 +75,5 @@ abstract class AbstractPayloadResponseTest extends AbstractTestCase
      *
      * @return array
      */
-    abstract protected function createResponseData();
+    abstract public function createResponseData();
 }

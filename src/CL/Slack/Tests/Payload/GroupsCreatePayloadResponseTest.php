@@ -22,7 +22,7 @@ class GroupsCreatePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'group' => $this->createGroup(),

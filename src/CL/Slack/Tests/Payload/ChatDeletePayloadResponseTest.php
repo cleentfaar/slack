@@ -22,7 +22,7 @@ class ChatDeletePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'channel' => 'C1234567',

@@ -22,7 +22,7 @@ class OauthAccessPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'access_token' => 'xoxt-23984754863-2348975623103',

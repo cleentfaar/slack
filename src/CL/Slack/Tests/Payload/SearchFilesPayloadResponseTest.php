@@ -22,7 +22,7 @@ class SearchFilesPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'files' => $this->createFileResult(),

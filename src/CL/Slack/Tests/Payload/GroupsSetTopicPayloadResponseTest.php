@@ -22,7 +22,7 @@ class GroupsSetTopicPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'topic' => 'new_topic',

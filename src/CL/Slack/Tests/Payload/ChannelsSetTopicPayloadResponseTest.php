@@ -22,7 +22,7 @@ class ChannelsSetTopicPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'topic' => 'new_topic',

@@ -22,7 +22,7 @@ class GroupsSetPurposePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'purpose' => 'new_purpose',

@@ -22,7 +22,7 @@ class ChannelsLeavePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      */
-    protected function createResponseData()
+    public function createResponseData()
     {
         return [
             'not_in_channel' => true,
