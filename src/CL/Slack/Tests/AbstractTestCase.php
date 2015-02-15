@@ -357,7 +357,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         return [
             'type'     => 'message',
-            'ts'       => 1358546515.0,
+            'ts'       => '1358546515.000001',
             'user'     => 'U2147483896',
             'username' => 'acme user',
             'text'     => 'Hello',
@@ -374,7 +374,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         return [
             'channel'  => $this->createSimpleChannel(),
-            'ts'       => 12345678.0,
+            'ts'       => '1358546515.000001',
             'type'     => 'message',
             'text'     => 'Hello world!',
             'user'     => 'U1234567',
@@ -512,7 +512,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'id'        => 'C1234567',
             'created'   => '12345678',
             'creator'   => 'U1234567',
-            'last_read' => 12345678.0,
+            'last_read' => '1358546515.000001',
             'latest'    => $this->createMessage(),
             'members'   => [
                 'U1234567'
