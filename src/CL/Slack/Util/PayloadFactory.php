@@ -55,10 +55,10 @@ class PayloadFactory
     }
 
     /**
-     * @param string     $channelId
-     * @param int|null   $count
-     * @param float|null $latest
-     * @param float|null $oldest
+     * @param string      $channelId
+     * @param int|null    $count
+     * @param string|null $latest
+     * @param string|null $oldest
      *
      * @return Payload\ChannelsHistoryPayload
      */

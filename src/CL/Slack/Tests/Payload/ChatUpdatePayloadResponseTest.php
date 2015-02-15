@@ -26,7 +26,7 @@ class ChatUpdatePayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'channel' => 'C1234567',
-            'ts'      => floatval('12345678'),
+            'ts'      => '1234567.1234567',
             'text'    => 'Hello World!',
         ];
     }
