@@ -14,7 +14,7 @@ This method moves the read cursor in a channel.
 ```php
 $payload = new ChannelsMarkPayload();
 $payload->setChannelId('C1234567');
-$payload->setTimestamp('1234567.1234567'); // NOTE: not a UNIX-timestamp, Slack-specific!
+$payload->setTimestamp('12345678.12345678'); // NOTE: not a UNIX-timestamp, Slack-specific!
 
 $apiClient = new ApiClient('your-slack-token-here');
 $response  = $apiClient->send($payload);

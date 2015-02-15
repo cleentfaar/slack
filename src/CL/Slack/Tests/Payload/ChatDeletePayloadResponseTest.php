@@ -26,7 +26,7 @@ class ChatDeletePayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'channel' => 'C1234567',
-            'ts'      => '1234567.1234567',
+            'ts'      => '12345678.12345678',
         ];
     }
 

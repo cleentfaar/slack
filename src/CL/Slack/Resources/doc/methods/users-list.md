@@ -12,13 +12,15 @@ Returns a list of all users in the team. This includes deleted/deactivated users
 ### Usage
 
 ```php
-$payload   = new UsersListPayload();
 $apiClient = new ApiClient('your-slack-token-here');
+$payload   = new UsersListPayload();
 $response  = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // query has been executed and result is returned (but can be empty)
-    $response->getUsers(); // array of Member objects
+    foreach ($response->getUsers() as $user) {
+        echo $user->getName() // e.g. 'acme'
+    }
 } else {
     // something went wrong, but what?
     

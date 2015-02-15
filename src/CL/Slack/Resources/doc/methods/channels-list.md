@@ -1,6 +1,6 @@
 ## channels.list
 
-This method is used to list a channel.
+This method is used to list the channels in your team.
 
 | | |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|

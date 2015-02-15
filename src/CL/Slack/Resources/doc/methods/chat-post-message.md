@@ -12,12 +12,13 @@ This method posts a message to a channel.
 ### Usage
 
 ```php
+$apiClient = new ApiClient('your-slack-token-here');
+
 $payload = new ChatPostMessagePayload();
 $payload->setChannel('#general');
 $payload->setMessage('Hello world!');
 
-$apiClient = new ApiClient('your-slack-token-here');
-$response  = $apiClient->send($payload);
+$response = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // message has been posted

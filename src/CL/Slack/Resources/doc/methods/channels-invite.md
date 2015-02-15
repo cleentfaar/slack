@@ -21,6 +21,8 @@ $response  = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // user has been successfully invited!
+    $response->getChannel(); // the Channel object that the user whas invited into
+    $response->alreadyInChannel(); // true if the user is already in the channel (no operation done)
 } else {
     // something went wrong, but what?
     

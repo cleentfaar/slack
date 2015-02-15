@@ -13,7 +13,6 @@ Tests passing and receiving arguments and errors from the Slack API.
 
 ```php
 $apiClient = new ApiClient('your-slack-token-here');
-
 $payload   = new ApiTestPayload();
 $payload->addArgument('foo', 'bar');
 // or...

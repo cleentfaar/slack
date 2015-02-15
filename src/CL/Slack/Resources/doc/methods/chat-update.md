@@ -12,13 +12,14 @@ This method updates a message in a channel.
 ### Usage
 
 ```php
+$apiClient = new ApiClient('your-slack-token-here');
+
 $payload = new ChatUpdatePayload();
 $payload->setChannelId('your-channel-id-of-choice-here');
 $payload->setMessage('This is the new text!');
-$payload->setTimestamp('1234567.1234567'); // NOTE: Slack-timestamp of the message (non-UNIX!)
+$payload->setTimestamp('12345678.12345678'); // NOTE: Slack-timestamp of the message (non-UNIX!)
 
-$apiClient = new ApiClient('your-slack-token-here');
-$response  = $apiClient->send($payload);
+$response = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // message has been updated

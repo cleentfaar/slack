@@ -26,7 +26,7 @@ class GroupsMarkPayloadTest extends AbstractPayloadTest
     {
         $payload = new GroupsMarkPayload();
         $payload->setGroupId('G1234567');
-        $payload->setTimestamp('1234567.1234567');
+        $payload->setTimestamp('12345678.12345678');
 
         return $payload;
     }

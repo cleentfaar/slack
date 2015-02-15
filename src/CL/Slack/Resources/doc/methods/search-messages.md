@@ -12,11 +12,17 @@ Returns messages matching a search query.
 ### Usage
 
 ```php
-$payload = new SearchMessagesPayload();
-$payload->setQuery('This is my query');
-
 $apiClient = new ApiClient('your-slack-token-here');
-$response  = $apiClient->send($payload);
+
+$payload = new SearchMessagesPayload();
+$payload->setQuery('foo');
+$payload->setPage(123);
+$payload->setCount(123);
+$payload->setHighlight(true);
+$payload->setSort('bar');
+$payload->setSortDir('asc');
+
+$response = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // query has been executed and result is returned (but can be empty)

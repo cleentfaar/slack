@@ -14,7 +14,7 @@ This method deletes a message from a channel.
 ```php
 $payload = new ChatDeletePayload();
 $payload->setChannelId('your-channel-id-of-choice-here');
-$payload->setTimestamp('1234567.1234567'); // NOTE: Slack-timestamp of the message (non-UNIX!)
+$payload->setTimestamp('12345678.12345678'); // NOTE: Slack-timestamp of the message (non-UNIX!)
 
 $apiClient = new ApiClient('your-slack-token-here');
 $response  = $apiClient->send($payload);

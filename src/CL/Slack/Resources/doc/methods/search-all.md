@@ -12,11 +12,17 @@ This method updates a message in a channel.
 ### Usage
 
 ```php
-$payload = new SearchAllPayload();
-$payload->setQuery('This is my query');
-
 $apiClient = new ApiClient('your-slack-token-here');
-$response  = $apiClient->send($payload);
+
+$payload = new SearchAllPayload();
+$payload->setQuery('foo');
+$payload->setPage(123);
+$payload->setCount(123);
+$payload->setHighlight(true);
+$payload->setSort('bar');
+$payload->setSortDir('asc');
+
+$response = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // query has been executed and result is returned (but can be empty)
