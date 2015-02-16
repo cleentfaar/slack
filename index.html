@@ -55,6 +55,9 @@
 <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md">Usage</a> - A few simple examples on how to access the Slack API using this library</li>
 <li>
 <a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/index.md">API methods</a> - Detailed information on each of Slack's API methods and how to access them using this library's <code>Payload</code> classes.</li>
+<li>
+<a href="https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/events.md">Events</a> - Examples for listening to events fired by the <code>ApiClient</code>
+</li>
 </ul>
 
 <h3>
@@ -102,6 +105,29 @@ speed up the merging of your code.</p>
 <ul>
 <li>The <a href="https://slack.com/">Slack</a> staff, for making an awesome product and very clean API documentation.</li>
 </ul>
+
+<h3>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h3>
+
+<h6>
+<a id="why-am-i-getting-a-curl-60-error-when-attempting-to-connect-to-the-slack-api" class="anchor" href="#why-am-i-getting-a-curl-60-error-when-attempting-to-connect-to-the-slack-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why am I getting a cURL 60 error when attempting to connect to the Slack API?</h6>
+
+<p>Under the hood this library uses <a href="https://github.com/guzzle/guzzle">Guzzle</a> to connect to the Slack API, and Guzzle's 
+default method for sending HTTP requests is cURL.</p>
+
+<p>The full error code is <em>CURLE_SSL_CACERT: Peer certificate cannot be authenticated with known CA certificates</em> and may 
+be due, especially on Windows or OS X, to <a href="http://docs.guzzlephp.org/en/latest/faq.html#why-am-i-getting-an-ssl-verification-error">Guzzle not being able to find an up to date CA certificate bundle on the operating system</a>.</p>
+
+<p>To fix this you first create the Guzzle client manually using an alternative CA cert bundle, or <a href="http://guzzle.readthedocs.org/en/latest/clients.html#verify">disabling peer verification</a> (not recommended for security reasons), and pass it to the API Client.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-vo">$client</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\GuzzleHttp\</span><span class="pl-s3">Client</span>();</span>
+<span class="pl-s2"><span class="pl-vo">$client</span><span class="pl-k">-&gt;</span>setDefaultOption(<span class="pl-s1"><span class="pl-pds">'</span>verify<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>C:\Program Files (x86)\Git\bin\curl-ca-bundle.crt<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// continue as normal, using the client above</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-vo">$apiClient</span> <span class="pl-k">=</span>  <span class="pl-k">new</span> <span class="pl-s3">ApiClient</span>(<span class="pl-s1"><span class="pl-pds">'</span>api-token-here<span class="pl-pds">'</span></span>, <span class="pl-vo">$client</span>);</span></pre></div>
+
+<p>If you get a different error code you can look at the <a href="http://curl.haxx.se/libcurl/c/libcurl-errors.html">list of cURL error codes</a>, or consult the <a href="http://docs.guzzlephp.org/en/latest/">Guzzle documentation</a> directly.</p>
         </section>
 
         <footer>
