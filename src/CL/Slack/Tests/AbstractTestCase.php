@@ -241,7 +241,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'id'                   => $actual->getId(),
             'created'              => $actual->getCreated()->format('U'),
             'creator'              => $actual->getCreator(),
-            'last_read'            => ''.$actual->getLastRead(),
+            'last_read'            => $actual->getLastRead(),
             'members'              => $actual->getMembers(),
             'name'                 => $actual->getName(),
             'is_group'             => $actual->isGroup(),

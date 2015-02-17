@@ -36,7 +36,7 @@ class PayloadResponseSerializer extends AbstractSerializer
             throw new \RuntimeException(sprintf(
                 'The serializer expected the response data to be converted into an instance of "%s", got: %s',
                 $payloadResponseClass,
-                is_object($payloadResponseObject) ? 'instance of '.get_class($payloadResponseObject) : gettype($payloadResponseObject)
+                is_object($payloadResponseObject) ? 'instance of ' . get_class($payloadResponseObject) : gettype($payloadResponseObject)
             ));
         }
 

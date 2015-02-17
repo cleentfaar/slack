@@ -26,7 +26,7 @@ Add the following two namespace entries to the `registerNamespaces` call in your
 // app/autoload.php
 $loader->registerNamespaces(array(
     // ...
-    'CL\Slack' => __DIR__.'/../vendor/bundles/cleentfaar/slack',
+    'CL\Slack' => __DIR__ . '/../vendor/bundles/cleentfaar/slack',
     // ...
 ));
 ```
