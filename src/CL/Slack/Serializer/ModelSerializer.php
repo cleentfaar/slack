@@ -54,7 +54,7 @@ class ModelSerializer extends AbstractSerializer
             throw new \RuntimeException(sprintf(
                 'The serializer expected the model data to be converted into an instance of "%s", got: %s',
                 $modelClass,
-                is_object($modelObject) ? 'instance of ' . get_class($modelObject) : gettype($modelObject)
+                is_object($modelObject) ? 'instance of '.get_class($modelObject) : gettype($modelObject)
             ));
         }
 

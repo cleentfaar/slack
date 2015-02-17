@@ -32,7 +32,7 @@ class ChannelsHistoryPayloadResponseTest extends AbstractPayloadResponseTest
                     'type'     => 'message',
                     'user'     => 'U1234567!',
                     'username' => 'acme_user',
-                ]
+                ],
             ],
         ];
     }

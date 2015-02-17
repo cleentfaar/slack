@@ -26,7 +26,7 @@ class GroupsHistoryPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'messages' => [
-                $this->createSimpleMessage()
+                $this->createSimpleMessage(),
             ],
         ];
     }

@@ -28,8 +28,8 @@ class UsersListPayloadResponse extends AbstractPayloadResponse
      *
      * For deactivated users, deleted will be true.
      * The color property is used in some clients to display a colored username.
-     * 
-     * @return User[] 
+     *
+     * @return User[]
      */
     public function getUsers()
     {

@@ -140,7 +140,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'last_read' => '12345678.12345678',
             'latest'    => $this->createMessage(),
             'members'   => [
-                'U1234567'
+                'U1234567',
             ],
             'name'      => 'acme_channel',
             'purpose'   => $this->createCustomizable(),
@@ -182,7 +182,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         return [
             'id'   => 'C1234567',
             'name' => '#foo',
-            ''
+            '',
         ];
     }
 
@@ -213,14 +213,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'creator'              => 'U024BE7LH',
             'is_archived'          => false,
             'members'              => [
-                'U024BE7LH'
+                'U024BE7LH',
             ],
             'topic'                => $this->createCustomizable(),
             'purpose'              => $this->createCustomizable(),
             'last_read'            => '1401383885',
             'latest'               => $this->createMessage(),
             'unread_count'         => 0,
-            'unread_count_display' => 0
+            'unread_count_display' => 0,
         ];
     }
 
@@ -241,7 +241,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'id'                   => $actual->getId(),
             'created'              => $actual->getCreated()->format('U'),
             'creator'              => $actual->getCreator(),
-            'last_read'            => '' . $actual->getLastRead(),
+            'last_read'            => ''.$actual->getLastRead(),
             'members'              => $actual->getMembers(),
             'name'                 => $actual->getName(),
             'is_group'             => $actual->isGroup(),
@@ -324,7 +324,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'groups'               => ['G12345'],
             'initial_comment'      => 'This is the comment',
             'num_stars'            => 7,
-            'is_starred'           => true
+            'is_starred'           => true,
         ];
     }
 
@@ -549,7 +549,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'image_32'   => 'https =>\/\/...',
             'image_48'   => 'https =>\/\/...',
             'image_72'   => 'https =>\/\/...',
-            'image_192'  => 'https =>\/\/...'
+            'image_192'  => 'https =>\/\/...',
         ];
     }
 

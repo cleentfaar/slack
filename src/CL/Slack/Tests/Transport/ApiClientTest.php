@@ -63,7 +63,7 @@ class ApiClientTest extends AbstractTestCase
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
             $self->assertEquals($mockRequestData, $event->getRawPayload());
         });
-        
+
         $apiClient->addResponseListener(function (ResponseEvent $event) use (&$eventsDispatched, $mockResponseData, $self) {
             $eventsDispatched[ApiClient::EVENT_RESPONSE] = true;
             $self->assertEquals($mockResponseData, $event->getRawPayloadResponse());
@@ -72,7 +72,7 @@ class ApiClientTest extends AbstractTestCase
         $apiClient->send($mockPayload);
 
         $lastRequest = $history->getLastRequest();
-        $expectedUrl = ApiClient::API_BASE_URL . 'mock';
+        $expectedUrl = ApiClient::API_BASE_URL.'mock';
         parse_str((string) $lastRequest->getBody(), $lastRequestContent);
         $lastResponseContent = json_decode($history->getLastResponse()->getBody(), true);
 

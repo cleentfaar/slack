@@ -26,7 +26,7 @@ class GroupsListPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'groups' => [
-                $this->createGroup()
+                $this->createGroup(),
             ],
         ];
     }

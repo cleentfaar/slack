@@ -26,7 +26,7 @@ class UsersListPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'members' => [
-                $this->createUser()
+                $this->createUser(),
             ],
         ];
     }

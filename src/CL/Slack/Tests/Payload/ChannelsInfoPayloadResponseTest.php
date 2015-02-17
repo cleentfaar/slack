@@ -25,7 +25,7 @@ class ChannelsInfoPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'channel' => $this->createChannel()
+            'channel' => $this->createChannel(),
         ];
     }
 

@@ -64,7 +64,7 @@ class AuthTestPayloadResponse extends AbstractPayloadResponse
     {
         return $this->team;
     }
-    
+
     /**
      * @return string
      */

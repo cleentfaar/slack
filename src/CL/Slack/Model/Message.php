@@ -22,7 +22,7 @@ class Message extends SimpleMessage
      * @var Channel
      */
     private $channel;
-    
+
     /**
      * @var string|null
      */

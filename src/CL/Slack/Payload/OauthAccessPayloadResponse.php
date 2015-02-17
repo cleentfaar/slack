@@ -51,7 +51,7 @@ class OauthAccessPayloadResponse extends AbstractPayloadResponse
             'invalid_client_id' => 'Value passed for client_id was invalid',
             'bad_client_secret' => 'Value passed for client_secret was invalid',
             'invalid_code'      => 'Value passed for code was invalid',
-            'bad_redirect_uri'  => 'Value passed for redirect_uri did not match the redirect_uri in the original request'
+            'bad_redirect_uri'  => 'Value passed for redirect_uri did not match the redirect_uri in the original request',
         ]);
     }
 }

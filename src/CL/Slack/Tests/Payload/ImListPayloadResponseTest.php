@@ -26,7 +26,7 @@ class ImListPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'channels' => [
-                $this->createImChannel()
+                $this->createImChannel(),
             ],
         ];
     }

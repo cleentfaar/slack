@@ -182,7 +182,7 @@ class ApiClient
     private function createRequest($method, array $payload)
     {
         $request = $this->client->createRequest('POST');
-        $request->setUrl(self::API_BASE_URL . $method);
+        $request->setUrl(self::API_BASE_URL.$method);
 
         $body = new PostBody();
         $body->replaceFields($payload);

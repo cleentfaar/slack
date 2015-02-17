@@ -16,5 +16,4 @@ namespace CL\Slack\Model;
  */
 abstract class AbstractModel
 {
-
 }

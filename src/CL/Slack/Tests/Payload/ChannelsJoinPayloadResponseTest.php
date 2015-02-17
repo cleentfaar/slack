@@ -26,7 +26,7 @@ class ChannelsJoinPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'already_in_channel' => true,
-            'channel'            => $this->createChannel()
+            'channel'            => $this->createChannel(),
         ];
     }
 

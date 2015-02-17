@@ -12,7 +12,6 @@
 namespace CL\Slack\Tests\Model;
 
 use CL\Slack\Model\AbstractModel;
-use CL\Slack\Model\Message;
 use CL\Slack\Model\SimpleMessage;
 
 /**

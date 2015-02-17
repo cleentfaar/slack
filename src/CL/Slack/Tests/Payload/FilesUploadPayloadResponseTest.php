@@ -25,14 +25,14 @@ class FilesUploadPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'file' => $this->createFile()
+            'file' => $this->createFile(),
         ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                    $responseData
+     * @param array                      $responseData
      * @param FilesUploadPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)

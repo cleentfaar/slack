@@ -34,7 +34,7 @@ class PayloadResponseSerializerTest extends AbstractTestCase
         $payloadResponse = [
             'ok'     => true,
             'error'  => null,
-            'result' => []
+            'result' => [],
         ];
 
         $mockResponseClass = 'CL\Slack\Test\Payload\MockPayloadResponse';

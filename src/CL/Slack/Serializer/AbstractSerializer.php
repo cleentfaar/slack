@@ -26,7 +26,7 @@ abstract class AbstractSerializer
 
     final public function __construct()
     {
-        $metaDir          = __DIR__ . '/../Resources/config/serializer';
+        $metaDir          = __DIR__.'/../Resources/config/serializer';
         $this->serializer = SerializerBuilder::create()->addMetadataDir($metaDir)->build();
     }
 }
