@@ -42,7 +42,7 @@ class ChatUpdatePayloadResponse extends AbstractPayloadResponse
     /**
      * @return string
      */
-    public function getTimestamp()
+    public function getSlackTimestamp()
     {
         return $this->ts;
     }

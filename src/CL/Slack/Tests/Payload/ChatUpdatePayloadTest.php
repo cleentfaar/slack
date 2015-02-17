@@ -26,7 +26,7 @@ class ChatUpdatePayloadTest extends AbstractPayloadTest
     {
         $payload = new ChatUpdatePayload();
         $payload->setChannelId('C1234567');
-        $payload->setTimestamp(12345678);
+        $payload->setSlackTimestamp('12345678.12345678');
         $payload->setText('new_message');
 
         return $payload;
@@ -41,7 +41,7 @@ class ChatUpdatePayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'ts'      => $payload->getTimestamp(),
+            'ts'      => $payload->getSlackTimestamp(),
             'text'    => $payload->getText(),
         ];
     }

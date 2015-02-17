@@ -94,7 +94,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
                 'id'   => $actual->getChannel()->getId(),
                 'name' => $actual->getChannel()->getName(),
             ],
-            'ts'       => $actual->getTimestamp(),
+            'ts'       => $actual->getSlackTimestamp(),
             'type'     => $actual->getType(),
             'text'     => $actual->getText(),
             'user'     => $actual->getUserId(),
@@ -344,7 +344,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertSimpleMessage(array $expected, SimpleMessage $actual)
     {
         $this->assertEquals($expected['type'], $actual->getType());
-        $this->assertEquals($expected['ts'], $actual->getTimestamp());
+        $this->assertEquals($expected['ts'], $actual->getSlackTimestamp());
         $this->assertEquals($expected['user'], $actual->getUserId());
         $this->assertEquals($expected['text'], $actual->getText());
         $this->assertEquals($expected['username'], $actual->getUsername());

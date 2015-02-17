@@ -26,7 +26,7 @@ class GroupsMarkPayloadTest extends AbstractPayloadTest
     {
         $payload = new GroupsMarkPayload();
         $payload->setGroupId('G1234567');
-        $payload->setTimestamp('12345678.12345678');
+        $payload->setSlackTimestamp('12345678.12345678');
 
         return $payload;
     }
@@ -39,7 +39,7 @@ class GroupsMarkPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'ts'      => $payload->getTimestamp(),
+            'ts'      => $payload->getSlackTimestamp(),
             'channel' => $payload->getGroupId(),
         ];
     }

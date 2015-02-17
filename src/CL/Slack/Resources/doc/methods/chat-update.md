@@ -17,7 +17,7 @@ $apiClient = new ApiClient('your-slack-token-here');
 $payload = new ChatUpdatePayload();
 $payload->setChannelId('your-channel-id-of-choice-here');
 $payload->setMessage('This is the new text!');
-$payload->setTimestamp('12345678.12345678'); // NOTE: Slack-timestamp of the message (non-UNIX!)
+$payload->setSlackTimestamp('12345678.12345678'); // NOTE: Slack-timestamp of the message (non-UNIX!)
 
 $response = $apiClient->send($payload);
 

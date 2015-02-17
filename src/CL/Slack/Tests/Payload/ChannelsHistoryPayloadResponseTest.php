@@ -50,11 +50,7 @@ class ChannelsHistoryPayloadResponseTest extends AbstractPayloadResponseTest
         $this->assertCount(1, $messages);
 
         foreach ($messages as $x => $message) {
-            $this->assertEquals($message->getText(), $responseData['messages'][$x]['text']);
-            $this->assertEquals($message->getTimestamp(), $responseData['messages'][$x]['ts']);
-            $this->assertEquals($message->getType(), $responseData['messages'][$x]['type']);
-            $this->assertEquals($message->getUserId(), $responseData['messages'][$x]['user']);
-            $this->assertEquals($message->getUsername(), $responseData['messages'][$x]['username']);
+            $this->assertSimpleMessage($responseData['messages'][$x], $message);
         }
     }
 }
