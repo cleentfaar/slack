@@ -57,7 +57,7 @@ class ChatPostMessagePayload extends AbstractPayload
     private $unfurlMedia;
 
     /**
-     * @var string
+     * @var boolean
      */
     private $linkNames;
 
