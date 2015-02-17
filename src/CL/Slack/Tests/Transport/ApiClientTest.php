@@ -59,12 +59,12 @@ class ApiClientTest extends AbstractTestCase
         $client->getEmitter()->attach($mock);
 
         $apiClient = new ApiClient(self::TOKEN, $client);
-        $apiClient->addListener(ApiClient::EVENT_REQUEST, function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
+        $apiClient->addRequestListener(function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
             $self->assertEquals($mockRequestData, $event->getRawPayload());
         });
         
-        $apiClient->addListener(ApiClient::EVENT_RESPONSE, function (ResponseEvent $event) use (&$eventsDispatched, $mockResponseData, $self) {
+        $apiClient->addResponseListener(function (ResponseEvent $event) use (&$eventsDispatched, $mockResponseData, $self) {
             $eventsDispatched[ApiClient::EVENT_RESPONSE] = true;
             $self->assertEquals($mockResponseData, $event->getRawPayloadResponse());
         });
@@ -104,18 +104,5 @@ class ApiClientTest extends AbstractTestCase
         }
 
         $this->markTestIncomplete('This test should have thrown an exception');
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unknown event to add listener for (unknown-event)
-     */
-    public function testAddListenerForUnknownEvent()
-    {
-        $apiClient = new ApiClient();
-
-        $apiClient->addListener('unknown-event', function () {
-            return;
-        });
     }
 }
