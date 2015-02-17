@@ -148,7 +148,7 @@ class ApiClient
 
             $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
 
-            $request = $this->createRequest($method, $data, $token);
+            $request = $this->createRequest($method, $data);
 
             /** @var ResponseInterface $response */
             $response = $this->client->send($request);

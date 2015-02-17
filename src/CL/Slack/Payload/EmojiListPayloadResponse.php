@@ -17,12 +17,12 @@ namespace CL\Slack\Payload;
 class EmojiListPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var array<string, string>
+     * @var array
      */
     private $emoji = [];
 
     /**
-     * @return array<string, string>
+     * @return array
      */
     public function getEmojis()
     {
