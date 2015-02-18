@@ -117,27 +117,25 @@ class ApiClient
     }
 
     /**
-     * @param string   $event
      * @param callable $callable
      */
-    public function addListener($event, $callable)
+    public function addRequestListener($callable)
     {
-        $allowedEvents = [self::EVENT_REQUEST, self::EVENT_RESPONSE];
-        if (!in_array($event, $allowedEvents)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Unknown event to add listener for (%s), must be one of: %s',
-                $event,
-                implode(', ', $allowedEvents)
-            ));
-        }
-
-        $this->eventDispatcher->addListener($event, $callable);
+        $this->eventDispatcher->addListener(self::EVENT_REQUEST, $callable);
     }
 
     /**
-     * @param string $method
-     * @param array  $data
-     * @param null   $token
+     * @param callable $callable
+     */
+    public function addResponseListener($callable)
+    {
+        $this->eventDispatcher->addListener(self::EVENT_RESPONSE, $callable);
+    }
+
+    /**
+     * @param string      $method
+     * @param array       $data
+     * @param string|null $token
      *
      * @throws SlackException
      *
@@ -150,7 +148,7 @@ class ApiClient
 
             $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
 
-            $request = $this->createRequest($method, $data, $token);
+            $request = $this->createRequest($method, $data);
 
             /** @var ResponseInterface $response */
             $response = $this->client->send($request);
@@ -184,7 +182,7 @@ class ApiClient
     private function createRequest($method, array $payload)
     {
         $request = $this->client->createRequest('POST');
-        $request->setUrl(self::API_BASE_URL . $method);
+        $request->setUrl(self::API_BASE_URL.$method);
 
         $body = new PostBody();
         $body->replaceFields($payload);

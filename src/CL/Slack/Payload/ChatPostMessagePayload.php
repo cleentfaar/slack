@@ -57,7 +57,7 @@ class ChatPostMessagePayload extends AbstractPayload
     private $unfurlMedia;
 
     /**
-     * @var string
+     * @var boolean
      */
     private $linkNames;
 
@@ -115,7 +115,7 @@ class ChatPostMessagePayload extends AbstractPayload
 
     /**
      * @param string $message
-     * 
+     *
      * @deprecated Will be removed soon, use `setText()` instead
      */
     public function setMessage($message)
@@ -125,7 +125,7 @@ class ChatPostMessagePayload extends AbstractPayload
 
     /**
      * @return string
-     * 
+     *
      * @deprecated Will be removed soon, use `getText()` instead
      */
     public function getMessage()

@@ -25,7 +25,7 @@ class GroupsInvitePayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'group' => $this->createGroup()
+            'group' => $this->createGroup(),
         ];
     }
 

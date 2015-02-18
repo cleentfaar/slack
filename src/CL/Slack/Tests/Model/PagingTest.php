@@ -12,7 +12,6 @@
 namespace CL\Slack\Tests\Model;
 
 use CL\Slack\Model\AbstractModel;
-use CL\Slack\Model\AttachmentField;
 use CL\Slack\Model\Paging;
 
 /**

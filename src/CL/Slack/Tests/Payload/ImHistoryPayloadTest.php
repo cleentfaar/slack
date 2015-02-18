@@ -27,8 +27,8 @@ class ImHistoryPayloadTest extends AbstractPayloadTest
         $payload = new ImHistoryPayload();
         $payload->setImId('I1234567');
         $payload->setCount(10);
-        $payload->setOldest(1111.1111);
-        $payload->setLatest(9999.9999);
+        $payload->setOldest('12345678.12345678');
+        $payload->setLatest('12345678.12345678');
 
         return $payload;
     }

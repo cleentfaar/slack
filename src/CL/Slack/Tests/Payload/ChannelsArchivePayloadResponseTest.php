@@ -32,7 +32,7 @@ class ChannelsArchivePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      *
-     * @param array                   $responseData
+     * @param array                          $responseData
      * @param ChannelsArchivePayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)

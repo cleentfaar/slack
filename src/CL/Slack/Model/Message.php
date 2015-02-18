@@ -19,10 +19,10 @@ namespace CL\Slack\Model;
 class Message extends SimpleMessage
 {
     /**
-     * @var Channel
+     * @var Channel|null
      */
     private $channel;
-    
+
     /**
      * @var string|null
      */

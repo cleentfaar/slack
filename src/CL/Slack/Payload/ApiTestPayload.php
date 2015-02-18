@@ -29,7 +29,7 @@ class ApiTestPayload extends AbstractPayload
      * @var string
      */
     private $error;
-    
+
     /**
      * @param array $args
      */
@@ -49,7 +49,7 @@ class ApiTestPayload extends AbstractPayload
 
     /**
      * @param string $key
-     * 
+     *
      * @return mixed
      */
     public function getArgument($key)
@@ -57,7 +57,7 @@ class ApiTestPayload extends AbstractPayload
         if (!array_key_exists($key, $this->args)) {
             throw new \InvalidArgumentException(sprintf('There is no argument with that name: "%s"', $key));
         }
-        
+
         return $this->args[$key];
     }
 

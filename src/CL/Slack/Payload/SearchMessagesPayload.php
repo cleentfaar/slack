@@ -13,7 +13,7 @@ namespace CL\Slack\Payload;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
- *         
+ *
  * @link Official documentation at https://api.slack.com/methods/search.messages
  */
 class SearchMessagesPayload extends AbstractSearchPayload

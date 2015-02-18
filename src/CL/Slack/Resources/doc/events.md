@@ -9,27 +9,15 @@ Below is an example of how you could use this to display debugging information t
 
 $apiClient = new ApiClient('your-token-here');
 
-$apiClient->addListener(
-    ApiClient::EVENT_REQUEST,
-    function (RequestEvent $event) use ($output, $self) {
-        $self->rawRequest = $event->getRawPayload();
-        if ($output->getVerbosity() > OutputInterface::VERBOSITY_VERBOSE) {
-            $output->writeln('<comment>Debug: sending payload...</comment>');
-            $this->renderKeyValueTable($output, $self->rawRequest); // some method to display the array of data
-        }
-    }
-);
+$apiClient->addRequestListener(function (RequestEvent $event) {
+    echo "Sent payload:\n";
+    var_dump($event->getRawPayload()); // array containing the data that was sent to Slack
+});
 
-$apiClient->addListener(
-    ApiClient::EVENT_RESPONSE,
-    function (ResponseEvent $event) use ($output, $self) {
-        $self->rawResponse = $event->getRawPayloadResponse();
-        if ($output->getVerbosity() > OutputInterface::VERBOSITY_VERBOSE) {
-            $output->writeln('<comment>Debug: received payload response...</comment>');
-            $this->renderKeyValueTable($output, $self->rawResponse); // some method to display the array of data
-        }
-    }
-);
+$apiClient->addResponseListener(function (ResponseEvent $event) use ($output, $self) {
+    echo "Received payload response:\n";
+    var_dump($event->getRawPayloadResponse()); // array containing the data that was returned by Slack
+});
 
 // ...
 

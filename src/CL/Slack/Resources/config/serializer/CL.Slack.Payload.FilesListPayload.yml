@@ -12,7 +12,6 @@ CL\Slack\Payload\FilesListPayload:
             type: integer
         types:
             type: array
-            accesor: 
+            accesor:
                 setter: setTypesFromString
                 getter: getTypesAsString
-            

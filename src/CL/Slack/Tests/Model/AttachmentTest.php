@@ -34,7 +34,7 @@ class AttachmentTest extends AbstractModelTest
                     'title' => 'foo',
                     'value' => 'bar',
                     'short' => false,
-                ]
+                ],
             ],
         ];
     }

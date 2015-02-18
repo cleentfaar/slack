@@ -26,7 +26,7 @@ class ImMarkPayloadTest extends AbstractPayloadTest
     {
         $payload = new ImMarkPayload();
         $payload->setImId('I1234567');
-        $payload->setTimestamp('12345678.12345678');
+        $payload->setSlackTimestamp('12345678.12345678');
 
         return $payload;
     }
@@ -39,7 +39,7 @@ class ImMarkPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'ts'      => $payload->getTimestamp(),
+            'ts'      => $payload->getSlackTimestamp(),
             'channel' => $payload->getImId(),
         ];
     }

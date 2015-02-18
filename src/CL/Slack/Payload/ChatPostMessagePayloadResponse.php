@@ -29,15 +29,15 @@ class ChatPostMessagePayloadResponse extends AbstractPayloadResponse
     /**
      * @return string|null The Slack timestamp on which your message has been posted, or null if the call failed
      */
-    public function getTimestamp()
+    public function getSlackTimestamp()
     {
         return $this->ts;
     }
 
     /**
-     * @return string|null The Slack channel on which your message has been posted, or null if the call failed
+     * @return string|null The Slack channel ID on which your message has been posted, or null if the call failed
      */
-    public function getChannel()
+    public function getChannelId()
     {
         return $this->channel;
     }

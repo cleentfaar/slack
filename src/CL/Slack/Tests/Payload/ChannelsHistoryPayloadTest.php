@@ -26,9 +26,9 @@ class ChannelsHistoryPayloadTest extends AbstractPayloadTest
     {
         $payload = new ChannelsHistoryPayload();
         $payload->setChannelId('C1234567');
-        $payload->setCount(10);
-        $payload->setOldest(1111.1111);
-        $payload->setLatest(9999.9999);
+        $payload->setCount(123);
+        $payload->setOldest('12345678.12345678');
+        $payload->setLatest('12345678.12345678');
 
         return $payload;
     }

@@ -35,7 +35,7 @@ class MockPayload extends AbstractPayload
     {
         return 'mock';
     }
-    
+
     public function getResponseClass()
     {
         return 'CL\Slack\Test\Payload\MockPayloadResponse';

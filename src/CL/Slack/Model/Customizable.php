@@ -65,19 +65,11 @@ class Customizable extends AbstractModel
     /**
      * Returns the last date on which this customizable was customized ^_^,
      * or null if this was the first change
-     * 
+     *
      * @return \DateTime|null
      */
     public function getLastSet()
     {
         return $this->lastSet;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->value;
     }
 }

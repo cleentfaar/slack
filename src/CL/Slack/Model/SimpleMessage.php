@@ -51,7 +51,7 @@ class SimpleMessage extends AbstractModel
     /**
      * @return string|null The Slack timestamp on which the message was posted
      */
-    public function getTimestamp()
+    public function getSlackTimestamp()
     {
         return $this->ts;
     }

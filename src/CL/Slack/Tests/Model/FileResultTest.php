@@ -26,7 +26,7 @@ class FileResultTest extends AbstractModelTest
     {
         return [
             'matches' => [
-                $this->createFileResultItem()
+                $this->createFileResultItem(),
             ],
         ];
     }

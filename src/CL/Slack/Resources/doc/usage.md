@@ -49,7 +49,7 @@ $response = $client->send($payload);
 
 // the following is very much up to you, this is just a very simple example
 if ($response->isOk()) {
-    echo sprintf('Successfully posted message on %d', $response->getTimestamp());
+    echo sprintf('Successfully posted message on %s', $response->getChannelId());
 } else {
     echo sprintf('Failed to post message to Slack: %s', $response->getErrorExplanation());
 }

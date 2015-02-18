@@ -50,7 +50,7 @@ class GroupsMarkPayload extends AbstractPayload
     /**
      * @param string $timestamp
      */
-    public function setTimestamp($timestamp)
+    public function setSlackTimestamp($timestamp)
     {
         $this->ts = $timestamp;
     }
@@ -58,7 +58,7 @@ class GroupsMarkPayload extends AbstractPayload
     /**
      * @return string
      */
-    public function getTimestamp()
+    public function getSlackTimestamp()
     {
         return $this->ts;
     }

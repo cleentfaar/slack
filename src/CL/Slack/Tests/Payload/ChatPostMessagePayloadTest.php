@@ -100,7 +100,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
                             'title' => $attachmentField->getTitle(),
                             'short' => $attachmentField->isShort(),
                             'value' => $attachmentField->getValue(),
-                        ]
+                        ],
                     ],
                 ],
             ],

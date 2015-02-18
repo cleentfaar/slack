@@ -22,7 +22,7 @@ class ChannelsInvitePayload extends AbstractPayload
      * @var string
      */
     private $channel;
-    
+
     /**
      * @var string
      */

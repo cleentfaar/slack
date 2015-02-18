@@ -25,7 +25,7 @@ class UsersInfoPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'user' => $this->createUser()
+            'user' => $this->createUser(),
         ];
     }
 

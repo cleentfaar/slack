@@ -35,7 +35,7 @@ class ChannelsSetPurposePayloadResponse extends AbstractPayloadResponse
     protected function getPossibleErrors()
     {
         return array_merge(parent::getPossibleErrors(), [
-            'too_long' => 'Purpose was longer than 250 characters.'
+            'too_long' => 'Purpose was longer than 250 characters.',
         ]);
     }
 }

@@ -11,7 +11,6 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\GroupsArchivePayload;
 use CL\Slack\Payload\GroupsClosePayload;
 use CL\Slack\Payload\PayloadInterface;
 

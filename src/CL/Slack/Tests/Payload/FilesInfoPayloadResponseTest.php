@@ -25,7 +25,7 @@ class FilesInfoPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'file' => $this->createFile()
+            'file' => $this->createFile(),
         ];
     }
 

@@ -33,54 +33,21 @@ use CL\Slack\Model\UserProfile;
 abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @param array $expected
-     * @param File  $actual
+     * Returns an example of file-data that could be returned by a response
+     * Used by different tests to simplify their fixtures
+     *
+     * @return array
      */
-    protected function assertFile(array $expected, File $actual)
+    protected function createMessage()
     {
-        $this->assertNotEmpty($expected);
-        $this->assertInstanceOf('CL\Slack\Model\File', $actual);
-        $this->assertEquals($expected, [
-            'id'                   => $actual->getId(),
-            'timestamp'            => $actual->getTimestamp()->format('U'),
-            'name'                 => $actual->getName(),
-            'channels'             => $actual->getChannels(),
-            'editable'             => $actual->isEditable(),
-            'edit_link'            => $actual->getEditLink(),
-            'external_type'        => $actual->getExternalType(),
-            'filetype'             => $actual->getFileType(),
-            'groups'               => $actual->getGroups(),
-            'initial_comment'      => $actual->getInitialComment(),
-            'is_external'          => $actual->isExternal(),
-            'is_public'            => $actual->isPublic(),
-            'lines'                => $actual->getLines(),
-            'lines_more'           => $actual->getLinesMore(),
-            'mimetype'             => $actual->getMimeType(),
-            'mode'                 => $actual->getMode(),
-            'num_stars'            => $actual->getNumStars(),
-            'permalink'            => $actual->getPermalink(),
-            'pretty_type'          => $actual->getPrettyType(),
-            'preview'              => $actual->getPreview(),
-            'preview_highlight'    => $actual->getPreviewHighlight(),
-            'public_url_shared'    => $actual->isPublicUrlShared(),
-            'size'                 => $actual->getSize(),
-            'created'              => $actual->getCreated()->format('U'),
-            'title'                => $actual->getTitle(),
-            'user'                 => $actual->getUserId(),
-            'url'                  => $actual->getUrl(),
-            'url_download'         => $actual->getUrlDownload(),
-            'url_private'          => $actual->getUrlPrivate(),
-            'url_private_download' => $actual->getUrlPrivateDownload(),
-
-            'thumb_64'             => $actual->getThumb64(),
-            'thumb_80'             => $actual->getThumb80(),
-            'thumb_360'            => $actual->getThumb360(),
-            'thumb_360_gif'        => $actual->getThumb360Gif(),
-            'thumb_360_w'          => $actual->getThumb360W(),
-            'thumb_360_h'          => $actual->getThumb360H(),
-
-            'is_starred'           => $actual->isStarred(),
-        ]);
+        return [
+            'channel'  => $this->createSimpleChannel(),
+            'ts'       => '12345678.12345678',
+            'type'     => 'message',
+            'text'     => 'Hello world!',
+            'user'     => 'U1234567',
+            'username' => 'Acme',
+        ];
     }
 
     /**
@@ -90,11 +57,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertMessage(array $expected, Message $actual)
     {
         $this->assertEquals($expected, [
-            'channel'  => [
-                'id'   => $actual->getChannel()->getId(),
-                'name' => $actual->getChannel()->getName(),
-            ],
-            'ts'       => $actual->getTimestamp(),
+            'channel'  => $this->createSimpleChannel(),
+            'ts'       => $actual->getSlackTimestamp(),
             'type'     => $actual->getType(),
             'text'     => $actual->getText(),
             'user'     => $actual->getUserId(),
@@ -103,31 +67,85 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param array        $expected
-     * @param Customizable $actual
+     * @return array
      */
-    protected function assertCustomizable(array $expected, Customizable $actual)
+    protected function createMessageResult()
     {
-        $this->assertEquals($expected, [
-            'value'    => $actual->getValue(),
-            'type'     => $actual->getType(),
-            'creator'  => $actual->getCreator(),
-            'last_set' => $actual->getLastSet()->format('U'),
+        return [
+            'matches' => [
+                $this->createMessageResultItem(),
+            ],
+            'paging'  => $this->createPaging(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function createMessageResultItem()
+    {
+        return array_merge($this->createMessage(), [
+            'channel' => $this->createSimpleChannel(),
         ]);
     }
 
     /**
-     * @param array         $expected
-     * @param SimpleChannel $actual
+     * @param array             $expected
+     * @param MessageResultItem $actual
      */
-    protected function assertSimpleChannel(array $expected, SimpleChannel $actual)
+    protected function assertMessageResultItem(array $expected, MessageResultItem $actual)
     {
-        $this->assertEquals($expected, [
-            'id'      => $actual->getId(),
-            'created' => $actual->getCreated()->format('U'),
-            'creator' => $actual->getCreator(),
-            'name'    => $actual->getName(),
-        ]);
+        $this->assertMessage($expected, $actual);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createSimpleMessage()
+    {
+        return [
+            'type'     => 'message',
+            'ts'       => '12345678.12345678',
+            'user'     => 'U2147483896',
+            'username' => 'acme user',
+            'text'     => 'Hello',
+        ];
+    }
+
+    /**
+     * @param array         $expected
+     * @param SimpleMessage $actual
+     */
+    protected function assertSimpleMessage(array $expected, SimpleMessage $actual)
+    {
+        $this->assertEquals($expected['type'], $actual->getType());
+        $this->assertEquals($expected['ts'], $actual->getSlackTimestamp());
+        $this->assertEquals($expected['user'], $actual->getUserId());
+        $this->assertEquals($expected['text'], $actual->getText());
+        $this->assertEquals($expected['username'], $actual->getUsername());
+    }
+
+    /**
+     * Returns an example of channel-data that could be returned by a response
+     * Used by different tests to simplify their fixtures
+     *
+     * @return array
+     */
+    protected function createChannel()
+    {
+        return [
+            'id'        => 'C1234567',
+            'created'   => '12345678',
+            'creator'   => 'U1234567',
+            'last_read' => '12345678.12345678',
+            'latest'    => $this->createMessage(),
+            'members'   => [
+                'U1234567',
+            ],
+            'name'      => 'acme_channel',
+            'purpose'   => $this->createCustomizable(),
+            'topic'     => $this->createCustomizable(),
+        ];
     }
 
     /**
@@ -154,6 +172,59 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Returns an example of channel-data that could be returned by a response
+     * Used by different tests to simplify their fixtures
+     *
+     * @return array
+     */
+    protected function createSimpleChannel()
+    {
+        return [
+            'id'   => 'C1234567',
+            'name' => '#foo',
+            '',
+        ];
+    }
+
+    /**
+     * @param array         $expected
+     * @param SimpleChannel $actual
+     */
+    protected function assertSimpleChannel(array $expected, SimpleChannel $actual)
+    {
+        $this->assertEquals($expected, [
+            'id'      => $actual->getId(),
+            'created' => $actual->getCreated()->format('U'),
+            'creator' => $actual->getCreator(),
+            'name'    => $actual->getName(),
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createGroup()
+    {
+        return [
+            'id'                   => 'G024BE91L',
+            'name'                 => 'secretplans',
+            'is_group'             => true,
+            'created'              => '1360782804',
+            'creator'              => 'U024BE7LH',
+            'is_archived'          => false,
+            'members'              => [
+                'U024BE7LH',
+            ],
+            'topic'                => $this->createCustomizable(),
+            'purpose'              => $this->createCustomizable(),
+            'last_read'            => '1401383885',
+            'latest'               => $this->createMessage(),
+            'unread_count'         => 0,
+            'unread_count_display' => 0,
+        ];
+    }
+
+    /**
      * @param array $expected
      * @param Group $actual
      */
@@ -170,13 +241,23 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'id'                   => $actual->getId(),
             'created'              => $actual->getCreated()->format('U'),
             'creator'              => $actual->getCreator(),
-            'last_read'            => '' . $actual->getLastRead(),
+            'last_read'            => $actual->getLastRead(),
             'members'              => $actual->getMembers(),
             'name'                 => $actual->getName(),
             'is_group'             => $actual->isGroup(),
             'is_archived'          => $actual->isArchived(),
             'unread_count'         => $actual->getUnreadCount(),
             'unread_count_display' => $actual->getUnreadCountDisplay(),
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createGroupWithState()
+    {
+        return array_merge($this->createGroup(), [
+            'is_open' => true,
         ]);
     }
 
@@ -189,96 +270,6 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected['is_open'], $actual->isOpen());
         unset($expected['is_open']);
         $this->assertGroup($expected, $actual);
-    }
-
-    /**
-     * @param array          $expectedFileResultItem
-     * @param FileResultItem $fileResultItem
-     */
-    protected function assertFileResultItem(array $expectedFileResultItem, FileResultItem $fileResultItem)
-    {
-        $this->assertEquals($expectedFileResultItem['channel']['id'], $fileResultItem->getChannel()->getId());
-        unset($expectedFileResultItem['channel']);
-        $this->assertFile($expectedFileResultItem, $fileResultItem);
-    }
-
-    /**
-     * @param array             $expected
-     * @param MessageResultItem $actual
-     */
-    protected function assertMessageResultItem(array $expected, MessageResultItem $actual)
-    {
-        $this->assertMessage($expected, $actual);
-    }
-
-    /**
-     * @param array  $expected
-     * @param Paging $actual
-     */
-    protected function assertPaging(array $expected, Paging $actual)
-    {
-        $this->assertEquals($expected, [
-            'count' => $actual->getCount(),
-            'total' => $actual->getTotal(),
-            'page'  => $actual->getPage(),
-            'pages' => $actual->getPages(),
-        ]);
-    }
-
-    /**
-     * @param array       $expected
-     * @param StarredItem $actual
-     */
-    protected function assertStarredItem(array $expected, StarredItem $actual)
-    {
-        $this->assertFile($expected['file'], $actual->getFile());
-        unset($expected['file']);
-
-        $this->assertEquals($expected, [
-            'type'    => $actual->getType(),
-            'comment' => $actual->getComment(),
-        ]);
-    }
-
-    protected function createPaging()
-    {
-        return [
-            'total' => 123,
-            'count' => 123,
-            'page'  => 123,
-            'pages' => 123,
-        ];
-    }
-
-    protected function createFileResult()
-    {
-        return [
-            'matches' => [
-                $this->createFileResultItem(),
-            ],
-            'paging'  => $this->createPaging(),
-        ];
-    }
-
-    protected function createMessageResult()
-    {
-        return [
-            'matches' => [
-                $this->createMessageResultItem(),
-            ],
-            'paging'  => $this->createPaging(),
-        ];
-    }
-
-    protected function createStarredItem()
-    {
-        return [
-            'type'    => 'file_comment',
-            'file'    => $this->createFile(),
-            'comment' => 'a comment',
-            // @todo Create comment model?
-            //'comment' => $this->createComment(),
-        ];
     }
 
     /**
@@ -333,66 +324,190 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'groups'               => ['G12345'],
             'initial_comment'      => 'This is the comment',
             'num_stars'            => 7,
-            'is_starred'           => true
+            'is_starred'           => true,
         ];
     }
 
     /**
-     * @param array         $expected
-     * @param SimpleMessage $actual
+     * @param array $expected
+     * @param File  $actual
      */
-    protected function assertSimpleMessage(array $expected, SimpleMessage $actual)
+    protected function assertFile(array $expected, File $actual)
     {
-        $this->assertEquals($expected['type'], $actual->getType());
-        $this->assertEquals($expected['ts'], $actual->getTimestamp());
-        $this->assertEquals($expected['user'], $actual->getUserId());
-        $this->assertEquals($expected['text'], $actual->getText());
-        $this->assertEquals($expected['username'], $actual->getUsername());
+        $this->assertNotEmpty($expected);
+        $this->assertInstanceOf('CL\Slack\Model\File', $actual);
+        $this->assertEquals($expected, [
+            'id'                   => $actual->getId(),
+            'timestamp'            => $actual->getTimestamp()->format('U'),
+            'name'                 => $actual->getName(),
+            'channels'             => $actual->getChannels(),
+            'editable'             => $actual->isEditable(),
+            'edit_link'            => $actual->getEditLink(),
+            'external_type'        => $actual->getExternalType(),
+            'filetype'             => $actual->getFileType(),
+            'groups'               => $actual->getGroups(),
+            'initial_comment'      => $actual->getInitialComment(),
+            'is_external'          => $actual->isExternal(),
+            'is_public'            => $actual->isPublic(),
+            'lines'                => $actual->getLines(),
+            'lines_more'           => $actual->getLinesMore(),
+            'mimetype'             => $actual->getMimeType(),
+            'mode'                 => $actual->getMode(),
+            'num_stars'            => $actual->getNumStars(),
+            'permalink'            => $actual->getPermalink(),
+            'pretty_type'          => $actual->getPrettyType(),
+            'preview'              => $actual->getPreview(),
+            'preview_highlight'    => $actual->getPreviewHighlight(),
+            'public_url_shared'    => $actual->isPublicUrlShared(),
+            'size'                 => $actual->getSize(),
+            'created'              => $actual->getCreated()->format('U'),
+            'title'                => $actual->getTitle(),
+            'user'                 => $actual->getUserId(),
+            'url'                  => $actual->getUrl(),
+            'url_download'         => $actual->getUrlDownload(),
+            'url_private'          => $actual->getUrlPrivate(),
+            'url_private_download' => $actual->getUrlPrivateDownload(),
+
+            'thumb_64'             => $actual->getThumb64(),
+            'thumb_80'             => $actual->getThumb80(),
+            'thumb_360'            => $actual->getThumb360(),
+            'thumb_360_gif'        => $actual->getThumb360Gif(),
+            'thumb_360_w'          => $actual->getThumb360W(),
+            'thumb_360_h'          => $actual->getThumb360H(),
+
+            'is_starred'           => $actual->isStarred(),
+        ]);
     }
 
     /**
      * @return array
      */
-    protected function createSimpleMessage()
+    protected function createFileResult()
     {
         return [
-            'type'     => 'message',
-            'ts'       => '12345678.12345678',
-            'user'     => 'U2147483896',
-            'username' => 'acme user',
-            'text'     => 'Hello',
+            'matches' => [
+                $this->createFileResultItem(),
+            ],
+            'paging'  => $this->createPaging(),
         ];
     }
 
     /**
-     * Returns an example of file-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
-     *
      * @return array
      */
-    protected function createMessage()
+    protected function createFileResultItem()
+    {
+        return $this->createFile();
+    }
+
+    /**
+     * @param array          $expectedFileResultItem
+     * @param FileResultItem $fileResultItem
+     */
+    protected function assertFileResultItem(array $expectedFileResultItem, FileResultItem $fileResultItem)
+    {
+        $this->assertFile($expectedFileResultItem, $fileResultItem);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createPaging()
     {
         return [
-            'channel'  => $this->createSimpleChannel(),
-            'ts'       => '12345678.12345678',
-            'type'     => 'message',
-            'text'     => 'Hello world!',
-            'user'     => 'U1234567',
-            'username' => 'Acme',
+            'total' => 123,
+            'count' => 123,
+            'page'  => 123,
+            'pages' => 123,
         ];
     }
 
     /**
-     * Returns an example of channel-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
-     *
+     * @param array  $expected
+     * @param Paging $actual
+     */
+    protected function assertPaging(array $expected, Paging $actual)
+    {
+        $this->assertEquals($expected, [
+            'count' => $actual->getCount(),
+            'total' => $actual->getTotal(),
+            'page'  => $actual->getPage(),
+            'pages' => $actual->getPages(),
+        ]);
+    }
+
+    /**
      * @return array
      */
-    protected function createSimpleChannel()
+    protected function createCustomizable()
     {
         return [
-            'id'   => 'C1234567',
-            'name' => '#foo',
+            'value'    => 'Discuss secret plans that no-one else should know',
+            'creator'  => 'U024BE7LH',
+            'last_set' => '1360782804',
+            'type'     => 'text',
+        ];
+    }
+
+    /**
+     * @param array        $expected
+     * @param Customizable $actual
+     */
+    protected function assertCustomizable(array $expected, Customizable $actual)
+    {
+        $this->assertEquals($expected, [
+            'value'    => $actual->getValue(),
+            'type'     => $actual->getType(),
+            'creator'  => $actual->getCreator(),
+            'last_set' => $actual->getLastSet()->format('U'),
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createStarredItem()
+    {
+        return [
+            'type'    => 'file_comment',
+            'file'    => $this->createFile(),
+            'comment' => 'a comment',
+            // @todo Create comment model?
+            //'comment' => $this->createComment(),
+        ];
+    }
+
+    /**
+     * @param array       $expected
+     * @param StarredItem $actual
+     */
+    protected function assertStarredItem(array $expected, StarredItem $actual)
+    {
+        $this->assertFile($expected['file'], $actual->getFile());
+        unset($expected['file']);
+
+        $this->assertEquals($expected, [
+            'type'    => $actual->getType(),
+            'comment' => $actual->getComment(),
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createUser()
+    {
+        return [
+            'id'                  => 'U1234567',
+            'name'                => 'Acme User',
+            'color'               => 'blue',
+            'profile'             => $this->createUserProfile(),
+            'is_admin'            => true,
+            'is_bot'              => false,
+            'is_restricted'       => false,
+            'is_ultra_restricted' => false,
+            'deleted'             => false,
+            'has_files'           => false,
         ];
     }
 
@@ -421,19 +536,20 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    protected function createUser()
+    protected function createUserProfile()
     {
         return [
-            'id'                  => 'U1234567',
-            'name'                => 'Acme User',
-            'color'               => 'blue',
-            'profile'             => $this->createUserProfile(),
-            'is_admin'            => true,
-            'is_bot'              => false,
-            'is_restricted'       => false,
-            'is_ultra_restricted' => false,
-            'deleted'             => false,
-            'has_files'           => false,
+            'first_name' => 'Bobby',
+            'last_name'  => 'Tables',
+            'real_name'  => 'Bobby Tables',
+            'email'      => 'bobby@slack.com',
+            'skype'      => 'my-skype-name',
+            'phone'      => '+1 (123) 456 7890',
+            'image_24'   => 'https =>\/\/...',
+            'image_32'   => 'https =>\/\/...',
+            'image_48'   => 'https =>\/\/...',
+            'image_72'   => 'https =>\/\/...',
+            'image_192'  => 'https =>\/\/...',
         ];
     }
 
@@ -458,17 +574,9 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         ]);
     }
 
-    protected function assertImChannel(array $expected, ImChannel $actual)
-    {
-        $this->assertEquals($expected, [
-            'id'              => $actual->getId(),
-            'is_im'           => $actual->isIm(),
-            'is_user_deleted' => $actual->isUserDeleted(),
-            'created'         => $actual->getCreated()->format('U'),
-            'user'            => $actual->getUserId(),
-        ]);
-    }
-
+    /**
+     * @return array
+     */
     protected function createImChannel()
     {
         return [
@@ -481,100 +589,17 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return array
+     * @param array     $expected
+     * @param ImChannel $actual
      */
-    protected function createUserProfile()
+    protected function assertImChannel(array $expected, ImChannel $actual)
     {
-        return [
-            'first_name' => 'Bobby',
-            'last_name'  => 'Tables',
-            'real_name'  => 'Bobby Tables',
-            'email'      => 'bobby@slack.com',
-            'skype'      => 'my-skype-name',
-            'phone'      => '+1 (123) 456 7890',
-            'image_24'   => 'https =>\/\/...',
-            'image_32'   => 'https =>\/\/...',
-            'image_48'   => 'https =>\/\/...',
-            'image_72'   => 'https =>\/\/...',
-            'image_192'  => 'https =>\/\/...'
-        ];
-    }
-
-    /**
-     * Returns an example of channel-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
-     *
-     * @return array
-     */
-    protected function createChannel()
-    {
-        return [
-            'id'        => 'C1234567',
-            'created'   => '12345678',
-            'creator'   => 'U1234567',
-            'last_read' => '12345678.12345678',
-            'latest'    => $this->createMessage(),
-            'members'   => [
-                'U1234567'
-            ],
-            'name'      => 'acme_channel',
-            'purpose'   => $this->createCustomizable(),
-            'topic'     => $this->createCustomizable(),
-        ];
-    }
-
-    protected function createGroup()
-    {
-        return [
-            'id'                   => 'G024BE91L',
-            'name'                 => 'secretplans',
-            'is_group'             => true,
-            'created'              => '1360782804',
-            'creator'              => 'U024BE7LH',
-            'is_archived'          => false,
-            'members'              => [
-                'U024BE7LH'
-            ],
-            'topic'                => $this->createCustomizable(),
-            'purpose'              => $this->createCustomizable(),
-            'last_read'            => '1401383885',
-            'latest'               => $this->createMessage(),
-            'unread_count'         => 0,
-            'unread_count_display' => 0
-        ];
-    }
-
-    protected function createGroupWithState()
-    {
-        return array_merge($this->createGroup(), [
-            'is_open' => true,
-        ]);
-    }
-
-    /**
-     * @return array
-     */
-    protected function createCustomizable()
-    {
-        return [
-            'value'    => 'Discuss secret plans that no-one else should know',
-            'creator'  => 'U024BE7LH',
-            'last_set' => '1360782804',
-            'type'     => 'text',
-        ];
-    }
-
-    protected function createFileResultItem()
-    {
-        return array_merge($this->createFile(), [
-            'channel' => $this->createChannel(),
-        ]);
-    }
-
-    protected function createMessageResultItem()
-    {
-        return array_merge($this->createMessage(), [
-            'channel' => $this->createSimpleChannel(),
+        $this->assertEquals($expected, [
+            'id'              => $actual->getId(),
+            'is_im'           => $actual->isIm(),
+            'is_user_deleted' => $actual->isUserDeleted(),
+            'created'         => $actual->getCreated()->format('U'),
+            'user'            => $actual->getUserId(),
         ]);
     }
 }

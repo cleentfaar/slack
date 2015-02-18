@@ -43,7 +43,7 @@ class StarsListPayloadResponseTest extends AbstractPayloadResponseTest
         foreach ($payloadResponse->getItems() as $i => $item) {
             $this->assertStarredItem($responseData['items'][$i], $item);
         }
-        
+
         $this->assertPaging($responseData['paging'], $payloadResponse->getPaging());
     }
 }

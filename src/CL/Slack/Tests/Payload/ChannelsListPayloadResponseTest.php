@@ -26,7 +26,7 @@ class ChannelsListPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'channels' => [
-                $this->createChannel()
+                $this->createChannel(),
             ],
         ];
     }
@@ -34,7 +34,7 @@ class ChannelsListPayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * {@inheritdoc}
      *
-     * @param array                          $responseData
+     * @param array                       $responseData
      * @param ChannelsListPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)

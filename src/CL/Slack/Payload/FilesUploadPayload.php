@@ -82,7 +82,7 @@ class FilesUploadPayload extends AbstractPayload
     {
         return $this->channels;
     }
-    
+
     /**
      * @param string|null $filename
      */

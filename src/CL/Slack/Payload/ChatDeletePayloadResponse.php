@@ -37,7 +37,7 @@ class ChatDeletePayloadResponse extends AbstractPayloadResponse
     /**
      * @return string
      */
-    public function getTimestamp()
+    public function getSlackTimestamp()
     {
         return $this->ts;
     }

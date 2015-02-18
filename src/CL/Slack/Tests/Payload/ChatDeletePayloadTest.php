@@ -26,7 +26,7 @@ class ChatDeletePayloadTest extends AbstractPayloadTest
     {
         $payload = new ChatDeletePayload();
         $payload->setChannelId('C1234567');
-        $payload->setTimestamp('12345678');
+        $payload->setSlackTimestamp('12345678');
 
         return $payload;
     }
@@ -40,7 +40,7 @@ class ChatDeletePayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'ts'      => $payload->getTimestamp(),
+            'ts'      => $payload->getSlackTimestamp(),
         ];
     }
 }
