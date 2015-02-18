@@ -73,7 +73,7 @@ class ApiClientTest extends AbstractTestCase
 
         $lastRequest = $history->getLastRequest();
         $expectedUrl = ApiClient::API_BASE_URL . 'mock';
-        parse_str((string) $lastRequest->getBody(), $lastRequestContent);
+        parse_str($lastRequest->getBody()->__toString(), $lastRequestContent);
         $lastResponseContent = json_decode($history->getLastResponse()->getBody(), true);
 
         $this->assertEquals($mockRequestData, $lastRequestContent);

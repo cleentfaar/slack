@@ -72,12 +72,4 @@ class Customizable extends AbstractModel
     {
         return $this->lastSet;
     }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->value;
-    }
 }
