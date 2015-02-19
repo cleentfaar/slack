@@ -2,8 +2,8 @@ filter:
   excluded_paths:
     - 'vendor/*'
     - 'bin/*'
-    - 'src/CL/Slack/Test/*'
-    - 'src/CL/Slack/Tests/*'
+    #- 'src/CL/Slack/Test/*'
+    #- 'src/CL/Slack/Tests/*'
 
 before_commands:
   - 'sudo composer self-update'
