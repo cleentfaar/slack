@@ -1,26 +1,23 @@
-filter:
-  excluded_paths:
-    - 'vendor/*'
-    - 'bin/*'
-    #- 'src/CL/Slack/Test/*'
-    #- 'src/CL/Slack/Tests/*'
-
 before_commands:
-  - 'sudo composer self-update'
-  - 'composer install --no-interaction --no-scripts'
+  - 'composer install --no-interaction'
+
+filter:
+  paths:
+    - src/*
+  excluded_paths:
+    - src/CL/SlackCli/Resources/*
+    - src/CL/SlackCli/Tests/*
 
 tools:
-  php_code_sniffer:
-    config:
-      standard: PSR2
-  php_cpd: true
-  php_cs_fixer:
-    config:
-      level: all
-  php_hhvm: true
+  external_code_coverage:
+    timeout: 600
+  php_analyzer: true
+  php_code_sniffer: true
+  php_cs_fixer: true
   php_loc: true
   php_mess_detector: true
   php_pdepend: true
-  php_analyzer: true
   sensiolabs_security_checker: true
-  external_code_coverage: true
+  php_cs_fixer:
+    config:
+      level: symfony
