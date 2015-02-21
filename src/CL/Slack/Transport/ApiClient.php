@@ -29,7 +29,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiClient
+class ApiClient implements ApiClientInterface
 {
     /**
      * The (base) URL used for all communication with the Slack API.
