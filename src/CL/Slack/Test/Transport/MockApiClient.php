@@ -20,12 +20,12 @@ use CL\Slack\Transport\ApiClientInterface;
 /**
  * MockApiClient
  *
- * This class can be used by other packages to test interaction with
+ * This class can be used by other/child packages to test interaction with
  * the Slack API without actually connecting to it.
  *
  * If the '$succesful' argument is true while calling 'send()',
  * responses are given mocked data to mimic the behaviour of a real response.
- * 
+ *
  * Conversely, if the $successful argument is false, the responses are given a mock error
  * and will therefore return false on `isOk()` calls, just like the real scenario.
  */
@@ -36,12 +36,9 @@ class MockApiClient implements ApiClientInterface
      */
     private $payloadResponseSerializer;
 
-    /**
-     * @param PayloadResponseSerializer $serializer
-     */
-    public function __construct(PayloadResponseSerializer $serializer)
+    public function __construct()
     {
-        $this->payloadResponseSerializer = $serializer;
+        $this->payloadResponseSerializer = new PayloadResponseSerializer();
     }
 
     /**
