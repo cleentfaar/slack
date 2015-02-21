@@ -6,6 +6,7 @@ filter:
     - src/*
   excluded_paths:
     - src/CL/Slack/Resources/*
+    - src/CL/Slack/Test/*
     - src/CL/Slack/Tests/*
 
 tools:
