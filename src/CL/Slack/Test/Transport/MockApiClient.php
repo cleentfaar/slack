@@ -36,10 +36,7 @@ class MockApiClient implements ApiClientInterface
      */
     private $payloadResponseSerializer;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function __construct($token = null)
+    public function __construct()
     {
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
     }
