@@ -20,7 +20,7 @@ use CL\Slack\Transport\ApiClientInterface;
 /**
  * MockApiClient
  *
- * This class can be used by other/child packages to test interaction with
+ * This class can be used by other packages to test interaction with
  * the Slack API without actually connecting to it.
  *
  * If the '$succesful' argument is true while calling 'send()',
@@ -36,7 +36,10 @@ class MockApiClient implements ApiClientInterface
      */
     private $payloadResponseSerializer;
 
-    public function __construct()
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($token = null)
     {
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
     }
