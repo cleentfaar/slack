@@ -29,6 +29,11 @@ class SimpleMessage extends AbstractModel
     protected $type;
 
     /**
+     * @var string
+     */
+    protected $subtype;
+
+    /**
      * @var SimpleChannel
      */
     private $channel;
@@ -47,6 +52,11 @@ class SimpleMessage extends AbstractModel
      * @var string
      */
     protected $text;
+
+    /**
+     * @var array
+     */
+    protected $attachments = array();
 
     /**
      * @return string|null The Slack timestamp on which the message was posted
