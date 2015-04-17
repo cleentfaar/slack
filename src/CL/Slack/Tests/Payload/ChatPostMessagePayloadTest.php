@@ -83,7 +83,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
             'unfurl_links' => $payload->getUnfurlLinks(),
             'link_names'   => $payload->getLinkNames(),
             'parse'        => $payload->getParse(),
-            'attachments'  => [
+            'attachments'  => json_encode([
                 [
                     'title'       => $attachment->getTitle(),
                     'title_link'  => $attachment->getTitleLink(),
@@ -103,7 +103,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
                         ],
                     ],
                 ],
-            ],
+            ]),
         ];
     }
 }
