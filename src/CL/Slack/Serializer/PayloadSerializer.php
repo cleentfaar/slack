@@ -33,6 +33,11 @@ class PayloadSerializer extends AbstractSerializer
             ));
         }
 
-        return json_decode($serializedPayload, true);
+        //Attachments must be in json format
+        $payloadArray = json_decode($serializedPayload, true);
+        if (isset($payloadArray['attachments'])) {
+            $payloadArray['attachments'] = json_encode($payloadArray['attachments']);
+        }
+        return $payloadArray;
     }
 }
