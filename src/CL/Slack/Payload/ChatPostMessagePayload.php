@@ -13,13 +13,14 @@ namespace CL\Slack\Payload;
 
 use CL\Slack\Model\Attachment;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Serializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
  * @link Official documentation at https://api.slack.com/methods/chat.postMessage
  */
-class ChatPostMessagePayload extends AbstractPayload
+class ChatPostMessagePayload extends AbstractPayload implements AdvanceSerializeInterface
 {
     /**
      * @var string
@@ -70,6 +71,11 @@ class ChatPostMessagePayload extends AbstractPayload
      * @var Attachment[]|ArrayCollection
      */
     private $attachments;
+
+    /**
+     * @var string
+     */
+    private $attachmentsJson;
 
     public function __construct()
     {
@@ -283,10 +289,28 @@ class ChatPostMessagePayload extends AbstractPayload
     }
 
     /**
+     * Use for serialization
+     *
+     * @return string
+     */
+    public function getAttachmentsJson()
+    {
+        return $this->attachmentsJson;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getMethod()
     {
         return 'chat.postMessage';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function beforeSerialize (Serializer $serializer)
+    {
+        $this->attachmentsJson = $serializer->serialize($this->attachments, 'json');
     }
 }

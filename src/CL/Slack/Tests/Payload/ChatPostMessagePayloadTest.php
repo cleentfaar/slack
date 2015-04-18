@@ -87,19 +87,19 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
                 [
                     'title'       => $attachment->getTitle(),
                     'title_link'  => $attachment->getTitleLink(),
-                    'pre_text'    => $attachment->getPreText(),
-                    'text'        => $attachment->getText(),
+                    'image_url'   => $attachment->getImageUrl(),
                     'author_name' => $attachment->getAuthorName(),
                     'author_link' => $attachment->getAuthorLink(),
                     'author_icon' => $attachment->getAuthorIcon(),
+                    'pre_text'    => $attachment->getPreText(),
+                    'text'        => $attachment->getText(),
                     'color'       => $attachment->getColor(),
                     'fallback'    => $attachment->getFallback(),
-                    'image_url'   => $attachment->getImageUrl(),
                     'fields'      => [
                         [
                             'title' => $attachmentField->getTitle(),
-                            'short' => $attachmentField->isShort(),
                             'value' => $attachmentField->getValue(),
+                            'short' => $attachmentField->isShort(),
                         ],
                     ],
                 ],
