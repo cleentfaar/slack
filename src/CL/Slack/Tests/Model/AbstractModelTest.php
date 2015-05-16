@@ -12,8 +12,9 @@
 namespace CL\Slack\Tests\Model;
 
 use CL\Slack\Model\AbstractModel;
-use CL\Slack\Serializer\ModelSerializer;
 use CL\Slack\Tests\AbstractTestCase;
+use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerBuilder;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -21,7 +22,7 @@ use CL\Slack\Tests\AbstractTestCase;
 abstract class AbstractModelTest extends AbstractTestCase
 {
     /**
-     * @var ModelSerializer
+     * @var Serializer
      */
     protected $serializer;
 
@@ -30,7 +31,8 @@ abstract class AbstractModelTest extends AbstractTestCase
      */
     protected function setUp()
     {
-        $this->serializer = new ModelSerializer();
+        $metaDir          = __DIR__ . '/../../Resources/config/serializer';
+        $this->serializer = SerializerBuilder::create()->addMetadataDir($metaDir)->build();
     }
 
     public function testGetters()
@@ -40,7 +42,7 @@ abstract class AbstractModelTest extends AbstractTestCase
 
         /** @var AbstractModel $model */
         $model = $this->serializer->deserialize(
-            $modelData,
+            json_encode($modelData),
             $modelClass,
             'json'
         );
