@@ -20,7 +20,7 @@ use JMS\Serializer\Serializer;
  *
  * @link Official documentation at https://api.slack.com/methods/chat.postMessage
  */
-class ChatPostMessagePayload extends AbstractPayload implements AdvanceSerializeInterface
+class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializeInterface
 {
     /**
      * @var string

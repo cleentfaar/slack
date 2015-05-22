@@ -6,7 +6,7 @@ namespace CL\Slack\Payload;
 
 use JMS\Serializer\Serializer;
 
-interface AdvanceSerializeInterface
+interface AdvancedSerializeInterface
 {
     /**
      * Prepare date to serialize
