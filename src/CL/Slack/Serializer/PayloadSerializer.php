@@ -32,6 +32,7 @@ class PayloadSerializer extends AbstractSerializer
         }
 
         $serializedPayload = $this->serializer->serialize($payload, 'json');
+
         if (!$serializedPayload || !is_string($serializedPayload)) {
             throw new \RuntimeException(sprintf(
                 'Failed to serialize payload; expected it to be a string, got: %s',
