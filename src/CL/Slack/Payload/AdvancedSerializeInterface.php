@@ -9,7 +9,7 @@ use JMS\Serializer\Serializer;
 interface AdvancedSerializeInterface
 {
     /**
-     * Prepare date to serialize
+     * Prepare data to serialize
      *
      * @param Serializer $serializer
      */
