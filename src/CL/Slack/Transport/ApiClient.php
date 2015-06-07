@@ -20,9 +20,6 @@ use CL\Slack\Transport\Events\ResponseEvent;
 use CL\Slack\Transport\Events\RequestEvent;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Post\PostBody;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -82,11 +79,11 @@ class ApiClient implements ApiClientInterface
         $token = null,
         ClientInterface $client = null,
         EventDispatcherInterface $eventDispatcher = null
-    ) {
+        ) {
         $this->token                     = $token;
         $this->payloadSerializer         = new PayloadSerializer();
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
-        $this->client                    = $client ?: new Client();
+        $this->client                    = $client ?: new Client(array('base_uri'=>self::API_BASE_URL));
         $this->eventDispatcher           = $eventDispatcher ?: new EventDispatcher();
     }
 
@@ -110,6 +107,7 @@ class ApiClient implements ApiClientInterface
             $serializedPayload = $this->payloadSerializer->serialize($payload);
             $responseData      = $this->doSend($payload->getMethod(), $serializedPayload, $token);
 
+            return;
             return $this->payloadResponseSerializer->deserialize($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
             throw new SlackException('Failed to send payload', null, $e);
@@ -145,24 +143,19 @@ class ApiClient implements ApiClientInterface
     {
         try {
             $data['token'] = $token ?: $this->token;
-
             $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
-
-            $request = $this->createRequest($method, $data);
-
-            /** @var ResponseInterface $response */
-            $response = $this->client->send($request);
+            $response = $this->client->post($method,['form_params' => $data]);
         } catch (\Exception $e) {
             throw new SlackException('Failed to send data to the Slack API', null, $e);
         }
 
         try {
-            $responseData = $response->json();
+            $responseData = (array) $response->getBody();
             if (!is_array($responseData)) {
                 throw new \Exception(sprintf(
                     'Expected JSON-decoded response data to be of type "array", got "%s"',
                     gettype($responseData)
-                ));
+                    ));
             }
 
             $this->eventDispatcher->dispatch(self::EVENT_RESPONSE, new ResponseEvent($responseData));
@@ -171,24 +164,5 @@ class ApiClient implements ApiClientInterface
         } catch (\Exception $e) {
             throw new SlackException('Failed to process response from the Slack API', null, $e);
         }
-    }
-
-    /**
-     * @param string $method
-     * @param array  $payload
-     *
-     * @return RequestInterface
-     */
-    private function createRequest($method, array $payload)
-    {
-        $request = $this->client->createRequest('POST');
-        $request->setUrl(self::API_BASE_URL.$method);
-
-        $body = new PostBody();
-        $body->replaceFields($payload);
-
-        $request->setBody($body);
-
-        return $request;
     }
 }
