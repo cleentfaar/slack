@@ -26,7 +26,7 @@ $response = $apiClient->send($payload);
 
 if ($response->isOk()) {
     // query has been executed and result is returned (but can be empty)
-    $response->getMessageResult()->getMatches(); // Message objects
+    $response->getResult()->getMatches(); // Message objects
     $response->getFileResult()->getMatches(); // File objects
 } else {
     // something went wrong, but what?
