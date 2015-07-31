@@ -35,6 +35,11 @@ class ChatPostMessagePayload extends AbstractPayload
      * @var string
      */
     private $username;
+	
+	/**
+	 * @var boolean
+	 */
+	private $asUser;
 
     /**
      * @var string
@@ -148,6 +153,22 @@ class ChatPostMessagePayload extends AbstractPayload
     {
         return $this->username;
     }
+	
+	/**
+	 * @param boolean $as_user pass message as authorized user
+	 */
+	public function setAsUser($asUser)
+	{
+		$this->asUser = $asUser;
+	}
+	
+	/**
+	 * @return boolean parameter if message will be sent as authorized user
+	 */
+	public function getAsUser()
+	{
+		return $this->asUser;
+	}
 
     /**
      * @param string $parse Change how messages are treated.
