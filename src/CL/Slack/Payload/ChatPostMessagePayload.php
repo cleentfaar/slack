@@ -155,7 +155,7 @@ class ChatPostMessagePayload extends AbstractPayload
     }
 	
 	/**
-	 * @param boolean $as_user pass message as authorized user
+	 * @param bool $asUser Set to true to post message as authorized user
 	 */
 	public function setAsUser($asUser)
 	{
@@ -163,7 +163,7 @@ class ChatPostMessagePayload extends AbstractPayload
 	}
 	
 	/**
-	 * @return boolean parameter if message will be sent as authorized user
+	 * @return bool|null Whether message will be sent as authorized user
 	 */
 	public function getAsUser()
 	{
