@@ -1,0 +1,4 @@
+CL\Slack\Payload\GroupsInfoPayloadResponse:
+    properties:
+        group:
+            type: CL\Slack\Model\Group
