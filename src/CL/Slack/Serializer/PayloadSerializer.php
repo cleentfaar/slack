@@ -11,6 +11,8 @@
 
 namespace CL\Slack\Serializer;
 
+use CL\Slack\Payload\AdvancedSerializeInterface;
+use CL\Slack\Payload\ChatPostMessagePayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**
@@ -25,7 +27,12 @@ class PayloadSerializer extends AbstractSerializer
      */
     public function serialize(PayloadInterface $payload)
     {
+        if ($payload instanceof AdvancedSerializeInterface) {
+            $payload->beforeSerialize($this->serializer);
+        }
+
         $serializedPayload = $this->serializer->serialize($payload, 'json');
+
         if (!$serializedPayload || !is_string($serializedPayload)) {
             throw new \RuntimeException(sprintf(
                 'Failed to serialize payload; expected it to be a string, got: %s',
