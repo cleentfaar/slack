@@ -154,7 +154,7 @@ class ApiClient implements ApiClientInterface
         }
 
         try {
-            $responseData = json_decode($response->getBody());
+            $responseData = json_decode($response->getBody(), true);
             if (!is_array($responseData)) {
                 throw new \Exception(sprintf(
                     'Expected JSON-decoded response data to be of type "array", got "%s"',
