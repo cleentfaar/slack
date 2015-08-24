@@ -22,7 +22,7 @@
     "jms/serializer": "~0.16",
     "symfony/event-dispatcher": "~2.2",
     "symfony/yaml": "~2.2",
-    "guzzlehttp/guzzle": ">=4.2",
+    "guzzlehttp/guzzle": "^6.0",
     "doctrine/collections": "~1.2"
   },
   "require-dev": {
