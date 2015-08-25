@@ -19,8 +19,10 @@ use CL\Slack\Transport\ApiClient;
 use CL\Slack\Transport\Events\RequestEvent;
 use CL\Slack\Transport\Events\ResponseEvent;
 use GuzzleHttp\Client;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -31,34 +33,24 @@ class ApiClientTest extends AbstractTestCase
 
     public function testSend()
     {
-        $self             = $this;
-        $eventsDispatched = [];
-        $history          = new History();
-        $mock             = new Mock();
-        $mockRequestData  = [
-            'foo'   => 'bar',
-            'token' => self::TOKEN,
-        ];
-        $mockResponseData = [
-            'ok'  => true,
-            'foo' => 'bar',
-        ];
+        $self = $this;
 
-        $mockPayload = new MockPayload();
-        $mockPayload->setFoo('bar');
+        $mockRequestData = ['foo' => 'bar', 'token' => self::TOKEN];
+        $mockResponseData = ['ok' => true, 'foo' => 'bar'];
 
-        $mockResponseBody = json_encode($mockResponseData);
-        $mock->addResponse(sprintf(
-            "HTTP/1.1 200 OK\r\nContent-Length: %d\r\n\r\n%s",
-            strlen($mockResponseBody),
-            $mockResponseBody
-        ));
+        $handler = HandlerStack::create(
+            new MockHandler([
+                new Response(200, [], json_encode($mockResponseData))
+            ])
+        );
+        $historyContainer = [];
+        $history = Middleware::history($historyContainer);
+        $handler->push($history);
+        $apiClient = new ApiClient(
+            self::TOKEN,
+            new Client(['handler' => $handler])
+        );
 
-        $client = new Client();
-        $client->getEmitter()->attach($history);
-        $client->getEmitter()->attach($mock);
-
-        $apiClient = new ApiClient(self::TOKEN, $client);
         $apiClient->addRequestListener(function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
             $self->assertEquals($mockRequestData, $event->getRawPayload());
@@ -69,16 +61,21 @@ class ApiClientTest extends AbstractTestCase
             $self->assertEquals($mockResponseData, $event->getRawPayloadResponse());
         });
 
+        $mockPayload = new MockPayload();
+        $mockPayload->setFoo('bar');
         $apiClient->send($mockPayload);
 
-        $lastRequest = $history->getLastRequest();
-        $expectedUrl = ApiClient::API_BASE_URL . 'mock';
-        parse_str($lastRequest->getBody()->__toString(), $lastRequestContent);
-        $lastResponseContent = json_decode($history->getLastResponse()->getBody(), true);
+        $transaction = $historyContainer[0];
 
-        $this->assertEquals($mockRequestData, $lastRequestContent);
-        $this->assertEquals($mockResponseData, $lastResponseContent);
-        $this->assertEquals($expectedUrl, $history->getLastRequest()->getUrl());
+        $requestUrl = (string) $transaction['request']->getUri();
+        $requestContentType = $transaction['request']->getHeader('content-type')[0];
+        parse_str($transaction['request']->getBody(), $requestBody);
+        $responseBody = json_decode($transaction['response']->getBody(), true);
+
+        $this->assertEquals(ApiClient::API_BASE_URL.'mock', $requestUrl);
+        $this->assertEquals('application/x-www-form-urlencoded', $requestContentType);
+        $this->assertEquals($mockRequestData, $requestBody);
+        $this->assertEquals($mockResponseData, $responseBody);
 
         $this->assertArrayHasKey(ApiClient::EVENT_REQUEST, $eventsDispatched);
         $this->assertArrayHasKey(ApiClient::EVENT_RESPONSE, $eventsDispatched);
