@@ -545,11 +545,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'email' => 'bobby@slack.com',
             'skype' => 'my-skype-name',
             'phone' => '+1 (123) 456 7890',
-            'image_24' => 'https =>\/\/...',
-            'image_32' => 'https =>\/\/...',
-            'image_48' => 'https =>\/\/...',
-            'image_72' => 'https =>\/\/...',
-            'image_192' => 'https =>\/\/...',
+            'image_24' => 'https:\/\/www.example.com/image24.jpg',
+            'image_32' => 'https:\/\/www.example.com/image32.jpg',
+            'image_48' => 'https:\/\/www.example.com/image48.jpg',
+            'image_72' => 'https:\/\/www.example.com/image72.jpg',
+            'image_192' => 'https:\/\/www.example.com/image192.jpg',
         ];
     }
 
