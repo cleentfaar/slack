@@ -31,7 +31,7 @@ abstract class AbstractModelTest extends AbstractTestCase
      */
     protected function setUp()
     {
-        $metaDir          = __DIR__ . '/../../Resources/config/serializer';
+        $metaDir          = __DIR__ . '/../../../../../../src/CL/Slack/Resources/config/serializer';
         $this->serializer = SerializerBuilder::create()->addMetadataDir($metaDir)->build();
     }
 
