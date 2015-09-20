@@ -11,23 +11,21 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\ImChannel;
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ImListPayloadResponse extends AbstractPayloadResponse
+class UsersGetPresencePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var ImChannel[]
+     * @var Presence|null
      */
-    private $ims;
+    private $presence;
 
     /**
-     * @return ImChannel[]
+     * @return Presence|null
      */
-    public function getImChannels()
+    public function getPresence()
     {
-		return $this->ims;
+        return $this->presence;
     }
 }

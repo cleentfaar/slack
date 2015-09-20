@@ -36,6 +36,11 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
      * @var string
      */
     private $username;
+	
+	/**
+	 * @var boolean
+	 */
+	private $asUser;
 
     /**
      * @var string
@@ -154,6 +159,22 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     {
         return $this->username;
     }
+	
+	/**
+	 * @param bool $asUser Set to true to post message as authorized user
+	 */
+	public function setAsUser($asUser)
+	{
+		$this->asUser = $asUser;
+	}
+	
+	/**
+	 * @return bool|null Whether message will be sent as authorized user
+	 */
+	public function getAsUser()
+	{
+		return $this->asUser;
+	}
 
     /**
      * @param string $parse Change how messages are treated.
