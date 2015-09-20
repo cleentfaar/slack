@@ -4,6 +4,8 @@ CL\Slack\Model\SimpleMessage:
             type: string
         type:
             type: string
+        subtype:
+            type: string
         channel:
             type: CL\Slack\Model\SimpleChannel
         user:
@@ -12,3 +14,5 @@ CL\Slack\Model\SimpleMessage:
             type: string
         text:
             type: string
+        attachments:
+            type: array<CL\Slack\Model\Attachment>

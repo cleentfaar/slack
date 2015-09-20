@@ -4,6 +4,8 @@ CL\Slack\Model\Attachment:
             type: string
         preText:
             type: string
+        imageUrl:
+            type: string
         text:
             type: string
         color:
