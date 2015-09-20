@@ -27,7 +27,7 @@ class ImClosePayloadResponse extends AbstractPayloadResponse
     private $alreadyClosed;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAlreadyClosed()
     {
@@ -35,7 +35,7 @@ class ImClosePayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNoOp()
     {

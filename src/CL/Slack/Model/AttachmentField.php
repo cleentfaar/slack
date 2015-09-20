@@ -29,7 +29,7 @@ class AttachmentField extends AbstractModel
     private $value;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $short;
 
@@ -66,7 +66,7 @@ class AttachmentField extends AbstractModel
     }
 
     /**
-     * @param boolean $short
+     * @param bool $short
      */
     public function setShort($short)
     {
@@ -74,7 +74,7 @@ class AttachmentField extends AbstractModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isShort()
     {

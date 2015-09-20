@@ -135,7 +135,7 @@ class FilesListPayload extends AbstractPayload
     }
 
     /**
-     * Filter files by type:
+     * Filter files by type:.
      *
      * all - All files
      * posts - Posts

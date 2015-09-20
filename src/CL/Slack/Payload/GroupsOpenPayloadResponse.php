@@ -27,7 +27,7 @@ class GroupsOpenPayloadResponse extends AbstractPayloadResponse
     private $alreadyOpen;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAlreadyOpen()
     {
@@ -35,7 +35,7 @@ class GroupsOpenPayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNoOp()
     {

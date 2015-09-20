@@ -60,7 +60,7 @@ class ImChannel extends AbstractModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isIm()
     {
@@ -68,7 +68,7 @@ class ImChannel extends AbstractModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isUserDeleted()
     {

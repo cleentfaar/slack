@@ -59,7 +59,7 @@ class Group extends AbstractModel
     private $purpose;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $isGroup = true;
 
@@ -74,12 +74,12 @@ class Group extends AbstractModel
     private $latest;
 
     /**
-     * @var integer
+     * @var int
      */
     private $unreadCount;
 
     /**
-     * @var integer
+     * @var int
      */
     private $unreadCountDisplay;
 
@@ -149,7 +149,7 @@ class Group extends AbstractModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isGroup()
     {

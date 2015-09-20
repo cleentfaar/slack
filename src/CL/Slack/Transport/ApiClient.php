@@ -14,10 +14,10 @@ namespace CL\Slack\Transport;
 use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\PayloadResponseInterface;
-use CL\Slack\Serializer\PayloadSerializer;
 use CL\Slack\Serializer\PayloadResponseSerializer;
-use CL\Slack\Transport\Events\ResponseEvent;
+use CL\Slack\Serializer\PayloadSerializer;
 use CL\Slack\Transport\Events\RequestEvent;
+use CL\Slack\Transport\Events\ResponseEvent;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Request;
@@ -39,13 +39,13 @@ class ApiClient implements ApiClientInterface
 
     /**
      * Event triggered just before it's sent to the Slack API
-     * Any listeners are passed the request data (array) as the first argument
+     * Any listeners are passed the request data (array) as the first argument.
      */
     const EVENT_REQUEST = 'EVENT_REQUEST';
 
     /**
      * Event triggered just before it's sent to the Slack API
-     * Any listeners are passed the response data (array) as the first argument
+     * Any listeners are passed the response data (array) as the first argument.
      */
     const EVENT_RESPONSE = 'EVENT_RESPONSE';
 
@@ -84,11 +84,11 @@ class ApiClient implements ApiClientInterface
         ClientInterface $client = null,
         EventDispatcherInterface $eventDispatcher = null
     ) {
-        $this->token                     = $token;
-        $this->payloadSerializer         = new PayloadSerializer();
+        $this->token = $token;
+        $this->payloadSerializer = new PayloadSerializer();
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
-        $this->client                    = $client ?: new Client();
-        $this->eventDispatcher           = $eventDispatcher ?: new EventDispatcher();
+        $this->client = $client ?: new Client();
+        $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher();
     }
 
     /**
@@ -109,11 +109,11 @@ class ApiClient implements ApiClientInterface
             }
 
             $serializedPayload = $this->payloadSerializer->serialize($payload);
-            $responseData      = $this->doSend($payload->getMethod(), $serializedPayload, $token);
+            $responseData = $this->doSend($payload->getMethod(), $serializedPayload, $token);
 
             return $this->payloadResponseSerializer->deserialize($responseData, $payload->getResponseClass());
         } catch (\Exception $e) {
-            throw new SlackException('Failed to send payload', null, $e);
+            throw new SlackException(sprintf('Failed to send payload: %s', $e->getMessage()), null, $e);
         }
     }
 
@@ -184,7 +184,7 @@ class ApiClient implements ApiClientInterface
     {
         $request = new Request(
             'POST',
-            self::API_BASE_URL.$method,
+            self::API_BASE_URL . $method,
             ['Content-Type' => 'application/x-www-form-urlencoded'],
             http_build_query($payload)
         );

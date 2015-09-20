@@ -19,7 +19,7 @@ namespace CL\Slack\Payload;
 class UsersInfoPayload extends AbstractPayload
 {
     /**
-     * @var string $user ID of the user to get info on
+     * @var string ID of the user to get info on
      */
     private $user;
 

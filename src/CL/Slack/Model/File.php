@@ -69,7 +69,7 @@ class File extends AbstractModel
     private $mode;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     private $editable;
 
@@ -164,22 +164,22 @@ class File extends AbstractModel
     private $linesMore;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     private $isPublic;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     private $isExternal;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     private $isStarred;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     private $publicUrlShared;
 
@@ -199,7 +199,7 @@ class File extends AbstractModel
     private $initialComment;
 
     /**
-     * @var integer
+     * @var int
      */
     private $numStars;
 
@@ -404,7 +404,7 @@ class File extends AbstractModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isPublicUrlShared()
     {

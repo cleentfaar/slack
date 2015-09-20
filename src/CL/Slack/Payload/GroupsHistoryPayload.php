@@ -20,7 +20,7 @@ class GroupsHistoryPayload extends AbstractPayload
 {
     /**
      * Slack seems to want to call this option "channel", but I can't agree with that (the format of the value is different),
-     * and will just pretend to my users it's a "group" (ID)
+     * and will just pretend to my users it's a "group" (ID).
      *
      * @var string
      */
@@ -37,12 +37,12 @@ class GroupsHistoryPayload extends AbstractPayload
     private $latest;
 
     /**
-     * @var integer
+     * @var int
      */
     private $count;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $inclusive;
 
@@ -111,7 +111,7 @@ class GroupsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @param boolean $inclusive
+     * @param bool $inclusive
      */
     public function setInclusive($inclusive)
     {
@@ -119,7 +119,7 @@ class GroupsHistoryPayload extends AbstractPayload
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getInclusive()
     {

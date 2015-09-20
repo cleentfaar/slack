@@ -56,7 +56,7 @@ class SimpleMessage extends AbstractModel
     /**
      * @var array
      */
-    protected $attachments = array();
+    protected $attachments = [];
 
     /**
      * @return string|null The Slack timestamp on which the message was posted

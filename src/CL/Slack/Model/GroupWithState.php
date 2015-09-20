@@ -24,7 +24,7 @@ class GroupWithState extends Group
     private $isOpen;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isOpen()
     {
