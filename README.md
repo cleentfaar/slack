@@ -47,19 +47,19 @@ speed up the merging of your code.
 ### Missing methods
 
 The following methods have not yet been implemented, why not contribute and add some yourself?
-files.delete*
-groups.info*
-pins.add
-pins.list
-pins.remove
-reactions.add
-reactions.get
-reactions.list
-reactions.remove
-rtm.start*
-team.accessLogs
-team.info
-users.getPresence*
+- files.delete*
+- groups.info*
+- pins.add
+- pins.list
+- pins.remove
+- reactions.add
+- reactions.get
+- reactions.list
+- reactions.remove
+- rtm.start*
+- team.accessLogs
+- team.info
+- users.getPresence*
 
 * = work/PR has started for this method
 
