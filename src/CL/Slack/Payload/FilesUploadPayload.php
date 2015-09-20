@@ -21,7 +21,7 @@ class FilesUploadPayload extends AbstractPayload
     /**
      * @var string
      */
-    private $content;
+    private $file;
 
     /**
      * @var string|null
@@ -39,48 +39,34 @@ class FilesUploadPayload extends AbstractPayload
     private $title;
 
     /**
+     * @var string
+     */
+    private $content;
+
+    /**
      * @var array
      */
     private $channels = [];
 
     /**
-     * @param string $content
+     * @var string
      */
-    public function setContent($content)
+    private $initialComment;
+
+    /**
+     * @param string $file
+     */
+    public function setFile($file)
     {
-        $this->content = $content;
+        $this->file = $file;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getContent()
+    public function getFile()
     {
-        return $this->content;
-    }
-
-    /**
-     * @param array $channels
-     */
-    public function setChannels(array $channels)
-    {
-        $this->channels = $channels;
-    }
-
-    /**
-     * @param string $channel
-     */
-    public function addChannel($channel)
-    {
-        $this->channels[] = $channel;
-    }
-
-    /**
-     * @return array
-     */
-    public function getChannels()
-    {
-        return $this->channels;
+        return $this->file;
     }
 
     /**
@@ -132,6 +118,46 @@ class FilesUploadPayload extends AbstractPayload
     }
 
     /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param array $channels
+     */
+    public function setChannels(array $channels)
+    {
+        $this->channels = $channels;
+    }
+
+    /**
+     * @param string $channel
+     */
+    public function addChannel($channel)
+    {
+        $this->channels[] = $channel;
+    }
+
+    /**
+     * @return array
+     */
+    public function getChannels()
+    {
+        return $this->channels;
+    }
+
+    /**
      * @param string $channels
      */
     public function setChannelsFromString($channels)
@@ -145,6 +171,22 @@ class FilesUploadPayload extends AbstractPayload
     public function getChannelsAsString()
     {
         return implode(',', $this->channels);
+    }
+
+    /**
+     * @param string $initialComment
+     */
+    public function setInitialComment($initialComment)
+    {
+        $this->initialComment = $initialComment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInitialComment()
+    {
+        return $this->initialComment;
     }
 
     /**

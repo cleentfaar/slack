@@ -8,3 +8,5 @@ CL\Slack\Payload\ChannelsHistoryPayload:
             type: string
         count:
             type: integer
+        inclusive:
+            type: boolean

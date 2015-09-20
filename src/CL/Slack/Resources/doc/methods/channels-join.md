@@ -13,7 +13,7 @@ Joins a user to a channel. The token's user must be a member of the channel.
 
 ```php
 $payload = new ChannelsJoinPayload();
-$payload->setChannel('#general');
+$payload->setName('#general');
 
 $apiClient = new ApiClient('your-slack-token-here');
 $response  = $apiClient->send($payload);

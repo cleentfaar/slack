@@ -19,6 +19,27 @@ namespace CL\Slack\Payload;
 class UsersListPayload extends AbstractPayload
 {
     /**
+     * @var bool
+     */
+    private $presence;
+
+    /**
+     * @param bool $presence Whether to include presence data in the output
+     */
+    public function setPresence($presence)
+    {
+        $this->presence = $presence;
+    }
+
+    /**
+     * @return bool Whether to include presence data in the output
+     */
+    public function isPresence()
+    {
+        return $this->presence;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getMethod()

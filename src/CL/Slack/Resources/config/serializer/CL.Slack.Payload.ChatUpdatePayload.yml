@@ -6,3 +6,7 @@ CL\Slack\Payload\ChatUpdatePayload:
             type: string
         ts:
             type: string
+        parse:
+            type: string
+        linkNames:
+            type: string

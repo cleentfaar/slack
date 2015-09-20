@@ -2,3 +2,5 @@ CL\Slack\Payload\ImHistoryPayload:
     properties:
         channel:
             type: string
+        inclusive:
+            type: boolean

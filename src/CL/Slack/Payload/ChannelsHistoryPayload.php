@@ -42,6 +42,11 @@ class ChannelsHistoryPayload extends AbstractPayload
     private $count;
 
     /**
+     * @var bool
+     */
+    private $inclusive;
+
+    /**
      * @param string $channelId
      */
     public function setChannelId($channelId)
@@ -103,6 +108,22 @@ class ChannelsHistoryPayload extends AbstractPayload
     public function getCount()
     {
         return $this->count;
+    }
+
+    /**
+     * @param bool $inclusive
+     */
+    public function setInclusive($inclusive)
+    {
+        $this->inclusive = $inclusive;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInclusive()
+    {
+        return $this->inclusive;
     }
 
     /**

@@ -41,6 +41,11 @@ class ImHistoryPayload extends AbstractPayload
     private $count;
 
     /**
+     * @var bool
+     */
+    private $inclusive;
+
+    /**
      * @param string $imId
      */
     public function setImId($imId)
@@ -102,6 +107,22 @@ class ImHistoryPayload extends AbstractPayload
     public function getCount()
     {
         return $this->count;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInclusive()
+    {
+        return $this->inclusive;
+    }
+
+    /**
+     * @param bool $inclusive
+     */
+    public function setInclusive($inclusive)
+    {
+        $this->inclusive = $inclusive;
     }
 
     /**
