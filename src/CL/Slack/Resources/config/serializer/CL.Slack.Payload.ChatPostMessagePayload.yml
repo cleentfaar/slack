@@ -1,4 +1,5 @@
 CL\Slack\Payload\ChatPostMessagePayload:
+    exclusion_policy: ALL
     properties:
         channel:
             type: string
@@ -19,4 +20,6 @@ CL\Slack\Payload\ChatPostMessagePayload:
         parse:
             type: string
         attachments:
-            type: ArrayCollection<CL\Slack\Model\Attachment>
+            type: string
+            accessor:
+                getter: getAttachmentsJson
