@@ -20,9 +20,10 @@ use CL\Slack\Transport\Events\ResponseEvent;
 use CL\Slack\Transport\Events\RequestEvent;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Post\PostBody;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -157,7 +158,7 @@ class ApiClient implements ApiClientInterface
         }
 
         try {
-            $responseData = $response->json();
+            $responseData = json_decode($response->getBody()->getContents(), true);
             if (!is_array($responseData)) {
                 throw new \Exception(sprintf(
                     'Expected JSON-decoded response data to be of type "array", got "%s"',
@@ -181,13 +182,12 @@ class ApiClient implements ApiClientInterface
      */
     private function createRequest($method, array $payload)
     {
-        $request = $this->client->createRequest('POST');
-        $request->setUrl(self::API_BASE_URL.$method);
-
-        $body = new PostBody();
-        $body->replaceFields($payload);
-
-        $request->setBody($body);
+        $request = new Request(
+            'POST',
+            self::API_BASE_URL.$method,
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
+            http_build_query($payload)
+        );
 
         return $request;
     }
