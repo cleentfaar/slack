@@ -20,13 +20,13 @@ use CL\Slack\Transport\Events\ResponseEvent;
 class ResponseEventTest extends AbstractTestCase
 {
     /**
-     * @return array
+     * @test
      */
-    public function testGetRawPayloadResponse()
+    public function it_can_return_a_raw_payload_response()
     {
         $expectedPayloadResponse = [];
-        $event                   = new ResponseEvent($expectedPayloadResponse);
-        $actualPayloadResponse   = $event->getRawPayloadResponse();
+        $event = new ResponseEvent($expectedPayloadResponse);
+        $actualPayloadResponse = $event->getRawPayloadResponse();
 
         $this->assertEquals($expectedPayloadResponse, $actualPayloadResponse);
     }

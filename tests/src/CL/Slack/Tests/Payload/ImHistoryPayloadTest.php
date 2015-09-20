@@ -42,9 +42,9 @@ class ImHistoryPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getImId(),
-            'latest'  => $payload->getLatest(),
-            'oldest'  => $payload->getOldest(),
-            'count'   => $payload->getCount(),
+            'latest' => $payload->getLatest(),
+            'oldest' => $payload->getOldest(),
+            'count' => $payload->getCount(),
         ];
     }
 }

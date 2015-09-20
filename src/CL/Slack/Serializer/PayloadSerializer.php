@@ -12,7 +12,6 @@
 namespace CL\Slack\Serializer;
 
 use CL\Slack\Payload\AdvancedSerializeInterface;
-use CL\Slack\Payload\ChatPostMessagePayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**

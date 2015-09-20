@@ -42,10 +42,10 @@ class OauthAccessPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'client_id'     => $payload->getClientId(),
+            'client_id' => $payload->getClientId(),
             'client_secret' => $payload->getClientSecret(),
-            'code'          => $payload->getCode(),
-            'redirect_uri'  => $payload->getRedirectUri(),
+            'code' => $payload->getCode(),
+            'redirect_uri' => $payload->getRedirectUri(),
         ];
     }
 }

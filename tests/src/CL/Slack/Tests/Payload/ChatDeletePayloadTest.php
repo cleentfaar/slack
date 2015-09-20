@@ -40,7 +40,7 @@ class ChatDeletePayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'ts'      => $payload->getSlackTimestamp(),
+            'ts' => $payload->getSlackTimestamp(),
         ];
     }
 }

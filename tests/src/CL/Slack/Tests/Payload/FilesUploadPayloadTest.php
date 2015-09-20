@@ -42,11 +42,11 @@ class FilesUploadPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'title'     => $payload->getTitle(),
-            'content'   => $payload->getContent(),
-            'filename'  => $payload->getFilename(),
+            'title' => $payload->getTitle(),
+            'content' => $payload->getContent(),
+            'filename' => $payload->getFilename(),
             'file_type' => $payload->getFileType(),
-            'channels'  => $payload->getChannelsAsString(),
+            'channels' => $payload->getChannelsAsString(),
         ];
     }
 }

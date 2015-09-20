@@ -29,7 +29,10 @@ abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
         $this->payloadSerializer = new PayloadSerializer();
     }
 
-    public function testPayload()
+    /**
+     * @test
+     */
+    public function it_can_be_serialized()
     {
         $payload = $this->createPayload();
 
@@ -37,7 +40,7 @@ abstract class AbstractPayloadTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(class_exists($payload->getResponseClass()));
 
         $expectedPayloadSerialized = json_encode($this->getExpectedPayloadData($payload));
-        $actualPayloadSerialized   = json_encode($this->payloadSerializer->serialize($payload));
+        $actualPayloadSerialized = json_encode($this->payloadSerializer->serialize($payload));
 
         $this->assertEquals(
             json_decode($expectedPayloadSerialized, true),

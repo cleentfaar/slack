@@ -42,12 +42,12 @@ abstract class AbstractSearchPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'query'     => $payload->getQuery(),
-            'page'      => $payload->getPage(),
-            'count'     => $payload->getCount(),
+            'query' => $payload->getQuery(),
+            'page' => $payload->getPage(),
+            'count' => $payload->getCount(),
             'highlight' => $payload->getHighlight(),
-            'sort'      => $payload->getSort(),
-            'sort_dir'  => $payload->getSortDir(),
+            'sort' => $payload->getSort(),
+            'sort_dir' => $payload->getSortDir(),
         ];
     }
 }

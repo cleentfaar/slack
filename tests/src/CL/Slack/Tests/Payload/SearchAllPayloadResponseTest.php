@@ -25,7 +25,7 @@ class SearchAllPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'files'    => $this->createFileResult(),
+            'files' => $this->createFileResult(),
             'messages' => $this->createMessageResult(),
         ];
     }
@@ -38,7 +38,7 @@ class SearchAllPayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $fileResult    = $payloadResponse->getFileResult();
+        $fileResult = $payloadResponse->getFileResult();
         $messageResult = $payloadResponse->getMessageResult();
 
         $this->assertInstanceOf('CL\Slack\Model\FileResult', $fileResult);

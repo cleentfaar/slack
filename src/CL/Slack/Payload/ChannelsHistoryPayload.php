@@ -13,7 +13,7 @@ namespace CL\Slack\Payload;
 
 /**
  * Payload that triggers the channels.history-method; allowing you to
- * fetch historical information about a given channel
+ * fetch historical information about a given channel.
  *
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
@@ -37,7 +37,7 @@ class ChannelsHistoryPayload extends AbstractPayload
     private $latest;
 
     /**
-     * @var integer
+     * @var int
      */
     private $count;
 

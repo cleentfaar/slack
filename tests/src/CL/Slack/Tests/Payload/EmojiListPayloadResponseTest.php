@@ -26,7 +26,7 @@ class EmojiListPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'emoji' => [
-                'foobar'       => 'http://foo.bar/emoji.png',
+                'foobar' => 'http://foo.bar/emoji.png',
                 'foobar_alias' => 'alias:original_foobar',
             ],
         ];

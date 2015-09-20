@@ -25,8 +25,8 @@ class CustomizableTest extends AbstractModelTest
     protected function getModelData()
     {
         return [
-            'value'    => 'this is the customizable value',
-            'creator'  => 'U1234567',
+            'value' => 'this is the customizable value',
+            'creator' => 'U1234567',
             'last_set' => 1369677212,
         ];
     }

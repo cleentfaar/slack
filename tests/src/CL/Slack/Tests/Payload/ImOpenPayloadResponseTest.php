@@ -25,7 +25,7 @@ class ImOpenPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'no_op'        => true,
+            'no_op' => true,
             'already_open' => true,
         ];
     }

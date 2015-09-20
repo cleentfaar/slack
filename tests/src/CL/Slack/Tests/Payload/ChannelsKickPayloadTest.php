@@ -40,7 +40,7 @@ class ChannelsKickPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'user'    => $payload->getUserId(),
+            'user' => $payload->getUserId(),
         ];
     }
 }

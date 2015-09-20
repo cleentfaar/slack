@@ -22,7 +22,7 @@ class ChannelsLeavePayloadResponse extends AbstractPayloadResponse
     private $notInChannel;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNotInChannel()
     {

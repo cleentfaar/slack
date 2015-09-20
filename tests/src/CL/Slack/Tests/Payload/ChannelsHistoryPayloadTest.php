@@ -42,9 +42,9 @@ class ChannelsHistoryPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'latest'  => $payload->getLatest(),
-            'oldest'  => $payload->getOldest(),
-            'count'   => $payload->getCount(),
+            'latest' => $payload->getLatest(),
+            'oldest' => $payload->getOldest(),
+            'count' => $payload->getCount(),
         ];
     }
 }

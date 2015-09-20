@@ -40,7 +40,7 @@ class GroupsSetTopicPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getGroupId(),
-            'topic'   => $payload->getTopic(),
+            'topic' => $payload->getTopic(),
         ];
     }
 }

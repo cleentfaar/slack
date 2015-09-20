@@ -26,7 +26,7 @@ class OauthAccessPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'access_token' => 'xoxt-23984754863-2348975623103',
-            'scope'        => 'read',
+            'scope' => 'read',
         ];
     }
 

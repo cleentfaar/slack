@@ -27,10 +27,10 @@ class ChannelsHistoryPayloadResponseTest extends AbstractPayloadResponseTest
         return [
             'messages' => [
                 [
-                    'ts'       => '12345678',
-                    'text'     => 'Hello world!',
-                    'type'     => 'message',
-                    'user'     => 'U1234567!',
+                    'ts' => '12345678',
+                    'text' => 'Hello world!',
+                    'type' => 'message',
+                    'user' => 'U1234567!',
                     'username' => 'acme_user',
                 ],
             ],

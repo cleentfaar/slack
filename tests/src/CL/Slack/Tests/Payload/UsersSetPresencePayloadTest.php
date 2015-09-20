@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\UsersSetPresencePayload;
 use CL\Slack\Payload\PayloadInterface;
+use CL\Slack\Payload\UsersSetPresencePayload;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>

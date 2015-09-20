@@ -42,9 +42,9 @@ class GroupsHistoryPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getGroupId(),
-            'latest'  => $payload->getLatest(),
-            'oldest'  => $payload->getOldest(),
-            'count'   => $payload->getCount(),
+            'latest' => $payload->getLatest(),
+            'oldest' => $payload->getOldest(),
+            'count' => $payload->getCount(),
         ];
     }
 }

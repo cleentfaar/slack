@@ -40,7 +40,7 @@ class GroupsKickPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getGroupId(),
-            'user'    => $payload->getUserId(),
+            'user' => $payload->getUserId(),
         ];
     }
 }

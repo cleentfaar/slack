@@ -18,7 +18,7 @@ use CL\Slack\Tests\Payload\AbstractPayloadResponseTest;
 use CL\Slack\Transport\ApiClientInterface;
 
 /**
- * MockApiClient
+ * MockApiClient.
  *
  * This class can be used by other packages to test interaction with
  * the Slack API without actually connecting to it.
@@ -62,7 +62,7 @@ class MockApiClient implements ApiClientInterface
      */
     private function sendWithSuccess(PayloadInterface $payload)
     {
-        $payloadBaseName          = (new \ReflectionClass($payload))->getShortName();
+        $payloadBaseName = (new \ReflectionClass($payload))->getShortName();
         $payloadResponseTestClass = sprintf('CL\Slack\Tests\Payload\%sResponseTest', $payloadBaseName);
 
         /** @var AbstractPayloadResponseTest $payloadResponseTestObject */
@@ -98,7 +98,7 @@ class MockApiClient implements ApiClientInterface
      */
     private function getResponseClass(PayloadInterface $payload)
     {
-        $payloadBaseName      = (new \ReflectionClass($payload))->getShortName();
+        $payloadBaseName = (new \ReflectionClass($payload))->getShortName();
         $payloadResponseClass = sprintf('CL\Slack\Payload\%sResponse', $payloadBaseName);
 
         return $payloadResponseClass;

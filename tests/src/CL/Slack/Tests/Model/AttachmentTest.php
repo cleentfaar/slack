@@ -25,11 +25,11 @@ class AttachmentTest extends AbstractModelTest
     protected function getModelData()
     {
         return [
-            'color'    => '#123456',
+            'color' => '#123456',
             'fallback' => 'fallback text',
-            'text'     => 'normal text',
+            'text' => 'normal text',
             'pre_text' => 'pre text',
-            'fields'   => [
+            'fields' => [
                 [
                     'title' => 'foo',
                     'value' => 'bar',

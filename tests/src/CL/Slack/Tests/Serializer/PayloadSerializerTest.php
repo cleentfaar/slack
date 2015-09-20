@@ -11,9 +11,9 @@
 
 namespace CL\Slack\Tests\Serializer;
 
+use CL\Slack\Serializer\PayloadSerializer;
 use CL\Slack\Test\Payload\MockPayload;
 use CL\Slack\Tests\AbstractTestCase;
-use CL\Slack\Serializer\PayloadSerializer;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -30,7 +30,10 @@ class PayloadSerializerTest extends AbstractTestCase
         $this->payloadSerializer = new PayloadSerializer();
     }
 
-    public function testSerialize()
+    /**
+     * @test
+     */
+    public function it_can_be_serialized()
     {
         $payload = new MockPayload();
         $payload->setFoo('bar');

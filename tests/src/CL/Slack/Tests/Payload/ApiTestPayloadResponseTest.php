@@ -26,7 +26,7 @@ class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
     {
         return [
             'error' => 'fake-error',
-            'args'  => [
+            'args' => [
                 'foo' => 'bar',
             ],
         ];

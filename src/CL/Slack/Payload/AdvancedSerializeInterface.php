@@ -1,15 +1,13 @@
 <?php
 
-
 namespace CL\Slack\Payload;
-
 
 use JMS\Serializer\Serializer;
 
 interface AdvancedSerializeInterface
 {
     /**
-     * Prepare data to serialize
+     * Prepare data to serialize.
      *
      * @param Serializer $serializer
      */

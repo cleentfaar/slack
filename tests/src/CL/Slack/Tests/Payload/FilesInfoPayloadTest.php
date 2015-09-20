@@ -40,8 +40,8 @@ class FilesInfoPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'file'  => $payload->getFileId(),
-            'page'  => $payload->getPage(),
+            'file' => $payload->getFileId(),
+            'page' => $payload->getPage(),
             'count' => $payload->getCount(),
         ];
     }

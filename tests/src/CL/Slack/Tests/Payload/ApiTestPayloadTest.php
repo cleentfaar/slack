@@ -40,7 +40,7 @@ class ApiTestPayloadTest extends AbstractPayloadTest
     {
         return [
             'error' => $payload->getError(),
-            'foo'   => $payload->getArgument('foo'),
+            'foo' => $payload->getArgument('foo'),
         ];
     }
 }

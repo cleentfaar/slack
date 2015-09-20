@@ -34,18 +34,18 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
      * Returns an example of file-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
+     * Used by different tests to simplify their fixtures.
      *
      * @return array
      */
     protected function createMessage()
     {
         return [
-            'channel'  => $this->createSimpleChannel(),
-            'ts'       => '12345678.12345678',
-            'type'     => 'message',
-            'text'     => 'Hello world!',
-            'user'     => 'U1234567',
+            'channel' => $this->createSimpleChannel(),
+            'ts' => '12345678.12345678',
+            'type' => 'message',
+            'text' => 'Hello world!',
+            'user' => 'U1234567',
             'username' => 'Acme',
         ];
     }
@@ -57,11 +57,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertMessage(array $expected, Message $actual)
     {
         $this->assertEquals($expected, [
-            'channel'  => $this->createSimpleChannel(),
-            'ts'       => $actual->getSlackTimestamp(),
-            'type'     => $actual->getType(),
-            'text'     => $actual->getText(),
-            'user'     => $actual->getUserId(),
+            'channel' => $this->createSimpleChannel(),
+            'ts' => $actual->getSlackTimestamp(),
+            'type' => $actual->getType(),
+            'text' => $actual->getText(),
+            'user' => $actual->getUserId(),
             'username' => $actual->getUsername(),
         ]);
     }
@@ -75,7 +75,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'matches' => [
                 $this->createMessageResultItem(),
             ],
-            'paging'  => $this->createPaging(),
+            'paging' => $this->createPaging(),
         ];
     }
 
@@ -104,11 +104,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function createSimpleMessage()
     {
         return [
-            'type'     => 'message',
-            'ts'       => '12345678.12345678',
-            'user'     => 'U2147483896',
+            'type' => 'message',
+            'ts' => '12345678.12345678',
+            'user' => 'U2147483896',
             'username' => 'acme user',
-            'text'     => 'Hello',
+            'text' => 'Hello',
         ];
     }
 
@@ -127,24 +127,24 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
     /**
      * Returns an example of channel-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
+     * Used by different tests to simplify their fixtures.
      *
      * @return array
      */
     protected function createChannel()
     {
         return [
-            'id'        => 'C1234567',
-            'created'   => '12345678',
-            'creator'   => 'U1234567',
+            'id' => 'C1234567',
+            'created' => '12345678',
+            'creator' => 'U1234567',
             'last_read' => '12345678.12345678',
-            'latest'    => $this->createMessage(),
-            'members'   => [
+            'latest' => $this->createMessage(),
+            'members' => [
                 'U1234567',
             ],
-            'name'      => 'acme_channel',
-            'purpose'   => $this->createCustomizable(),
-            'topic'     => $this->createCustomizable(),
+            'name' => 'acme_channel',
+            'purpose' => $this->createCustomizable(),
+            'topic' => $this->createCustomizable(),
         ];
     }
 
@@ -162,25 +162,25 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         unset($expected['purpose']);
         unset($expected['topic']);
         $this->assertEquals($expected, [
-            'id'        => $actual->getId(),
-            'created'   => $actual->getCreated()->format('U'),
-            'creator'   => $actual->getCreator(),
+            'id' => $actual->getId(),
+            'created' => $actual->getCreated()->format('U'),
+            'creator' => $actual->getCreator(),
             'last_read' => $actual->getLastRead(),
-            'members'   => $actual->getMembers(),
-            'name'      => $actual->getName(),
+            'members' => $actual->getMembers(),
+            'name' => $actual->getName(),
         ]);
     }
 
     /**
      * Returns an example of channel-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
+     * Used by different tests to simplify their fixtures.
      *
      * @return array
      */
     protected function createSimpleChannel()
     {
         return [
-            'id'   => 'C1234567',
+            'id' => 'C1234567',
             'name' => '#foo',
             '',
         ];
@@ -193,10 +193,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertSimpleChannel(array $expected, SimpleChannel $actual)
     {
         $this->assertEquals($expected, [
-            'id'      => $actual->getId(),
+            'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
-            'name'    => $actual->getName(),
+            'name' => $actual->getName(),
         ]);
     }
 
@@ -206,20 +206,20 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function createGroup()
     {
         return [
-            'id'                   => 'G024BE91L',
-            'name'                 => 'secretplans',
-            'is_group'             => true,
-            'created'              => '1360782804',
-            'creator'              => 'U024BE7LH',
-            'is_archived'          => false,
-            'members'              => [
+            'id' => 'G024BE91L',
+            'name' => 'secretplans',
+            'is_group' => true,
+            'created' => '1360782804',
+            'creator' => 'U024BE7LH',
+            'is_archived' => false,
+            'members' => [
                 'U024BE7LH',
             ],
-            'topic'                => $this->createCustomizable(),
-            'purpose'              => $this->createCustomizable(),
-            'last_read'            => '1401383885',
-            'latest'               => $this->createMessage(),
-            'unread_count'         => 0,
+            'topic' => $this->createCustomizable(),
+            'purpose' => $this->createCustomizable(),
+            'last_read' => '1401383885',
+            'latest' => $this->createMessage(),
+            'unread_count' => 0,
             'unread_count_display' => 0,
         ];
     }
@@ -238,15 +238,15 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         unset($expected['purpose']);
         unset($expected['topic']);
         $this->assertEquals($expected, [
-            'id'                   => $actual->getId(),
-            'created'              => $actual->getCreated()->format('U'),
-            'creator'              => $actual->getCreator(),
-            'last_read'            => $actual->getLastRead(),
-            'members'              => $actual->getMembers(),
-            'name'                 => $actual->getName(),
-            'is_group'             => $actual->isGroup(),
-            'is_archived'          => $actual->isArchived(),
-            'unread_count'         => $actual->getUnreadCount(),
+            'id' => $actual->getId(),
+            'created' => $actual->getCreated()->format('U'),
+            'creator' => $actual->getCreator(),
+            'last_read' => $actual->getLastRead(),
+            'members' => $actual->getMembers(),
+            'name' => $actual->getName(),
+            'is_group' => $actual->isGroup(),
+            'is_archived' => $actual->isArchived(),
+            'unread_count' => $actual->getUnreadCount(),
             'unread_count_display' => $actual->getUnreadCountDisplay(),
         ]);
     }
@@ -274,57 +274,57 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
     /**
      * Returns an example of file-data that could be returned by a response
-     * Used by different tests to simplify their fixtures
+     * Used by different tests to simplify their fixtures.
      *
      * @return array
      */
     protected function createFile()
     {
         return [
-            'id'                   => 'F2147483862',
-            'created'              => '1356032811',
-            'timestamp'            => '1356032811',
+            'id' => 'F2147483862',
+            'created' => '1356032811',
+            'timestamp' => '1356032811',
 
-            'name'                 => 'file.htm',
-            'title'                => 'My HTML file',
-            'mimetype'             => 'text/plain',
-            'filetype'             => 'text',
-            'pretty_type'          => 'Text',
-            'user'                 => 'U2147483697',
+            'name' => 'file.htm',
+            'title' => 'My HTML file',
+            'mimetype' => 'text/plain',
+            'filetype' => 'text',
+            'pretty_type' => 'Text',
+            'user' => 'U2147483697',
 
-            'mode'                 => 'hosted',
-            'editable'             => true,
-            'is_external'          => false,
-            'external_type'        => '',
+            'mode' => 'hosted',
+            'editable' => true,
+            'is_external' => false,
+            'external_type' => '',
 
-            'size'                 => '12345',
+            'size' => '12345',
 
-            'url'                  => 'https =>//slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png',
-            'url_download'         => 'https =>//slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png',
-            'url_private'          => 'https =>//slack.com/files-pri/T024BE7LD-F024BERPE/1.png',
+            'url' => 'https =>//slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png',
+            'url_download' => 'https =>//slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png',
+            'url_private' => 'https =>//slack.com/files-pri/T024BE7LD-F024BERPE/1.png',
             'url_private_download' => 'https =>//slack.com/files-pri/T024BE7LD-F024BERPE/download/1.png',
 
-            'thumb_64'             => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png',
-            'thumb_80'             => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png',
-            'thumb_360'            => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png',
-            'thumb_360_gif'        => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif',
-            'thumb_360_w'          => '100',
-            'thumb_360_h'          => '100',
+            'thumb_64' => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png',
+            'thumb_80' => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png',
+            'thumb_360' => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png',
+            'thumb_360_gif' => 'https =>//slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif',
+            'thumb_360_w' => '100',
+            'thumb_360_h' => '100',
 
-            'permalink'            => 'https =>//tinyspeck.slack.com/files/cal/F024BERPE/1.png',
-            'edit_link'            => 'https =>//tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit',
-            'preview'              => '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;meta charset="utf-8"&gt;',
-            'preview_highlight'    => '&lt;div class=\'sssh-code\'&gt;&lt;div class=\'sssh-line\'&gt;&lt;pre&gt;&lt;!DOCTYPE html...',
-            'lines'                => 123,
-            'lines_more'           => 118,
+            'permalink' => 'https =>//tinyspeck.slack.com/files/cal/F024BERPE/1.png',
+            'edit_link' => 'https =>//tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit',
+            'preview' => '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;meta charset="utf-8"&gt;',
+            'preview_highlight' => '&lt;div class=\'sssh-code\'&gt;&lt;div class=\'sssh-line\'&gt;&lt;pre&gt;&lt;!DOCTYPE html...',
+            'lines' => 123,
+            'lines_more' => 118,
 
-            'is_public'            => true,
-            'public_url_shared'    => false,
-            'channels'             => ['C024BE7LT'],
-            'groups'               => ['G12345'],
-            'initial_comment'      => 'This is the comment',
-            'num_stars'            => 7,
-            'is_starred'           => true,
+            'is_public' => true,
+            'public_url_shared' => false,
+            'channels' => ['C024BE7LT'],
+            'groups' => ['G12345'],
+            'initial_comment' => 'This is the comment',
+            'num_stars' => 7,
+            'is_starred' => true,
         ];
     }
 
@@ -337,45 +337,45 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($expected);
         $this->assertInstanceOf('CL\Slack\Model\File', $actual);
         $this->assertEquals($expected, [
-            'id'                   => $actual->getId(),
-            'timestamp'            => $actual->getTimestamp()->format('U'),
-            'name'                 => $actual->getName(),
-            'channels'             => $actual->getChannels(),
-            'editable'             => $actual->isEditable(),
-            'edit_link'            => $actual->getEditLink(),
-            'external_type'        => $actual->getExternalType(),
-            'filetype'             => $actual->getFileType(),
-            'groups'               => $actual->getGroups(),
-            'initial_comment'      => $actual->getInitialComment(),
-            'is_external'          => $actual->isExternal(),
-            'is_public'            => $actual->isPublic(),
-            'lines'                => $actual->getLines(),
-            'lines_more'           => $actual->getLinesMore(),
-            'mimetype'             => $actual->getMimeType(),
-            'mode'                 => $actual->getMode(),
-            'num_stars'            => $actual->getNumStars(),
-            'permalink'            => $actual->getPermalink(),
-            'pretty_type'          => $actual->getPrettyType(),
-            'preview'              => $actual->getPreview(),
-            'preview_highlight'    => $actual->getPreviewHighlight(),
-            'public_url_shared'    => $actual->isPublicUrlShared(),
-            'size'                 => $actual->getSize(),
-            'created'              => $actual->getCreated()->format('U'),
-            'title'                => $actual->getTitle(),
-            'user'                 => $actual->getUserId(),
-            'url'                  => $actual->getUrl(),
-            'url_download'         => $actual->getUrlDownload(),
-            'url_private'          => $actual->getUrlPrivate(),
+            'id' => $actual->getId(),
+            'timestamp' => $actual->getTimestamp()->format('U'),
+            'name' => $actual->getName(),
+            'channels' => $actual->getChannels(),
+            'editable' => $actual->isEditable(),
+            'edit_link' => $actual->getEditLink(),
+            'external_type' => $actual->getExternalType(),
+            'filetype' => $actual->getFileType(),
+            'groups' => $actual->getGroups(),
+            'initial_comment' => $actual->getInitialComment(),
+            'is_external' => $actual->isExternal(),
+            'is_public' => $actual->isPublic(),
+            'lines' => $actual->getLines(),
+            'lines_more' => $actual->getLinesMore(),
+            'mimetype' => $actual->getMimeType(),
+            'mode' => $actual->getMode(),
+            'num_stars' => $actual->getNumStars(),
+            'permalink' => $actual->getPermalink(),
+            'pretty_type' => $actual->getPrettyType(),
+            'preview' => $actual->getPreview(),
+            'preview_highlight' => $actual->getPreviewHighlight(),
+            'public_url_shared' => $actual->isPublicUrlShared(),
+            'size' => $actual->getSize(),
+            'created' => $actual->getCreated()->format('U'),
+            'title' => $actual->getTitle(),
+            'user' => $actual->getUserId(),
+            'url' => $actual->getUrl(),
+            'url_download' => $actual->getUrlDownload(),
+            'url_private' => $actual->getUrlPrivate(),
             'url_private_download' => $actual->getUrlPrivateDownload(),
 
-            'thumb_64'             => $actual->getThumb64(),
-            'thumb_80'             => $actual->getThumb80(),
-            'thumb_360'            => $actual->getThumb360(),
-            'thumb_360_gif'        => $actual->getThumb360Gif(),
-            'thumb_360_w'          => $actual->getThumb360W(),
-            'thumb_360_h'          => $actual->getThumb360H(),
+            'thumb_64' => $actual->getThumb64(),
+            'thumb_80' => $actual->getThumb80(),
+            'thumb_360' => $actual->getThumb360(),
+            'thumb_360_gif' => $actual->getThumb360Gif(),
+            'thumb_360_w' => $actual->getThumb360W(),
+            'thumb_360_h' => $actual->getThumb360H(),
 
-            'is_starred'           => $actual->isStarred(),
+            'is_starred' => $actual->isStarred(),
         ]);
     }
 
@@ -388,7 +388,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'matches' => [
                 $this->createFileResultItem(),
             ],
-            'paging'  => $this->createPaging(),
+            'paging' => $this->createPaging(),
         ];
     }
 
@@ -417,7 +417,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         return [
             'total' => 123,
             'count' => 123,
-            'page'  => 123,
+            'page' => 123,
             'pages' => 123,
         ];
     }
@@ -431,7 +431,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, [
             'count' => $actual->getCount(),
             'total' => $actual->getTotal(),
-            'page'  => $actual->getPage(),
+            'page' => $actual->getPage(),
             'pages' => $actual->getPages(),
         ]);
     }
@@ -442,10 +442,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function createCustomizable()
     {
         return [
-            'value'    => 'Discuss secret plans that no-one else should know',
-            'creator'  => 'U024BE7LH',
+            'value' => 'Discuss secret plans that no-one else should know',
+            'creator' => 'U024BE7LH',
             'last_set' => '1360782804',
-            'type'     => 'text',
+            'type' => 'text',
         ];
     }
 
@@ -456,9 +456,9 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertCustomizable(array $expected, Customizable $actual)
     {
         $this->assertEquals($expected, [
-            'value'    => $actual->getValue(),
-            'type'     => $actual->getType(),
-            'creator'  => $actual->getCreator(),
+            'value' => $actual->getValue(),
+            'type' => $actual->getType(),
+            'creator' => $actual->getCreator(),
             'last_set' => $actual->getLastSet()->format('U'),
         ]);
     }
@@ -469,8 +469,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function createStarredItem()
     {
         return [
-            'type'    => 'file_comment',
-            'file'    => $this->createFile(),
+            'type' => 'file_comment',
+            'file' => $this->createFile(),
             'comment' => 'a comment',
             // @todo Create comment model?
             //'comment' => $this->createComment(),
@@ -487,7 +487,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         unset($expected['file']);
 
         $this->assertEquals($expected, [
-            'type'    => $actual->getType(),
+            'type' => $actual->getType(),
             'comment' => $actual->getComment(),
         ]);
     }
@@ -498,16 +498,16 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function createUser()
     {
         return [
-            'id'                  => 'U1234567',
-            'name'                => 'Acme User',
-            'color'               => 'blue',
-            'profile'             => $this->createUserProfile(),
-            'is_admin'            => true,
-            'is_bot'              => false,
-            'is_restricted'       => false,
+            'id' => 'U1234567',
+            'name' => 'Acme User',
+            'color' => 'blue',
+            'profile' => $this->createUserProfile(),
+            'is_admin' => true,
+            'is_bot' => false,
+            'is_restricted' => false,
             'is_ultra_restricted' => false,
-            'deleted'             => false,
-            'has_files'           => false,
+            'deleted' => false,
+            'has_files' => false,
         ];
     }
 
@@ -521,15 +521,15 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         unset($expected['profile']);
 
         $this->assertEquals($expected, [
-            'id'                  => $actual->getId(),
-            'name'                => $actual->getName(),
-            'color'               => $actual->getColor(),
-            'is_admin'            => $actual->isAdmin(),
-            'is_bot'              => $actual->isBot(),
-            'is_restricted'       => $actual->isRestricted(),
+            'id' => $actual->getId(),
+            'name' => $actual->getName(),
+            'color' => $actual->getColor(),
+            'is_admin' => $actual->isAdmin(),
+            'is_bot' => $actual->isBot(),
+            'is_restricted' => $actual->isRestricted(),
             'is_ultra_restricted' => $actual->isUltraRestricted(),
-            'deleted'             => $actual->isDeleted(),
-            'has_files'           => $actual->hasFiles(),
+            'deleted' => $actual->isDeleted(),
+            'has_files' => $actual->hasFiles(),
         ]);
     }
 
@@ -540,16 +540,16 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         return [
             'first_name' => 'Bobby',
-            'last_name'  => 'Tables',
-            'real_name'  => 'Bobby Tables',
-            'email'      => 'bobby@slack.com',
-            'skype'      => 'my-skype-name',
-            'phone'      => '+1 (123) 456 7890',
-            'image_24'   => 'https =>\/\/...',
-            'image_32'   => 'https =>\/\/...',
-            'image_48'   => 'https =>\/\/...',
-            'image_72'   => 'https =>\/\/...',
-            'image_192'  => 'https =>\/\/...',
+            'last_name' => 'Tables',
+            'real_name' => 'Bobby Tables',
+            'email' => 'bobby@slack.com',
+            'skype' => 'my-skype-name',
+            'phone' => '+1 (123) 456 7890',
+            'image_24' => 'https =>\/\/...',
+            'image_32' => 'https =>\/\/...',
+            'image_48' => 'https =>\/\/...',
+            'image_72' => 'https =>\/\/...',
+            'image_192' => 'https =>\/\/...',
         ];
     }
 
@@ -561,16 +561,16 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($expected, [
             'first_name' => $actual->getFirstName(),
-            'last_name'  => $actual->getLastName(),
-            'real_name'  => $actual->getRealName(),
-            'email'      => $actual->getEmail(),
-            'skype'      => $actual->getSkype(),
-            'phone'      => $actual->getPhone(),
-            'image_24'   => $actual->getImage24(),
-            'image_32'   => $actual->getImage32(),
-            'image_48'   => $actual->getImage48(),
-            'image_72'   => $actual->getImage72(),
-            'image_192'  => $actual->getImage192(),
+            'last_name' => $actual->getLastName(),
+            'real_name' => $actual->getRealName(),
+            'email' => $actual->getEmail(),
+            'skype' => $actual->getSkype(),
+            'phone' => $actual->getPhone(),
+            'image_24' => $actual->getImage24(),
+            'image_32' => $actual->getImage32(),
+            'image_48' => $actual->getImage48(),
+            'image_72' => $actual->getImage72(),
+            'image_192' => $actual->getImage192(),
         ]);
     }
 
@@ -580,10 +580,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function createImChannel()
     {
         return [
-            'id'              => 'D024BFF1M',
-            'is_im'           => true,
-            'user'            => 'USLACKBOT',
-            'created'         => 1372105335,
+            'id' => 'D024BFF1M',
+            'is_im' => true,
+            'user' => 'USLACKBOT',
+            'created' => 1372105335,
             'is_user_deleted' => false,
         ];
     }
@@ -595,11 +595,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertImChannel(array $expected, ImChannel $actual)
     {
         $this->assertEquals($expected, [
-            'id'              => $actual->getId(),
-            'is_im'           => $actual->isIm(),
+            'id' => $actual->getId(),
+            'is_im' => $actual->isIm(),
             'is_user_deleted' => $actual->isUserDeleted(),
-            'created'         => $actual->getCreated()->format('U'),
-            'user'            => $actual->getUserId(),
+            'created' => $actual->getCreated()->format('U'),
+            'user' => $actual->getUserId(),
         ]);
     }
 }

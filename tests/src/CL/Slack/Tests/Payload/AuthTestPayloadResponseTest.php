@@ -25,11 +25,11 @@ class AuthTestPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'user'    => 'acme_user',
+            'user' => 'acme_user',
             'user_id' => 'U1234567',
-            'team'    => 'acme_team',
+            'team' => 'acme_team',
             'team_id' => 'T1234567',
-            'url'     => 'https://acme.slack.com/user/U1234567',
+            'url' => 'https://acme.slack.com/user/U1234567',
         ];
     }
 

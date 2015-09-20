@@ -40,7 +40,7 @@ class ChannelsSetTopicPayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'topic'   => $payload->getTopic(),
+            'topic' => $payload->getTopic(),
         ];
     }
 }

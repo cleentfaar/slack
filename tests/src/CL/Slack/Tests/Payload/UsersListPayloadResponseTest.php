@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\UsersListPayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
+use CL\Slack\Payload\UsersListPayloadResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>

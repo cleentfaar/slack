@@ -29,7 +29,7 @@ class ChannelsJoinPayloadResponse extends AbstractPayloadResponse
     private $channel;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAlreadyInChannel()
     {

@@ -43,12 +43,12 @@ class FilesListPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'page'    => $payload->getPage(),
-            'count'   => $payload->getCount(),
-            'types'   => $payload->getTypes(),
-            'user'    => $payload->getUserId(),
+            'page' => $payload->getPage(),
+            'count' => $payload->getCount(),
+            'types' => $payload->getTypes(),
+            'user' => $payload->getUserId(),
             'ts_from' => $payload->getTimestampFrom()->format('U'),
-            'ts_to'   => $payload->getTimestampTo()->format('U'),
+            'ts_to' => $payload->getTimestampTo()->format('U'),
         ];
     }
 }

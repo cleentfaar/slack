@@ -30,7 +30,10 @@ abstract class AbstractSearchPayloadResponseTest extends AbstractTestCase
         $this->serializer = new PayloadResponseSerializer();
     }
 
-    public function testPayloadResponse()
+    /**
+     * @test
+     */
+    public function it_can_be_deserialized()
     {
         $responseData = array_merge(['ok' => true], $this->createResponseData());
 
@@ -51,7 +54,19 @@ abstract class AbstractSearchPayloadResponseTest extends AbstractTestCase
     }
 
     /**
-     * Compares the expected response data against the values returned by the actual Response's methods
+     * Returns the response class used for this test-case
+     * Can be overwritten if it deviates from the standard pattern.
+     */
+    protected function getResponseClass()
+    {
+        $class = get_class($this);
+        $name = substr($class, strripos($class, '\\') + 1, -4);
+
+        return sprintf('CL\Slack\Payload\%s', $name);
+    }
+
+    /**
+     * Compares the expected response data against the values returned by the actual Response's methods.
      *
      * @param array                    $responseData
      * @param PayloadResponseInterface $payloadResponse
@@ -59,19 +74,7 @@ abstract class AbstractSearchPayloadResponseTest extends AbstractTestCase
     abstract protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse);
 
     /**
-     * Returns the response class used for this test-case
-     * Can be overwritten if it deviates from the standard pattern
-     */
-    protected function getResponseClass()
-    {
-        $class = get_class($this);
-        $name  = substr($class, strripos($class, '\\') + 1, -4);
-
-        return sprintf('CL\Slack\Payload\%s', $name);
-    }
-
-    /**
-     * Returns the data used for comparison against the actual Response class
+     * Returns the data used for comparison against the actual Response class.
      *
      * @return array
      */

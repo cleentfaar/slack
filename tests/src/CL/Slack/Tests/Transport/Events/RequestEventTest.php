@@ -20,13 +20,13 @@ use CL\Slack\Transport\Events\RequestEvent;
 class RequestEventTest extends AbstractTestCase
 {
     /**
-     * @return array
+     * @test
      */
-    public function testGetRawPayload()
+    public function it_can_return_a_raw_payload()
     {
         $expectedPayload = [];
-        $event           = new RequestEvent($expectedPayload);
-        $actualPayload   = $event->getRawPayload();
+        $event = new RequestEvent($expectedPayload);
+        $actualPayload = $event->getRawPayload();
 
         $this->assertEquals($expectedPayload, $actualPayload);
     }

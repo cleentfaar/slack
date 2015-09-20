@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\StarsListPayload;
 use CL\Slack\Payload\PayloadInterface;
+use CL\Slack\Payload\StarsListPayload;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -41,8 +41,8 @@ class StarsListPayloadTest extends AbstractPayloadTest
     {
         return [
             'count' => $payload->getCount(),
-            'page'  => $payload->getPage(),
-            'user'  => $payload->getUserId(),
+            'page' => $payload->getPage(),
+            'user' => $payload->getUserId(),
         ];
     }
 }

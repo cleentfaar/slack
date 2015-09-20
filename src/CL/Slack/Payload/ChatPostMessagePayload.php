@@ -48,17 +48,17 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     private $iconUrl;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $unfurlLinks;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $unfurlMedia;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $linkNames;
 
@@ -289,7 +289,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * Use for serialization
+     * Use for serialization.
      *
      * @return string
      */
@@ -309,7 +309,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     /**
      * {@inheritdoc}
      */
-    public function beforeSerialize (Serializer $serializer)
+    public function beforeSerialize(Serializer $serializer)
     {
         $this->attachmentsJson = $serializer->serialize($this->attachments, 'json');
     }

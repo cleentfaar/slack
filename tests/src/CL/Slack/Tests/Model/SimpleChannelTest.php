@@ -25,12 +25,12 @@ class SimpleChannelTest extends AbstractModelTest
     protected function getModelData()
     {
         return [
-            'id'          => 'C1234567',
-            'name'        => 'channel_name',
-            'created'     => '12345678',
-            'creator'     => 'U1234567',
+            'id' => 'C1234567',
+            'name' => 'channel_name',
+            'created' => '12345678',
+            'creator' => 'U1234567',
             'is_archived' => false,
-            'is_general'  => false,
+            'is_general' => false,
         ];
     }
 

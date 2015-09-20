@@ -29,11 +29,14 @@ class PayloadResponseSerializerTest extends AbstractTestCase
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
     }
 
-    public function testDeserialize()
+    /**
+     * @test
+     */
+    public function it_can_be_deserialized()
     {
         $payloadResponse = [
-            'ok'     => true,
-            'error'  => null,
+            'ok' => true,
+            'error' => null,
             'result' => [],
         ];
 

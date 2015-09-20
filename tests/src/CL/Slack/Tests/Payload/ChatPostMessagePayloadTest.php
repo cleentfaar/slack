@@ -74,28 +74,28 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
         $attachmentField = $attachment->getFields()->first();
 
         return [
-            'channel'      => $payload->getChannel(),
-            'text'         => $payload->getText(),
-            'username'     => $payload->getUsername(),
-            'icon_emoji'   => $payload->getIconEmoji(),
-            'icon_url'     => $payload->getIconUrl(),
+            'channel' => $payload->getChannel(),
+            'text' => $payload->getText(),
+            'username' => $payload->getUsername(),
+            'icon_emoji' => $payload->getIconEmoji(),
+            'icon_url' => $payload->getIconUrl(),
             'unfurl_media' => $payload->getUnfurlMedia(),
             'unfurl_links' => $payload->getUnfurlLinks(),
-            'link_names'   => $payload->getLinkNames(),
-            'parse'        => $payload->getParse(),
-            'attachments'  => json_encode([
+            'link_names' => $payload->getLinkNames(),
+            'parse' => $payload->getParse(),
+            'attachments' => json_encode([
                 [
-                    'title'       => $attachment->getTitle(),
-                    'title_link'  => $attachment->getTitleLink(),
-                    'image_url'   => $attachment->getImageUrl(),
+                    'title' => $attachment->getTitle(),
+                    'title_link' => $attachment->getTitleLink(),
+                    'image_url' => $attachment->getImageUrl(),
                     'author_name' => $attachment->getAuthorName(),
                     'author_link' => $attachment->getAuthorLink(),
                     'author_icon' => $attachment->getAuthorIcon(),
-                    'pre_text'    => $attachment->getPreText(),
-                    'text'        => $attachment->getText(),
-                    'color'       => $attachment->getColor(),
-                    'fallback'    => $attachment->getFallback(),
-                    'fields'      => [
+                    'pre_text' => $attachment->getPreText(),
+                    'text' => $attachment->getText(),
+                    'color' => $attachment->getColor(),
+                    'fallback' => $attachment->getFallback(),
+                    'fields' => [
                         [
                             'title' => $attachmentField->getTitle(),
                             'value' => $attachmentField->getValue(),

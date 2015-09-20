@@ -19,7 +19,7 @@ use Symfony\Component\EventDispatcher\Event;
 class ResponseEvent extends Event
 {
     /**
-     * @var array $rawPayloadResponse
+     * @var array
      */
     private $rawPayloadResponse;
 

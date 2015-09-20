@@ -40,7 +40,7 @@ class GroupsRenamePayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getGroupId(),
-            'name'    => $payload->getName(),
+            'name' => $payload->getName(),
         ];
     }
 }

@@ -62,9 +62,9 @@ class ChatUpdatePayloadResponse extends AbstractPayloadResponse
     {
         return array_merge(parent::getPossibleErrors(), [
             'cant_update_message' => 'Authenticated user does not have permission to update this message',
-            'edit_window_closed'  => 'The message cannot be edited due to the team message edit settings',
-            'msg_too_long'        => 'Message text is too long',
-            'no_text'             => 'No message text provided',
+            'edit_window_closed' => 'The message cannot be edited due to the team message edit settings',
+            'msg_too_long' => 'Message text is too long',
+            'no_text' => 'No message text provided',
         ]);
     }
 }

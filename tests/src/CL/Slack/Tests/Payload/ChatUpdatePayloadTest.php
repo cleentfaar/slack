@@ -41,8 +41,8 @@ class ChatUpdatePayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'ts'      => $payload->getSlackTimestamp(),
-            'text'    => $payload->getText(),
+            'ts' => $payload->getSlackTimestamp(),
+            'text' => $payload->getText(),
         ];
     }
 }

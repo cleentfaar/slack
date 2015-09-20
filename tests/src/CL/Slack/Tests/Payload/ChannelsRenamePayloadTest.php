@@ -40,7 +40,7 @@ class ChannelsRenamePayloadTest extends AbstractPayloadTest
     {
         return [
             'channel' => $payload->getChannelId(),
-            'name'    => $payload->getName(),
+            'name' => $payload->getName(),
         ];
     }
 }

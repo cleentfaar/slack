@@ -11,7 +11,6 @@
 
 namespace CL\Slack\Tests\Transport;
 
-use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Test\Payload\MockPayload;
 use CL\Slack\Tests\AbstractTestCase;
@@ -19,9 +18,9 @@ use CL\Slack\Transport\ApiClient;
 use CL\Slack\Transport\Events\RequestEvent;
 use CL\Slack\Transport\Events\ResponseEvent;
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 
 /**
@@ -29,25 +28,27 @@ use GuzzleHttp\Psr7\Response;
  */
 class ApiClientTest extends AbstractTestCase
 {
-    const TOKEN = 'fake-token';
-
-    public function testSend()
+    /**
+     * @test
+     */
+    public function it_can_send_a_payload()
     {
         $self = $this;
+        $token = 'fake-token';
 
-        $mockRequestData = ['foo' => 'bar', 'token' => self::TOKEN];
+        $mockRequestData = ['foo' => 'bar', 'token' => $token];
         $mockResponseData = ['ok' => true, 'foo' => 'bar'];
 
         $handler = HandlerStack::create(
             new MockHandler([
-                new Response(200, [], json_encode($mockResponseData))
+                new Response(200, [], json_encode($mockResponseData)),
             ])
         );
         $historyContainer = [];
         $history = Middleware::history($historyContainer);
         $handler->push($history);
         $apiClient = new ApiClient(
-            self::TOKEN,
+            $token,
             new Client(['handler' => $handler])
         );
 
@@ -72,7 +73,7 @@ class ApiClientTest extends AbstractTestCase
         parse_str($transaction['request']->getBody(), $requestBody);
         $responseBody = json_decode($transaction['response']->getBody(), true);
 
-        $this->assertEquals(ApiClient::API_BASE_URL.'mock', $requestUrl);
+        $this->assertEquals(ApiClient::API_BASE_URL . 'mock', $requestUrl);
         $this->assertEquals('application/x-www-form-urlencoded', $requestContentType);
         $this->assertEquals($mockRequestData, $requestBody);
         $this->assertEquals($mockResponseData, $responseBody);
@@ -81,25 +82,18 @@ class ApiClientTest extends AbstractTestCase
         $this->assertArrayHasKey(ApiClient::EVENT_RESPONSE, $eventsDispatched);
     }
 
-    public function testSendWithoutAnyToken()
+    /**
+     * @test
+     *
+     * @expectedException \CL\Slack\Exception\SlackException
+     * @expectedExceptionMessage You must supply a token to send a payload, since you did not provide one during construction
+     */
+    public function it_can_not_send_a_payload_without_a_token()
     {
         /** @var PayloadInterface|\PHPUnit_Framework_MockObject_MockObject $mockPayload */
         $mockPayload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $apiClient   = new ApiClient();
+        $apiClient = new ApiClient();
 
-        try {
-            $apiClient->send($mockPayload);
-        } catch (SlackException $e) {
-            $previous = $e->getPrevious();
-            $this->assertInstanceOf('\InvalidArgumentException', $previous);
-            $this->assertEquals(
-                'You must supply a token to send a payload, since you did not provide one during construction',
-                $previous->getMessage()
-            );
-
-            return;
-        }
-
-        $this->markTestIncomplete('This test should have thrown an exception');
+        $apiClient->send($mockPayload);
     }
 }
