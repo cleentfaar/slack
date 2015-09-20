@@ -61,7 +61,7 @@ The following methods have not yet been implemented, why not contribute and add 
 - team.info
 - users.getPresence*
 
-* = work/PR has started for this method
+\* = work/PR has started for this method
 
 
 ### Related packages
