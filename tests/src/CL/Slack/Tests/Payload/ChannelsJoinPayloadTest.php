@@ -25,7 +25,7 @@ class ChannelsJoinPayloadTest extends AbstractPayloadTest
     protected function createPayload()
     {
         $payload = new ChannelsJoinPayload();
-        $payload->setChannel('#acme_channel');
+        $payload->setName('#acme_channel');
 
         return $payload;
     }
@@ -38,7 +38,7 @@ class ChannelsJoinPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'name' => $payload->getChannel(),
+            'name' => $payload->getName(),
         ];
     }
 }

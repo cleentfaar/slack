@@ -34,6 +34,16 @@ class ChatUpdatePayload extends AbstractPayload
     private $text;
 
     /**
+     * @var string
+     */
+    private $parse;
+
+    /**
+     * @var bool
+     */
+    private $linkNames;
+
+    /**
      * @param string $channelId
      */
     public function setChannelId($channelId)
@@ -99,6 +109,42 @@ class ChatUpdatePayload extends AbstractPayload
     public function getMessage()
     {
         return $this->getText();
+    }
+
+    /**
+     * @param string $parse Change how messages are treated.
+     *
+     * @see https://api.slack.com/docs/formatting
+     */
+    public function setParse($parse)
+    {
+        $this->parse = $parse;
+    }
+
+    /**
+     * @return string Change how messages are treated.
+     */
+    public function getParse()
+    {
+        return $this->parse;
+    }
+
+    /**
+     * @param bool $linkNames Set to true to automatically find and link channel names and usernames in the message.
+     */
+    public function setLinkNames($linkNames)
+    {
+        $this->linkNames = $linkNames;
+    }
+
+    /**
+     * @see https://api.slack.com/docs/unfurling
+     *
+     * @return bool|null Whether channel names and usernames in the message should be linked automatically.
+     */
+    public function getLinkNames()
+    {
+        return $this->linkNames;
     }
 
     /**

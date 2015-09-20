@@ -2,6 +2,8 @@ CL\Slack\Payload\FilesUploadPayload:
     properties:
         content:
             type: string
+        file:
+            type: string
         fileType:
             type: string
         filename:
@@ -13,3 +15,5 @@ CL\Slack\Payload\FilesUploadPayload:
             accessor:
                 setter: setChannelsFromString
                 getter: getChannelsAsString
+        initialComment:
+            type: string
