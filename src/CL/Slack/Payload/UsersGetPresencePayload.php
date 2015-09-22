@@ -32,7 +32,7 @@ class UsersGetPresencePayload extends AbstractPayload
     }
 
     /**
-     * @return string ID of the user to get info on
+     * @return string
      */
     public function getUserId()
     {

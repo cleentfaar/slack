@@ -19,12 +19,12 @@ namespace CL\Slack\Payload;
 class UsersInfoPayload extends AbstractPayload
 {
     /**
-     * @var string $user ID of the user to get info on
+     * @var string
      */
     private $user;
 
     /**
-     * @param string $user ID of the user to get info on
+     * @param string $user
      */
     public function setUserId($user)
     {
@@ -32,7 +32,7 @@ class UsersInfoPayload extends AbstractPayload
     }
 
     /**
-     * @return string ID of the user to get info on
+     * @return string
      */
     public function getUserId()
     {
