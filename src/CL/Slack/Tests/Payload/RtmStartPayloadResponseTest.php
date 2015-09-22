@@ -25,7 +25,7 @@ class RtmStartPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'url'     => 'wss://ms111.slack-msgs.com/websocket/',
+            'url' => 'wss://ms111.slack-msgs.com/websocket/',
         ];
     }
 
