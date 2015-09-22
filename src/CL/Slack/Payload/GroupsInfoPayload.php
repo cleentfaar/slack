@@ -12,9 +12,9 @@
 namespace CL\Slack\Payload;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  *
- * @link Official documentation at https://api.slack.com/methods/channels.info
+ * @link Official documentation at https://api.slack.com/methods/groups.info
  */
 class GroupsInfoPayload extends AbstractPayload
 {
@@ -26,7 +26,7 @@ class GroupsInfoPayload extends AbstractPayload
     /**
      * @param string $channelId
      */
-    public function setChannelId($channelId)
+    public function setGroupId($channelId)
     {
         $this->channel = $channelId;
     }
@@ -34,7 +34,7 @@ class GroupsInfoPayload extends AbstractPayload
     /**
      * @return string
      */
-    public function getChannelId()
+    public function getGroupId()
     {
         return $this->channel;
     }

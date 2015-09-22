@@ -28,6 +28,6 @@ class ImListPayloadResponse extends AbstractPayloadResponse
      */
     public function getImChannels()
     {
-		return $this->ims;
+        return $this->ims;
     }
 }

@@ -27,7 +27,7 @@ class ImOpenPayloadResponse extends AbstractPayloadResponse
     private $alreadyOpen;
 	
 	/**
-	 * @var array
+	 * @var null
 	 */
 	private $channel;
 
@@ -47,11 +47,11 @@ class ImOpenPayloadResponse extends AbstractPayloadResponse
         return $this->noOp;
     }
 	
-	/**
-	 * @return array
-	 */
-	public function getChannel()
-	{
-		return $this->channel;	
-	}
+    /**
+     * @return null
+     */
+    public function getChannel()
+    {
+        return $this->channel;	
+    }
 }

@@ -25,7 +25,7 @@ class GroupsInfoPayloadTest extends AbstractPayloadTest
     protected function createPayload()
     {
         $payload = new GroupsInfoPayload();
-        $payload->setChannelId('G1234567');
+        $payload->setGroupId('G1234567');
 
         return $payload;
     }
@@ -38,7 +38,7 @@ class GroupsInfoPayloadTest extends AbstractPayloadTest
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'channel' => $payload->getChannelId(),
+            'channel' => $payload->getGroupId(),
         ];
     }
 }
