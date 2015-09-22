@@ -12,7 +12,7 @@
 namespace CL\Slack\Payload;
 
 /**
- * @author Travis Raup <info@travisraup.com>
+ * @author Cas Leentfaar <info@casleentfaar.com>
  *
  * @link Official documentation at https://api.slack.com/methods/users.info
  */
