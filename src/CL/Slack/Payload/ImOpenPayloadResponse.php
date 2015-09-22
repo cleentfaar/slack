@@ -26,10 +26,10 @@ class ImOpenPayloadResponse extends AbstractPayloadResponse
      */
     private $alreadyOpen;
 	
-	/**
-	 * @var null
-	 */
-	private $channel;
+    /**
+     * @var null
+     */
+    private $channel;
 
     /**
      * @return boolean
