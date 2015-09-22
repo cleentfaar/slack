@@ -78,7 +78,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
             'channel'      => $payload->getChannel(),
             'text'         => $payload->getText(),
             'username'     => $payload->getUsername(),
-			'as_user'       => $payload->getAsUser(),
+            'as_user'      => $payload->getAsUser(),
             'icon_emoji'   => $payload->getIconEmoji(),
             'icon_url'     => $payload->getIconUrl(),
             'unfurl_media' => $payload->getUnfurlMedia(),
