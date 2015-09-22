@@ -14,7 +14,7 @@ namespace CL\Slack\Payload;
 use CL\Slack\Model\User;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
 class UsersInfoPayloadResponse extends AbstractPayloadResponse
 {

@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This user is part of the Slack API library.
+ * This file is part of the Slack API library.
  *
- * (c) Travis Raup <info@travisraup.com>
+ * (c) Cas Leentfaar <info@casleentfaar.com>
  *
  * For the full copyright and license information, please view the LICENSE
- * user that was distributed with this source code.
+ * file that was distributed with this source code.
  */
 
 namespace CL\Slack\Payload;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  *
  * @link Official documentation at https://api.slack.com/methods/rtm.start
  */
