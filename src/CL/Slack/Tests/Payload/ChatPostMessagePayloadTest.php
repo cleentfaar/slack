@@ -29,7 +29,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTest
         $payload = new ChatPostMessagePayload();
         $payload->setChannel('#acme_channel');
         $payload->setUsername('acme_user');
-		$payload->setAsUser(true);
+        $payload->setAsUser(true);
         $payload->setText('Hello World!');
         $payload->setIconEmoji(':truck:');
         $payload->setLinkNames(true);
