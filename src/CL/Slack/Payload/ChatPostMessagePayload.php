@@ -38,6 +38,11 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     private $username;
 
     /**
+     * @var bool
+     */
+    private $asUser;
+
+    /**
      * @var string
      */
     private $iconEmoji;
@@ -153,6 +158,22 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * @param bool|null Pass true to post the message as the authed user, instead of as a bot.
+     */
+    public function setAsUser($asUser)
+    {
+        $this->asUser = $asUser;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getAsUser()
+    {
+        return $this->asUser;
     }
 
     /**
