@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ChatDeletePayloadTest extends AbstractPayloadTest
+class ChatDeletePayloadTest extends AbstractPayloadTestCase
 {
     /**
      * @inheritdoc

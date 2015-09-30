@@ -12,12 +12,12 @@
 namespace CL\Slack\Tests\Serializer;
 
 use CL\Slack\Serializer\PayloadResponseSerializer;
-use CL\Slack\Tests\AbstractTestCase;
+use CL\Slack\Test\Payload\MockPayloadResponse;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class PayloadResponseSerializerTest extends AbstractTestCase
+class PayloadResponseSerializerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var PayloadResponseSerializer
@@ -40,7 +40,7 @@ class PayloadResponseSerializerTest extends AbstractTestCase
             'result' => [],
         ];
 
-        $mockResponseClass = 'CL\Slack\Test\Payload\MockPayloadResponse';
+        $mockResponseClass = MockPayloadResponse::class;
         $serializedPayload = $this->payloadResponseSerializer->deserialize(
             $payloadResponse,
             $mockResponseClass

@@ -17,7 +17,7 @@ use CL\Slack\Payload\UsersSetPresencePayload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class UsersSetPresencePayloadTest extends AbstractPayloadTest
+class UsersSetPresencePayloadTest extends AbstractPayloadTestCase
 {
     /**
      * @inheritdoc

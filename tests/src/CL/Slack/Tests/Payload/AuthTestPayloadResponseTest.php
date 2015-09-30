@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class AuthTestPayloadResponseTest extends AbstractPayloadResponseTest
+class AuthTestPayloadResponseTest extends AbstractPayloadResponseTestCase
 {
     /**
      * @inheritdoc

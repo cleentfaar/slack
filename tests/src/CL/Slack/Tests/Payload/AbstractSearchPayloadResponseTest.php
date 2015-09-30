@@ -13,13 +13,15 @@ namespace CL\Slack\Tests\Payload;
 
 use CL\Slack\Payload\PayloadResponseInterface;
 use CL\Slack\Serializer\PayloadResponseSerializer;
-use CL\Slack\Tests\AbstractTestCase;
+use CL\Slack\Test\Model\ModelTrait;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractSearchPayloadResponseTest extends AbstractTestCase
+abstract class AbstractSearchPayloadResponseTest extends \PHPUnit_Framework_TestCase
 {
+    use ModelTrait;
+
     /**
      * @var PayloadResponseSerializer
      */

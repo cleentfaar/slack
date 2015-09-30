@@ -18,7 +18,7 @@ use CL\Slack\Payload\UsersSetActivePayload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class UsersSetActivePayloadTest extends AbstractPayloadTest
+class UsersSetActivePayloadTest extends AbstractPayloadTestCase
 {
     /**
      * @inheritdoc

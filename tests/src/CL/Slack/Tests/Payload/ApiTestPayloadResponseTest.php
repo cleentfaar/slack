@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
+class ApiTestPayloadResponseTest extends AbstractPayloadResponseTestCase
 {
     /**
      * @inheritdoc
@@ -40,7 +40,8 @@ class ApiTestPayloadResponseTest extends AbstractPayloadResponseTest
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($payloadResponse->getArguments(), $responseData['args']);
-        $this->assertEquals($payloadResponse->getArgument('foo'), $responseData['args']['foo']);
+        $this->assertEquals($responseData['args'], $payloadResponse->getArguments());
+        $this->assertEquals($responseData['args']['foo'], $payloadResponse->getArgument('foo'));
+        $this->assertEquals($responseData['error'], $payloadResponse->getError());
     }
 }
