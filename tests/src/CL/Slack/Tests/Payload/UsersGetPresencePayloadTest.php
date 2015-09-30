@@ -33,12 +33,12 @@ class UsersGetPresencePayloadTest extends AbstractPayloadTest
     /**
      * @inheritdoc
      *
-     * @param StarsListPayload $payload
+     * @param UsersGetPresencePayload $payload
      */
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
         return [
-            'user'  => $payload->getUserId(),
+            'user' => $payload->getUserId(),
         ];
     }
 }

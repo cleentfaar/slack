@@ -32,7 +32,7 @@ class UsersGetPresencePayloadResponseTest extends AbstractPayloadResponseTest
     /**
      * @inheritdoc
      *
-     * @param array                      $responseData
+     * @param array                           $responseData
      * @param UsersGetPresencePayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)

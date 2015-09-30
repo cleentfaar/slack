@@ -19,7 +19,7 @@ namespace CL\Slack\Payload;
 class UsersGetPresencePayload extends AbstractPayload
 {
     /**
-     * @var string $user ID of the user
+     * @var string ID of the user
      */
     private $user;
 
