@@ -20,7 +20,7 @@ use CL\Slack\Payload\StarsListPayload;
 class StarsListPayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -33,7 +33,7 @@ class StarsListPayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param StarsListPayload $payload
      */

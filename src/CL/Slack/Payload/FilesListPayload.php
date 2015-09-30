@@ -179,7 +179,7 @@ class FilesListPayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

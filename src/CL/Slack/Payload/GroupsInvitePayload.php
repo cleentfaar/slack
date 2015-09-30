@@ -64,7 +64,7 @@ class GroupsInvitePayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

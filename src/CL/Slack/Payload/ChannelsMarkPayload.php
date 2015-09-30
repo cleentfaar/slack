@@ -61,7 +61,7 @@ class ChannelsMarkPayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

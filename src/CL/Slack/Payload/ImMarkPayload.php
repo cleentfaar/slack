@@ -64,7 +64,7 @@ class ImMarkPayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

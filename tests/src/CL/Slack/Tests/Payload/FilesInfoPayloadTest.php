@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadInterface;
 class FilesInfoPayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -33,7 +33,7 @@ class FilesInfoPayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param FilesInfoPayload $payload
      */

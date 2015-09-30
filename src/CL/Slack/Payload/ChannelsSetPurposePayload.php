@@ -61,7 +61,7 @@ class ChannelsSetPurposePayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

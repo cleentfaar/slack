@@ -36,7 +36,7 @@ class MessageResultItemTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param MessageResultItem $actualModel
      */

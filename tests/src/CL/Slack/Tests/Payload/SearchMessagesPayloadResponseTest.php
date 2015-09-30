@@ -20,7 +20,7 @@ use CL\Slack\Payload\SearchMessagesPayloadResponse;
 class SearchMessagesPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -30,7 +30,7 @@ class SearchMessagesPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                         $responseData
      * @param SearchMessagesPayloadResponse $payloadResponse

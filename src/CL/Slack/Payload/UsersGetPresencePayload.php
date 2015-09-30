@@ -40,7 +40,7 @@ class UsersGetPresencePayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

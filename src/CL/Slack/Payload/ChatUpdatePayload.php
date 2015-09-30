@@ -148,7 +148,7 @@ class ChatUpdatePayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

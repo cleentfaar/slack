@@ -17,7 +17,7 @@ namespace CL\Slack\Payload;
 class ChannelsUnarchivePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getPossibleErrors()
     {

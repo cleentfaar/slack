@@ -20,7 +20,7 @@ use CL\Slack\Payload\UsersInfoPayload;
 class UsersInfoPayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -31,7 +31,7 @@ class UsersInfoPayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param UsersInfoPayload $payload
      */

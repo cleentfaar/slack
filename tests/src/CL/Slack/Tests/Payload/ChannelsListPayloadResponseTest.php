@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class ChannelsListPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -32,7 +32,7 @@ class ChannelsListPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                       $responseData
      * @param ChannelsListPayloadResponse $payloadResponse

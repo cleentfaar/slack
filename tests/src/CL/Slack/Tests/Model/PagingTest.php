@@ -36,7 +36,7 @@ class PagingTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param Paging $actualModel
      */

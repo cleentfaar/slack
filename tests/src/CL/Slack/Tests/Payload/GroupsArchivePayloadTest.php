@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadInterface;
 class GroupsArchivePayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -31,7 +31,7 @@ class GroupsArchivePayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param GroupsArchivePayload $payload
      */

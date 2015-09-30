@@ -30,7 +30,7 @@ class GroupsSetPurposePayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getPossibleErrors()
     {

@@ -36,7 +36,7 @@ class FileTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param File $actualModel
      */

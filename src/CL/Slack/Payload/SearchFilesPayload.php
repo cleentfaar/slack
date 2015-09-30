@@ -19,7 +19,7 @@ namespace CL\Slack\Payload;
 class SearchFilesPayload extends AbstractSearchPayload
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

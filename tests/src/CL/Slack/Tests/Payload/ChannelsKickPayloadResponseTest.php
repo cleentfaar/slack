@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class ChannelsKickPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -28,7 +28,7 @@ class ChannelsKickPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                       $responseData
      * @param ChannelsKickPayloadResponse $payloadResponse

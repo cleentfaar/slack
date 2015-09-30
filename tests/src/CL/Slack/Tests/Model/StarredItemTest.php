@@ -36,7 +36,7 @@ class StarredItemTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param StarredItem $actualModel
      */

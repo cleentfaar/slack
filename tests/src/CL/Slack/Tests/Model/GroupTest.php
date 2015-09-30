@@ -36,7 +36,7 @@ class GroupTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param Group $actualModel
      */

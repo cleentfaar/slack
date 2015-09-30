@@ -61,7 +61,7 @@ class GroupsSetPurposePayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

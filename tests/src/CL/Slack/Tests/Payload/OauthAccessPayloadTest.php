@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadInterface;
 class OauthAccessPayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -35,7 +35,7 @@ class OauthAccessPayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param OauthAccessPayload $payload
      */

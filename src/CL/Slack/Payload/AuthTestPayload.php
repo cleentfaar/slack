@@ -21,7 +21,7 @@ namespace CL\Slack\Payload;
 class AuthTestPayload extends AbstractPayload
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

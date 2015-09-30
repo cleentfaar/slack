@@ -20,7 +20,7 @@ use CL\Slack\Payload\StarsListPayloadResponse;
 class StarsListPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -33,7 +33,7 @@ class StarsListPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                    $responseData
      * @param StarsListPayloadResponse $payloadResponse

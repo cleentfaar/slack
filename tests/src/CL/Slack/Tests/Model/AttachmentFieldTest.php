@@ -40,7 +40,7 @@ class AttachmentFieldTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param AttachmentField $actualModel
      */

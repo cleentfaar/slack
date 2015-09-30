@@ -40,7 +40,7 @@ class CustomizableTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param Customizable $actualModel
      */

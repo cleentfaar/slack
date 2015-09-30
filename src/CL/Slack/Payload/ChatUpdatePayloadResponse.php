@@ -56,7 +56,7 @@ class ChatUpdatePayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getPossibleErrors()
     {

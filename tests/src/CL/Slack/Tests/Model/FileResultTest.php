@@ -40,7 +40,7 @@ class FileResultTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param FileResult $actualModel
      */

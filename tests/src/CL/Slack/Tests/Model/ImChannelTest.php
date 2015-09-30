@@ -36,7 +36,7 @@ class ImChannelTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param ImChannel $actualModel
      */

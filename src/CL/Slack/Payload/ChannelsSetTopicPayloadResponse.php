@@ -30,7 +30,7 @@ class ChannelsSetTopicPayloadResponse extends AbstractPayloadResponse
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getPossibleErrors()
     {
