@@ -27,7 +27,7 @@ class ImOpenPayloadResponseTest extends AbstractPayloadResponseTest
         return [
             'no_op' => true,
             'already_open' => true,
-            'channel' => array('id' => 'D12345678')
+            'channel' => ['id' => 'D024BFF1M'],
         ];
     }
 

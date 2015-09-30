@@ -18,7 +18,6 @@ namespace CL\Slack\Payload;
  */
 class RtmStartPayload extends AbstractPayload
 {
-
     /**
      * {@inheritdoc}
      */

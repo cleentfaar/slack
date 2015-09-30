@@ -52,6 +52,6 @@ class ImOpenPayloadResponse extends AbstractPayloadResponse
      */
     public function getChannel()
     {
-        return $this->channel;  
+        return $this->channel;
     }
 }

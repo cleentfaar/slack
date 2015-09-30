@@ -11,13 +11,13 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\GroupsInfoPayloadResponse;
+use CL\Slack\Payload\RtmStartPayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
-class GroupsInfoPayloadResponseTest extends AbstractPayloadResponseTest
+class RtmStartPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
      * {@inheritdoc}
@@ -25,18 +25,18 @@ class GroupsInfoPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'group' => $this->createGroup(),
+            'url' => 'wss://ms111.slack-msgs.com/websocket/',
         ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                       $responseData
-     * @param GroupsInfoPayloadResponse   $payloadResponse
+     * @param array                   $responseData
+     * @param RtmStartPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertGroup($responseData['group'], $payloadResponse->getGroup());
+        $this->assertEquals($responseData['url'], $payloadResponse->getUrl());
     }
 }

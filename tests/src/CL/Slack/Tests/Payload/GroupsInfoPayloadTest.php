@@ -15,7 +15,7 @@ use CL\Slack\Payload\GroupsInfoPayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
 class GroupsInfoPayloadTest extends AbstractPayloadTest
 {
@@ -33,7 +33,7 @@ class GroupsInfoPayloadTest extends AbstractPayloadTest
     /**
      * {@inheritdoc}
      *
-     * @param ChannelsInfoPayload $payload
+     * @param GroupsInfoPayload $payload
      */
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {

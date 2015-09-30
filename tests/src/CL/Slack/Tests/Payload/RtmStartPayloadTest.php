@@ -15,7 +15,7 @@ use CL\Slack\Payload\RtmStartPayload;
 use CL\Slack\Payload\PayloadInterface;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
 class RtmStartPayloadTest extends AbstractPayloadTest
 {
@@ -32,7 +32,7 @@ class RtmStartPayloadTest extends AbstractPayloadTest
     /**
      * {@inheritdoc}
      *
-     * @param AuthTestPayload $payload
+     * @param RtmStartPayload $payload
      */
     protected function getExpectedPayloadData(PayloadInterface $payload)
     {
