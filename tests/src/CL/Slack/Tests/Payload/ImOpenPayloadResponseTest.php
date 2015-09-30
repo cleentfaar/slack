@@ -27,6 +27,7 @@ class ImOpenPayloadResponseTest extends AbstractPayloadResponseTest
         return [
             'no_op' => true,
             'already_open' => true,
+            'channel' => array('id' => 'D12345678')
         ];
     }
 
@@ -40,5 +41,6 @@ class ImOpenPayloadResponseTest extends AbstractPayloadResponseTest
     {
         $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
         $this->assertEquals($responseData['already_open'], $payloadResponse->isAlreadyOpen());
+        $this->assertEquals($responseData['channel'], $payloadResponse->getChannel());
     }
 }
