@@ -25,9 +25,9 @@ class ImListPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'channels' => [
-                $this->createImChannel(),
-            ],
+            'ims' => [
+                 $this->createImChannel(),
+             ],
         ];
     }
 
@@ -44,7 +44,7 @@ class ImListPayloadResponseTest extends AbstractPayloadResponseTest
         $this->assertCount(1, $channels);
 
         foreach ($channels as $x => $channel) {
-            $this->assertImChannel($responseData['channels'][$x], $channel);
+            $this->assertImChannel($responseData['ims'][$x], $channel);
         }
     }
 }
