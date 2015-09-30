@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>Slack Webhooks API by cleentfaar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Slack by cleentfaar</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <section class="page-header">
+      <h1 class="project-name">Slack Webhooks API</h1>
+      <h2 class="project-tagline">A PHP library providing integration with the Slack Webhooks API</h2>
+      <a href="https://github.com/cleentfaar/slack" class="btn">View on GitHub</a>
+      <a href="https://github.com/cleentfaar/slack/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/cleentfaar/slack/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <header>
-          <h1>Slack</h1>
-          <h2>A PHP library providing integration with the Slack API</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/cleentfaar/slack/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/cleentfaar/slack/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/cleentfaar/slack" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>
+    <section class="main-content">
+      <h1>
 <a id="slack-api-library-" class="anchor" href="#slack-api-library-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slack API library <a href="https://github.com/cleentfaar/slack/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></a>
 </h1>
 
@@ -90,6 +78,29 @@ Before submitting your PR though, make sure it complies with the <a href="https:
 speed up the merging of your code.</p>
 
 <h3>
+<a id="missing-methods" class="anchor" href="#missing-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Missing methods</h3>
+
+<p>The following methods have not yet been implemented, why not contribute and add some yourself?</p>
+
+<ul>
+<li>files.delete*</li>
+<li>groups.info*</li>
+<li>pins.add</li>
+<li>pins.list</li>
+<li>pins.remove</li>
+<li>reactions.add</li>
+<li>reactions.get</li>
+<li>reactions.list</li>
+<li>reactions.remove</li>
+<li>rtm.start*</li>
+<li>team.accessLogs</li>
+<li>team.info</li>
+<li>users.getPresence*</li>
+</ul>
+
+<p>* = work/PR has started for this method</p>
+
+<h3>
 <a id="related-packages" class="anchor" href="#related-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Related packages</h3>
 
 <ul>
@@ -120,23 +131,23 @@ be due, especially on Windows or OS X, to <a href="http://docs.guzzlephp.org/en/
 
 <p>To fix this you first create the Guzzle client manually using an alternative CA cert bundle, or <a href="http://guzzle.readthedocs.org/en/latest/clients.html#verify">disabling peer verification</a> (not recommended for security reasons), and pass it to the API Client.</p>
 
-<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-vo">$client</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\GuzzleHttp\</span><span class="pl-s3">Client</span>();</span>
-<span class="pl-s2"><span class="pl-vo">$client</span><span class="pl-k">-&gt;</span>setDefaultOption(<span class="pl-s1"><span class="pl-pds">'</span>verify<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>C:\Program Files (x86)\Git\bin\curl-ca-bundle.crt<span class="pl-pds">'</span></span>);</span>
-<span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-c">// continue as normal, using the client above</span></span>
-<span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-vo">$apiClient</span> <span class="pl-k">=</span>  <span class="pl-k">new</span> <span class="pl-s3">ApiClient</span>(<span class="pl-s1"><span class="pl-pds">'</span>api-token-here<span class="pl-pds">'</span></span>, <span class="pl-vo">$client</span>);</span></pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$client</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\GuzzleHttp\</span><span class="pl-c1">Client</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$client</span><span class="pl-k">-&gt;</span>setDefaultOption(<span class="pl-s"><span class="pl-pds">'</span>verify<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>C:\Program Files (x86)\Git\bin\curl-ca-bundle.crt<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// continue as normal, using the client above</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$apiClient</span> <span class="pl-k">=</span>  <span class="pl-k">new</span> <span class="pl-c1">ApiClient</span>(<span class="pl-s"><span class="pl-pds">'</span>api-token-here<span class="pl-pds">'</span></span>, <span class="pl-smi">$client</span>);</span></pre></div>
 
 <p>If you get a different error code you can look at the <a href="http://curl.haxx.se/libcurl/c/libcurl-errors.html">list of cURL error codes</a>, or consult the <a href="http://docs.guzzlephp.org/en/latest/">Guzzle documentation</a> directly.</p>
-        </section>
 
-        <footer>
-          Slack is maintained by <a href="https://github.com/cleentfaar">cleentfaar</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/cleentfaar/slack">Slack Webhooks API</a> is maintained by <a href="https://github.com/cleentfaar">cleentfaar</a>.</span>
 
-        
-      </div>
-    </div>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
