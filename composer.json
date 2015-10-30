@@ -19,7 +19,7 @@
   "require": {
     "php": ">=5.5",
     "ext-curl": "*",
-    "jms/serializer": "~0.16",
+    "jms/serializer": "~1.0",
     "symfony/event-dispatcher": "~2.3",
     "symfony/yaml": "~2.3",
     "guzzlehttp/guzzle": "~6.0",
