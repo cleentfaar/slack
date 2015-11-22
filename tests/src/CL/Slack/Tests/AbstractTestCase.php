@@ -24,6 +24,7 @@ use CL\Slack\Model\Paging;
 use CL\Slack\Model\SimpleChannel;
 use CL\Slack\Model\SimpleMessage;
 use CL\Slack\Model\StarredItem;
+use CL\Slack\Model\Team;
 use CL\Slack\Model\User;
 use CL\Slack\Model\UserProfile;
 
@@ -571,6 +572,45 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             'image_48' => $actual->getImage48(),
             'image_72' => $actual->getImage72(),
             'image_192' => $actual->getImage192(),
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    protected function createTeam()
+    {
+        return [
+            'id' => 'T12345',
+            'name' => 'My Team',
+            'domain' => 'example.com',
+            'email_domain' => 'example.com',
+            'image_34' => 'https:\/\/www.example.com/image34.jpg',
+            'image_44' => 'https:\/\/www.example.com/image44.jpg',
+            'image_68' => 'https:\/\/www.example.com/image68.jpg',
+            'image_88' => 'https:\/\/www.example.com/image88.jpg',
+            'image_102' => 'https:\/\/www.example.com/image102.jpg',
+            'image_132' => 'https:\/\/www.example.com/image132.jpg',
+        ];
+    }
+
+    /**
+     * @param array    $expected
+     * @param Team     $actual
+     */
+    protected function assertTeam(array $expected, Team $actual)
+    {
+        $this->assertEquals($expected, [
+            'id' => $actual->getId(),
+            'name' => $actual->getName(),
+            'domain' => $actual->getDomain(),
+            'email_domain' => $actual->getEmailDomain(),
+            'image_34' => $actual->getImage34(),
+            'image_44' => $actual->getImage44(),
+            'image_68' => $actual->getImage68(),
+            'image_88' => $actual->getImage88(),
+            'image_102' => $actual->getImage102(),
+            'image_132' => $actual->getImage132(),
         ]);
     }
 
