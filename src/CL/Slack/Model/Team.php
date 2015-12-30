@@ -39,34 +39,9 @@ class Team extends AbstractModel
     private $emailDomain;
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $image34;
-
-    /**
-     * @var string|null
-     */
-    private $image44;
-
-    /**
-     * @var string|null
-     */
-    private $image68;
-
-    /**
-     * @var string|null
-     */
-    private $image88;
-
-    /**
-     * @var string|null
-     */
-    private $image102;
-
-    /**
-     * @var string|null
-     */
-    private $image132;
+    private $icon;
 
     /**
      * @return string The ID of this team.
@@ -101,50 +76,10 @@ class Team extends AbstractModel
     }
 
     /**
-     * @return string The image 34 of this team.
+     * @return array of icons
      */
-    public function getImage34()
+    public function getIcon()
     {
-        return $this->image34;
-    }
-
-    /**
-     * @return string The image 44 of this team.
-     */
-    public function getImage44()
-    {
-        return $this->image44;
-    }
-
-    /**
-     * @return string The image 68 of this team.
-     */
-    public function getImage68()
-    {
-        return $this->image68;
-    }
-
-    /**
-     * @return string The image 88 of this team.
-     */
-    public function getImage88()
-    {
-        return $this->image88;
-    }
-
-    /**
-     * @return string The image 102 of this team.
-     */
-    public function getImage102()
-    {
-        return $this->image102;
-    }
-
-    /**
-     * @return string The image 132 of this team.
-     */
-    public function getImage132()
-    {
-        return $this->image132;
+        return $this->icon;
     }
 }

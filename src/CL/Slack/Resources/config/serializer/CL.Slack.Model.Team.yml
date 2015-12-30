@@ -8,21 +8,6 @@ CL\Slack\Model\Team:
             type: string
         emailDomain:
             type: string
-        image34:
-            type: string
-            serialized_name: image_34
-        image44:
-            type: string
-            serialized_name: image_44
-        image68:
-            type: string
-            serialized_name: image_68
-        image88:
-            type: string
-            serialized_name: image_88
-        image102:
-            type: string
-            serialized_name: image_102
-        image132:
-            type: string
-            serialized_name: image_132
+            serialized_name: email_domain
+        icon:
+            type: array<string, string>
