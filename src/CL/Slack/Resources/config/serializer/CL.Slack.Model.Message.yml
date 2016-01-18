@@ -10,5 +10,11 @@ CL\Slack\Model\Message:
             type: string
         text:
             type: string
+        permalink:
+            type: string
         channel:
             type: CL\Slack\Model\Channel
+        previous:
+            type: CL\Slack\Model\Message
+        next:
+            type: CL\Slack\Model\Message
