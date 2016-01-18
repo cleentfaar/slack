@@ -51,6 +51,7 @@ The following API methods are accessible with this library (click on a name to g
 - [search.files](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/search-files.md)
 - [search.messages](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/search-messages.md)
 - [stars.list](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/stars-list.md) (Documentation coming soon!)
+- [team.info](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/team-info.md)
 - [users.info](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/users-info.md) (Documentation coming soon!)
 - [users.list](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/users-list.md)
 - [users.setActive](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/users-set-active.md) (Documentation coming soon!)

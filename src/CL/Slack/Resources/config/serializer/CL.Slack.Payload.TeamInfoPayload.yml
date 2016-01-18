@@ -1,0 +1,4 @@
+CL\Slack\Payload\TeamInfoPayload:
+    properties:
+        error:
+            type: string
