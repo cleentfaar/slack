@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadInterface;
 /**
  * @author Travis Raup <info@travisraup.com>
  */
-class RtmStartPayloadTest extends AbstractPayloadTest
+class RtmStartPayloadTest extends AbstractPayloadTestCase
 {
     /**
      * {@inheritdoc}

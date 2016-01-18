@@ -17,7 +17,7 @@ use CL\Slack\Payload\UsersAdminInvitePayload;
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class UsersAdminInvitePayloadTest extends AbstractPayloadTest
+class UsersAdminInvitePayloadTest extends AbstractPayloadTestCase
 {
     /**
      * {@inheritdoc}
