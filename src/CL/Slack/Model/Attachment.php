@@ -74,6 +74,11 @@ class Attachment extends AbstractModel
      * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
+    
+    /**
+     * @var Array
+     */
+    private $mrkdwnIn;
 
     public function __construct()
     {
@@ -256,5 +261,21 @@ class Attachment extends AbstractModel
     public function getFields()
     {
         return $this->fields;
+    }
+    
+    /**
+     * @param array Valid values for mrkdwn_in are: ["pretext", "text", "fields"]. Setting "fields" will enable markup formatting for the value of each field
+     */
+    public function setMrkdwnIn(Array $mrkdwnIn)
+    {
+    	$this->mrkdwnIn = $mrkdwnIn;
+    }
+    
+    /**
+     * @return Array Valid values for mrkdwn_in are: ["pretext", "text", "fields"]. Setting "fields" will enable markup formatting for the value of each field
+     */
+    public function getMrkdwnIn()
+    {
+    	return $this->mrkdwnIn;
     }
 }
