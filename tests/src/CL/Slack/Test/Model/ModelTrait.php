@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CL\Slack\Tests;
+namespace CL\Slack\Test\Model;
 
 use CL\Slack\Model\Channel;
 use CL\Slack\Model\Customizable;
@@ -26,11 +26,12 @@ use CL\Slack\Model\SimpleMessage;
 use CL\Slack\Model\StarredItem;
 use CL\Slack\Model\User;
 use CL\Slack\Model\UserProfile;
+use PHPUnit_Framework_Assert as Assert;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
+trait ModelTrait
 {
     /**
      * Returns an example of file-data that could be returned by a response
@@ -56,7 +57,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertMessage(array $expected, Message $actual)
     {
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'channel' => $this->createSimpleChannel(),
             'ts' => $actual->getSlackTimestamp(),
             'type' => $actual->getType(),
@@ -118,11 +119,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertSimpleMessage(array $expected, SimpleMessage $actual)
     {
-        $this->assertEquals($expected['type'], $actual->getType());
-        $this->assertEquals($expected['ts'], $actual->getSlackTimestamp());
-        $this->assertEquals($expected['user'], $actual->getUserId());
-        $this->assertEquals($expected['text'], $actual->getText());
-        $this->assertEquals($expected['username'], $actual->getUsername());
+        Assert::assertEquals($expected['type'], $actual->getType());
+        Assert::assertEquals($expected['ts'], $actual->getSlackTimestamp());
+        Assert::assertEquals($expected['user'], $actual->getUserId());
+        Assert::assertEquals($expected['text'], $actual->getText());
+        Assert::assertEquals($expected['username'], $actual->getUsername());
     }
 
     /**
@@ -157,11 +158,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertSimpleMessage($expected['latest'], $actual->getLatest());
         $this->assertCustomizable($expected['purpose'], $actual->getPurpose());
         $this->assertCustomizable($expected['topic'], $actual->getTopic());
-        $this->assertInstanceOf('\DateTime', $actual->getCreated());
+        Assert::assertInstanceOf('\DateTime', $actual->getCreated());
         unset($expected['latest']);
         unset($expected['purpose']);
         unset($expected['topic']);
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
@@ -192,7 +193,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertSimpleChannel(array $expected, SimpleChannel $actual)
     {
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
@@ -233,11 +234,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertMessage($expected['latest'], $actual->getLatest());
         $this->assertCustomizable($expected['purpose'], $actual->getPurpose());
         $this->assertCustomizable($expected['topic'], $actual->getTopic());
-        $this->assertInstanceOf('\DateTime', $actual->getCreated());
+        Assert::assertInstanceOf('\DateTime', $actual->getCreated());
         unset($expected['latest']);
         unset($expected['purpose']);
         unset($expected['topic']);
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
@@ -267,7 +268,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertGroupWithState(array $expected, GroupWithState $actual)
     {
-        $this->assertEquals($expected['is_open'], $actual->isOpen());
+        Assert::assertEquals($expected['is_open'], $actual->isOpen());
         unset($expected['is_open']);
         $this->assertGroup($expected, $actual);
     }
@@ -335,8 +336,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertFile(array $expected, File $actual)
     {
         $this->assertNotEmpty($expected);
-        $this->assertInstanceOf('CL\Slack\Model\File', $actual);
-        $this->assertEquals($expected, [
+        Assert::assertInstanceOf('CL\Slack\Model\File', $actual);
+        Assert::assertEquals($expected, [
             'id' => $actual->getId(),
             'timestamp' => $actual->getTimestamp()->format('U'),
             'name' => $actual->getName(),
@@ -428,7 +429,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertPaging(array $expected, Paging $actual)
     {
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'count' => $actual->getCount(),
             'total' => $actual->getTotal(),
             'page' => $actual->getPage(),
@@ -455,7 +456,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertCustomizable(array $expected, Customizable $actual)
     {
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'value' => $actual->getValue(),
             'type' => $actual->getType(),
             'creator' => $actual->getCreator(),
@@ -486,7 +487,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertFile($expected['file'], $actual->getFile());
         unset($expected['file']);
 
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'type' => $actual->getType(),
             'comment' => $actual->getComment(),
         ]);
@@ -520,7 +521,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->assertUserProfile($expected['profile'], $actual->getProfile());
         unset($expected['profile']);
 
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'id' => $actual->getId(),
             'name' => $actual->getName(),
             'color' => $actual->getColor(),
@@ -559,7 +560,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertUserProfile(array $expected, UserProfile $actual)
     {
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'first_name' => $actual->getFirstName(),
             'last_name' => $actual->getLastName(),
             'real_name' => $actual->getRealName(),
@@ -594,7 +595,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertImChannel(array $expected, ImChannel $actual)
     {
-        $this->assertEquals($expected, [
+        Assert::assertEquals($expected, [
             'id' => $actual->getId(),
             'is_im' => $actual->isIm(),
             'is_user_deleted' => $actual->isUserDeleted(),

@@ -39,7 +39,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
     public function getErrorExplanation()
     {
         if (null === $error = $this->getError()) {
-            return;
+            return null;
         }
 
         $ownErrors = $this->getPossibleErrors();
@@ -47,7 +47,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
             return $ownErrors[$error];
         }
 
-        return sprintf('Unknown error (%s)', $error);
+        return sprintf('Unknown error: "%s"', $error);
     }
 
     /**

@@ -12,8 +12,7 @@
 namespace CL\Slack\Tests\Transport;
 
 use CL\Slack\Payload\PayloadInterface;
-use CL\Slack\Test\Payload\MockPayload;
-use CL\Slack\Tests\AbstractTestCase;
+use CL\Slack\Test\Payload\PayloadMock;
 use CL\Slack\Transport\ApiClient;
 use CL\Slack\Transport\Events\RequestEvent;
 use CL\Slack\Transport\Events\ResponseEvent;
@@ -26,7 +25,7 @@ use GuzzleHttp\Psr7\Response;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiClientTest extends AbstractTestCase
+class ApiClientTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -36,8 +35,8 @@ class ApiClientTest extends AbstractTestCase
         $self = $this;
         $token = 'fake-token';
 
-        $mockRequestData = ['foo' => 'bar', 'token' => $token];
-        $mockResponseData = ['ok' => true, 'foo' => 'bar'];
+        $mockRequestData = ['fruit' => 'apple', 'token' => $token];
+        $mockResponseData = ['ok' => true, 'fruit' => 'apple'];
 
         $handler = HandlerStack::create(
             new MockHandler([
@@ -62,12 +61,12 @@ class ApiClientTest extends AbstractTestCase
             $self->assertEquals($mockResponseData, $event->getRawPayloadResponse());
         });
 
-        $mockPayload = new MockPayload();
-        $mockPayload->setFoo('bar');
-        $apiClient->send($mockPayload);
+        $payload = new PayloadMock();
+        $payload->setFruit($mockRequestData['fruit']);
+
+        $apiClient->send($payload);
 
         $transaction = $historyContainer[0];
-
         $requestUrl = (string) $transaction['request']->getUri();
         $requestContentType = $transaction['request']->getHeader('content-type')[0];
         parse_str($transaction['request']->getBody(), $requestBody);

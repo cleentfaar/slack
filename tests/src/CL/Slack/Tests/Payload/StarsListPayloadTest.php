@@ -17,7 +17,7 @@ use CL\Slack\Payload\StarsListPayload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class StarsListPayloadTest extends AbstractPayloadTest
+class StarsListPayloadTest extends AbstractPayloadTestCase
 {
     /**
      * @inheritdoc

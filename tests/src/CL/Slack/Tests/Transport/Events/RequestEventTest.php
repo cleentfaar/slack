@@ -11,14 +11,16 @@
 
 namespace CL\Slack\Tests\Transport\Events;
 
-use CL\Slack\Tests\AbstractTestCase;
+use CL\Slack\Test\Model\ModelTrait;
 use CL\Slack\Transport\Events\RequestEvent;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class RequestEventTest extends AbstractTestCase
+class RequestEventTest extends \PHPUnit_Framework_TestCase
 {
+    use ModelTrait;
+
     /**
      * @test
      */

@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class EmojiListPayloadResponseTest extends AbstractPayloadResponseTest
+class EmojiListPayloadResponseTest extends AbstractPayloadResponseTestCase
 {
     /**
      * @inheritdoc

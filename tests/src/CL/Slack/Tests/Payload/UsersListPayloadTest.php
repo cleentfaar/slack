@@ -17,7 +17,7 @@ use CL\Slack\Payload\UsersListPayload;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class UsersListPayloadTest extends AbstractPayloadTest
+class UsersListPayloadTest extends AbstractPayloadTestCase
 {
     /**
      * @inheritdoc

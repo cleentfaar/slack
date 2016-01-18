@@ -12,15 +12,17 @@
 namespace CL\Slack\Tests\Model;
 
 use CL\Slack\Model\AbstractModel;
-use CL\Slack\Tests\AbstractTestCase;
+use CL\Slack\Test\Model\ModelTrait;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractModelTest extends AbstractTestCase
+abstract class AbstractModelTest extends \PHPUnit_Framework_TestCase
 {
+    use ModelTrait;
+
     /**
      * @var Serializer
      */

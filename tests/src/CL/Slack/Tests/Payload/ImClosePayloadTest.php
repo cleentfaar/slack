@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadInterface;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ImClosePayloadTest extends AbstractPayloadTest
+class ImClosePayloadTest extends AbstractPayloadTestCase
 {
     /**
      * @inheritdoc

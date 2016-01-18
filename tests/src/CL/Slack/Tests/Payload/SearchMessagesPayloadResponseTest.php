@@ -17,7 +17,7 @@ use CL\Slack\Payload\SearchMessagesPayloadResponse;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class SearchMessagesPayloadResponseTest extends AbstractPayloadResponseTest
+class SearchMessagesPayloadResponseTest extends AbstractPayloadResponseTestCase
 {
     /**
      * @inheritdoc
