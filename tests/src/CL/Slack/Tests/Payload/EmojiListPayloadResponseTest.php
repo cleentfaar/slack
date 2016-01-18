@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class EmojiListPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -33,7 +33,7 @@ class EmojiListPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                    $responseData
      * @param EmojiListPayloadResponse $payloadResponse

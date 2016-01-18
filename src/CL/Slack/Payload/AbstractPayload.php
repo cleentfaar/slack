@@ -17,7 +17,7 @@ namespace CL\Slack\Payload;
 abstract class AbstractPayload implements PayloadInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getResponseClass()
     {

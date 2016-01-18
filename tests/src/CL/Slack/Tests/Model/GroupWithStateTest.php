@@ -36,7 +36,7 @@ class GroupWithStateTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param GroupWithState $actualModel
      */

@@ -18,7 +18,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
     private $error;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function isOk()
     {
@@ -26,7 +26,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getError()
     {
@@ -34,7 +34,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getErrorExplanation()
     {

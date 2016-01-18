@@ -19,7 +19,7 @@ namespace CL\Slack\Payload;
 class EmojiListPayload extends AbstractPayload
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

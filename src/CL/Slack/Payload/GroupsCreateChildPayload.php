@@ -43,7 +43,7 @@ class GroupsCreateChildPayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

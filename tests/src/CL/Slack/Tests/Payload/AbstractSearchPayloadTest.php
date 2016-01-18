@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadInterface;
 abstract class AbstractSearchPayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload(AbstractSearchPayload $payload = null)
     {
@@ -35,7 +35,7 @@ abstract class AbstractSearchPayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param AbstractSearchPayload $payload
      */

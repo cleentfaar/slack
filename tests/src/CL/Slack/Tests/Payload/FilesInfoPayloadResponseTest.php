@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class FilesInfoPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -30,7 +30,7 @@ class FilesInfoPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                    $responseData
      * @param FilesInfoPayloadResponse $payloadResponse

@@ -21,7 +21,7 @@ use CL\Slack\Payload\UsersSetActivePayload;
 class UsersSetActivePayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -31,7 +31,7 @@ class UsersSetActivePayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param ChatDeletePayload $payload
      */

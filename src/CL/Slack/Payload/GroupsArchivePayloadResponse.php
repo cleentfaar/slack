@@ -17,7 +17,7 @@ namespace CL\Slack\Payload;
 class GroupsArchivePayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getPossibleErrors()
     {

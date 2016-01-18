@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class GroupsRenamePayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -30,7 +30,7 @@ class GroupsRenamePayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                       $responseData
      * @param GroupsRenamePayloadResponse $payloadResponse

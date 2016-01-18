@@ -20,7 +20,7 @@ use CL\Slack\Payload\PayloadResponseInterface;
 class OauthAccessPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -31,7 +31,7 @@ class OauthAccessPayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param array                      $responseData
      * @param OauthAccessPayloadResponse $payloadResponse

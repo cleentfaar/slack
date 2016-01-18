@@ -36,7 +36,7 @@ class SimpleMessageTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param SimpleMessage $actual
      */

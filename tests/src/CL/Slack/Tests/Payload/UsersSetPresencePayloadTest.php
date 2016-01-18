@@ -20,7 +20,7 @@ use CL\Slack\Payload\UsersSetPresencePayload;
 class UsersSetPresencePayloadTest extends AbstractPayloadTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function createPayload()
     {
@@ -31,7 +31,7 @@ class UsersSetPresencePayloadTest extends AbstractPayloadTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param UsersSetPresencePayload $payload
      */

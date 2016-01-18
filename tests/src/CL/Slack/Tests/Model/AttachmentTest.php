@@ -48,7 +48,7 @@ class AttachmentTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param Attachment $actualModel
      */

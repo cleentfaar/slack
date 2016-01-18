@@ -36,7 +36,7 @@ class ChannelTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param Channel $actualModel
      */

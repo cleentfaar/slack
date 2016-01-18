@@ -43,7 +43,7 @@ class SimpleChannelTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param SimpleChannel $actualModel
      */

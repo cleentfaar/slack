@@ -36,7 +36,7 @@ class UserTest extends AbstractModelTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param User $actualModel
      */

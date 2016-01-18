@@ -20,7 +20,7 @@ use CL\Slack\Payload\UsersGetPresencePayloadResponse;
 class UsersGetPresencePayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function createResponseData()
     {
@@ -30,9 +30,9 @@ class UsersGetPresencePayloadResponseTest extends AbstractPayloadResponseTest
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
-     * @param array                      $responseData
+     * @param array                           $responseData
      * @param UsersGetPresencePayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)

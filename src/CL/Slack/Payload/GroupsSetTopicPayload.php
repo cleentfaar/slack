@@ -61,7 +61,7 @@ class GroupsSetTopicPayload extends AbstractPayload
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

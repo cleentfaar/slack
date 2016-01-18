@@ -24,7 +24,7 @@ class ChannelsListPayload extends AbstractPayload
     private $excludeArchived;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMethod()
     {

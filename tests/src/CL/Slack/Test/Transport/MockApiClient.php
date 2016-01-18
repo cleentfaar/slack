@@ -42,7 +42,7 @@ class MockApiClient implements ApiClientInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param bool $successful Whether a successful response should be mocked, or a failed one
      */

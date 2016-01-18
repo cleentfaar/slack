@@ -27,7 +27,7 @@ abstract class AbstractModelTest extends AbstractTestCase
     protected $serializer;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function setUp()
     {
