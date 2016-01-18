@@ -1,0 +1,13 @@
+CL\Slack\Model\Team:
+    properties:
+        id:
+            type: string
+        name:
+            type: string
+        domain:
+            type: string
+        emailDomain:
+            type: string
+            serialized_name: email_domain
+        icon:
+            type: array<string, string>
