@@ -19,6 +19,8 @@ CL\Slack\Payload\ChatPostMessagePayload:
             type: string
         parse:
             type: string
+        asUser:
+            type: boolean
         attachments:
             type: string
             accessor:

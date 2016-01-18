@@ -11,23 +11,18 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\ImChannel;
-
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
+ *
+ * @link Official documentation at https://api.slack.com/methods/rtm.start
  */
-class ImListPayloadResponse extends AbstractPayloadResponse
+class RtmStartPayload extends AbstractPayload
 {
     /**
-     * @var ImChannel[]
+     * {@inheritdoc}
      */
-    private $ims;
-
-    /**
-     * @return ImChannel[]
-     */
-    public function getImChannels()
+    public function getMethod()
     {
-        return $this->ims;
+        return 'rtm.start';
     }
 }

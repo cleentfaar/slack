@@ -11,23 +11,21 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\ImChannel;
-
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
-class ImListPayloadResponse extends AbstractPayloadResponse
+class RtmStartPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var ImChannel[]
+     * @var string
      */
-    private $ims;
+    private $url;
 
-    /**
-     * @return ImChannel[]
+	/**
+     * @return string
      */
-    public function getImChannels()
+    public function getUrl()
     {
-        return $this->ims;
+        return $this->url;
     }
 }

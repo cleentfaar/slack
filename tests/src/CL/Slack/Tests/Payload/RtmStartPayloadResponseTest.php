@@ -11,13 +11,13 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\ImListPayloadResponse;
+use CL\Slack\Payload\RtmStartPayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
-class ImListPayloadResponseTest extends AbstractPayloadResponseTest
+class RtmStartPayloadResponseTest extends AbstractPayloadResponseTest
 {
     /**
      * {@inheritdoc}
@@ -25,26 +25,18 @@ class ImListPayloadResponseTest extends AbstractPayloadResponseTest
     public function createResponseData()
     {
         return [
-            'ims' => [
-                 $this->createImChannel(),
-             ],
+            'url' => 'wss://ms111.slack-msgs.com/websocket/',
         ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param array                 $responseData
-     * @param ImListPayloadResponse $payloadResponse
+     * @param array                   $responseData
+     * @param RtmStartPayloadResponse $payloadResponse
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $channels = $payloadResponse->getImChannels();
-
-        $this->assertCount(1, $channels);
-
-        foreach ($channels as $x => $channel) {
-            $this->assertImChannel($responseData['ims'][$x], $channel);
-        }
+        $this->assertEquals($responseData['url'], $payloadResponse->getUrl());
     }
 }

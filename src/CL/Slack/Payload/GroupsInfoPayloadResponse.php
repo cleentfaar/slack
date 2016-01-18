@@ -11,23 +11,23 @@
 
 namespace CL\Slack\Payload;
 
-use CL\Slack\Model\ImChannel;
+use CL\Slack\Model\Group;
 
 /**
- * @author Cas Leentfaar <info@casleentfaar.com>
+ * @author Travis Raup <info@travisraup.com>
  */
-class ImListPayloadResponse extends AbstractPayloadResponse
+class GroupsInfoPayloadResponse extends AbstractPayloadResponse
 {
     /**
-     * @var ImChannel[]
+     * @var Group|null
      */
-    private $ims;
+    private $group;
 
     /**
-     * @return ImChannel[]
+     * @return Group|null
      */
-    public function getImChannels()
+    public function getGroup()
     {
-        return $this->ims;
+        return $this->group;
     }
 }
