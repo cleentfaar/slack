@@ -17,7 +17,7 @@ use CL\Slack\Payload\PayloadInterface;
 /**
  * @author Travis Raup <info@travisraup.com>
  */
-class GroupsInfoPayloadTest extends AbstractPayloadTest
+class GroupsInfoPayloadTest extends AbstractPayloadTestCase
 {
     /**
      * {@inheritdoc}

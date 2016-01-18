@@ -337,6 +337,7 @@ trait ModelTrait
     protected function assertFile(array $expected, File $actual)
     {
         $this->assertNotEmpty($expected);
+
         Assert::assertInstanceOf('CL\Slack\Model\File', $actual);
         Assert::assertEquals($expected, [
             'id' => $actual->getId(),
@@ -586,12 +587,14 @@ trait ModelTrait
             'name' => 'My Team',
             'domain' => 'example.com',
             'email_domain' => 'example.com',
-            'image_34' => 'https:\/\/www.example.com/image34.jpg',
-            'image_44' => 'https:\/\/www.example.com/image44.jpg',
-            'image_68' => 'https:\/\/www.example.com/image68.jpg',
-            'image_88' => 'https:\/\/www.example.com/image88.jpg',
-            'image_102' => 'https:\/\/www.example.com/image102.jpg',
-            'image_132' => 'https:\/\/www.example.com/image132.jpg',
+            'icon' => [
+                'image_34' => 'https:\/\/www.example.com/image34.jpg',
+                'image_44' => 'https:\/\/www.example.com/image44.jpg',
+                'image_68' => 'https:\/\/www.example.com/image68.jpg',
+                'image_88' => 'https:\/\/www.example.com/image88.jpg',
+                'image_102' => 'https:\/\/www.example.com/image102.jpg',
+                'image_132' => 'https:\/\/www.example.com/image132.jpg',
+            ],
         ];
     }
 
@@ -606,12 +609,14 @@ trait ModelTrait
             'name' => $actual->getName(),
             'domain' => $actual->getDomain(),
             'email_domain' => $actual->getEmailDomain(),
-            'image_34' => $actual->getImage34(),
-            'image_44' => $actual->getImage44(),
-            'image_68' => $actual->getImage68(),
-            'image_88' => $actual->getImage88(),
-            'image_102' => $actual->getImage102(),
-            'image_132' => $actual->getImage132(),
+            'icon' => [
+                'image_34' => $actual->getIcon()['image_34'],
+                'image_44' => $actual->getIcon()['image_44'],
+                'image_68' => $actual->getIcon()['image_68'],
+                'image_88' => $actual->getIcon()['image_88'],
+                'image_102' => $actual->getIcon()['image_102'],
+                'image_132' => $actual->getIcon()['image_132'],
+            ],
         ]);
     }
 
