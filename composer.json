@@ -36,11 +36,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CL\\Slack\\": "src/CL/Slack/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
+      "CL\\Slack\\": "src/CL/Slack/",
       "CL\\Slack\\Test\\": "tests/src/CL/Slack/Test/",
       "CL\\Slack\\Tests\\": "tests/src/CL/Slack/Tests/"
     }
