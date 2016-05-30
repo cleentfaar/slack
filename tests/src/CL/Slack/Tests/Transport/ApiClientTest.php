@@ -21,6 +21,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
+use Mockery as Mock;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -89,10 +90,10 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
      */
     public function it_can_not_send_a_payload_without_a_token()
     {
-        /** @var PayloadInterface|\PHPUnit_Framework_MockObject_MockObject $mockPayload */
-        $mockPayload = $this->getMock('CL\Slack\Payload\PayloadInterface');
-        $apiClient = new ApiClient();
+        /* @var PayloadInterface|Mock\MockInterface $mockPayload */
+        $mockPayload = Mock::mock(PayloadInterface::class);
 
+        $apiClient = new ApiClient();
         $apiClient->send($mockPayload);
     }
 }
