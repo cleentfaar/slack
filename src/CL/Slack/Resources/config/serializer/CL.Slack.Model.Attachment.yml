@@ -1,5 +1,7 @@
 CL\Slack\Model\Attachment:
     properties:
+        title:
+            type: string
         fallback:
             type: string
         preText:
