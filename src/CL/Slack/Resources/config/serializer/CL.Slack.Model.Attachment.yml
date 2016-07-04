@@ -14,3 +14,5 @@ CL\Slack\Model\Attachment:
             type: string
         fields:
             type: ArrayCollection<CL\Slack\Model\AttachmentField>
+        mrkdwnIn:
+            type: array
