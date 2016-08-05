@@ -2,3 +2,5 @@ CL\Slack\Payload\GroupsInvitePayloadResponse:
     properties:
         group:
             type: CL\Slack\Model\Group
+        alreadyInGroup:
+            type: boolean
