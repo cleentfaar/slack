@@ -39,7 +39,7 @@ class GroupsInvitePayloadResponse extends AbstractPayloadResponse
     /**
      * @return bool|null
      */
-    public function getAlreadyInGroup()
+    public function isAlreadyInGroup()
     {
         return $this->alreadyInGroup;
     }
