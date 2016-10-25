@@ -1,5 +1,16 @@
 CL\Slack\Model\Attachment:
     properties:
+        titleLink:
+            type: string
+        authorName:
+            type: string
+        authorLink:
+            type: string
+        authorIcon:
+            type: string
+        mrkdwnIn:
+            type: array
+
         title:
             type: string
         fallback:
