@@ -23,5 +23,7 @@ CL\Slack\Model\Attachment:
             type: string
         color:
             type: string
+        footer:
+            type: string
         fields:
             type: ArrayCollection<CL\Slack\Model\AttachmentField>

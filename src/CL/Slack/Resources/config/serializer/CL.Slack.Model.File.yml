@@ -79,6 +79,6 @@ CL\Slack\Model\File:
         groups:
             type: array<string>
         initialComment:
-            type: string
+            type: array
         numStars:
             type: integer
