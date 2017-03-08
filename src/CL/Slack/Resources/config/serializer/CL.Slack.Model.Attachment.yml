@@ -12,5 +12,16 @@ CL\Slack\Model\Attachment:
             type: string
         color:
             type: string
+        mrkdwnIn:
+            type: array
+        titleLink:
+            type: string
+        authorName:
+            type: string
+        authorLink:
+            type: string
+        authorIcon:
+            type: string
         fields:
             type: ArrayCollection<CL\Slack\Model\AttachmentField>
+        
