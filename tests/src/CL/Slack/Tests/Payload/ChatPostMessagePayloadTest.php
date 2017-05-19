@@ -12,6 +12,7 @@
 namespace CL\Slack\Tests\Payload;
 
 use CL\Slack\Model\Attachment;
+use CL\Slack\Model\AttachmentAction;
 use CL\Slack\Model\AttachmentField;
 use CL\Slack\Payload\ChatPostMessagePayload;
 use CL\Slack\Payload\PayloadInterface;
@@ -43,6 +44,13 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
         $fakeAttachmentField->setTitle('the title');
         $fakeAttachmentField->setValue('the value');
 
+        $fakeAttachmentAction = new AttachmentAction();
+        $fakeAttachmentAction->setName('the name');
+        $fakeAttachmentAction->setText('the text');
+        $fakeAttachmentAction->setType('the type');
+        $fakeAttachmentAction->setValue('the value');
+        $fakeAttachmentAction->setStyle('the style');
+
         $fakeAttachment = new Attachment();
         $fakeAttachment->setTitle('the title');
         $fakeAttachment->setTitleLink('http://thetitlelink.com');
@@ -55,6 +63,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
         $fakeAttachment->setAuthorName('the author');
         $fakeAttachment->setAuthorLink('http://theauthor.com');
         $fakeAttachment->addField($fakeAttachmentField);
+        $fakeAttachment->addAction($fakeAttachmentAction);
 
         $payload->addAttachment($fakeAttachment);
 
@@ -73,6 +82,9 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
 
         /** @var AttachmentField $attachmentField */
         $attachmentField = $attachment->getFields()->first();
+
+        /** @var AttachmentAction $attachmentAction */
+        $attachmentAction = $attachment->getActions()->first();
 
         return [
             'channel' => $payload->getChannel(),
@@ -102,6 +114,15 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
                             'title' => $attachmentField->getTitle(),
                             'value' => $attachmentField->getValue(),
                             'short' => $attachmentField->isShort(),
+                        ],
+                    ],
+                    'actions' => [
+                        [
+                            'name' => $attachmentAction->getName(),
+                            'text' => $attachmentAction->getText(),
+                            'type' => $attachmentAction->getType(),
+                            'value' => $attachmentAction->getValue(),
+                            'style' => $attachmentAction->getStyle(),
                         ],
                     ],
                 ],
