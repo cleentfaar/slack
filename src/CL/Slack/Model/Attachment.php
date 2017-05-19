@@ -88,6 +88,7 @@ class Attachment extends AbstractModel
     public function __construct()
     {
         $this->fields = new ArrayCollection();
+        $this->actions = new ArrayCollection();
     }
 
     /**
