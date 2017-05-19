@@ -74,6 +74,11 @@ class Attachment extends AbstractModel
      * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
+
+    /**
+     * @var AttachmentAction[]|ArrayCollection
+     */
+    private $actions;
     
     /**
      * @var Array
@@ -278,4 +283,22 @@ class Attachment extends AbstractModel
     {
     	return $this->mrkdwnIn;
     }
+
+
+    /**
+     * @param AttachmentAction $action
+     */
+    public function addAction(AttachmentAction $action)
+    {
+        $this->actions->add($action);
+    }
+
+    /**
+     * @return AttachmentAction[]|ArrayCollection
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
 }
