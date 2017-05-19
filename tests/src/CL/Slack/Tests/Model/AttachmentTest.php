@@ -36,6 +36,15 @@ class AttachmentTest extends AbstractModelTest
                     'short' => false,
                 ],
             ],
+            'actions' => [
+                [
+                    'name'  => 'foo',
+                    'text'  => 'bar',
+                    'type'  => 'fooType',
+                    'value' => 'barValue',
+                    'style' => 'fooStyle'
+                ],
+            ]
         ];
     }
 
@@ -61,5 +70,10 @@ class AttachmentTest extends AbstractModelTest
         $this->assertEquals($expectedData['fields'][0]['title'], $actualModel->getFields()->first()->getTitle());
         $this->assertEquals($expectedData['fields'][0]['value'], $actualModel->getFields()->first()->getValue());
         $this->assertEquals($expectedData['fields'][0]['short'], $actualModel->getFields()->first()->isShort());
+        $this->assertEquals($expectedData['actions'][0]['name'], $actualModel->getActions()->first()->getName());
+        $this->assertEquals($expectedData['actions'][0]['text'], $actualModel->getActions()->first()->getText());
+        $this->assertEquals($expectedData['actions'][0]['type'], $actualModel->getActions()->first()->getType());
+        $this->assertEquals($expectedData['actions'][0]['value'], $actualModel->getActions()->first()->getValue());
+        $this->assertEquals($expectedData['actions'][0]['style'], $actualModel->getActions()->first()->getStyle());
     }
 }
