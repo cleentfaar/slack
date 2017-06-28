@@ -71,6 +71,11 @@ class Attachment extends AbstractModel
     private $fallback;
 
     /**
+     * @var string
+     */
+    private $callbackId;
+
+    /**
      * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
@@ -205,6 +210,21 @@ class Attachment extends AbstractModel
         return $this->fallback;
     }
 
+    /**
+     * @param string $callbackId Required if the attachment contains actions
+     */
+    public function setCallbackId($callbackId)
+    {
+        $this->callbackId = $callbackId;
+    }
+
+    /**
+     * @return string Returns the callback id
+     */
+    public function getCallbackId()
+    {
+        return $this->callbackId;
+    }
     /**
      * @param string|null $preText Optional text that should appear above the formatted data.
      */

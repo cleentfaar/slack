@@ -12,6 +12,8 @@ CL\Slack\Model\Attachment:
             type: string
         color:
             type: string
+        callbackId:
+            type: string
         fields:
             type: ArrayCollection<CL\Slack\Model\AttachmentField>
         actions:

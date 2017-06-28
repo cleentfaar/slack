@@ -29,6 +29,7 @@ class AttachmentTest extends AbstractModelTest
             'fallback' => 'fallback text',
             'text' => 'normal text',
             'pre_text' => 'pre text',
+            'callback_id' => '123',
             'fields' => [
                 [
                     'title' => 'foo',
@@ -67,6 +68,7 @@ class AttachmentTest extends AbstractModelTest
         $this->assertEquals($expectedData['fallback'], $actualModel->getFallback());
         $this->assertEquals($expectedData['pre_text'], $actualModel->getPreText());
         $this->assertEquals($expectedData['text'], $actualModel->getText());
+        $this->assertEquals($expectedData['callback_id'], $actualModel->getCallbackId());
         $this->assertEquals($expectedData['fields'][0]['title'], $actualModel->getFields()->first()->getTitle());
         $this->assertEquals($expectedData['fields'][0]['value'], $actualModel->getFields()->first()->getValue());
         $this->assertEquals($expectedData['fields'][0]['short'], $actualModel->getFields()->first()->isShort());
