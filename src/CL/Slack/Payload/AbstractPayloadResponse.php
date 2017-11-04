@@ -17,8 +17,14 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
      */
     private $error;
 
+	/**
+	 * @var string
+	 */
     private $needed;
 
+	/**
+	 * @var string
+	 */
     private $provided;
 
     /**
