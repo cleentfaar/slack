@@ -91,6 +91,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
             'user_not_found' => 'User could not be found',
 	        'missing_scope' => sprintf("The application's permissions is not enough to complete this request. Needed scope is '%s', provided - [%s].",
 		        $this->needed, $this->provided),
+	        'token_revoked'=>'Token was revoked. Try to reinstall the application to get a new one.',
         ];
     }
 }
