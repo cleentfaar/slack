@@ -17,6 +17,10 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
      */
     private $error;
 
+    private $needed;
+
+    private $provided;
+
     /**
      * @inheritdoc
      */
@@ -79,6 +83,8 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
             'user_is_bot' => 'This method cannot be called by a bot user',
             'user_is_ultra_restricted' => 'This method cannot be called by a single channel guest',
             'user_not_found' => 'User could not be found',
+	        'missing_scope' => sprintf("The application's permissions is not enough to complete this request. Needed scope is '%s', provided - [%s].",
+		        $this->needed, $this->provided),
         ];
     }
 }

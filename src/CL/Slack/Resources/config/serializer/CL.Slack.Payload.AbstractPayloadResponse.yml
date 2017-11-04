@@ -4,3 +4,7 @@ CL\Slack\Payload\AbstractPayloadResponse:
             type: boolean
         error:
             type: string
+        needed:
+            type: string
+        provided:
+            type: string
