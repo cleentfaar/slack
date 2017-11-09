@@ -2,6 +2,8 @@ CL\Slack\Model\User:
     properties:
         id:
             type: string
+        team_id:
+            type: string
         name:
             type: string
         color:
