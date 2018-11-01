@@ -71,9 +71,19 @@ class Attachment extends AbstractModel
     private $fallback;
 
     /**
+     * @var string
+     */
+    private $callbackId;
+
+    /**
      * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
+
+    /**
+     * @var AttachmentAction[]|ArrayCollection
+     */
+    private $actions;
     
     /**
      * @var Array
@@ -83,6 +93,7 @@ class Attachment extends AbstractModel
     public function __construct()
     {
         $this->fields = new ArrayCollection();
+        $this->actions = new ArrayCollection();
     }
 
     /**
@@ -200,6 +211,21 @@ class Attachment extends AbstractModel
     }
 
     /**
+     * @param string $callbackId Required if the attachment contains actions
+     */
+    public function setCallbackId($callbackId)
+    {
+        $this->callbackId = $callbackId;
+    }
+
+    /**
+     * @return string Returns the callback id
+     */
+    public function getCallbackId()
+    {
+        return $this->callbackId;
+    }
+    /**
      * @param string|null $preText Optional text that should appear above the formatted data.
      */
     public function setPreText($preText = null)
@@ -278,4 +304,22 @@ class Attachment extends AbstractModel
     {
     	return $this->mrkdwnIn;
     }
+
+
+    /**
+     * @param AttachmentAction $action
+     */
+    public function addAction(AttachmentAction $action)
+    {
+        $this->actions->add($action);
+    }
+
+    /**
+     * @return AttachmentAction[]|ArrayCollection
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
 }
