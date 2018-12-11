@@ -7,7 +7,7 @@ CL\Slack\Model\SimpleMessage:
         subtype:
             type: string
         channel:
-            type: CL\Slack\Model\SimpleChannel
+            type: string
         user:
             type: string
         username:

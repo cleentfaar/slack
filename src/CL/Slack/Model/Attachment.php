@@ -74,7 +74,9 @@ class Attachment extends AbstractModel
      * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
-    
+
+    private $footer;
+
     /**
      * @var Array
      */
@@ -277,5 +279,21 @@ class Attachment extends AbstractModel
     public function getMrkdwnIn()
     {
     	return $this->mrkdwnIn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFooter()
+    {
+        return $this->footer;
+    }
+
+    /**
+     * @param mixed $footer
+     */
+    public function setFooter($footer)
+    {
+        $this->footer = $footer;
     }
 }

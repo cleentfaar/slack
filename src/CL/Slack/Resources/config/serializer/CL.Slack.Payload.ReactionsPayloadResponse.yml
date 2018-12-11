@@ -1,0 +1,6 @@
+CL\Slack\Payload\ReactionsPayloadResponse:
+    properties:
+        channel:
+            type: string
+        message:
+            type: array
