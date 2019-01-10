@@ -23,6 +23,11 @@ class User extends AbstractModel
      */
     private $id;
 
+	/**
+	 * @var string|null
+	 */
+    private $team_id;
+
     /**
      * @var string
      */
@@ -75,6 +80,14 @@ class User extends AbstractModel
     {
         return $this->id;
     }
+
+	/**
+	 * @return null|string
+	 */
+	public function getTeamId()
+	{
+		return $this->team_id;
+	}
 
     /**
      * @return string The (user)name of this member

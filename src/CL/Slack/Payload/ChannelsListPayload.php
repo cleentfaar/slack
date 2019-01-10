@@ -21,7 +21,17 @@ class ChannelsListPayload extends AbstractPayload
     /**
      * @var bool
      */
-    private $excludeArchived;
+	private $exclude_archived;
+
+	/**
+	 * @var bool
+	 */
+	private $exclude_members;
+
+	/**
+	 * @var int
+	 */
+	private $limit;
 
     /**
      * @inheritdoc
@@ -32,11 +42,11 @@ class ChannelsListPayload extends AbstractPayload
     }
 
     /**
-     * @param bool $excludeArchived
+     * @param bool $exclude_archived
      */
-    public function setExcludeArchived($excludeArchived)
+    public function setExcludeArchived($exclude_archived)
     {
-        $this->excludeArchived = $excludeArchived;
+        $this->exclude_archived = $exclude_archived;
     }
 
     /**
@@ -44,6 +54,39 @@ class ChannelsListPayload extends AbstractPayload
      */
     public function isExcludeArchived()
     {
-        return $this->excludeArchived;
+        return $this->exclude_archived;
     }
+
+	/**
+	 * @return bool
+	 */
+	public function isExcludeMembers()
+	{
+		return $this->exclude_members;
+	}
+
+	/**
+	 * @param bool $exclude_members
+	 */
+	public function setExcludeMembers( bool $exclude_members )
+	{
+		$this->exclude_members = $exclude_members;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLimit()
+	{
+		return $this->limit;
+	}
+
+	/**
+	 * @param int $limit
+	 */
+	public function setLimit( $limit )
+	{
+		$this->limit = $limit;
+	}
+
 }

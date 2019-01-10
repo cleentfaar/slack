@@ -1,4 +1,8 @@
 CL\Slack\Payload\ChannelsListPayload:
     properties:
-        alreadyArchived:
+        exclude_archived:
             type: boolean
+        exclude_members:
+            type: boolean
+        limit:
+            type: integer
