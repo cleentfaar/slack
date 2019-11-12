@@ -73,6 +73,14 @@ class SimpleMessage extends AbstractModel
     {
         return $this->type;
     }
+    
+    /**
+     * @return null|string The subtype of message
+     */
+    public function getSubtype()
+    {
+        return $this->subtype;
+    }
 
     /**
      * @return SimpleChannel
